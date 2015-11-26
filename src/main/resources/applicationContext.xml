@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- spring扫描的路径 为了使用注解 -->
+    <context:component-scan base-package="com.blueshit.cookshow"/>
+
+    <!-- 导入外部的配置文件 -->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <!-- 开启AOP监听 只对当前配置文件有效 -->
+    <aop:aspectj-autoproxy expose-proxy="true"/>
+
+    <!-- 阿里巴巴数据源-->
+    <bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="url" value="${jdbcUrl}"/>
+        <property name="username" value="${user}"/>
+        <property name="password" value="${password}"/>
+        <!--这一项可配可不配，如果不配置druid会根据url自动识别dbType，然后选择相应的driverClassName-->
+        <!--<property name="driverClassName" value="${driverClass}"/>-->
+        <!-- 初始化连接大小 -->
+        <property name="initialSize" value="5"/>
+        <!-- 连接池最大使用连接数量 -->
+        <property name="maxActive" value="30"/>
+        <!-- 连接池最大空闲 -->
+        <property name="maxIdle" value="20"/>
+        <!-- 连接池最小空闲 -->
+        <property name="minIdle" value="0"/>
+        <!-- 获取连接最大等待时间 -->
+        <property name="maxWait" value="60000"/>
+        <!--以下配置会影响性能，调试的时候可以打开-->
+        <!-- 超过时间限制是否回收 -->
+        <property name="removeAbandoned" value="true"/>
+        <!-- 超时时间；单位为秒。180秒=3分钟 -->
+        <property name="removeAbandonedTimeout" value="1"/>
+        <!-- 关闭abanded连接时输出错误日志 -->
+        <property name="logAbandoned" value="true"/>
+    </bean>
+
+
+
+    <!--sessionFactory-->
+    <bean id="sessionFactory" name="sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.hbm2ddl.auto">validate</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+            </props>
+        </property>
+        <property name="packagesToScan" value="com.blueshit.cookshow.model.entity"/>
+    </bean>
+
+    <!-- hibernate事务管理 -->
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- 启用 annotation事务 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+</beans>

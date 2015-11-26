@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration name="defaultConfiguration" status="warn"
+               strict="true" monitorInterval="5">
+    <Properties>
+        <Property name="debug-path">/server/logs/rms/debug</Property>
+        <Property name="info-path">/server/logs/rms/info</Property>
+        <Property name="console-path">/server/logs/rms/console</Property>
+    </Properties>
+
+    <Appenders>
+        <RollingFile name="DebugRollingFile" fileName="${debug-path}/debug.log"
+                     filePattern="${debug-path}/debug-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout>
+                <pattern>%d{dd/MMM/yyyy HH:mm:ss,SSS}- %c{1}: %m%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="4"/>
+        </RollingFile>
+
+        <RollingFile name="InfoRollingFile" fileName="${info-path}/info.log"
+                     filePattern="${info-path}/info-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout>
+                <pattern>%d{dd/MMM/yyyy HH:mm:ss,SSS}- %c{1}: %m%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="4"/>
+        </RollingFile>
+
+        <RollingFile name="Console_File" fileName="${console-path}/console.log"
+                     filePattern="${console-path}/console-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout>
+                <pattern>%d{dd/MMM/yyyy HH:mm:ss,SSS}- %c{1}: %m%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="4"/>
+        </RollingFile>
+
+
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+    </Appenders>
+
+    <Loggers>
+        <Logger level="debug" additivity="false">
+            <AppenderRef ref="DebugRollingFile"/>
+        </Logger>
+        <Logger level="info" additivity="false">
+            <AppenderRef ref="InfoRollingFile"/>
+        </Logger>
+        <Root level="trace">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="Console_File"/>
+        </Root>
+    </Loggers>
+</configuration>
