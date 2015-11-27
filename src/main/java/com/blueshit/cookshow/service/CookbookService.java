@@ -7,4 +7,7 @@ import com.blueshit.cookshow.model.entity.Cookbook;
  * Created by Seven on 2015/11/26.
  */
 public interface CookbookService extends DaoSupport<Cookbook> {
+	
+	
+	
 }
