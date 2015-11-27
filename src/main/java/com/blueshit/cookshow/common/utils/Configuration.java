@@ -14,7 +14,7 @@ public class Configuration {
 		InputStream in = null;
 		try {
 			
-			in = Configuration.class.getClassLoader().getResourceAsStream("default.properties");
+			in = Configuration.class.getClassLoader().getResourceAsStream("configuration.properties");
 			Properties props = new Properties();
 			
 			props.load(in);

@@ -16,6 +16,9 @@
     <!--springmvc注解驱动-->
     <mvc:annotation-driven/>
 
+    <!--资源-->
+    <mvc:resources mapping="/resources/**" location="/resources/assets"/>
+
     <!--内部资源解析器-->
     <bean id="internalResourceViewResolverForHtml" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
@@ -28,8 +31,20 @@
         <property name="maxUploadSize" value="10485670"/><!-- 10M -->
     </bean>
 
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/admin/**"/>
+            <bean class="com.blueshit.cookshow.web.basic.CheckAdminLoginInterception"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <!-- 开启aop，对类代理 -->
     <aop:config proxy-target-class="true"/>
+
+    <!-- 开启shiro注解支持 -->
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager" />
+    </bean>
 
 
 </beans>

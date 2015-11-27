@@ -23,5 +23,6 @@ public abstract void save(T t);
 	public abstract List<T> findAll();
 	
 	public abstract Page getPage(int pageNum, QueryHelper queryHelper);
-	
+
+    public abstract void disable(Long id);
 }

@@ -139,5 +139,16 @@ public class  DaoSupportImpl<T> implements DaoSupport<T> {
 		
 	}
 
+    /**
+     * 设置无效
+     * @param id
+     */
+    public void disable(Long id){
+
+        getSession().createQuery("update "+clazz.getSimpleName()+"set deleted=1 where id = ?")
+                .setParameter(0,id);
+
+    }
+
 	
 }

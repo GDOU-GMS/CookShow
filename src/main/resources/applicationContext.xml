@@ -69,4 +69,7 @@
     <!-- 启用 annotation事务 -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
+    <!--引入shiro-->
+    <import resource="classpath:spring-shiro-web.xml"/>
+
 </beans>

@@ -13,5 +13,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class AdminServiceImpl extends DaoSupportImpl<Admin> implements AdminService {
 
+    public Admin findByUsername(String username){
+        return (Admin)getSession().createQuery("from Admin where username = ?")
+                .setParameter(0,username)
+                .uniqueResult();
+    }
 
 }
