@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ForwardController {
 
-    @RequestMapping("/forward/{dir}/{url}")
+    /*@RequestMapping("/forward/{dir}/{url}")
     public String forwardUrl1(@PathVariable String dir,@PathVariable String url){
         return dir+"/"+url;
     }
@@ -23,7 +23,9 @@ public class ForwardController {
     @RequestMapping("/forward/{dir1}/{dir2}/{url}")
     public String forwardUrl3(@PathVariable String dir1,@PathVariable String dir2,@PathVariable String url){
         return dir1+"/"+dir2+"/"+url;
-    }
+    }*/
+
+
 
 
 
