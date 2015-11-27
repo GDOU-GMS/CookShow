@@ -12,4 +12,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class UserServiceImpl extends DaoSupportImpl<User> implements UserService {
+
+
+    /**
+     * 根据用户名查找.
+     * @param username
+     * @return
+     */
+    public User findByUsername(String username) {
+        return null;
+    }
 }

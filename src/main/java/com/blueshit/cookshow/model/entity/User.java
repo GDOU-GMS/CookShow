@@ -42,7 +42,7 @@ public class User implements Serializable {
 
 	private String realName;
 
-	private String sale;
+	private String salt;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updateDate;
@@ -172,15 +172,15 @@ public class User implements Serializable {
 		this.realName = realName;
 	}
 
-	public String getSale() {
-		return this.sale;
-	}
+    public String getSalt() {
+        return salt;
+    }
 
-	public void setSale(String sale) {
-		this.sale = sale;
-	}
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
 
-	public Date getUpdateDate() {
+    public Date getUpdateDate() {
 		return this.updateDate;
 	}
 

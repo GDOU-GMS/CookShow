@@ -8,4 +8,6 @@ import com.blueshit.cookshow.model.entity.Admin;
  */
 public interface AdminService extends DaoSupport<Admin>{
 
+    Admin findByUsername(String username);
+
 }

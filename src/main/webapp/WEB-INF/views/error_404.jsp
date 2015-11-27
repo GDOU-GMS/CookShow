@@ -5,6 +5,6 @@
     <title></title>
 </head>
 <body>
-error——404
+error404
 </body>
 </html>
