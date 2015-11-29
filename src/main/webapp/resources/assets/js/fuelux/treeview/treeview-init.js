@@ -24,6 +24,10 @@
             };
 
             // INITIALIZING TREE
+            var myTreeDataSource = new DataSourceTree({
+
+            });
+
             var treeDataSource = new DataSourceTree({
                 data: [
                     { name: 'Sales', type: 'folder', 'icon-class':'blue', additionalParameters: { id: 'F1' } },
@@ -85,6 +89,12 @@
                     { name: '<i class="fa fa-suitcase"></i> Portfolio <div class="tree-actions"><i class="fa fa-plus"></i><i class="fa fa-trash-o"></i><i class="fa fa-refresh"></i></div>', type: 'item', additionalParameters: { id: 'I12' } }
                 ],
                 delay: 400
+            });
+
+            $('#myTree').tree({
+                selectable: false,
+                dataSource: myTreeDataSource,
+                loadingHTML: '<div class="tree-loading"><i class="fa fa-rotate-right fa-spin"></i></div>'
             });
 
             $('#MyTree').tree({

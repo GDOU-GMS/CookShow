@@ -20,7 +20,7 @@ public class CheckAdminLoginInterception implements HandlerInterceptor{
 
         Admin admin = (Admin) httpServletRequest.getSession().getAttribute("admin");
         if(admin == null){
-            httpServletRequest.getRequestDispatcher("/forward/admin/index").forward(httpServletRequest,httpServletResponse);
+            httpServletResponse.sendRedirect("/forward/adminLogin");
             return false;
         }else{
             return true;

@@ -12,4 +12,24 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class ClassificationServiceImpl extends DaoSupportImpl<Classification> implements ClassificationService {
+    public int getTopClassificationNum() {
+        long l = (Long)getSession().createQuery("select count(*) from Classification c where length(c.code)=2").uniqueResult();
+        return (int)l;
+    }
+
+    public int getSecondClassificationNum() {
+        long l = (Long)getSession().createQuery("select count(*) from Classification c where length(c.code)=3").uniqueResult();
+        return (int)l;
+    }
+
+    public int getThirdClassificationNum() {
+        long l = (Long)getSession().createQuery("select count(*) from Classification c where length(c.code)=4").uniqueResult();
+        return (int)l;
+    }
+
+    public Classification getByCode(String code){
+        return (Classification)getSession().createQuery("from Classification where code = ?")
+                .setParameter(0,code)
+                .uniqueResult();
+    }
 }

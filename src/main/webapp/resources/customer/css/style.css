@@ -1,0 +1,250 @@
+/* CSS Document */
+body{
+	background:#fff;
+	font-size:15px;
+}
+.csw{
+	width:100%;
+	
+}
+#top{
+	float:left;
+	display:block;
+	width:100%;
+	height:155px;
+}
+#navigation{
+	height:155px;
+	background:#ec8d24;
+	width:100%;
+}
+#navfont{
+	float:left;
+	background:#f5f4f2;
+	width:100%;
+	height:52px;
+	
+	
+}
+#navcontent{
+	width:1000px;
+	background:#f5f4f2;
+	margin:auto;
+	height:52px;
+}
+.nav li a{
+	padding:15px 35px;
+}
+.navcenter{
+	padding-top:65px;
+	padding-left:450px;
+	
+	
+}
+.seach{
+	float:left;
+
+
+	
+}
+.landr{
+	float:left;
+	margin-left:100px;
+	width:300px;
+	
+}
+
+.form-control{
+	float:left;
+    width:300px;
+}
+.seach .btn{
+     float:left;
+}
+#navigation .btn1:hover{
+	/*background-color:#aa5d07;*/
+	
+	background-image: linear-gradient(to bottom, #ce7008 0px, #ce7008 100%);
+    background-repeat: repeat-x;
+    border-color: #ce7008;
+   
+}
+#navigation a{
+	color:#fff;
+}
+#content{
+	display:block;
+	float:left;
+	width:100%;
+	background:#fff;
+	
+}
+.cscontent{
+	width:1000px;
+	margin:auto;
+}
+.csright{
+}
+.contentbottom{
+    display:block;
+	float:left;
+	width:100%;
+	background:#fff;
+}
+.csleft{
+	float:left;
+	width:25%;
+	hight:100px;
+}
+
+.csright{
+	float:left;
+	width:75%;
+	hight:100px;
+}
+	
+.owl-item{
+	width:100%;
+}
+.owl-item a{
+	
+	
+	
+}
+.owl-item a img{
+	width:750px;
+}
+.contentbottom{
+	
+	display:block;
+	float:left;
+	width:100%;
+	background:#fff;
+	
+	
+}
+.csbottom{
+	width:1000px;
+	margin:auto;
+}
+.showimg{
+	float:left;
+	margin:0px;
+	padding:0px;
+    width:32%;
+}
+.caption h3{
+	padding:0px;
+}
+.imgright{
+	margin-left:2%;
+}
+#pagebottom{
+	float:left;
+	width:100%;
+	background-color:#ec8d24;
+	height:155px;
+	margin-bottom:10px;
+}
+.cspagebottom{
+	width:400px;
+	margin:auto;
+	margin-top:60px;
+}
+.cspagebottom p{
+	color:#c7c5c5;
+}
+.cbook{
+    dispaly:block;
+	width:25%;
+	
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  background:#ec8d24;
+}
+.nav-pills li {
+padding-top:1px;
+}
+.nav-pills{
+	height:52px;
+}
+.cbook{
+	display:block;
+	height:50px;
+	padding-top:1px;
+	background:#f1f1f1;
+}
+.cbook span{
+    display:block;
+	margin:15px 10px;
+	
+}
+
+
+
+
+#userinfo li ul {
+	display:none;
+}
+#userinfo li ul li {
+	float:none;
+}
+#userinfo li ul li {
+	display:inline;
+}
+#userinfo li ul a {
+	float:none;
+	height:32px;
+	line-height:32px;
+	padding:0 10px;
+	text-transform:capitalize;
+}
+#userinfo .height-auto {
+	line-height:15px;
+	padding:5px 10px;
+}
+
+
+
+#personcenter, #personcenter ul { 
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+#personcenter li { 
+	float: left;
+	position: relative;
+	width: 10em;
+	background-color:#ec8d24;
+	margin-right: 1em;
+}
+#personcenter a:link, #personcenter a:visited {
+	display: block;
+	text-decoration: none;
+	padding-left: 1em;
+	color: #fff;
+}
+#personcenter ul { 
+	display: none;
+	position: absolute;
+	padding-top: 0.5em;
+}
+#personcenter ul li {
+	float: none;
+	border: 0 none transparent;
+	border-bottom:1px solid #ccc;
+	background-color:#ec8d24;
+	margin: 0;
+	padding: 0;
+}
+#personcenter li:hover ul {
+	display: block;
+
+}
+#personcenter li ul li:hover{
+	background-color:#ce7008;
+
+}
+#personcenter ul li a{
+	color：#fff;
+	}

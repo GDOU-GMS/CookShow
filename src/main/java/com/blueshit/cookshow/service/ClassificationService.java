@@ -8,6 +8,12 @@ import com.blueshit.cookshow.model.entity.Classification;
  */
 public interface ClassificationService extends DaoSupport<Classification> {
 
+    int getTopClassificationNum();
 
+    int getSecondClassificationNum();
+
+    int getThirdClassificationNum();
+
+    Classification getByCode(String code);
 
 }

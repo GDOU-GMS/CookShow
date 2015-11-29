@@ -1,0 +1,28 @@
+.creatediv{
+	width:100%;
+	float:left;
+	
+}
+.createcss{
+	float:right;
+	background:#ec8d24;
+	color:#fff;
+	width:100px;
+	text-shadow:none;
+	font-size:16px;
+	border-radius: 0px;	
+	border:1px solid #ec8d24;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.menuname{
+	width:100%;
+	float:left;
+	
+}
+.menuname a{
+	display:block;
+	font-size:16px;
+	border-bottom:1px solid #f3f1ed;
+	padding:10px 5px;
+}

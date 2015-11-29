@@ -12,7 +12,6 @@ Beyond Admin - Responsive Admin Dashboard Template build with Twitter Bootstrap 
 Version: 1.0.0
 Purchase: http://wrapbootstrap.com
 -->
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!--Head-->
 <head>
@@ -46,28 +45,29 @@ Purchase: http://wrapbootstrap.com
 <body>
 <div class="login-container animated fadeInDown">
     <div class="loginbox bg-white">
-        <div class="loginbox-title">秀厨网后台管理系统</div>
-        <div class="loginbox-social">
-            <div class="social-title ">WELCOME</div>
+        <form id="loginForm"  method="post">
+            <div class="loginbox-title">秀厨网后台管理系统</div>
+            <div class="loginbox-social">
+                <div class="social-title ">欢迎</div>
+            </div>
+            <div class="loginbox-or">
+            </div>
+            <div class="loginbox-textbox">
+                <input type="text" class="form-control" name="username" id="username" placeholder="用户名" required />
+            </div>
+            <div class="loginbox-textbox">
+                <input type="password" class="form-control" name="password" id="password" placeholder="密码" required />
+            </div>
+            <div class="loginbox-forgot">
+                <a href="">忘记密码</a>
+            </div>
 
-        </div>
-        <div class="loginbox-or">
-        </div>
-        <div class="loginbox-textbox">
-            <input type="text" class="form-control" placeholder="UserName" />
-        </div>
-        <div class="loginbox-textbox">
-            <input type="text" class="form-control" placeholder="Password" />
-        </div>
-        <div class="loginbox-forgot">
-            <a href="">忘记密码</a>
-        </div>
-        <div class="loginbox-submit">
-            <input type="button" class="btn btn-primary btn-block" value="登录">
-        </div>
+            <div class="loginbox-submit">
+                <input type="submit" class="btn btn-primary btn-block" value="登录"/>
+            </div>
+        </form>
     </div>
-    <div class="logobox">
-    </div>
+
 </div>
 
 <!--Basic Scripts-->
@@ -76,18 +76,39 @@ Purchase: http://wrapbootstrap.com
 
 <!--Beyond Scripts-->
 <script src="/resources/assets/js/beyond.js"></script>
+<script src="/resources/assets/plugins/jquery_form/jquery.form.min.js"></script>
 
-<!--Google Analytics::Demo Only-->
 <script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'http://www.google-analytics.com/analytics.js', 'ga');
 
-    ga('create', 'UA-52103994-1', 'auto');
-    ga('send', 'pageview');
+    $(document).ready(function(){
+        var options = {
+            beforeSubmit:  showRequest,  //提交前处理
+            success:       showResponse,  //处理完成
+            resetForm:     true,
+            url:           '/adminLogin',
+            dataType:      'json'
+        };
+
+        $('#loginForm').submit(function() {
+            $(this).ajaxSubmit(options);
+            // !!! Important !!!
+            // always return false to prevent standard browser submit and page navigation
+            return false;
+        });
+
+        function showRequest(formData, jqForm, options) {
+            return true;
+        }
+
+        function showResponse(responseText, statusText,xhr, $form)  {
+            var result = responseText.result;
+            if(result==0||result==-1){
+                alert(responseText.msg)
+            }else{
+                window.location.href="/admin/index";
+            }
+        }
+    })
 
 </script>
 </body>

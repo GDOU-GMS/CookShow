@@ -1,7 +1,6 @@
 package com.blueshit.cookshow.web.controller.common;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -10,23 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ForwardController {
 
-    /*@RequestMapping("/forward/{dir}/{url}")
-    public String forwardUrl1(@PathVariable String dir,@PathVariable String url){
-        return dir+"/"+url;
+    @RequestMapping("/forward/adminLogin")
+    public String forwardToAdminLogin(){
+        return "admin/login";
     }
-
-    @RequestMapping("/forward/{url}")
-    public String forwardUrl2(@PathVariable String url){
-        return url;
-    }
-
-    @RequestMapping("/forward/{dir1}/{dir2}/{url}")
-    public String forwardUrl3(@PathVariable String dir1,@PathVariable String dir2,@PathVariable String url){
-        return dir1+"/"+dir2+"/"+url;
-    }*/
-
-
-
 
 
 

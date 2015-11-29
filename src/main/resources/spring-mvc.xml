@@ -17,7 +17,7 @@
     <mvc:annotation-driven/>
 
     <!--资源-->
-    <mvc:resources mapping="/resources/**" location="/resources/assets"/>
+    <mvc:resources mapping="/resources/**" location="/resources/assets,/resources/customer"/>
 
     <!--内部资源解析器-->
     <bean id="internalResourceViewResolverForHtml" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

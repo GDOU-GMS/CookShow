@@ -10,6 +10,7 @@ import com.blueshit.cookshow.common.helper.Page;
 import com.blueshit.cookshow.common.helper.QueryHelper;
 import com.blueshit.cookshow.common.utils.Configuration;
 import com.blueshit.cookshow.dao.DaoSupport;
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

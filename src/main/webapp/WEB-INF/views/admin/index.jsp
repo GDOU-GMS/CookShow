@@ -150,15 +150,31 @@ Purchase: http://wrapbootstrap.com
 
                     </ul>
                 </li>
-                <!--Tables-->
                 <li>
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-table"></i>
-                        <span class="menu-text"> 菜谱模块 </span>
-
+                        <span class="menu-text">分类管理</span>
                         <i class="menu-expand"></i>
                     </a>
-
+                    <ul class="submenu">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/admin/classification/list">
+                                <span class="menu-text">分类列表</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tables-data.html">
+                                <span class="menu-text">菜谱分类</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-table"></i>
+                        <span class="menu-text">菜谱模块</span>
+                        <i class="menu-expand"></i>
+                    </a>
                     <ul class="submenu">
                         <li>
                             <a href="tables-simple.html">
@@ -172,7 +188,6 @@ Purchase: http://wrapbootstrap.com
                         </li>
                     </ul>
                 </li>
-                <!--Forms-->
                 <li>
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-pencil-square-o"></i>
@@ -224,6 +239,21 @@ Purchase: http://wrapbootstrap.com
                             </a>
                         </li>
 
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-desktop"></i>
+                        <span class="menu-text"> 管理员管理 </span>
+                        <i class="menu-expand"></i>
+                    </a>
+
+                    <ul class="submenu">
+                        <li>
+                            <a href="/admin/list">
+                                <span class="menu-text">管理员列表</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <!--Profile-->

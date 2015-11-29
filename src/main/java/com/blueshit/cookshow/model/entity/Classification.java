@@ -31,6 +31,8 @@ public class Classification implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updateDate;
 
+    private String name;
+
 	public Classification() {
 	}
 
@@ -82,4 +84,11 @@ public class Classification implements Serializable {
 		this.updateDate = updateDate;
 	}
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

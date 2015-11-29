@@ -1,0 +1,127 @@
+* {
+	margin:0;
+	padding:0;
+	list-style:none;
+
+}
+img {
+	border:0;
+}
+#csnav a {
+	text-decoration:none;
+	color:#333;
+}
+#csnav a:hover {
+	color:#1974A1;
+	text-decoration:underline;
+}
+
+.banner {
+	width:1000px;
+	margin:auto;
+	
+	/*background:#000;*/
+}
+#csnav {
+	position:relative;
+	z-index:1;
+	width:250px;
+	background:#F1F1F1;
+}
+#csnav .mainCate {
+	position:relative;
+	padding:5px 10px;
+	zoom:1;
+}
+#csnav .evenLeval {
+	background:#fff;
+}
+#csnav h3 {
+	height:28px;
+	line-height:28px;
+	font-size:16px;
+	overflow:hidden;
+}
+#csnav h3 span {
+	width:18px;
+	height:15px;
+	line-height:32px;
+	font-weight:200;
+	font-size:12px;
+	float:right;
+}
+#csnav p {
+	height:20px;
+	line-height:20px;
+}
+#csnav p a {
+	margin-right:10px;
+	color:#666;
+}
+#csnav .subCate {
+	display:none;
+	background:url(images/csnav_div_bg.jpg) 0 0 repeat-y #fff;
+	position:absolute;
+	left:250px;
+	top:0;
+	width:750px;
+	padding:0 0 20px 20px;
+	color:#333;
+}
+#csnav .subCate h4 {
+	height:26px;
+	line-height:26px;
+	margin:0 0 10px 0;
+	border-bottom:1px solid #ccc;
+	font-size:16px;
+	color:#333;
+}
+#csnav .subCate ul {
+	width:230px;
+	float:left;
+	overflow:hidden;
+	padding-top:20px;
+}
+#csnav .subCate li {
+	width:230px;
+	float:left;
+	display:inline;
+}
+#csnav .subCate li a {
+	display:block;
+	float:left;
+	padding:0 5px;
+	line-height:25px;
+	color:#666;
+	word-break:keep-all;
+	white-space:nowrap;
+}
+#csnav .subCate #sub-ul-1 {
+	width:100%;
+}
+#csnav .on {
+	background:#ec8d24;
+	color:#fff;
+}
+#csnav .on h3 a,#csnav .on p a {
+	color:#fff;
+}
+#csnav .on .subCate {
+	display:block !important;
+}
+#mainCate-4 .subCate {
+	top:-100px
+}
+#mainCate-5 .subCate {
+	top:-164px;
+}
+#mainCate-6 .subCate {
+	top:auto;
+	bottom:0;
+}
+.mainCate  h3{
+	margin:0px;
+}
+.mainCate  p{
+	margin:3px 3px;
+}

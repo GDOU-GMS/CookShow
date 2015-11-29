@@ -1,3 +1,5 @@
+package com.blueshit.cookshow.test;
+
 import com.blueshit.cookshow.model.entity.Admin;
 import com.blueshit.cookshow.service.AdminService;
 import org.junit.runner.RunWith;

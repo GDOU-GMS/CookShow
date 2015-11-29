@@ -11,13 +11,14 @@ public class IndexController {
 
     @RequestMapping("/")
     public String index(){
-        return "index";
+        return "customer/index";
     }
 
-    @RequestMapping("/error404")
-    public String error404(){
-        return "error_404";
+    @RequestMapping("/login")
+    public String login(){
+        return "customer/login";
     }
+
 
 
 }
