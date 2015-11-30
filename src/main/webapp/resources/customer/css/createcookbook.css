@@ -1,0 +1,59 @@
+/* CSS Document */
+
+.trdiv{
+	float:left;
+	width:100%;
+}
+.trdiv .addtr{
+	float:right;
+	background:#ec8d24;
+	color:#fff;
+	width:100px;
+	text-shadow:none;
+	font-size:16px;
+	border-radius: 0px;	
+	border:1px solid #ec8d24;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.media_rself{
+	float:left;
+	width:500px;
+	
+}
+.media_lself{
+	float:left;
+	width:230px;
+	
+	
+
+	
+}
+.media_lself img{
+	width:230px;
+	width:230px;
+	overflow:hidden;
+	
+}
+.medialocation{
+	margin-left:171px;
+}
+.btnpublic{
+    float:left;
+	background:#ec8d24;
+	color:#fff;
+	width:100px;
+	text-shadow:none;
+	font-size:16px;
+	border-radius: 0px;	
+	border:1px solid #ec8d24;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.btnpublic:hover{
+background:#ce7008;
+	color:#fff;
+    background-repeat: repeat-x;
+	border:1px solid  #ce7008;
+}

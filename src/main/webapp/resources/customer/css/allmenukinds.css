@@ -1,0 +1,16 @@
+/* CSS Document */
+
+.menukinds  li {
+	float:left;
+	width:1
+	
+}
+.menukinds ul{
+	float:left;	
+	
+}
+.menukinds .thkinds li {
+	float:left;
+	display:inline;
+}
+

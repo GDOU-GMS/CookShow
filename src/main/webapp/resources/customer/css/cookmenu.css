@@ -9,7 +9,7 @@
 	float:left;
 	width:748px;
 	margin-right:2px;
-	height:525px;
+	height:570px;
 	
 }
 
@@ -34,12 +34,18 @@
 	height:400px;
 }
 .imagetext{
+	width:100%;
 	float:right;
 	margin:10px  10px;
-	height:36px;
+	
 	
 }
-.imagetext .acss{
+.imagetext img{
+	width:748px;
+	height:400px;
+	
+}
+.acss{
 	float:right;
 	background:#ec8d24;
 	color:#fff;
@@ -51,17 +57,34 @@
 	margin-top:10px;
 	margin-bottom:10px;
 
-	
-	
 }
+
 .imagetext .btn:hover{ 
+
 	/*background-image: linear-gradient(to bottom, #ce7008 0px, #ce7008 100%);*/
 	background:#ce7008;
 	color:#fff;
     background-repeat: repeat-x;
 	border:1px solid  #ce7008;
-			
+		
 }
+.acss:hover{
+	background:#ce7008;
+	color:#fff;
+    background-repeat: repeat-x;
+	border:1px solid  #ce7008;
+}
+
+.acss:hover{
+	background:#ce7008;
+	color:#fff;
+    background-repeat: repeat-x;
+	border:1px solid  #ce7008;
+}
+
+
+
+
 
 .menushare{
 	float:right;

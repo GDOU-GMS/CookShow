@@ -60,7 +60,8 @@ img {
 }
 #csnav .subCate {
 	display:none;
-	background:url(images/csnav_div_bg.jpg) 0 0 repeat-y #fff;
+	/*background:url(images/csnav_div_bg.jpg) 0 0 repeat-y #fff;*/
+	background: #fff;
 	position:absolute;
 	left:250px;
 	top:0;
