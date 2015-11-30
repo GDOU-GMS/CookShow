@@ -10,4 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/user")
 public class UserController extends BaseController {
+
+    @RequestMapping("/forwardToLogin")
+    public String forwardToLogin(){
+        return "customer/login";
+    }
+
+    @RequestMapping("/personCenter")
+    public String personCenter(){
+        return "customer/user/userinfo";
+    }
+
+
 }

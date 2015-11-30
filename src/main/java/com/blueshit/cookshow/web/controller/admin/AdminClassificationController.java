@@ -24,40 +24,8 @@ public class AdminClassificationController extends BaseController {
     @RequestMapping("/list")
     public String list(Model model){
 
-        List<Classification> classificationList = classificationService.findAll();
-
-        List<ClassificationVo> topClassificationVoList = new ArrayList<ClassificationVo>();
-        List<ClassificationVo> secondClassificationVoList = new ArrayList<ClassificationVo>();
-        List<ClassificationVo> thirdClassificationVoList = new ArrayList<ClassificationVo>();
-
-        for(Classification classification:classificationList){
-            //一级
-            if(classification.getParentCode()==null){
-                topClassificationVoList.add(EntityToVo.classificationToVo(classification));
-            }else if(classification.getCode().trim().length()==3){
-            //二级
-                secondClassificationVoList.add(EntityToVo.classificationToVo(classification));
-            }else if(classification.getCode().trim().length()==4){
-            //三级
-                thirdClassificationVoList.add(EntityToVo.classificationToVo(classification));
-            }
-        }
-
-        for(ClassificationVo secondClassificationVo:secondClassificationVoList){
-            for (ClassificationVo thirdClassificationVo : thirdClassificationVoList){
-                if(thirdClassificationVo.getParentCode().equals(secondClassificationVo.getCode())){
-                    secondClassificationVo.getList().add(thirdClassificationVo);
-                }
-            }
-        }
-
-        for(ClassificationVo topClassificationVo:topClassificationVoList){
-            for (ClassificationVo secondClassificationVo : secondClassificationVoList){
-                if(secondClassificationVo.getParentCode().equals(topClassificationVo.getCode())){
-                    topClassificationVo.getList().add(secondClassificationVo);
-                }
-            }
-        }
+        //查询所有分类
+        List<ClassificationVo> topClassificationVoList = classificationService.getAllClassification();
 
         model.addAttribute("topClassificationVoList",topClassificationVoList);
 
@@ -97,8 +65,47 @@ public class AdminClassificationController extends BaseController {
     }
 
 
-    public String update(){
-        return null;
+    @RequestMapping("/update")
+    public String update(String classificationId,String name){
+        if(classificationId!=null&&!"".equals(classificationId.trim())&&name!=null&&!"".equals(name.trim())){
+            //找出数据库中的实体
+            Classification c = classificationService.findById(Long.parseLong(classificationId));
+            if(c!=null){
+                c.setName(name);
+                classificationService.update(c);
+            }
+        }
+        return "redirect:/admin/classification/list";
+    }
+
+    @RequestMapping("/disable")
+    public String disable(String classificationId){
+        if(classificationId!=null&&!"".equals(classificationId.trim())){
+            //先找出原先的
+            Classification c = classificationService.findById(Long.parseLong(classificationId));
+            if(c!=null){
+                //让其本身失效和所有子分类失效
+                c.setDeleted(1);
+                classificationService.update(c);
+                classificationService.setAllChildrenDeleteState(c.getCode(),1);
+            }
+        }
+        return "redirect:/admin/classification/list";
+    }
+
+    @RequestMapping("/recover")
+    public String recover(String classificationId){
+        if(classificationId!=null&&!"".equals(classificationId.trim())){
+            //先找出原先的
+            Classification c = classificationService.findById(Long.parseLong(classificationId));
+            if(c!=null){
+                //让其本身失效和所有子分类失效
+                c.setDeleted(0);
+                classificationService.update(c);
+                classificationService.setAllChildrenDeleteState(c.getCode(),0);
+            }
+        }
+        return "redirect:/admin/classification/list";
     }
 
 

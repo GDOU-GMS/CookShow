@@ -29,7 +29,7 @@ Purchase: http://wrapbootstrap.com
     <link href="/resources/assets/css/font-awesome.min.css" rel="stylesheet" />
 
     <!--Fonts-->
-    <link href="http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/assets/css/fonts_useso_com.css" rel="stylesheet" type="text/css">
 
     <!--Beyond styles-->
     <link href="/resources/assets/css/beyond.min.css" rel="stylesheet" />

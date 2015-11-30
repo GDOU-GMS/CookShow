@@ -16,27 +16,26 @@ Purchase: http://wrapbootstrap.com
     <meta name="description" content="Dashboard" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="shortcut icon" href="/resources/assets/img/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/assets/img/favicon.png" type="image/x-icon">
 
 
     <!--Basic Styles-->
-    <link href="/resources/assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
-    <link href="/resources/assets/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="/resources/assets/css/weather-icons.min.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/resources/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/resources/assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/resources/assets/css/weather-icons.min.css" rel="stylesheet" />
 
     <!--Fonts-->
-    <link href="http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/assets/css/fonts_useso_com.css" rel="stylesheet" type="text/css">
 
     <!--Beyond styles-->
-    <link href="/resources/assets/css/beyond.min.css" rel="stylesheet" type="text/css" />
-    <link href="/resources/assets/css/demo.min.css" rel="stylesheet" />
-    <link href="/resources/assets/css/typicons.min.css" rel="stylesheet" />
-    <link href="/resources/assets/css/animate.min.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/resources/assets/css/beyond.min.css" rel="stylesheet" type="text/css" />
+    <link href="${pageContext.request.contextPath}/resources/assets/css/demo.min.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/resources/assets/css/typicons.min.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/resources/assets/css/animate.min.css" rel="stylesheet" />
     <link id="skin-link" href="" rel="stylesheet" type="text/css" />
 
     <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
-    <script src="/resources/assets/js/skins.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/assets/js/skins.min.js"></script>
 </head>
 <!-- /Head -->
 <!-- Body -->
@@ -72,7 +71,7 @@ Purchase: http://wrapbootstrap.com
             <div class="navbar-header pull-left">
                 <a href="#" class="navbar-brand">
                     <small>
-                        <img src="/resources/assets/img/cs.png" alt="" />
+                        <img src="${pageContext.request.contextPath}/resources/assets/img/cs.png" alt="" />
                     </small>
                 </a>
             </div>
@@ -338,7 +337,7 @@ Purchase: http://wrapbootstrap.com
                                 <ul class="pagination">
                                     <c:if test="${page.pageNum-1 gt 1}">
                                         <li>
-                                            <a href="#" aria-label="Previous">
+                                            <a href="${pageContext.request.contextPath}/admin/list?pageNum=${page.pageNum-1}" aria-label="Previous">
                                                 <span aria-hidden="true">&laquo;</span>
                                             </a>
                                         </li>
@@ -348,7 +347,7 @@ Purchase: http://wrapbootstrap.com
                                     </c:forEach>
                                     <c:if test="${page.pageNum+1 lt page.totalRecord}">
                                         <li>
-                                            <a href="#" aria-label="Next">
+                                            <a href="${pageContext.request.contextPath}/admin/list?pageNum=${page.pageNum+1}" aria-label="Next">
                                                 <span aria-hidden="true">&raquo;</span>
                                             </a>
                                         </li>
@@ -366,17 +365,17 @@ Purchase: http://wrapbootstrap.com
     </div>
 </div>
     <!--Basic Scripts-->
-    <script src="/resources/assets/js/jquery-2.0.3.min.js"></script>
-    <script src="/resources/assets/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/assets/js/jquery-2.0.3.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/assets/js/bootstrap.min.js"></script>
 
     <!--Beyond Scripts-->
-    <script src="/resources/assets/js/beyond.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/assets/js/beyond.min.js"></script>
 
 
     <!--Page Related Scripts-->
     <!--Sparkline Charts Needed Scripts-->
-    <script src="/resources/assets/js/charts/sparkline/jquery.sparkline.js"></script>
-    <script src="/resources/assets/js/charts/sparkline/sparkline-init.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/assets/js/charts/sparkline/jquery.sparkline.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/assets/js/charts/sparkline/sparkline-init.js"></script>
 
 
 </body>

@@ -80,12 +80,12 @@
                     -->
 
                     <div style="float:left;">
-                        <a class="btn btn1" href="#" role="button">登录</a>
-                        <a class="btn btn1" href="#" role="button">注册</a>
+                        <a class="btn btn1" href="${pageContext.request.contextPath}/user/forwardToLogin" role="button">登录/注册</a>
+                        <%--<a class="btn btn1" href="#" role="button">注册</a>--%>
                     </div>
 
                     <ul id="personcenter" style="float:left;">
-                        <li style="width:110px;"><a class="btn btn1" href="#" role="button">个人中心</a>
+                        <li style="width:110px;"><a class="btn btn1" href="${pageContext.request.contextPath}/user/personCenter" role="button">个人中心</a>
                             <ul>
                                 <li><a href="#">账号设置</a></li>
                                 <li><a href="#">我的菜单</a></li>

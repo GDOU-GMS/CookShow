@@ -25,7 +25,7 @@ Purchase: http://wrapbootstrap.com
     <link href="/resources/assets/css/weather-icons.min.css" rel="stylesheet" />
 
     <!--Fonts-->
-    <link href="http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/assets/css/fonts_useso_com.css" rel="stylesheet" type="text/css">
 
     <!--Beyond styles-->
     <link href="/resources/assets/css/beyond.min.css" rel="stylesheet" type="text/css" />
@@ -125,8 +125,8 @@ Purchase: http://wrapbootstrap.com
 
                     <ul class="submenu">
                         <li>
-                            <a href="elements.html">
-                                <span class="menu-text">登录注册</span>
+                            <a href="${pageContext.request.contextPath}/admin/user/list">
+                                <span class="menu-text">用户列表</span>
                             </a>
                         </li>
                         <li>
