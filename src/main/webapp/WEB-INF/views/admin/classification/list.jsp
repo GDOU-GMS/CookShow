@@ -307,8 +307,8 @@ Purchase: http://wrapbootstrap.com
                                             <div class="tree-folder-name">所有分类
                                                 <div class="tree-actions">
                                                     <i class="fa fa-plus green" data-parentcode="" onclick=addClassification()></i>
-                                                    <i class="fa fa-trash-o danger"></i>
-                                                    <i class="fa fa-rotate-right blizzard"></i>
+                                                <%--<i class="fa fa-trash-o danger"></i>
+                                                    <i class="fa fa-rotate-right blizzard"></i>--%>
                                                 </div>
                                             </div>
                                         </div>
@@ -320,7 +320,7 @@ Purchase: http://wrapbootstrap.com
                                                        <div class="tree-folder-name">${topClassification.name}
                                                            <div class="tree-actions">
                                                                <i class="fa fa-plus green" title="添加" data-parentcode="${topClassification.code}" onclick="addClassification()"></i>
-                                                               <i class="fa fa-edit blizzard" title="编辑"></i>
+                                                               <i class="fa fa-edit blizzard" title="编辑" data-id="${topClassification.id}" data-name="${topClassification.name}" onclick="updateClassification()"></i>
                                                                <i class="fa fa-trash-o danger" title="删除"></i>
                                                            </div>
                                                        </div>
@@ -343,6 +343,10 @@ Purchase: http://wrapbootstrap.com
                                                                        <div class="tree-item">
                                                                            <i class="tree-dot"></i>
                                                                            <div class="tree-item-name">${thirdClassification.name}</div>
+                                                                           <div class="tree-actions">
+                                                                               <i class="fa fa-edit blizzard" title="编辑"></i>
+                                                                               <i class="fa fa-trash-o danger" title="删除"></i>
+                                                                           </div>
                                                                        </div>
                                                                    </c:forEach>
                                                                </div>
@@ -396,6 +400,30 @@ Purchase: http://wrapbootstrap.com
     </div>
 </div>
 
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="${pageContext.request.contextPath}/admin/classification/update" method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="updateModalLabel">修改分类</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="classificationName">分类名</label>
+                        <input type="text" class="form-control" name="name" id="classificationName" placeholder="分类名">
+                        <input type="hidden" name="classificationId" class="classificationId" id="classificationId" >
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-primary">修改</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <!--Basic Scripts-->
 <script src="${pageContext.request.contextPath}/resources/assets/js/jquery-2.0.3.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/assets/js/bootstrap.min.js"></script>
@@ -420,6 +448,19 @@ Purchase: http://wrapbootstrap.com
         $(".parentCode").val("");
         $(".parentCode").val(parentcode);
         $('#myModal').modal('show');
+    }
+
+    function updateClassification(event){
+        event = event ? event : window.event;
+        var obj = event.srcElement ? event.srcElement : event.target;
+        var id = $(obj).data("id");
+        var name = $(obj).data("name");
+        $("#classificationName").empty();
+        $("#classificationName").val(name);
+        $("#classificationId").empty();
+        $("#classificationId").val(id);
+
+        $("#updateModal").modal('show');
     }
 </script>
 

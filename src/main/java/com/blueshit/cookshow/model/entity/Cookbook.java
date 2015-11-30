@@ -61,6 +61,10 @@ public class Cookbook implements Serializable {
 	@ManyToOne
 	private User User;
 
+    @ManyToMany
+    @JoinTable(name = "t_menu_cookbook",inverseJoinColumns = @JoinColumn(name = "menu_id"),joinColumns = @JoinColumn(name="cookbook_id"))
+    private Set<Menu> menus;
+
 	public Cookbook() {
 	}
 
@@ -198,4 +202,11 @@ public class Cookbook implements Serializable {
 		this.User = User;
 	}
 
+    public Set<Menu> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(Set<Menu> menus) {
+        this.menus = menus;
+    }
 }

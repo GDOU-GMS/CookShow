@@ -3,6 +3,7 @@ package com.blueshit.cookshow.model.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 
 /**
@@ -18,8 +19,10 @@ public class Menu implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 
-	@Column(name="cookbook_ids",columnDefinition = "TEXT")
-	private String cookbookIds;
+    private String name;
+
+    @Column(columnDefinition = "TEXT")
+    private String title;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
@@ -33,6 +36,9 @@ public class Menu implements Serializable {
 	@ManyToOne
 	private User User;
 
+    @ManyToMany(mappedBy = "menus")
+    private Set<Cookbook> cookbooks;
+
 	public Menu() {
 	}
 
@@ -44,15 +50,31 @@ public class Menu implements Serializable {
 		this.id = id;
 	}
 
-	public String getCookbookIds() {
-		return this.cookbookIds;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setCookbookIds(String cookbookIds) {
-		this.cookbookIds = cookbookIds;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public Date getCreateDate() {
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Set<Cookbook> getCookbooks() {
+        return cookbooks;
+    }
+
+    public void setCookbooks(Set<Cookbook> cookbooks) {
+        this.cookbooks = cookbooks;
+    }
+
+    public Date getCreateDate() {
 		return this.createDate;
 	}
 

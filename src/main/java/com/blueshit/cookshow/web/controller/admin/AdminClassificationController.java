@@ -83,17 +83,22 @@ public class AdminClassificationController extends BaseController {
                 if(c!=null){
                     classification.setName(name);
                     if(c.getCode().trim().length()==2){
-                        classification.setCode(CreateCode.getTopCode(classificationService.getSecondClassificationNum()));
-                        classification.setParentCode(c.getParentCode());
+                        classification.setCode(CreateCode.getSecondeCode(classificationService.getSecondClassificationNum()));
+                        classification.setParentCode(c.getCode());
                     }else if(c.getCode().trim().length()==3){
-                        classification.setCode(CreateCode.getTopCode(classificationService.getThirdClassificationNum()));
-                        classification.setParentCode(c.getParentCode());
+                        classification.setCode(CreateCode.getThirdCode(classificationService.getThirdClassificationNum()));
+                        classification.setParentCode(c.getCode());
                     }
                 }
             }
             classificationService.save(classification);
         }
         return "redirect:/admin/classification/list";
+    }
+
+
+    public String update(){
+        return null;
     }
 
 

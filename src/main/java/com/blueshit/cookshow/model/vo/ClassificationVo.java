@@ -1,6 +1,7 @@
 package com.blueshit.cookshow.model.vo;
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class ClassificationVo {
 
     private String name;
 
-    private List<ClassificationVo> list;
+    private List<ClassificationVo> list = new ArrayList<ClassificationVo>();
 
 
     public Long getId() {
