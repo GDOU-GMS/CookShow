@@ -44,6 +44,8 @@ public class User implements Serializable {
 
 	private String salt;
 
+    private int authentication;
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updateDate;
 
@@ -372,4 +374,11 @@ public class User implements Serializable {
 		return ByFollowerRelation;
 	}
 
+    public int getAuthentication() {
+        return authentication;
+    }
+
+    public void setAuthentication(int authentication) {
+        this.authentication = authentication;
+    }
 }

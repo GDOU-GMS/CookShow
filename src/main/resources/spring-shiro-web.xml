@@ -19,27 +19,33 @@
         <property name="successUrl" value="/"/>
         <!--自定义Filter-->
         <property name="filters">
-            <util:map>
-                <!--<entry key="currentUser" value-ref="currentUserFilter"/>-->
-                <entry key="authc" value-ref="formAuthenticationFilter"/>
-            </util:map>
+            <map>
+                <!-- 将自定义 的FormAuthenticationFilter注入shiroFilter中-->
+                <entry key="authc" value-ref="formAuthenticationFilter" />
+            </map>
         </property>
         <!-- 过虑器链定义，从上向下顺序执行，一般将/**放在最下边 -->
         <property name="filterChainDefinitions">
             <value>
+                /logout = logout
                 /resources/** = anon
                 /favicon.ico = anon
-                /logout = logout
                 /admin/** = anon
                 /user/personCenter = authc
                 /** = anon
-                <!--/** = authc-->
             </value>
         </property>
     </bean>
 
 
     <!--自定义表单认证过滤器-->
+    <bean id="myFormAuthenticationFilter" class="com.blueshit.cookshow.shiro.MyFormAuthenticationFilter">
+        <property name="usernameParam" value="username"/>
+        <property name="passwordParam" value="password"/>
+        <property name="rememberMeParam" value="rememberMe"/>
+        <property name="loginUrl" value="/user/forwardToLogin"/>
+    </bean>
+
     <bean id="formAuthenticationFilter" class="org.apache.shiro.web.filter.authc.FormAuthenticationFilter">
         <property name="usernameParam" value="username"/>
         <property name="passwordParam" value="password"/>
@@ -50,9 +56,9 @@
     <!-- securityManager安全管理器 -->
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <!--自定义realm-->
-        <property name="realm" ref="adminRealm" />
+        <property name="realm" ref="userRealm"/>
         <!-- 注入缓存管理器 -->
-        <property name="cacheManager" ref="cacheManager"/>
+<!--        <property name="cacheManager" ref="cacheManager"/>-->
         <!-- 注入session管理器 -->
         <property name="sessionManager" ref="sessionManager" />
         <!-- 记住我 -->
@@ -66,21 +72,21 @@
     </bean>
 
     <!-- realm -->
-    <bean id="adminRealm" class="com.blueshit.cookshow.shiro.UserRealm">
+    <bean id="userRealm" class="com.blueshit.cookshow.shiro.UserRealm">
         <!-- 将凭证匹配器设置到realm中，realm按照凭证匹配器的要求进行散列 -->
         <property name="credentialsMatcher" ref="credentialsMatcher"/>
-        <!--启用缓存，默认为false-->
+       <!-- &lt;!&ndash;启用缓存，默认为false&ndash;&gt;
         <property name="cachingEnabled" value="true"/>
-        <!--启用授权缓存-->
+        &lt;!&ndash;启用授权缓存&ndash;&gt;
         <property name="authorizationCachingEnabled" value="true"/>
-        <!--启用身份验证缓存-->
+        &lt;!&ndash;启用身份验证缓存&ndash;&gt;
         <property name="authenticationCachingEnabled" value="true"/>
-        <!--authenticationCache名称-->
+        &lt;!&ndash;authenticationCache名称&ndash;&gt;
         <property name="authenticationCacheName" value="authenticationCache"/>
-        <!--authorizationCache名称-->
+        &lt;!&ndash;authorizationCache名称&ndash;&gt;
         <property name="authorizationCacheName" value="authorizationCache"/>
-        <!--cacheManager-->
-        <!--<property name="cacheManager" ref="cacheManager"/>-->
+        &lt;!&ndash;cacheManager&ndash;&gt;
+        <property name="cacheManager" ref="cacheManager"/>-->
     </bean>
 
     <!-- 凭证匹配器 -->
@@ -88,7 +94,7 @@
           class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
         <property name="hashAlgorithmName" value="md5" />
         <property name="hashIterations" value="1" />
-        <property name="storedCredentialsHexEncoded" value="true"/>
+       <!-- <property name="storedCredentialsHexEncoded" value="true"/>-->
     </bean>
 
     <!-- 缓存管理器 -->
@@ -100,16 +106,17 @@
     <!--DefaultWebSessionManager自己维护着会话，直接废弃了Servlet容器的会话管理
         如果想使用servlet容器的会话管理要使用ServletContainerSessionManager-->
     <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
-        <!--sessionIdCookie,servlet容器默认使用的它来维持会话-->
+
+       <!-- &lt;!&ndash;sessionIdCookie,servlet容器默认使用的它来维持会话&ndash;&gt;
         <property name="sessionIdCookie" ref="sessionIdCookie"/>
-        <!--是否启用sessionIdCookie-->
+        &lt;!&ndash;是否启用sessionIdCookie&ndash;&gt;
         <property name="sessionIdCookieEnabled" value="true"/>
-        <!-- sessionDao,对session的操作，id生成，缓存等-->
+        &lt;!&ndash; sessionDao,对session的操作，id生成，缓存等&ndash;&gt;
         <property name="sessionDAO" ref="sessionDAO"/>
-        <!--会话验证调度器,用户定期验证会话是否过期-->
+        &lt;!&ndash;会话验证调度器,用户定期验证会话是否过期&ndash;&gt;
         <property name="sessionValidationScheduler" ref="sessionValidationScheduler"/>
-        <!--是否开启：会话验证调度器-->
-        <property name="sessionValidationSchedulerEnabled" value="true"/>
+        &lt;!&ndash;是否开启：会话验证调度器&ndash;&gt;
+        <property name="sessionValidationSchedulerEnabled" value="true"/>-->
         <!-- session的失效时长，单位毫秒 -->
         <property name="globalSessionTimeout" value="7200000"/><!--默认1800000:30分钟！-->
         <!-- 删除失效的session -->
@@ -158,6 +165,6 @@
     </bean>
 
     <!-- Shiro生命周期处理器-->
-    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+   <!-- <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>-->
 
 </beans>

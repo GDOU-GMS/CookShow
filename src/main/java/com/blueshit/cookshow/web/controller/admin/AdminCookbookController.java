@@ -10,4 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/admin/cookbook")
 public class AdminCookbookController extends BaseController {
+
+
+
 }

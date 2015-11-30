@@ -20,6 +20,8 @@ public class UserServiceImpl extends DaoSupportImpl<User> implements UserService
      * @return
      */
     public User findByUsername(String username) {
-        return null;
+        return (User)getSession().createQuery("from User u where  u.username = ?")
+                .setParameter(0,username)
+                .uniqueResult();
     }
 }

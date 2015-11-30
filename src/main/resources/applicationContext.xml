@@ -40,7 +40,7 @@
         <!-- 超时时间；单位为秒。180秒=3分钟 -->
         <property name="removeAbandonedTimeout" value="1"/>
         <!-- 关闭abanded连接时输出错误日志 -->
-        <property name="logAbandoned" value="true"/>
+       <!-- <property name="logAbandoned" value="true"/>-->
     </bean>
 
 
@@ -70,6 +70,6 @@
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <!--引入shiro-->
-    <import resource="classpath:spring-shiro-web.xml"/>
+<!--    <import resource="classpath:spring-shiro-web.xml"/>-->
 
 </beans>
