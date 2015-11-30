@@ -11,13 +11,13 @@
 <head>
     <meta charset="utf-8">
     <title>秀厨网</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/bootstrap.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/style.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/csnavbook.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/imagestyle.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/cookbookstyle.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/cookmenu.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/csnavbook.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/imagestyle.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/cookbookstyle.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/cookmenu.css">
 
     <script src="${pageContext.request.contextPath}/resources/customer/js/jquery.min.js"></script>
 
@@ -43,11 +43,12 @@
 
                     <ul id="personcenter" style="float:left;">
                         <li style="width:110px;"><a class="btn btn1" href="#" role="button">个人中心</a>
-                            <ul>
-                                <li><a href="#">账号设置</a></li>
-                                <li><a href="#">我的菜单</a></li>
-                                <li><a href="#">退出</a></li>
-                            </ul>
+                            		<ul>
+                                        <li><a href="userinfo.jsp">账号设置</a></li>
+                                        <li><a href="personwork.jsp">我的菜单</a></li>
+                                         <li><a href="myfriends.jsp">关注的好友</a></li>
+                                        <li><a href="#">退出</a></li>
+                                    </ul>
                         </li>
 
                     </ul>
