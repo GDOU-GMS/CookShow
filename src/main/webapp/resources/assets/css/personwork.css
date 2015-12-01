@@ -15,6 +15,13 @@
 	margin-top:10px;
 	margin-bottom:10px;
 }
+.createcss:hover{
+	background:#ce7008;
+	color:#fff;
+    background-repeat: repeat-x;
+	border:1px solid  #ce7008;
+}
+
 .menuname{
 	width:100%;
 	float:left;
@@ -25,4 +32,27 @@
 	font-size:16px;
 	border-bottom:1px solid #f3f1ed;
 	padding:10px 5px;
+}
+.mediainfo{
+	float:left;
+    width:100%;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+.mediainfoleft{
+	float:left;
+	width:200px;
+	
+
+}
+.mediainfoleft img{
+	width:178px;
+	height:178px;
+}
+
+.mediainforight{
+	float:left;
+	width:600px;
+	margin-left:40px;
+	
 }

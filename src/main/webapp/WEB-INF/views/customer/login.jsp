@@ -6,15 +6,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>秀厨网登录</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <script type="text/javascript"
-            src="${pageContext.request.contextPath}/resources/customer/js/jquery.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/customer/js/login.js"></script>
     <link href="${pageContext.request.contextPath}/resources/customer/css/login2.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript"src="${pageContext.request.contextPath}/resources/customer/js/jquery.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/customer/js/login.js"></script>
 </head>
 <body>
 <h1>秀厨网-CookShow</h1>
@@ -35,24 +34,23 @@
         <div class="web_login" id="web_login">
             <div class="login-box">
                 <div class="login_form">
-                    <form action="http://www.js-css.cn" name="loginform" accept-charset="utf-8" id="login_form"
-                          class="loginForm" method="post"><input type="hidden" name="did" value="0"/>
-                        <input type="hidden" name="to" value="log"/>
+                    <form action="${pageContext.request.contextPath}/user/login" name="loginform" accept-charset="utf-8" id="login_form" class="loginForm" method="post">
                         <div class="uinArea" id="uinArea">
                             <label class="input-tips" for="u">帐号：</label>
                             <div class="inputOuter" id="uArea">
-                                <input type="text" id="u" name="username" class="inputstyle"/>
+                                <input type="text" id="u" name="username" class="inputstyle" required/>
                             </div>
                         </div>
                         <div class="pwdArea" id="pwdArea">
                             <label class="input-tips" for="p">密码：</label>
                             <div class="inputOuter" id="pArea">
-                                <input type="password" id="p" name="password" class="inputstyle"/>
+                                <input type="password" id="p" name="password" class="inputstyle" required/>
                             </div>
                         </div>
-                        <div class="remeberMe" id="remeberMe" style="display: block">
-                            <input type="checkbox" name="remeberMe"/><span style="font-size: 14px;">记住我</span>
+                        <div class="rememberMe" id="rememberMe" style="display: block">
+                            <input type="checkbox" name="rememberMe" value="1" />记住我<a  href="javascript:void(0);" style="margin-left: 50%;">忘记密码？</a>
                         </div>
+
                         <div style="padding-left:50px;margin-top:20px;">
                         <input type="submit" value="登 录" style="width:150px;" class="button_blue"/></div>
                     </form>
@@ -65,35 +63,31 @@
     <!--注册-->
     <div class="qlogin" id="qlogin" style="display: none; ">
         <div class="web_login">
-            <form name="form2" id="regUser" accept-charset="utf-8" action="http://www.js-css.cn" method="post">
-                <input type="hidden" name="to" value="reg"/>
-                <input type="hidden" name="did" value="0"/>
+            <form name="form2" id="regUser" accept-charset="utf-8" action="${pageContext.request.contextPath}/user/register" method="post">
                 <ul class="reg_form" id="reg-ul">
                     <div id="userCue" class="cue">快速注册请注意格式</div>
                     <li>
                         <label for="user" class="input-tips2">用户名：</label>
                         <div class="inputOuter2">
-                            <input type="text" id="user" name="user" maxlength="16" class="inputstyle2"/>
+                            <input type="text" id="user" name="username" maxlength="16" class="inputstyle2" required/>
                         </div>
                     </li>
                     <li>
                         <label for="passwd" class="input-tips2">密码：</label>
                         <div class="inputOuter2">
-                            <input type="password" id="passwd" name="passwd" maxlength="16" class="inputstyle2"/>
+                            <input type="password" id="passwd" name="password" maxlength="16" class="inputstyle2" required/>
                         </div>
                     </li>
                     <li>
                         <label for="passwd2" class="input-tips2">确认密码：</label>
                         <div class="inputOuter2">
-                            <input type="password" id="passwd2" name="" maxlength="16" class="inputstyle2"/>
+                            <input type="password" id="passwd2" name="" maxlength="16" class="inputstyle2" required/>
                         </div>
                     </li>
                     <li>
-                        <label for="qq" class="input-tips2">QQ：</label>
-
+                        <label for="qq" class="input-tips2">邮箱：</label>
                         <div class="inputOuter2">
-
-                            <input type="text" id="qq" name="qq" maxlength="10" class="inputstyle2"/>
+                            <input type="email" id="qq" name="email" class="inputstyle2" required/>
                         </div>
                     </li>
                     <li>
@@ -109,5 +103,9 @@
     </div>
     <!--注册end-->
 </div>
+<script>
+
+
+</script>
 </body>
 </html>

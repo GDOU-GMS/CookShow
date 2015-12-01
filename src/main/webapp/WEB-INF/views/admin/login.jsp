@@ -61,7 +61,6 @@ Purchase: http://wrapbootstrap.com
             <div class="loginbox-forgot">
                 <a href="">忘记密码</a>
             </div>
-
             <div class="loginbox-submit">
                 <input type="submit" class="btn btn-primary btn-block" value="登录"/>
             </div>

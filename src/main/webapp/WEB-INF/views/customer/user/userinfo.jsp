@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html>
 <head>
@@ -25,6 +27,10 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="${pageContext.request.contextPath}/resources/customer/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/customer/js/jquery.SuperSlide.2.1.js"></script>
+
+    <!--datapicker-->
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/customer/plugins/datepicker/css/jquery-ui.css" />
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/customer/plugins/datepicker/js/jquery-ui-datepicker.js"></script>
 </head>
 
 <body>
@@ -38,17 +44,26 @@
                 </div>
                 <div class="landr">
                     <div style="float:left;">
-                        <a class="btn btn1" href="#" role="button">登录</a>
-                        <a class="btn btn1" href="#" role="button">注册</a>
+                        <c:if test="${user!=null}">
+                            <a class="btn btn1" href="${pageContext.request.contextPath}/user/personCenter">
+                                欢迎，${user.username}
+                            </a>
+                        </c:if>
+                        <c:if test="${user==null}">
+                            <a class="btn btn1"
+                               href="${pageContext.request.contextPath}/user/forwardToLogin"
+                               role="button">登录/注册</a>
+                        </c:if>
                     </div>
 
                     <ul id="personcenter" style="float:left;">
                         <li style="width:110px;"><a class="btn btn1" href="#" role="button">个人中心</a>
-                            <ul>
-                                <li><a href="#">账号设置</a></li>
-                                <li><a href="#">我的菜单</a></li>
-                                <li><a href="#">退出</a></li>
-                            </ul>
+                                     <ul>
+                                        <li><a href="userinfo.jsp">账号设置</a></li>
+                                        <li><a href="../menu/personwork.jsp">我的菜单</a></li>
+                                        <li><a href="myfriends.jsp">关注的好友</a></li>
+                                        <li><a href="#">退出</a></li>
+                                    </ul>
                         </li>
 
                     </ul>
@@ -95,38 +110,50 @@
                 <div class="tab-content tagstyle">
                     <div role="tabpanel" class="tab-pane active" id="info">
 
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" action="${pageContext.request.contextPath}/user/updateUserInfo" method="post">
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">昵称</label>
-
+                                <label for="nick" class="col-sm-2 control-label">昵称</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                    <input type="text" class="form-control" id="nick" placeholder="昵称" value="${user.username}" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="realName" class="col-sm-2 control-label">真实姓名</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="realName" placeholder="真实姓名" name="realName" value="${user.realName}" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="col-sm-2 control-label">电话</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="phone" placeholder="电话" name="phone" value="${user.phone}" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="birthday" class="col-sm-2 control-label">生日</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="birthday" placeholder="生日" name="userBirthday" value="<fmt:formatDate value="${user.birthday}" pattern="yyyy-MM-dd"/>" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputPassword3" class="col-sm-2 control-label">自我介绍</label>
 
                                 <div class="col-sm-10">
-                                    <textarea class="form-control" rows="3"></textarea>
+                                    <textarea class="form-control" id="inputPassword3" rows="3" required name="intro">${user.intro}</textarea>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">性别</label>
-
+                                <label class="col-sm-2 control-label">性别</label>
                                 <div class="col-sm-10" style="padding-top:5px;">
-
                                     <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"
-                                               checked>
+                                        <input type="radio" name="gender" id="optionsRadios1" value="男" <c:if test="${user.gender eq '男'}">checked</c:if> required>
                                         男
                                     </label>
                                     <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                        <input type="radio" name="gender" id="optionsRadios2" value="女" <c:if test="${user.gender eq '女'}">checked</c:if> required>
                                         女
                                     </label>
-
                                 </div>
-
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
@@ -142,27 +169,30 @@
                     <div role="tabpanel" class="tab-pane" id="pwd">
 
 
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" id="updatePasswordForm" action="${pageContext.request.contextPath}/user/updatePassword" method="post">
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">原密码</label>
+                                <span class="col-sm-4 col-sm-offset-2" style="color: #ff0000" id="notice"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="oldpassword" class="col-sm-2 control-label">原密码</label>
 
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputEmail3" placeholder="Email">
+                                    <input type="password" class="form-control" id="oldpassword" name="oldpassword" placeholder="请输入原密码">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">新密码</label>
+                                <label for="newpassword" class="col-sm-2 control-label">新密码</label>
 
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputEmail3" placeholder="Email">
+                                    <input type="password" class="form-control" id="newpassword" name="newpassword" placeholder="请输入新密码">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">确认新密码</label>
+                                <label for="renewpassword" class="col-sm-2 control-label">确认新密码</label>
 
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputEmail3" placeholder="Email">
+                                    <input type="password" class="form-control" id="renewpassword" name="renewpassword" placeholder="请再次输入新密码">
                                 </div>
                             </div>
 
@@ -177,20 +207,16 @@
 
                     </div>
                     <div role="tabpanel" class="tab-pane" id="personimage">
-                        <form>
-
+                        <form method="post" enctype="multipart/form-data">
                             <input type="file" name="file0" id="file0" multiple/><br>
-                            <img style="width:140px;height:140px;" src="" alt="" class="img-rounded" id="img0">
+                            <img style="width:140px;height:140px;" src="${user.face}" alt="" class="img-rounded" id="img0">
 
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <button type="submit" class="btn btn-default">更新</button>
                                 </div>
-
-
                             </div>
                         </form>
-
                     </div>
 
                     <div role="tabpanel" class="tab-pane" id="settings">...</div>
@@ -204,16 +230,88 @@
     </div>
     <!--end  content-->
 
-
+    <div id="hidden">
+        <input hidden="hidden" id="result" value="${resultEntity.result}">
+        <input hidden="hidden" id="msg" value="${resultEntity.msg}">
+    </div>
 </div>
+<%--jquer form plugin--%>
+<script src="${pageContext.request.contextPath}/resources/assets/plugins/jquery_form/jquery.form.min.js"></script>
 <script>
-    $("#file0").change(function () {
-        var objUrl = getObjectURL(this.files[0]);
-        console.log("objUrl = " + objUrl);
-        if (objUrl) {
-            $("#img0").attr("src", objUrl);
+    $(function(){
+
+        $("#file0").change(function () {
+            var objUrl = getObjectURL(this.files[0]);
+            console.log("objUrl = " + objUrl);
+            if (objUrl) {
+                $("#img0").attr("src", objUrl);
+            }
+        });
+
+        $("#birthday").datepicker({
+            yearRange:'-100:+50'
+        });
+
+        alertMsg();
+
+        var options = {
+            beforeSubmit:  showRequest,  //提交前处理
+            success:       showResponse,  //处理完成
+            resetForm:     true,
+           // url:           '/adminLogin',//默认是form的action
+            dataType:      'json'
+        };
+
+        $('#updatePasswordForm').submit(function() {
+            $(this).ajaxSubmit(options);
+            // !!! Important !!!
+            // always return false to prevent standard browser submit and page navigation
+            return false;
+        });
+
+        function showRequest(formData, jqForm, options) {
+            var oldpassword = $("#oldpassword").val();
+            var newpassword = $("#newpassword").val();
+            var renewpassword = $("#renewpassword").val();
+            if(oldpassword==null||oldpassword==""){
+                $("#notice").empty();
+                $("#notice").text("密码不能为空！");
+                return false;
+            }else if(newpassword==null||newpassword==""){
+                $("#notice").empty();
+                $("#notice").text("新密码不能为空！");
+                return false;
+            }else if(renewpassword==null||renewpassword==""){
+                $("#notice").empty();
+                $("#notice").text("确认密码不能为空！");
+                return false;
+            }else if(newpassword!=renewpassword){
+                $("#notice").empty();
+                $("#notice").text("两次输入密码不一致！");
+                return false;
+            }else{
+                return true;
+            }
         }
+
+        function showResponse(responseText, statusText,xhr, $form)  {
+            var result = responseText.result;
+            if(result==0||result==-1){
+                alert(responseText.msg)
+            }else{
+               alert("密码修改成功！")
+            }
+        }
+        function removeNotice(){
+            $("#notice").empty();
+        }
+
+
+
     });
+
+
+
     //建立一個可存取到該file的url
     function getObjectURL(file) {
         var url = null;
@@ -225,6 +323,14 @@
             url = window.webkitURL.createObjectURL(file);
         }
         return url;
+    }
+
+    function alertMsg(){
+        var result = $("#result").val();
+        var msg = $("#msg").val();
+        if(result=='0'||result=='-1'){
+            alert(msg);
+        }
     }
 </script>
 </body>

@@ -325,6 +325,9 @@ Purchase: http://wrapbootstrap.com
                                         <td>
                                                 ${user.phone}
                                         </td>
+                                        <td>
+                                                ${user.realName}
+                                        </td>
                                          <td>
                                                 ${user.gender}
                                         </td>

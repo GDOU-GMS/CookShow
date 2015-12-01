@@ -43,11 +43,12 @@
 
                     <ul id="personcenter" style="float:left;">
                         <li style="width:110px;"><a class="btn btn1" href="#" role="button">个人中心</a>
-                            <ul>
-                                <li><a href="#">账号设置</a></li>
-                                <li><a href="#">我的菜单</a></li>
-                                <li><a href="#">退出</a></li>
-                            </ul>
+                                      <ul>
+                                        <li><a href="userinfo.html">账号设置</a></li>
+                                        <li><a href="personwork.html">我的菜单</a></li>
+                                        <li><a href="myfriends.html">关注的好友</a></li>
+                                        <li><a href="#">退出</a></li>
+                                    </ul>
                         </li>
 
                     </ul>
