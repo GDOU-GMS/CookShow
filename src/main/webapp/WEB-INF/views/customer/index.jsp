@@ -100,12 +100,12 @@
 
 						<ul id="personcenter" style="float: left;">
 							<li style="width: 110px;"><a class="btn btn1"
-								href="${pageContext.request.contextPath}/user/personCenter"
+								href=""
 								role="button">个人中心</a>
 								<ul>
-									<li><a href="#">账号设置</a></li>
+									<li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>
 									<li><a href="#">我的菜单</a></li>
-									<li><a href="#">退出</a></li>
+									<li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
 								</ul></li>
 
 						</ul>

@@ -5,6 +5,7 @@ import com.blueshit.cookshow.model.entity.User;
 import com.blueshit.cookshow.service.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by Seven on 2015/11/26.
@@ -31,9 +32,9 @@ public class BaseController {
     protected UserService userService;
 
 
-    public User getCurrentUser(){
-        //TODO:
-        return null;
+    public User getCurrentUser(HttpSession session){
+        User user = (User)session.getAttribute("user");
+        return userService.findByUsername(user.getUsername());
     }
 
 
