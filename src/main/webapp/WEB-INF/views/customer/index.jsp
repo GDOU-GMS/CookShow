@@ -92,10 +92,18 @@
                     -->
 
 						<div style="float: left;">
-							<a class="btn btn1"
-								href="${pageContext.request.contextPath}/user/forwardToLogin"
-								role="button">登录/注册</a>
-							<%--<a class="btn btn1" href="#" role="button">注册</a>--%>
+                            <div style="float:left;">
+                                <c:if test="${user!=null}">
+                                    <a class="btn btn1" href="${pageContext.request.contextPath}/user/personCenter">
+                                        欢迎，${user.username}
+                                    </a>
+                                </c:if>
+                                <c:if test="${user==null}">
+                                    <a class="btn btn1"
+                                       href="${pageContext.request.contextPath}/user/forwardToLogin"
+                                       role="button">登录/注册</a>
+                                </c:if>
+                            </div>
 						</div>
 
 						<ul id="personcenter" style="float: left;">
