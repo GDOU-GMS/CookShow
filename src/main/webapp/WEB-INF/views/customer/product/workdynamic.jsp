@@ -298,23 +298,11 @@
                                         </div>
                                     </form>
                                 </div>
-
-
-
                             </div><!--end dynamicbottom-->
-
-
-
                         </div><!--end mediadynamic-->
-
-
-
                     </div>
                     <div role="tabpanel" class="tab-pane" id="personimage">
-
-
                     </div>
-
                     <div role="tabpanel" class="tab-pane" id="settings">...</div>
                 </div>
 
