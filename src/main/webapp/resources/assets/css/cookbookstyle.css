@@ -1,0 +1,52 @@
+/* CSS Document */
+.cbookright{
+	float:left;
+	width:50%;
+}
+.cbookside{
+	float:left;
+	width:25%;
+}
+.cbooktop{
+	float:left;
+	width:100%;
+	
+}
+.cbookbottom{
+	float:left;
+	width:100%;
+	margin-left:80px;
+}
+.prod_title h4{
+	padding:0px;
+}
+.prod_title p{
+	margin:0px 5px;
+}
+.cbooksidecss p{
+	color:#ccc;
+	padding:0px;
+	margin:10px 5px;
+    font-size:16px;
+	
+}
+.cbooksidecss ul li{
+	list-style-type:none;
+	padding:5px 5px;
+	
+}
+.cbooksidecss ul li a{
+	color:#ec8d24;
+	text-decoration:none;
+	font-size:16px;
+	
+}
+.cbooksidecss ul li a:hover{
+	color:#ec8d24;
+	text-decoration:none;
+	background:#ec8d24;
+	color:#fff;
+}
+.pagestyle{
+	
+}

@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html>
 <head>
@@ -77,6 +78,21 @@
                     <ul id="csnav">
                         <li id="mainCate-1" class="mainCate">
                             <h3><span>&gt;</span><a href="http://sc.admin5.com/">往期头条</a></h3>
+ 			<div id="content">
+				<div class="cscontent">
+					<div class="csleft">
+						<div class="banner">
+							<ul id="csnav">
+								<c:forEach items="${topClassificationVoList}" var="topClassification">
+									<li id="mainCate-1" class="mainCate">
+										<h3>
+											<span>&gt;</span><a href="http://sc.admin5.com/">${topClassification.name }</a>
+										</h3>
+										<!-- <p>
+											<a href="http://sc.admin5.com/">茅台</a><a
+												href="http://sc.admin5.com/">五粮液</a><a
+												href="http://sc.admin5.com/">国窖1573</a>
+										</p>
 
                             <p><a href="http://sc.admin5.com/">茅台</a><a href="http://sc.admin5.com/">五粮液</a><a
                                     href="http://sc.admin5.com/">国窖1573</a></p>

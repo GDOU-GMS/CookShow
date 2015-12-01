@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import com.blueshit.cookshow.model.entity.Menu;
+import com.blueshit.cookshow.model.vo.ClassificationVo;
 import com.blueshit.cookshow.web.basic.BaseController;
 
 import org.springframework.stereotype.Controller;
@@ -40,7 +41,11 @@ public class MenuController extends BaseController {
     }
 
     @RequestMapping("/cookmenu")
-    public String cookmenu(){
+    public String cookmenu(Model model){
+        //查询所有分类信息
+        List<ClassificationVo> topClassificationVoList = classificationService.getAllClassification();
+        model.addAttribute("topClassificationVoList",topClassificationVoList);
         return "customer/menu/cookmenu";
     }
+   
 }
