@@ -10,6 +10,7 @@ import com.blueshit.cookshow.model.entity.Menu;
 import com.blueshit.cookshow.web.basic.BaseController;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -19,34 +20,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/menu")
 public class MenuController extends BaseController {
    
-     
-	private int pageNum = 1;
-	
-	public Map<String, Object> jsonMap;
-	
-	public Map<String, Object> getJsonMap() {
-		return jsonMap;
-	}
-
-	public void setJsonMap(Map<String, Object> jsonMap) {
-		this.jsonMap = jsonMap;
-	}
-	
-
-	public int getPageNum() {
-		return pageNum;
-	}
-
-	public void setPageNum(int pageNum) {
-		this.pageNum = pageNum;
-	}
-	
-	
 	
 	@RequestMapping("/getAllMenu")
-	public String getAllMenu(Long[] ids,HttpServletRequest request)  throws Exception{
+	public String getAllMenu(Long[] ids,Model model)  throws Exception{
     	 List<Menu> menu=menuService.findByIds(ids);
-         request.setAttribute("menuList", menu);  
+         model.addAttribute("menuList", menu); 
+         //System.out.println("menulist");
     	 return "/getAllMenu";
      }
 }
