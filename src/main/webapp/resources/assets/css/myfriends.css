@@ -1,0 +1,34 @@
+/* CSS Document */
+
+.mediafriend{
+	width:100%;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+.mediafriendl{
+	float:left;
+	width:67px;
+	margin-left:20px;
+	
+	
+	
+}
+.mediafriendr{
+	float:left;
+	width:600px;
+	margin-left:20px;
+	
+}
+.mediafriendr span{
+     display:block;
+	 color:#d9d7d7;
+}
+.mediafriendr a:hover{
+	text-decoration:none;
+}
+.mediafriendr a:hover span{
+	text-decoration:none;
+	color:#ec8d24;
+	
+
+}

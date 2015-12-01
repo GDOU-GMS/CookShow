@@ -1,0 +1,265 @@
+/* CSS Document */
+
+.menuleft{
+	float:left;
+	width:75%;
+	
+}
+.menuimg{	
+	float:left;
+	width:748px;
+	margin-right:2px;
+	height:570px;
+	
+}
+
+.menuimg p{
+	width:100%;
+	margin:10px 0px;
+	text-align:center;
+	font-size:24px;
+	font-weight:bold;
+	border-bottom:none;
+	
+	
+}
+.imgcontent{
+	width:748px;
+	
+	
+}
+.imgcontent img{
+	display:block;
+	width:748px;
+	height:400px;
+}
+.imagetext{
+	width:100%;
+	float:right;
+	margin:10px  10px;
+	
+	
+}
+.imagetext img{
+	width:748px;
+	height:400px;
+	
+}
+.acss{
+	float:right;
+	background:#ec8d24;
+	color:#fff;
+	width:100px;
+	text-shadow:none;
+	font-size:16px;
+	border-radius: 0px;	
+	border:1px solid #ec8d24;
+	margin-top:10px;
+	margin-bottom:10px;
+
+}
+
+.imagetext .btn:hover{ 
+
+	/*background-image: linear-gradient(to bottom, #ce7008 0px, #ce7008 100%);*/
+	background:#ce7008;
+	color:#fff;
+    background-repeat: repeat-x;
+	border:1px solid  #ce7008;
+		
+}
+.acss:hover{
+	background:#ce7008;
+	color:#fff;
+    background-repeat: repeat-x;
+	border:1px solid  #ce7008;
+}
+
+.acss:hover{
+	background:#ce7008;
+	color:#fff;
+    background-repeat: repeat-x;
+	border:1px solid  #ce7008;
+}
+
+
+
+
+
+.menushare{
+	float:right;
+	width:200px;
+	height:38px;
+    background:#f5f5f5;
+	margin-top:10px;
+	margin-bottom:10px;
+	}
+.menushare span{
+	float:left;
+	display:block;
+	text-align:center;
+	padding:0px 5px;
+	line-height:38px;
+	color:#b1afaf;
+	font-size:16px;
+	width:width:50px;
+
+	
+}
+.menushare .shareimg{
+	float:left;
+	height:38px;
+	width:140px;
+	padding:3px 0px;
+}
+
+
+
+.menuinfo{
+	
+	float:left;
+	width:748px;
+    margin-bottom:20px;
+	
+}
+
+.menusubinfo{
+	float:left;
+	width:748px;
+	margin-top:10px;
+	
+}
+
+.menusubinfo p{
+	font-size:18px;
+	color:#b1afaf;
+	
+}
+.menusubinfo span{
+	
+	line-height:25px;
+	font-size:16px;
+}
+.menusubinfo table{
+
+}
+
+.menusubinfo tr{
+	line-height:30px;
+}
+.menusubinfo  td{
+	border: 1px solid #ccc;
+	font-size:16px;
+		
+}
+.menusubinfo .cooktag1{
+	float:left;
+	display:block;
+	width:25px;
+	font-family:"黑体";
+	color:#b1afaf;
+	font-size:16px;
+	
+}
+.menusubinfo .cooktag2{
+	float:left;
+	display:block;
+	width:450px;
+	margin-right:30px;
+	line-height:25px;
+	font-size:16px;
+}
+.menusubinfo .cookimg{
+	float:left;
+	width:200px;
+	height:110px;
+}
+.menucomment{
+	width:718px;
+	padding:15px 15px;
+
+}
+.eachcomment{
+float:left;
+width:718px;
+	
+	
+}
+	
+.personhead{
+	float:left;
+	width:50px;
+	
+		
+}
+.persontalk{
+	float:left;
+	width:640px;
+	height:200px;
+	min-height:100px;
+	margin-left:28px;
+	
+  
+	
+}
+.persontalk1{
+	float:left;
+	width:640px;
+	height:200px;
+	height:60px;
+	margin-left:28px;
+}
+.persontalk1 span{
+	float:left;
+	width:100px;
+	font-size:16px;
+	color:#ec8d24;
+	
+}
+.persontalk1 p{
+	float:left;
+	margin-left:5px;
+	width:515px;
+	font-size:16px;
+}
+.persontalk1 .dianzan{
+	float:right;
+	width:20px;
+}
+.persontalk1 .fromcss{
+	color:#ccc;
+	font-size:14px;
+	width:100px;
+}
+.personsubmt {
+	width:718px;
+}
+.personsubmt  a{
+	float:right;
+	background:#ec8d24;
+	color:#fff;
+	width:80px;
+	text-shadow:none;
+	font-size:16px;
+	border-radius: 0px;	
+	border:1px solid #ec8d24;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.personsubmt .btn:hover{ 
+	/*background-image: linear-gradient(to bottom, #ce7008 0px, #ce7008 100%);*/
+	background:#ce7008;
+	color:#fff;
+    background-repeat: repeat-x;
+	border:1px solid  #ce7008;
+			
+}
+.persontalk  textarea{
+	padding:0px 5px;
+	width:640px;
+	height:200px;
+	
+}
+
+
+
