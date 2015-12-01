@@ -82,6 +82,8 @@ body{
 .cscontent{
 	width:1000px;
 	margin:auto;
+	height:437px;
+	margin-bottom:10px;
 }
 .csright{
 }
@@ -94,13 +96,13 @@ body{
 .csleft{
 	float:left;
 	width:25%;
-	hight:100px;
+	height:437px;
 }
 
 .csright{
 	float:left;
 	width:75%;
-	hight:100px;
+	height:437px;
 }
 	
 .owl-item{
@@ -246,5 +248,5 @@ padding-top:1px;
 
 }
 #personcenter ul li a{
-	color：#fff;
+	color锛�fff;
 	}
