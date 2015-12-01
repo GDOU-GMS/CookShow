@@ -177,7 +177,7 @@ Purchase: http://wrapbootstrap.com
                     </a>
                     <ul class="submenu">
                         <li>
-                            <a href="tables-simple.html">
+                            <a href="${pageContext.request.contextPath}/admin/cookbook/list">
                                 <span class="menu-text">热门专题</span>
                             </a>
                         </li>
