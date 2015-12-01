@@ -207,36 +207,36 @@
 
                     </div>
                     <div role="tabpanel" class="tab-pane" id="personimage">
-                        <form method="post" enctype="multipart/form-data">
-                            <input type="file" name="file0" id="file0" multiple/><br>
-                            <img style="width:140px;height:140px;" src="${user.face}" alt="" class="img-rounded" id="img0">
+                        <form method="post" id="uploadFaceForm" enctype="multipart/form-data" action="${pageContext.request.contextPath}/user/uploadFace">
+        <input type="file" name="file0" id="file0" multiple/><br>
+        <img style="width:140px;height:140px;" src="${user.face}" alt="" name="faceImage" class="img-rounded" id="img0">
 
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-default">更新</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+        <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default" id="uploadbtn">更新</button>
+        </div>
+        </div>
+        </form>
+        </div>
 
-                    <div role="tabpanel" class="tab-pane" id="settings">...</div>
-                </div>
+        <div role="tabpanel" class="tab-pane" id="settings">...</div>
+        </div>
 
-            </div>
+        </div>
 
 
         </div>
-        <!--end cscontent -->
-    </div>
-    <!--end  content-->
+            <!--end cscontent -->
+        </div>
+            <!--end  content-->
 
-    <div id="hidden">
+        <div id="hidden">
         <input hidden="hidden" id="result" value="${resultEntity.result}">
         <input hidden="hidden" id="msg" value="${resultEntity.msg}">
-    </div>
-</div>
-<%--jquer form plugin--%>
-<script src="${pageContext.request.contextPath}/resources/assets/plugins/jquery_form/jquery.form.min.js"></script>
+        </div>
+        </div>
+        <%--jquer form plugin--%>
+        <script src="${pageContext.request.contextPath}/resources/assets/plugins/jquery_form/jquery.form.min.js"></script>
 <script>
     $(function(){
 
@@ -254,20 +254,32 @@
 
         alertMsg();
 
-        var options = {
-            beforeSubmit:  showRequest,  //提交前处理
-            success:       showResponse,  //处理完成
-            resetForm:     true,
-           // url:           '/adminLogin',//默认是form的action
-            dataType:      'json'
-        };
-
         $('#updatePasswordForm').submit(function() {
+            var options = {
+                beforeSubmit:  showRequest,  //提交前处理
+                success:       showResponse,  //处理完成
+                resetForm:     true,
+                // url:           '/adminLogin',//默认是form的action
+                dataType:      'json'
+            };
+
             $(this).ajaxSubmit(options);
             // !!! Important !!!
             // always return false to prevent standard browser submit and page navigation
             return false;
         });
+
+        $("#uploadFaceForm").submit(function(){
+            var options = {
+                success:       showResponse,  //处理完成
+                resetForm:     true
+            };
+
+            $(this).ajaxSubmit(options);
+            // !!! Important !!!
+            // always return false to prevent standard browser submit and page navigation
+            return false;
+        })
 
         function showRequest(formData, jqForm, options) {
             var oldpassword = $("#oldpassword").val();
@@ -299,9 +311,12 @@
             if(result==0||result==-1){
                 alert(responseText.msg)
             }else{
-               alert("密码修改成功！")
+                alert(responseText.msg)
             }
         }
+
+
+
         function removeNotice(){
             $("#notice").empty();
         }
