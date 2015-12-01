@@ -176,7 +176,8 @@
                             <div class="box_bottom"></div>
                         </div>
                         <div class="clear"></div>
-                    </div>
+                    </div>   
+                    
 
 
                     <div class="feat_prod_box cbookcontent" style="border_bottom:none;">
