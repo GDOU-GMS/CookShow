@@ -18,15 +18,15 @@ public class CookbookController extends BaseController {
     public String createCookbook(){
         return "customer/cookbook/createcookbook";
     }
-	
+
+
 	@RequestMapping("/addCookbook")
 	public String addCookbook(@ModelAttribute Cookbook cookbook){
-		
-		
-		
+
 		cookbookService.save(cookbook);
-		
-		return "customer/cookbook/.jsp";
+
+        //重定向到个人中心
+		return "customer/cookbook/";
 	}
 	
 	@RequestMapping("/deleteCookbook")
@@ -36,7 +36,7 @@ public class CookbookController extends BaseController {
 		
 		cookbookService.save(cookbook);
 		
-		return "customer/cookbook/.jsp";
+		return "customer/cookbook/";
 	}
 	
 	@RequestMapping("/modifyCookbook")
@@ -46,7 +46,7 @@ public class CookbookController extends BaseController {
 		
 		cookbookService.save(cookbook);
 		
-		return "customer/cookbook/.jsp";
+		return "customer/cookbook/";
 	}
 }
 	

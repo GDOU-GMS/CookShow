@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
 <head>
@@ -38,9 +39,19 @@
                     <button class="btn btn-default" >搜索</button>
                 </div>
                 <div class="landr">
-                    <div style="float:left;">
-                        <a class="btn btn1" href="#" role="button">登录</a>
-                        <a class="btn btn1" href="#" role="button">注册</a>
+                    <div style="float: left;">
+                        <div style="float:left;">
+                            <c:if test="${user!=null}">
+                                <a class="btn btn1" href="${pageContext.request.contextPath}/user/personCenter">
+                                    欢迎，${user.username}
+                                </a>
+                            </c:if>
+                            <c:if test="${user==null}">
+                                <a class="btn btn1"
+                                   href="${pageContext.request.contextPath}/user/forwardToLogin"
+                                   role="button">登录/注册</a>
+                            </c:if>
+                        </div>
                     </div>
 
                     <ul id="personcenter" style="float:left;">
@@ -76,35 +87,28 @@
         <div class="cscontent">
 
             <h3>新建菜谱</h3>
-            <form class="form-horizontal">
+            <form class="form-horizontal" METHOD="post" action="/cookbook/addCookbook" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">菜谱名称</label>
+                    <label for="cookbookName" class="col-sm-2 control-label">菜谱名称</label>
                     <div class="col-sm-10" >
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="菜谱名称">
+                        <input type="text" class="form-control" id="cookbookName" name="title" placeholder="菜谱名称">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">上传文件</label>
+                    <label for="file0" class="col-sm-2 control-label">上传文件</label>
                     <div class="col-sm-10">
-                        <!--<input type="file" name="file0" id="file0" multiple /><br>
-                        <img style="width:748px;height:475px;" src="images/tj.png" alt="" class="img-rounded" id="img0">-->
                         <input type="file" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  name="file1" id="file0" multiple /><br>
                         <img class="media-object" src=""  alt="..." style="width:748px;height:475px;cursor:pointer;background:url(images/tj.png)"  id="img0" onClick="tempClick0()" >
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label for="intro" class="col-sm-2 control-label">简介</label>
                     <div class="col-sm-16">
                         <textarea class="form-control" id="intro" rows="3" style="width:600px"></textarea>
                     </div>
                 </div>
-
-
-
-
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">用法</label>
+                    <label class="col-sm-2 control-label">用法</label>
                     <div class="col-sm-10" >
                         <div class="table-responsive">
                             <table id="ci" name="ci" class="table table-bordered " style="width:600px;">
@@ -115,55 +119,37 @@
                             </table>
                         </div>
                         <div class="trdiv">
-                            <a class="btn btn-default tradd" href="#" onclick="add()" role="button">添加一行</a>
+                            <a class="btn btn-default tradd" href="javascript:void(0)" onclick="add()" role="button">添加一行</a>
                         </div>
-
                     </div>
                 </div>
-
-
-
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">步骤</label>
+                    <label class="col-sm-2 control-label">步骤</label>
                     <div class="media">
                         <div class="media-body media_rself ">
                             <h4 class="media-heading">1</h4>
-                            烤箱预热400F/205C。烤盘铺烘焙纸备用。
+                            <textarea type="text" class="form-control" style="width: 80%" rows="4"></textarea>
                         </div>
                         <div class="media-left media_lself ">
 
                             <input type="file" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  name="file1" id="file1" multiple /><br>
                             <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(images/fm.png)"  id="img1" onClick="tempClick()" >
-
-                            </a>
                         </div>
-
                     </div>
-
-
-
                 </div><!-- form-group-->
 
 
                 <div class="form-group">
-
                     <div class="media medialocation">
                         <div class="media-body media_rself ">
                             <h4 class="media-heading">2</h4>
-                            烤箱预热400F/205C。烤盘铺烘焙纸备用。
+                            <textarea type="text" class="form-control" style="width: 80%" rows="4"></textarea>
                         </div>
                         <div class="media-left media_lself ">
-
                             <input type="file" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  name="file1" id="file1" multiple /><br>
                             <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(images/fm.png)"  id="img1" onClick="tempClick()" >
-
-                            </a>
                         </div>
-
                     </div>
-
-
-
                 </div><!-- form-group-->
 
 
@@ -172,20 +158,13 @@
                     <div class="media  medialocation">
                         <div class="media-body media_rself ">
                             <h4 class="media-heading">3</h4>
-                            烤箱预热400F/205C。烤盘铺烘焙纸备用。
+                            <textarea type="text" class="form-control" style="width: 80%" rows="4"></textarea>
                         </div>
                         <div class="media-left media_lself ">
-
                             <input type="file" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  name="file1" id="file1" multiple /><br>
                             <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(images/fm.png)"  id="img1" onClick="tempClick()" >
-
-                            </a>
                         </div>
-
                     </div>
-
-
-
                 </div><!-- form-group-->
 
 
@@ -194,7 +173,7 @@
                     <div class="media  medialocation">
                         <div class="media-body media_rself ">
                             <h4 class="media-heading">4</h4>
-                            烤箱预热400F/205C。烤盘铺烘焙纸备用。
+                            <textarea type="text" class="form-control" style="width: 80%" rows="4"></textarea>
                         </div>
                         <div class="media-left media_lself ">
 
@@ -203,18 +182,14 @@
 
                             </a>
                         </div>
-
                     </div>
-
-
-
                 </div><!-- form-group-->
 
                 <div class="form-group">
                     <div class="media  medialocation">
                         <div class="media-body media_rself ">
                             <h4 class="media-heading">5</h4>
-                            烤箱预热400F/205C。烤盘铺烘焙纸备用。
+                            <textarea type="text" class="form-control" style="width: 80%" rows="4"></textarea>
                         </div>
                         <div class="media-left media_lself ">
 
@@ -225,19 +200,17 @@
                         </div>
 
                     </div>
-
-
-
                 </div><!-- form-group-->
 
-
-
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <a class="btn btn-default tradd" href="javascript:void(0)" onclick="addstep()" role="button">添加步骤</a>
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-default btnpublic">发布菜谱</button>
                     </div>
-
-
                 </div>
             </form>
 
@@ -252,7 +225,23 @@
     </div><!--pagebottom-->
 
 </div>
+<script>
+    var num=6;
+    function addstep(){
+        var div = $(".media:last");                          //获得要克隆的div
+
+        var newdiv = div.clone();                           //克隆div
+        newdiv.find(":input").each(function(i){         //将input制空，
+            $(this).val("");
+            //给该标签的value赋值为空
+        });
+        newdiv.find("h4").text(num);
+        div.after(newdiv);                                   //放在所在div之后
+        num++;
+    }
+</script>
 <script type="text/javascript">
+
     function tempClick0(){
         /**
          * 火狐浏览器实现点击图片出现文件上传界面
@@ -261,7 +250,7 @@
          * document.getElementById("upload_main_img").dispatchEvent(a);
          */
 
-            //IE浏览器实现点击图片出现文件上传界面
+        //IE浏览器实现点击图片出现文件上传界面
         document.getElementById('file0').click();            //调用main_img的onclick事件
     }
 
@@ -288,33 +277,15 @@
 
 </script>
 <script>
-    //function addrow(){
-
-    //		var tr = $("#tabtr");                                 //tabtr是你要克隆的表格行的id
-
-    //		var newtr = tr.clone();                            //克隆tr行
-    //		newtr.find(":input").each(function(i){      //循环新克隆的newtr，在里边找到所有的input标签，
-    //					 $(this).val("");                                    //给该标签的value赋值为空
-    // });
-    // tr.after(newtr);                  //在id="tabtr"的表格行tr后插入克隆行newtr
-
-    //}
-
     var count = 1;
     function add() {
         var tbl = document.all.ci;
         var rows = tbl.rows.length;
         var tr = tbl.insertRow(rows);
-
         var e_id = tr.insertCell(0);
-//e_id.innerHTML = '<input type="text" name="e_id' + count + '" size="7" />';
         e_id.innerHTML = '<input type="text" style="border:none;width:200px;height:20px;" name="e_id' + count + '">';
-
-
-
         var memo = tr.insertCell(1);
         memo.innerHTML = '<input type="text" style="border:none;width:200px;height:20px;" name="mode' + count + '">';
-
         count++;
     }
 </script>
@@ -328,7 +299,7 @@
          * document.getElementById("upload_main_img").dispatchEvent(a);
          */
 
-            //IE浏览器实现点击图片出现文件上传界面
+        //IE浏览器实现点击图片出现文件上传界面
         document.getElementById('file1').click();            //调用main_img的onclick事件
     }
 

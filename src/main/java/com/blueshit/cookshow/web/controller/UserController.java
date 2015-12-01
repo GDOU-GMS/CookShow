@@ -175,17 +175,15 @@ public class UserController extends BaseController {
                 // 由CommonsMultipartFile继承而来,拥有上面的方法.
                 MultipartFile file = multiRequest.getFile(iter.next());
                 if (file != null) {
-                    String fileName =file.getOriginalFilename();
-                    File f = new File(MyDataUtils.DateToString(new Date(),"yyyyMMddHHmmSS")+fileName);
-                    file.transferTo(f);
-                    String url = QiniuUpload.upload(f);
+                    String originalFilename =file.getOriginalFilename();
+                    String fileName = MyDataUtils.DateToString(new Date(),"yyyyMMddHHmmSS")+originalFilename;
+                    String url = QiniuUpload.upload(file,fileName);
                     User user = getCurrentUser(request.getSession());
                     user.setFace(url);
                     userService.update(user);
                     //更新session
                     request.getSession().setAttribute("user", user);
                     resultEntity.setSuccessMsg("上传成功!");
-                    f.deleteOnExit();//删除文件
                 }
             }
         }
