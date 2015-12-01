@@ -73,7 +73,7 @@
     <div id="content">
         <div class="cscontent">
             <div class="csleft">
-                <div class="banner">
+                <div class="banner cookmenubanner">
                     <ul id="csnav">
                         <li id="mainCate-1" class="mainCate">
                             <h3><span>&gt;</span><a href="http://sc.admin5.com/">往期头条</a></h3>
