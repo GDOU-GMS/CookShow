@@ -27,7 +27,34 @@ public class AdminCookbookController extends BaseController {
 		model.addAttribute("cookbooklist",cookbook);
 		return "admin/cookbook/list";
 	}
+	
+	/*
+	 * 锁定菜谱
+	 */
+	@RequestMapping("/disable")
+	public String disable(String cookbookId){
+         
+      Cookbook cookbook=cookbookService.findById(Long.parseLong(cookbookId));
+      cookbook.setDeleted(1);
+	  cookbookService.update(cookbook);
+	  
+	  return "redirect:list";
+	}
 
+	
+	/*
+	 * 解锁菜谱
+	 */
+	@RequestMapping("/enable")
+	public String enable(String cookbookId){
+		
+		Cookbook cookbook=cookbookService.findById(Long.parseLong(cookbookId));
+		cookbook.setDeleted(0);
+	    cookbookService.update(cookbook);
+		  
+		return "redirect:list";
+		
+	}
 
 
 
