@@ -208,9 +208,9 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="personimage">
                         <form method="post" enctype="multipart/form-data">
-                           
-                            <input type="file" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  name="file3" id="file3" multiple /><br>
-                         	<img class="media-object" src=""  alt="..." style="width:140px;height:140px;cursor:pointer;background:url(images/fm.png)"  id="img3" onClick="tempClick()" >
+                            <input type="file" name="file0" id="file0" multiple/><br>
+                            <img style="width:140px;height:140px;" src="${user.face}" alt="" class="img-rounded" id="img0">
+
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <button type="submit" class="btn btn-default">更新</button>
@@ -238,28 +238,13 @@
 <%--jquer form plugin--%>
 <script src="${pageContext.request.contextPath}/resources/assets/plugins/jquery_form/jquery.form.min.js"></script>
 <script>
-	
-
-	function tempClick(){  
-	    /**  
-	     * 火狐浏览器实现点击图片出现文件上传界面  
-	     * var a=document.createEvent("MouseEvents");   
-	     * a.initEvent("click", true, true);    
-	     * document.getElementById("upload_main_img").dispatchEvent(a);   
-	     */  
-	      
-	    //IE浏览器实现点击图片出现文件上传界面  
-	    document.getElementById('file3').click();            //调用main_img的onclick事件  
-	}  
-	
-	
     $(function(){
 
-        $("#file3").change(function () {
+        $("#file0").change(function () {
             var objUrl = getObjectURL(this.files[0]);
             console.log("objUrl = " + objUrl);
             if (objUrl) {
-                $("#img3").attr("src", objUrl);
+                $("#img0").attr("src", objUrl);
             }
         });
 
