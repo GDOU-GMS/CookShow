@@ -19,8 +19,8 @@ public class CheckUserLoginInterception implements HandlerInterceptor {
 
     static {
         list.add("/user/personCenter");
-        list.add("");
-        list.add("");
+        list.add("/user/updateUserInfo");
+        list.add("/user/updatePassword");
         list.add("");
         list.add("");
     }

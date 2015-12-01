@@ -49,4 +49,19 @@ public class MenuController extends BaseController {
          request.setAttribute("menuList", menu);  
     	 return "/getAllMenu";
      }
+
+    @RequestMapping("/myMenu")
+    public String myMenu(){
+        return "customer/menu/personwork";
+    }
+
+    @RequestMapping("/createMenu")
+    public String createMenu(){
+        return "customer/menu/createnewmenu";
+    }
+
+    @RequestMapping("/cookmenu")
+    public String cookmenu(){
+        return "customer/menu/cookmenu";
+    }
 }

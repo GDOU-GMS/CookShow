@@ -92,10 +92,16 @@
                     -->
 
 						<div style="float: left;">
-							<a class="btn btn1"
-								href="${pageContext.request.contextPath}/user/forwardToLogin"
-								role="button">登录/注册</a>
-							<%--<a class="btn btn1" href="#" role="button">注册</a>--%>
+                            <c:if test="${user!=null}">
+                                <a class="btn btn1" href="${pageContext.request.contextPath}/user/personCenter">
+                                欢迎，${user.username}
+                                </a>
+                            </c:if>
+                            <c:if test="${user==null}">
+                                <a class="btn btn1"
+                                   href="${pageContext.request.contextPath}/user/forwardToLogin"
+                                   role="button">登录/注册</a>
+                            </c:if>
 						</div>
 
 						<ul id="personcenter" style="float: left;">
@@ -105,7 +111,7 @@
 								<ul>
 									<li><a href="#">账号设置</a></li>
 									<li><a href="#">我的菜单</a></li>
-									<li><a href="#">退出</a></li>
+									<li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
 								</ul></li>
 
 						</ul>

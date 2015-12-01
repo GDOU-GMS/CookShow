@@ -104,11 +104,7 @@
     <!--注册end-->
 </div>
 <script>
-    $(function(){
-       if(${resultEntity}!=null){
-            alert(${resultEntity.msg});
-        }
-    })
+
 
 </script>
 </body>
