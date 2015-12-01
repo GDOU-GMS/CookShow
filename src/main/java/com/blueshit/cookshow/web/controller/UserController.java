@@ -14,6 +14,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -182,13 +183,24 @@ public class UserController extends BaseController {
                     user.setFace(url);
                     userService.update(user);
                     //更新session
-                    request.getSession().setAttribute("user",user);
+                    request.getSession().setAttribute("user", user);
                     resultEntity.setSuccessMsg("上传成功!");
                     f.deleteOnExit();//删除文件
                 }
             }
         }
         return resultEntity;
+    }
+
+    @RequestMapping("/personWork/{id}")
+    public String personWork(@PathVariable String id,Model model){
+        User user = userService.findById(Long.parseLong(id));
+        if(user!=null){
+            model.addAttribute("userInfo",user);
+        }else{
+            return "redirect:/error_404";
+        }
+        return "customer/user/personwork";
     }
 
 }

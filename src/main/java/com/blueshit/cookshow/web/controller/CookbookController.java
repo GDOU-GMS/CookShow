@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/cookbook")
 public class CookbookController extends BaseController {
+
+    @RequestMapping("/createCookbook")
+    public String createCookbook(){
+        return "customer/cookbook/createcookbook";
+    }
 	
 	@RequestMapping("/addCookbook")
 	public String addCookbook(@ModelAttribute Cookbook cookbook){

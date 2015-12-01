@@ -29,6 +29,10 @@ public class IndexController extends BaseController{
         return "customer/login";
     }
 
+    @RequestMapping("/error_404")
+    public String error_404(){
+        return "error_404";
+    }
 
 
 }
