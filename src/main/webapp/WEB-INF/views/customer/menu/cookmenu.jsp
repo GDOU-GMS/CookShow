@@ -71,13 +71,6 @@
 
         </div>
     </div>
-    <div id="content">
-        <div class="cscontent">
-            <div class="csleft">
-                <div class="banner cookmenubanner">
-                    <ul id="csnav">
-                        <li id="mainCate-1" class="mainCate">
-                            <h3><span>&gt;</span><a href="http://sc.admin5.com/">往期头条</a></h3>
  			<div id="content">
 				<div class="cscontent">
 					<div class="csleft">
@@ -94,198 +87,29 @@
 												href="http://sc.admin5.com/">国窖1573</a>
 										</p>
 
-                            <p><a href="http://sc.admin5.com/">茅台</a><a href="http://sc.admin5.com/">五粮液</a><a
-                                    href="http://sc.admin5.com/">国窖1573</a></p>
-
-                            <p><a href="http://sc.admin5.com/">酱香型</a><a href="http://sc.admin5.com/">浓香型</a><a
-                                    href="http://sc.admin5.com/">贵州</a><a href="http://sc.admin5.com/">四川</a></p>
-
-                            <div class="subCate" style="display: none;">
-                                <ul id="sub-ul-1">
-                                    <h4>品牌</h4>
-                                    <li><span><a href="http://sc.admin5.com/">茅台</a><a
-                                            href="http://sc.admin5.com/">五粮液 </a><a
-                                            href="http://sc.admin5.com/">国窖1573</a><a
-                                            href="http://sc.admin5.com/">郎酒</a><a
-                                            href="http://sc.admin5.com/">汾酒</a></span> <span><a
-                                            href="http://sc.admin5.com/" class="sub_width">剑南春</a><a
-                                            href="http://sc.admin5.com/">泸州老窖</a><a href="http://sc.admin5.com/">水井坊</a><a
-                                            href="http://sc.admin5.com/">洋河</a><a href="http://sc.admin5.com/"
-                                                                                  class="sub_width">金六福</a></span><span><a
-                                            href="http://sc.admin5.com/">牛栏山</a><a href="http://sc.admin5.com/">丰谷</a><a
-                                            href="http://sc.admin5.com/">杜康</a><a href="http://sc.admin5.com/">景芝</a><a
-                                            href="http://sc.admin5.com/" class="sub_width1">河套</a><a
-                                            href="http://sc.admin5.com/" class="sub_width">红楼梦</a></span></li>
-                                    <li><span><a href="http://sc.admin5.com/">古贝春</a><a
-                                            href="http://sc.admin5.com/">宋河</a><a href="http://sc.admin5.com/">泰山</a><a
-                                            href="http://sc.admin5.com/">青花瓷</a><a
-                                            href="http://sc.admin5.com/">董酒</a></span><span><a
-                                            href="http://sc.admin5.com/" class="sub_width">唐王宴</a><a
-                                            href="http://sc.admin5.com/">红星</a><a href="http://sc.admin5.com/">皖酒</a><a
-                                            href="http://sc.admin5.com/">古井</a><a href="http://sc.admin5.com/">西凤</a><a
-                                            href="http://sc.admin5.com/" class="sub_width">伊力特</a></span></li>
-                                </ul>
-                                <!--<ul id="sub-ul-2">
-                                   <h4>香型</h4>
-                                   <li> <span><a href="http://sc.admin5.com/">酱香型</a><a href="http://sc.admin5.com/">浓香型</a><a href="http://sc.admin5.com/">清香型</a><a href="http://sc.admin5.com/">馥郁香型</a></span><span><a href="http://sc.admin5.com/" class="sub_width">兼香型</a><a href="http://sc.admin5.com/">特香型</a><a href="http://sc.admin5.com/">芝麻香型</a><a href="http://sc.admin5.com/">豉香型</a></span><span><a href="http://sc.admin5.com/">董香型</a><a href="http://sc.admin5.com/">凤香型</a><a href="http://sc.admin5.com/">老白干香型</a><a href="http://sc.admin5.com/">復合香</a></span><span><a href="http://sc.admin5.com/" class="sub_width">荞香型</a><a href="http://sc.admin5.com/">青稞清香型</a><a href="http://sc.admin5.com/">米香型</a><a href="http://sc.admin5.com/">其他</a></span> </li>
-                              </ul>-->
-                            </div>
-                            <!-- end subCate-->
-                        </li>
-                        <li id="mainCate-2" class="mainCate evenLeval">
-                            <h3><span>&gt;</span><a href="http://sc.admin5.com/">月度最佳</a></h3>
-
-                            <p><a href="http://sc.admin5.com/">茅台</a><a href="http://sc.admin5.com/">五粮液</a><a
-                                    href="http://sc.admin5.com/">国窖1573</a></p>
-
-                            <p><a href="http://sc.admin5.com/">酱香型</a><a href="http://sc.admin5.com/">浓香型</a><a
-                                    href="http://sc.admin5.com/">贵州</a><a href="http://sc.admin5.com/">四川</a></p>
-
-                            <div class="subCate" style="display: none;">
-                                <ul id="sub-ul-1">
-                                    <h4>品牌</h4>
-                                    <li><span><a href="http://sc.admin5.com/">茅台</a><a
-                                            href="http://sc.admin5.com/">五粮液 </a><a
-                                            href="http://sc.admin5.com/">国窖1573</a><a
-                                            href="http://sc.admin5.com/">郎酒</a><a
-                                            href="http://sc.admin5.com/">汾酒</a></span> <span><a
-                                            href="http://sc.admin5.com/" class="sub_width">剑南春</a><a
-                                            href="http://sc.admin5.com/">泸州老窖</a><a href="http://sc.admin5.com/">水井坊</a><a
-                                            href="http://sc.admin5.com/">洋河</a><a href="http://sc.admin5.com/"
-                                                                                  class="sub_width">金六福</a></span><span><a
-                                            href="http://sc.admin5.com/">牛栏山</a><a href="http://sc.admin5.com/">丰谷</a><a
-                                            href="http://sc.admin5.com/">杜康</a><a href="http://sc.admin5.com/">景芝</a><a
-                                            href="http://sc.admin5.com/" class="sub_width1">河套</a><a
-                                            href="http://sc.admin5.com/" class="sub_width">红楼梦</a></span></li>
-                                    <li><span><a href="http://sc.admin5.com/">古贝春</a><a
-                                            href="http://sc.admin5.com/">宋河</a><a href="http://sc.admin5.com/">泰山</a><a
-                                            href="http://sc.admin5.com/">青花瓷</a><a
-                                            href="http://sc.admin5.com/">董酒</a></span><span><a
-                                            href="http://sc.admin5.com/" class="sub_width">唐王宴</a><a
-                                            href="http://sc.admin5.com/">红星</a><a href="http://sc.admin5.com/">皖酒</a><a
-                                            href="http://sc.admin5.com/">古井</a><a href="http://sc.admin5.com/">西凤</a><a
-                                            href="http://sc.admin5.com/" class="sub_width">伊力特</a></span></li>
-                                </ul>
-                            </div>
-                            <!-- end subCate-->
-                        </li>
-                        <li id="mainCate-1" class="mainCate">
-                            <h3><span>&gt;</span><a href="http://sc.admin5.com/">厨房101</a></h3>
-
-                            <p><a href="http://sc.admin5.com/">茅台</a><a href="http://sc.admin5.com/">五粮液</a><a
-                                    href="http://sc.admin5.com/">国窖1573</a></p>
-
-                            <p><a href="http://sc.admin5.com/">酱香型</a><a href="http://sc.admin5.com/">浓香型</a><a
-                                    href="http://sc.admin5.com/">贵州</a><a href="http://sc.admin5.com/">四川</a></p>
-
-                            <div class="subCate" style="display: none;">
-                                <ul id="sub-ul-1">
-                                    <h4>品牌</h4>
-                                    <li><span><a href="http://sc.admin5.com/">茅台</a><a
-                                            href="http://sc.admin5.com/">五粮液 </a><a
-                                            href="http://sc.admin5.com/">国窖1573</a><a
-                                            href="http://sc.admin5.com/">郎酒</a><a
-                                            href="http://sc.admin5.com/">汾酒</a></span> <span><a
-                                            href="http://sc.admin5.com/" class="sub_width">剑南春</a><a
-                                            href="http://sc.admin5.com/">泸州老窖</a><a href="http://sc.admin5.com/">水井坊</a><a
-                                            href="http://sc.admin5.com/">洋河</a><a href="http://sc.admin5.com/"
-                                                                                  class="sub_width">金六福</a></span><span><a
-                                            href="http://sc.admin5.com/">牛栏山</a><a href="http://sc.admin5.com/">丰谷</a><a
-                                            href="http://sc.admin5.com/">杜康</a><a href="http://sc.admin5.com/">景芝</a><a
-                                            href="http://sc.admin5.com/" class="sub_width1">河套</a><a
-                                            href="http://sc.admin5.com/" class="sub_width">红楼梦</a></span></li>
-                                    <li><span><a href="http://sc.admin5.com/">古贝春</a><a
-                                            href="http://sc.admin5.com/">宋河</a><a href="http://sc.admin5.com/">泰山</a><a
-                                            href="http://sc.admin5.com/">青花瓷</a><a
-                                            href="http://sc.admin5.com/">董酒</a></span><span><a
-                                            href="http://sc.admin5.com/" class="sub_width">唐王宴</a><a
-                                            href="http://sc.admin5.com/">红星</a><a href="http://sc.admin5.com/">皖酒</a><a
-                                            href="http://sc.admin5.com/">古井</a><a href="http://sc.admin5.com/">西凤</a><a
-                                            href="http://sc.admin5.com/" class="sub_width">伊力特</a></span></li>
-                                </ul>
-                            </div>
-                            <!-- end subCate-->
-                        </li>
-                        <li id="mainCate-2" class="mainCate evenLeval">
-                            <h3><span>&gt;</span><a href="http://sc.admin5.com/">小吃</a></h3>
-
-                            <p><a href="http://sc.admin5.com/">茅台</a><a href="http://sc.admin5.com/">五粮液</a><a
-                                    href="http://sc.admin5.com/">国窖1573</a></p>
-
-                            <p><a href="http://sc.admin5.com/">酱香型</a><a href="http://sc.admin5.com/">浓香型</a><a
-                                    href="http://sc.admin5.com/">贵州</a><a href="http://sc.admin5.com/">四川</a></p>
-
-                            <div class="subCate" style="display: none;">
-                                <ul id="sub-ul-1">
-                                    <h4>品牌</h4>
-                                    <li><span><a href="http://sc.admin5.com/">茅台</a><a
-                                            href="http://sc.admin5.com/">五粮液 </a><a
-                                            href="http://sc.admin5.com/">国窖1573</a><a
-                                            href="http://sc.admin5.com/">郎酒</a><a
-                                            href="http://sc.admin5.com/">汾酒</a></span> <span><a
-                                            href="http://sc.admin5.com/" class="sub_width">剑南春</a><a
-                                            href="http://sc.admin5.com/">泸州老窖</a><a href="http://sc.admin5.com/">水井坊</a><a
-                                            href="http://sc.admin5.com/">洋河</a><a href="http://sc.admin5.com/"
-                                                                                  class="sub_width">金六福</a></span><span><a
-                                            href="http://sc.admin5.com/">牛栏山</a><a href="http://sc.admin5.com/">丰谷</a><a
-                                            href="http://sc.admin5.com/">杜康</a><a href="http://sc.admin5.com/">景芝</a><a
-                                            href="http://sc.admin5.com/" class="sub_width1">河套</a><a
-                                            href="http://sc.admin5.com/" class="sub_width">红楼梦</a></span></li>
-                                    <li><span><a href="http://sc.admin5.com/">古贝春</a><a
-                                            href="http://sc.admin5.com/">宋河</a><a href="http://sc.admin5.com/">泰山</a><a
-                                            href="http://sc.admin5.com/">青花瓷</a><a
-                                            href="http://sc.admin5.com/">董酒</a></span><span><a
-                                            href="http://sc.admin5.com/" class="sub_width">唐王宴</a><a
-                                            href="http://sc.admin5.com/">红星</a><a href="http://sc.admin5.com/">皖酒</a><a
-                                            href="http://sc.admin5.com/">古井</a><a href="http://sc.admin5.com/">西凤</a><a
-                                            href="http://sc.admin5.com/" class="sub_width">伊力特</a></span></li>
-                                </ul>
-                            </div>
-                            <!-- end subCate-->
-                        </li>
-                        <li id="mainCate-1" class="mainCate">
-                            <h3><span>&gt;</span><a href="http://sc.admin5.com/">肉类</a></h3>
-
-                            <p><a href="http://sc.admin5.com/">茅台</a><a href="http://sc.admin5.com/">五粮液</a><a
-                                    href="http://sc.admin5.com/">国窖1573</a></p>
-
-                            <p><a href="http://sc.admin5.com/">酱香型</a><a href="http://sc.admin5.com/">浓香型</a><a
-                                    href="http://sc.admin5.com/">贵州</a><a href="http://sc.admin5.com/">四川</a></p>
-
-                            <div class="subCate" style="display: none;">
-                                <ul id="sub-ul-1">
-                                    <h4>品牌</h4>
-                                    <li><span><a href="http://sc.admin5.com/">茅台</a><a
-                                            href="http://sc.admin5.com/">五粮液 </a><a
-                                            href="http://sc.admin5.com/">国窖1573</a><a
-                                            href="http://sc.admin5.com/">郎酒</a><a
-                                            href="http://sc.admin5.com/">汾酒</a></span> <span><a
-                                            href="http://sc.admin5.com/" class="sub_width">剑南春</a><a
-                                            href="http://sc.admin5.com/">泸州老窖</a><a href="http://sc.admin5.com/">水井坊</a><a
-                                            href="http://sc.admin5.com/">洋河</a><a href="http://sc.admin5.com/"
-                                                                                  class="sub_width">金六福</a></span><span><a
-                                            href="http://sc.admin5.com/">牛栏山</a><a href="http://sc.admin5.com/">丰谷</a><a
-                                            href="http://sc.admin5.com/">杜康</a><a href="http://sc.admin5.com/">景芝</a><a
-                                            href="http://sc.admin5.com/" class="sub_width1">河套</a><a
-                                            href="http://sc.admin5.com/" class="sub_width">红楼梦</a></span></li>
-                                    <li><span><a href="http://sc.admin5.com/">古贝春</a><a
-                                            href="http://sc.admin5.com/">宋河</a><a href="http://sc.admin5.com/">泰山</a><a
-                                            href="http://sc.admin5.com/">青花瓷</a><a
-                                            href="http://sc.admin5.com/">董酒</a></span><span><a
-                                            href="http://sc.admin5.com/" class="sub_width">唐王宴</a><a
-                                            href="http://sc.admin5.com/">红星</a><a href="http://sc.admin5.com/">皖酒</a><a
-                                            href="http://sc.admin5.com/">古井</a><a href="http://sc.admin5.com/">西凤</a><a
-                                            href="http://sc.admin5.com/" class="sub_width">伊力特</a></span></li>
-                                </ul>
-                            </div>
-                            <!-- end subCate-->
-                        </li>
-
-
-                    </ul>
-                </div>
-                <!--end banner-->
-            </div>
+										<p>
+											<a href="http://sc.admin5.com/">酱香型</a><a
+												href="http://sc.admin5.com/">浓香型</a><a
+												href="http://sc.admin5.com/">贵州</a><a
+												href="http://sc.admin5.com/">四川</a>
+										</p>
+ -->									<div class="subCate" style="display: none;">
+											<c:forEach items="${topClassification.list }" var="secondClassification">
+												<ul id="sub-ul-1">
+												<h4>${secondClassification.name }</h4>
+													<li>
+														<span>
+															<c:forEach items="${secondClassification.list }" var="thirdClassification">
+																<a href="http://sc.admin5.com/">${thirdClassification.name }</a>
+															</c:forEach>
+														</span>
+													</li>
+												</ul>
+											</c:forEach>
+										</div>
+									</li>
+								</c:forEach>
+							</ul>
             <!--csleft-->
             <div class="cbookright">
                 <div class="cbooktop">
@@ -352,7 +176,8 @@
                             <div class="box_bottom"></div>
                         </div>
                         <div class="clear"></div>
-                    </div>
+                    </div>   
+                    
 
 
                     <div class="feat_prod_box cbookcontent" style="border_bottom:none;">

@@ -3,6 +3,7 @@ package com.blueshit.cookshow.web.controller;
 import com.blueshit.cookshow.common.utils.MyDataUtils;
 import com.blueshit.cookshow.common.utils.UUIDCreator;
 import com.blueshit.cookshow.model.entity.User;
+import com.blueshit.cookshow.qiniu.QiniuUpload;
 import com.blueshit.cookshow.shiro.ShiroMD5;
 import com.blueshit.cookshow.web.basic.BaseController;
 import com.blueshit.cookshow.web.controller.common.ResultEntity;
@@ -15,10 +16,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.util.Date;
+import java.util.Iterator;
 
 /**
  * Created by Seven on 2015/11/26.
@@ -149,6 +157,38 @@ public class UserController extends BaseController {
         session.removeAttribute("user");
 
         return "redirect:/";
+    }
+
+    @RequestMapping("/uploadFace")
+    @ResponseBody
+    public ResultEntity uploadFace(HttpServletRequest request) throws Exception{
+        ResultEntity resultEntity = new ResultEntity();
+        // 设置上下方文
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
+                request.getSession().getServletContext());
+        // 检查form是否有enctype="multipart/form-data"
+        if (multipartResolver.isMultipart(request)) {
+            MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
+            Iterator<String> iter = multiRequest.getFileNames();
+            while (iter.hasNext()) {
+                // 由CommonsMultipartFile继承而来,拥有上面的方法.
+                MultipartFile file = multiRequest.getFile(iter.next());
+                if (file != null) {
+                    String fileName =file.getOriginalFilename();
+                    File f = new File(MyDataUtils.DateToString(new Date(),"yyyyMMddHHmmSS")+fileName);
+                    file.transferTo(f);
+                    String url = QiniuUpload.upload(f);
+                    User user = getCurrentUser(request.getSession());
+                    user.setFace(url);
+                    userService.update(user);
+                    //更新session
+                    request.getSession().setAttribute("user",user);
+                    resultEntity.setSuccessMsg("上传成功!");
+                    f.deleteOnExit();//删除文件
+                }
+            }
+        }
+        return resultEntity;
     }
 
 }
