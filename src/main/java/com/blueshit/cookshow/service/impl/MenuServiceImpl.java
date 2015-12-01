@@ -30,7 +30,7 @@ public class MenuServiceImpl extends DaoSupportImpl<Menu> implements MenuService
         List<Menu> allrecentmenu = new ArrayList<Menu>();
 		@SuppressWarnings("unchecked")
 		List<Menu> recentmenu = getSession()
-                  .createQuery("select Menu.* from Menu m where")
+                  .createQuery("select Menu.* from Menu m order by m.favourNum")
                  // .setParameter(0,useId)
                   .list();
 		allrecentmenu.addAll(recentmenu);
