@@ -92,24 +92,18 @@
                     -->
 
 						<div style="float: left;">
-                            <c:if test="${user!=null}">
-                                <a class="btn btn1" href="${pageContext.request.contextPath}/user/personCenter">
-                                欢迎，${user.username}
-                                </a>
-                            </c:if>
-                            <c:if test="${user==null}">
-                                <a class="btn btn1"
-                                   href="${pageContext.request.contextPath}/user/forwardToLogin"
-                                   role="button">登录/注册</a>
-                            </c:if>
+							<a class="btn btn1"
+								href="${pageContext.request.contextPath}/user/forwardToLogin"
+								role="button">登录/注册</a>
+							<%--<a class="btn btn1" href="#" role="button">注册</a>--%>
 						</div>
 
 						<ul id="personcenter" style="float: left;">
 							<li style="width: 110px;"><a class="btn btn1"
-								href="${pageContext.request.contextPath}/user/personCenter"
+								href=""
 								role="button">个人中心</a>
 								<ul>
-									<li><a href="#">账号设置</a></li>
+									<li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>
 									<li><a href="#">我的菜单</a></li>
 									<li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
 								</ul></li>
@@ -157,7 +151,7 @@
 												href="http://sc.admin5.com/">贵州</a><a
 												href="http://sc.admin5.com/">四川</a>
 										</p>
- -->										<div class="subCate" style="display: none;">
+ -->									<div class="subCate" style="display: none;">
 											<c:forEach items="${topClassification.list }" var="secondClassification">
 												<ul id="sub-ul-1">
 												<h4>${secondClassification.name }</h4>

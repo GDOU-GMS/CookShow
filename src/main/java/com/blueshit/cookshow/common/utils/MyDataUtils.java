@@ -19,4 +19,14 @@ public class MyDataUtils {
         }
     }
 
+    public static String DateToString(Date source,String format) {
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat(format);
+            return dateFormat.format(source);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
 }
