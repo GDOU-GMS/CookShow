@@ -198,7 +198,7 @@ Purchase: http://wrapbootstrap.com
 
                     <ul class="submenu">
                         <li>
-                            <a href="form-layouts.html">
+                            <a href="${pageContext.request.contextPath}/admin/menu/recentmenu">
                                 <span class="menu-text">最近流行</span>
                             </a>
                         </li>

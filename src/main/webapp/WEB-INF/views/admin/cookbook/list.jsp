@@ -284,6 +284,9 @@ Purchase: http://wrapbootstrap.com
                                     <th>
                                         创建时间
                                     </th>
+                                                              <th>
+                                        更新时间
+                                    </th>
                                     <th>
                                         菜谱类型
                                     </th>
