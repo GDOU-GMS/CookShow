@@ -108,7 +108,7 @@
 
 						<ul id="personcenter" style="float: left;">
 							<li style="width: 110px;"><a class="btn btn1"
-								href=""
+								href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}"
 								role="button">个人中心</a>
 								<ul>
 									<li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>

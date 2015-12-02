@@ -1,6 +1,5 @@
 package com.blueshit.cookshow.web.basic;
 
-import com.blueshit.cookshow.model.entity.Admin;
 import com.blueshit.cookshow.model.entity.User;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,6 +22,7 @@ public class CheckUserLoginInterception implements HandlerInterceptor {
         list.add("/user/updatePassword");
         list.add("/user/uploadFace");
         list.add("/user/logout");
+        list.add("/user/personWork/0");
         list.add("/cookbook/createCookbook");
         list.add("/cookbook/addCookbook");
     }

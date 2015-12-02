@@ -97,14 +97,14 @@
                 <div class="form-group">
                     <label for="file0" class="col-sm-2 control-label">上传文件</label>
                     <div class="col-sm-10">
-                        <input type="file" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  name="file1" id="file0" multiple /><br>
-                        <img class="media-object" src=""  alt="..." style="width:748px;height:475px;cursor:pointer;background:url(images/tj.png)"  id="img0" onClick="tempClick0()" >
+                        <input type="file" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  name="titleImg" id="file0" multiple /><br>
+                        <img class="media-object" src=""  alt="..." style="width:748px;height:475px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/tj.png)"  id="img0" onClick="tempClick0('file0')" >
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="intro" class="col-sm-2 control-label">简介</label>
                     <div class="col-sm-16">
-                        <textarea class="form-control" id="intro" rows="3" style="width:600px"></textarea>
+                        <textarea class="form-control" id="intro" rows="3" name="intro" style="width:600px"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -113,8 +113,8 @@
                         <div class="table-responsive">
                             <table id="ci" name="ci" class="table table-bordered " style="width:600px;">
                                 <tr id="tabtr">
-                                    <td ><input type="text" class="" style="border:none;width:200px;height:20px;" ></td>
-                                    <td><input type="text" class="" style="border:none;width:200px;height:20px;"></td>
+                                    <td ><input type="text" name="material_kind" class="" style="border:none;width:200px;height:20px;" ></td>
+                                    <td><input type="text" class="" name="material_num" style="border:none;width:200px;height:20px;"></td>
                                 </tr>
                             </table>
                         </div>
@@ -128,12 +128,11 @@
                     <div class="media">
                         <div class="media-body media_rself ">
                             <h4 class="media-heading">1</h4>
-                            <textarea type="text" class="form-control" style="width: 80%" rows="4"></textarea>
+                            <textarea type="text" class="form-control" style="width: 80%" rows="4" name="step_intro"></textarea>
                         </div>
                         <div class="media-left media_lself ">
-
-                            <input type="file" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  name="file1" id="file1" multiple /><br>
-                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(images/fm.png)"  id="img1" onClick="tempClick()" >
+                            <input type="file" class="inputimage" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;" data-imgId="img1"  name="step_image" id="file1" multiple /><br>
+                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/fm.png)"  id="img1" data-inputId="file1" onClick="tempClick(event)">
                         </div>
                     </div>
                 </div><!-- form-group-->
@@ -143,11 +142,11 @@
                     <div class="media medialocation">
                         <div class="media-body media_rself ">
                             <h4 class="media-heading">2</h4>
-                            <textarea type="text" class="form-control" style="width: 80%" rows="4"></textarea>
+                            <textarea type="text" class="form-control" style="width: 80%" rows="4" name="step_intro"></textarea>
                         </div>
                         <div class="media-left media_lself ">
-                            <input type="file" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  name="file1" id="file1" multiple /><br>
-                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(images/fm.png)"  id="img1" onClick="tempClick()" >
+                            <input type="file" class="inputimage" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  data-imgId="img2" name="step_image" id="file2" multiple /><br>
+                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/fm.png)"  data-inputId="file2" id="img2" onClick="tempClick(event)" >
                         </div>
                     </div>
                 </div><!-- form-group-->
@@ -158,11 +157,11 @@
                     <div class="media  medialocation">
                         <div class="media-body media_rself ">
                             <h4 class="media-heading">3</h4>
-                            <textarea type="text" class="form-control" style="width: 80%" rows="4"></textarea>
+                            <textarea type="text" class="form-control" style="width: 80%" rows="4" name="step_intro"></textarea>
                         </div>
                         <div class="media-left media_lself ">
-                            <input type="file" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  name="file1" id="file1" multiple /><br>
-                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(images/fm.png)"  id="img1" onClick="tempClick()" >
+                            <input type="file" class="inputimage" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;" data-imgId="img3" name="step_image" id="file3" multiple /><br>
+                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/fm.png)" data-inputId="file3"  id="img3" onClick="tempClick(event)" >
                         </div>
                     </div>
                 </div><!-- form-group-->
@@ -173,12 +172,12 @@
                     <div class="media  medialocation">
                         <div class="media-body media_rself ">
                             <h4 class="media-heading">4</h4>
-                            <textarea type="text" class="form-control" style="width: 80%" rows="4"></textarea>
+                            <textarea type="text" class="form-control" style="width: 80%" rows="4" name="step_intro"></textarea>
                         </div>
                         <div class="media-left media_lself ">
 
-                            <input type="file" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  name="file1" id="file1" multiple /><br>
-                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(images/fm.png)"  id="img1" onClick="tempClick()" >
+                            <input type="file" class="inputimage" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;" data-imgId="img4"  name="step_image" id="file4" multiple /><br>
+                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/fm.png)" data-inputId="file4"  id="img4" onClick="tempClick(event)" >
 
                             </a>
                         </div>
@@ -189,12 +188,12 @@
                     <div class="media  medialocation">
                         <div class="media-body media_rself ">
                             <h4 class="media-heading">5</h4>
-                            <textarea type="text" class="form-control" style="width: 80%" rows="4"></textarea>
+                            <textarea type="text" class="form-control" style="width: 80%" rows="4" name="step_intro"></textarea>
                         </div>
                         <div class="media-left media_lself ">
 
-                            <input type="file" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  name="file1" id="file1" multiple /><br>
-                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(images/fm.png)"  id="img1" onClick="tempClick()" >
+                            <input type="file" class="inputimage" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;" data-imgId="img5" name="step_image" id="file5" multiple /><br>
+                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/fm.png)" data-inputId="file5"  id="img5" onClick="tempClick(event)" >
 
                             </a>
                         </div>
@@ -207,6 +206,20 @@
                         <a class="btn btn-default tradd" href="javascript:void(0)" onclick="addstep()" role="button">添加步骤</a>
                     </div>
                 </div>
+                <div class="form-group">
+                    <div class="medialocation">
+                        <h4 class="media-heading">选择分类：</h4>
+                        <input type="text" class="inputimage" id="checkedName" class="form-control" data-toggle="modal" data-target="#myModal" readonly>
+                        <input type="hidden" id="checkedCode" class="form-control" name="classifications">
+                    </div>
+                </div>
+              <%--  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="button" class="btn btn-default tradd" >
+                            选择分类
+                        </button>
+                    </div>
+                </div><!-- form-group-->--%>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-default btnpublic">发布菜谱</button>
@@ -224,7 +237,53 @@
         </div>
     </div><!--pagebottom-->
 
+
+    <!-- Modal -->
+    <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">选择分类</h4>
+                </div>
+                <div class="modal-body">
+                    <c:forEach items="${topClassificationList}" var="topClassification">
+                        <h4>${topClassification.name}</h4><hr>
+                        <c:forEach items="${topClassification.list}" var="secondClassification">
+                            <h5>${secondClassification.name}：</h5>
+                                <div class="thirdClassification">
+                                    <c:forEach items="${secondClassification.list}" var="thirdClassification">
+                                    <div class="checkbox-inline">
+                                        <label><input type="checkbox" onclick="updateClassification()" value="${thirdClassification.code}" data-name="${thirdClassification.name}">${thirdClassification.name}</label>
+                                    </div>
+                                    </c:forEach>
+                                </div>
+                        </c:forEach>
+                    </c:forEach>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
+<script>
+    var count = 1;
+    function add() {
+        var tbl = document.all.ci;
+        var rows = tbl.rows.length;
+        var tr = tbl.insertRow(rows);
+        var e_id = tr.insertCell(0);
+        e_id.innerHTML = '<input type="text" style="border:none;width:200px;height:20px;" name="material_kind">';
+        var memo = tr.insertCell(1);
+        memo.innerHTML = '<input type="text" style="border:none;width:200px;height:20px;" name="material_num">';
+        count++;
+    }
+</script>
 <script>
     var num=6;
     function addstep(){
@@ -235,6 +294,16 @@
             $(this).val("");
             //给该标签的value赋值为空
         });
+        newdiv.find("input").each(function (i) {
+            $(this).attr("id","file"+num);
+            $(this).attr("data-imgId","img"+num);
+            $(this).change(changeImgSource);
+        })
+        newdiv.find("img").each(function(i){
+            $(this).attr("src","${pageContext.request.contextPath}/resources/customer/images/fm.png")
+            $(this).attr("data-inputId","file"+num)
+            $(this).attr("id","img"+num)
+        })
         newdiv.find("h4").text(num);
         div.after(newdiv);                                   //放在所在div之后
         num++;
@@ -242,7 +311,7 @@
 </script>
 <script type="text/javascript">
 
-    function tempClick0(){
+    function tempClick0(id){
         /**
          * 火狐浏览器实现点击图片出现文件上传界面
          * var a=document.createEvent("MouseEvents");
@@ -251,7 +320,7 @@
          */
 
         //IE浏览器实现点击图片出现文件上传界面
-        document.getElementById('file0').click();            //调用main_img的onclick事件
+        document.getElementById(id).click();            //调用main_img的onclick事件
     }
 
 
@@ -277,21 +346,12 @@
 
 </script>
 <script>
-    var count = 1;
-    function add() {
-        var tbl = document.all.ci;
-        var rows = tbl.rows.length;
-        var tr = tbl.insertRow(rows);
-        var e_id = tr.insertCell(0);
-        e_id.innerHTML = '<input type="text" style="border:none;width:200px;height:20px;" name="e_id' + count + '">';
-        var memo = tr.insertCell(1);
-        memo.innerHTML = '<input type="text" style="border:none;width:200px;height:20px;" name="mode' + count + '">';
-        count++;
-    }
-</script>
-<script>
 
-    function tempClick(){
+    function tempClick(event){
+        event = event ? event : window.event;
+        var obj = event.srcElement ? event.srcElement : event.target;
+        alert($(obj).attr("data-inputId"))
+        var inputId = $(obj).attr("data-inputId")
         /**
          * 火狐浏览器实现点击图片出现文件上传界面
          * var a=document.createEvent("MouseEvents");
@@ -300,17 +360,27 @@
          */
 
         //IE浏览器实现点击图片出现文件上传界面
-        document.getElementById('file1').click();            //调用main_img的onclick事件
+        //$("#"+inputId).click();
+        document.getElementById(inputId).click();            //调用main_img的onclick事件
+
     }
 
 
-    $("#file1").change(function(){
+    $(".inputimage").change(changeImgSource) ;
+
+    //修改触发事件
+    function changeImgSource(event){
+        event = event ? event : window.event;
+        var obj = event.srcElement ? event.srcElement : event.target;
+        var imgId = $(obj).attr("data-imgid");
+        alert(imgId)
         var objUrl = getObjectURL(this.files[0]) ;
         console.log("objUrl = "+objUrl) ;
         if (objUrl) {
-            $("#img1").attr("src", objUrl) ;
+            $("#"+imgId).attr("src", objUrl) ;
         }
-    }) ;
+    }
+
     //建立一個可存取到該file的url
     function getObjectURL(file) {
         var url = null ;
@@ -322,6 +392,25 @@
             url = window.webkitURL.createObjectURL(file) ;
         }
         return url ;
+    }
+
+    function updateClassification(){
+        //获取所有选中的checkbox
+        var thirdClassifications = $(".thirdClassification :input:checked");
+        var $checkedName = $("#checkedName");
+        var $checkedCode = $("#checkedCode");
+        var checkedNameStr = "";
+        var checkedCodeStr = "";
+
+        thirdClassifications.each(function(index,thirdClassification){
+            checkedNameStr = checkedNameStr + $(thirdClassification).data("name")+",";
+            checkedCodeStr = checkedCodeStr + $(thirdClassification).val() +",";
+            console.log([$(thirdClassification).val()])
+            console.log([$(thirdClassification).data("name")])
+        });
+        $checkedName.val(checkedNameStr)
+        $checkedCode.val(checkedCodeStr)
+
     }
 </script>
 </body>
