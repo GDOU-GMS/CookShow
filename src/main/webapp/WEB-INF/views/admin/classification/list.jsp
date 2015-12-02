@@ -305,7 +305,7 @@ Purchase: http://wrapbootstrap.com
                                             <i class="fa fa-folder"></i>
                                             <div class="tree-folder-name">所有分类
                                                 <div class="tree-actions">
-                                                    <i class="fa fa-plus green" data-parentcode="" onclick=addClassification(this)></i>
+                                                    <i class="fa fa-plus green" data-parentcode="" onclick=addClassification(event)></i>
                                                 <%--<i class="fa fa-trash-o danger"></i>
                                                     <i class="fa fa-rotate-right blizzard"></i>--%>
                                                 </div>
@@ -324,8 +324,8 @@ Purchase: http://wrapbootstrap.com
                                                                 ${topClassification.name}
                                                            </c:if>
                                                            <div class="tree-actions">
-                                                               <i class="fa fa-plus green" title="添加" data-parentcode="${topClassification.code}" onclick="addClassification(this)"></i>
-                                                               <i class="fa fa-edit blizzard" title="编辑" data-id="${topClassification.id}" data-name="${topClassification.name}" onclick="updateClassification(this)"></i>
+                                                               <i class="fa fa-plus green" title="添加" data-parentcode="${topClassification.code}" onclick="addClassification(event)"></i>
+                                                               <i class="fa fa-edit blizzard" title="编辑" data-id="${topClassification.id}" data-name="${topClassification.name}" onclick="updateClassification(event)"></i>
                                                                <c:if test="${topClassification.deleted eq 1}">
                                                                    <a href="${pageContext.request.contextPath}/admin/classification/recover?classificationId=${topClassification.id}" onclick="return confirm('确认要恢复吗?')"><i class="fa fa-reply danger" title="恢复"></i></a>
                                                                </c:if>
@@ -348,8 +348,8 @@ Purchase: http://wrapbootstrap.com
                                                                         ${secondClassification.name}
                                                                    </c:if>
                                                                        <div class="tree-actions">
-                                                                           <i class="fa fa-plus green" title="添加" data-parentcode="${secondClassification.code}" onclick="addClassification(this)"></i>
-                                                                           <i class="fa fa-edit blizzard" title="编辑" data-id="${secondClassification.id}" data-name="${secondClassification.name}" onclick="updateClassification(this)"></i>
+                                                                           <i class="fa fa-plus green" title="添加" data-parentcode="${secondClassification.code}" onclick="addClassification(event)"></i>
+                                                                           <i class="fa fa-edit blizzard" title="编辑" data-id="${secondClassification.id}" data-name="${secondClassification.name}" onclick="updateClassification(event)"></i>
                                                                            <c:if test="${secondClassification.deleted eq 1}">
                                                                                <a href="${pageContext.request.contextPath}/admin/classification/recover?classificationId=${secondClassification.id}" onclick="return confirm('确认要恢复吗?')"><i class="fa fa-reply danger" title="恢复"></i></a>
                                                                            </c:if>
@@ -371,7 +371,7 @@ Purchase: http://wrapbootstrap.com
                                                                                     ${thirdClassification.name}</div>
                                                                                </c:if>
                                                                            <div class="tree-actions">
-                                                                               <i class="fa fa-edit blizzard" title="编辑" data-id="${thirdClassification.id}" data-name="${thirdClassification.name}" onclick="updateClassification(this)"></i>
+                                                                               <i class="fa fa-edit blizzard" title="编辑" data-id="${thirdClassification.id}" data-name="${thirdClassification.name}" onclick="updateClassification(event)"></i>
                                                                                <c:if test="${thirdClassification.deleted eq 1}">
                                                                                    <a href="${pageContext.request.contextPath}/admin/classification/recover?classificationId=${thirdClassification.id}" onclick="return confirm('确认要恢复吗?')"><i class="fa fa-reply danger" title="恢复"></i></a>
                                                                                </c:if>

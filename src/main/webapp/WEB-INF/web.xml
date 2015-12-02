@@ -15,6 +15,11 @@
         <param-value>classpath:applicationContext.xml</param-value>
     </context-param>
 
+    <!--数据缓存监听器-->
+    <listener>
+        <listener-class>com.blueshit.cookshow.web.controller.listener.DataCacheListener</listener-class>
+    </listener>
+
 
     <!--字符编码过滤器-->
     <filter>

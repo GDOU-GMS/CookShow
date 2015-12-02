@@ -5,6 +5,7 @@ import com.blueshit.cookshow.common.utils.EntityToVo;
 import com.blueshit.cookshow.model.entity.Classification;
 import com.blueshit.cookshow.model.vo.ClassificationVo;
 import com.blueshit.cookshow.web.basic.BaseController;
+import com.blueshit.cookshow.web.controller.listener.DataCacheListener;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,6 +61,8 @@ public class AdminClassificationController extends BaseController {
                 }
             }
             classificationService.save(classification);
+            //更新缓存
+            updateClassificationCache();
         }
         return "redirect:/admin/classification/list";
     }
@@ -73,6 +76,8 @@ public class AdminClassificationController extends BaseController {
             if(c!=null){
                 c.setName(name);
                 classificationService.update(c);
+                //更新缓存
+                updateClassificationCache();
             }
         }
         return "redirect:/admin/classification/list";
@@ -88,6 +93,8 @@ public class AdminClassificationController extends BaseController {
                 c.setDeleted(1);
                 classificationService.update(c);
                 classificationService.setAllChildrenDeleteState(c.getCode(),1);
+                //更新缓存
+                updateClassificationCache();
             }
         }
         return "redirect:/admin/classification/list";
@@ -103,10 +110,18 @@ public class AdminClassificationController extends BaseController {
                 c.setDeleted(0);
                 classificationService.update(c);
                 classificationService.setAllChildrenDeleteState(c.getCode(),0);
+                //更新缓存
+                updateClassificationCache();
             }
         }
         return "redirect:/admin/classification/list";
     }
 
+
+
+    private void updateClassificationCache(){
+        DataCacheListener.classificationList.clear();
+        DataCacheListener.classificationList.addAll(classificationService.getAllClassification());
+    }
 
 }
