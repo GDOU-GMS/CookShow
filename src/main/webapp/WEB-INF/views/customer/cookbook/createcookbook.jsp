@@ -89,7 +89,7 @@
                         <!--<input type="file" name="file0" id="file0" multiple /><br>
                         <img style="width:748px;height:475px;" src="images/tj.png" alt="" class="img-rounded" id="img0">-->
                         <input type="file" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  name="file1" id="file0" multiple /><br>
-                        <img class="media-object" src=""  alt="..." style="width:748px;height:475px;cursor:pointer;background:url(images/tj.png)"  id="img0" onClick="tempClick0()" >
+                        <img class="media-object" src=""  alt="..." style="width:748px;height:475px;cursor:pointer;background:url(images/菜谱封面.gif)"  id="img0" onClick="tempClick0()" >
                     </div>
                 </div>
 
@@ -133,7 +133,7 @@
                         <div class="media-left media_lself ">
 
                             <input type="file" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  name="file1" id="file1" multiple /><br>
-                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(images/fm.png)"  id="img1" onClick="tempClick()" >
+                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(images/步骤图.gif)"  id="img1" onClick="tempClick()" >
 
                             </a>
                         </div>
@@ -155,7 +155,7 @@
                         <div class="media-left media_lself ">
 
                             <input type="file" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  name="file1" id="file1" multiple /><br>
-                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(images/fm.png)"  id="img1" onClick="tempClick()" >
+                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(images/步骤图.gif)"  id="img1" onClick="tempClick()" >
 
                             </a>
                         </div>
@@ -177,7 +177,7 @@
                         <div class="media-left media_lself ">
 
                             <input type="file" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  name="file1" id="file1" multiple /><br>
-                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(images/fm.png)"  id="img1" onClick="tempClick()" >
+                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(images/步骤图.gif)"  id="img1" onClick="tempClick()" >
 
                             </a>
                         </div>
@@ -199,7 +199,7 @@
                         <div class="media-left media_lself ">
 
                             <input type="file" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  name="file1" id="file1" multiple /><br>
-                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(images/fm.png)"  id="img1" onClick="tempClick()" >
+                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(images/步骤图.gif)"  id="img1" onClick="tempClick()" >
 
                             </a>
                         </div>
@@ -219,7 +219,7 @@
                         <div class="media-left media_lself ">
 
                             <input type="file" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  name="file1" id="file1" multiple /><br>
-                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(images/fm.png)"  id="img1" onClick="tempClick()" >
+                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(images/步骤图.gif)"  id="img1" onClick="tempClick()" >
 
                             </a>
                         </div>
