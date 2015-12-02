@@ -180,20 +180,8 @@ Purchase: http://wrapbootstrap.com
 
                     <ul class="submenu">
                         <li>
-                            <a href="form-layouts.html">
-                                <span class="menu-text">最近流行</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="form-inputs.html">
-                                <span class="menu-text">往期头条</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="form-pickers.html">
-                                <span class="menu-text">月度最佳</span>
+                            <a href="${pageContext.request.contextPath}/admin/menu/list">
+                                <span class="menu-text">菜单列表</span>
                             </a>
                         </li>
 

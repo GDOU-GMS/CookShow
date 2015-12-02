@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MenuController extends BaseController {
    
 	
+
 	@RequestMapping("/getAllMenu")
 	public String getAllMenu(Long[] ids,Model model)  throws Exception{
     	 List<Menu> menu=menuService.findByIds(ids);
@@ -55,4 +56,5 @@ public class MenuController extends BaseController {
         return "customer/menu/cookmenu";
     }
    
+
 }

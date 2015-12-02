@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class MenuServiceImpl extends DaoSupportImpl<Menu> implements MenuService {
 
 	
+
 	/**
 	 * 获得流行菜单
 	 */
@@ -35,6 +36,7 @@ public class MenuServiceImpl extends DaoSupportImpl<Menu> implements MenuService
 		recentMenuList.addAll(menuList);
 		return recentMenuList;
 	}
+
 
 
 }
