@@ -281,86 +281,74 @@ Purchase: http://wrapbootstrap.com
                                     <th>
                                         #
                                     </th>
-                                    <th>
-                                        创建时间
-                                    </th>
-                                                              <th>
-                                        更新时间
+                                                                        <th>
+                                        菜谱标题
                                     </th>
                                     <th>
                                         菜谱类型
                                     </th>
+          
                                     <th>
                                         访问数
                                     </th>
                                     <th>
                                         点赞数
                                     </th>
-                                    <th>
-                                        菜谱图片
+                                                              <th>
+                                        创建时间
+                                    </th>
+                                                              <th>
+                                        更新时间
                                     </th>
                                     <th>
-                                        菜谱标题
+                                
+                                     <th>
+              是否有效           
                                     </th>
                                     <th>
-                                        菜谱材料
-                                    </th>
-                                    <th>
-                                        制作步骤
-                                    </th>
-                                           <th>
-                                        评论？
-                                    </th>
-                                           <th>
-                                        提醒
-                                    </th>
-                                                         <th>
-                                        是否删除
+              操作                      
                                     </th>
                                 </tr>
                                 </thead>
                                 <tbody>
                              <c:forEach items="${cookbooklist}" var="cookbook" varStatus="loop">
-                                    <tr>
+                                      <tr>
                                         <td>
                                                 ${cookbook.id}
                                         </td>
-                              
                                         <td>
+                                                ${cookbook.title}
+                                        </td>
+                                        <td>
+                                                ${cookbook.classificationCode}
+                                        </td>
+                                    
+                                         <td>
+                                                 ${cookbook.clickNum}                                        </td>
+                                         <td>
+                                                ${cookbook.favourNum}
+                                        </td>
+                                            <td>
                                                 ${cookbook.createDate}
                                         </td>
                                         <td>
                                                 ${cookbook.updateDate}
                                         </td>
-                                         <td>
-                                                ${cookbook.classificationCode}
-                                        </td>
-                                         <td>
-                                                ${cookbook.clickNum}
-                                        </td>
-                                         <td>
-                                                ${cookbook.favourNum}
+                                               </td> <td>
+                                        <td>
+                                        <c:if test="${cookbook.deleted eq 1}">
+                                            已锁定
+                                        </c:if>
+                                        <c:if test="${cookbook.deleted eq 0}">
+                                            未锁定
+                                        </c:if>
                                         </td>
                                         <td>
-                                     ${cookbook.titleImage }
-                                        </td>
-                                        <td>
-                                     ${cookbook.title }
-                                        </td>
-                                          <td>
-                                     ${cookbook.material }
-                                        </td>
-                                          <td>
-                                     ${cookbook.step }
-                                        </td>
-                                          <td>
-                                     ${cookbook.publicState }
-                                        </td>
-                                            <td>
-                                     ${cookbook.remind }
-                                        </td>
-                                              <td>
-                                     ${cookbook.deleted }
+                                           <a href="${pageContext.request.contextPath}/admin/cookbook/disable?cookbookId=${cookbook.id}" method="post" 
+                                           class="btn btn-info btn-xs edit"> 锁定</a>
+                                           <a href="${pageContext.request.contextPath}/admin/cookbook/enable?cookbookId=${cookbook.id}" method="post" 
+                                           class="btn btn-info btn-xs edit"> 解锁</a>
+                                            <a onclick="checkcookbookdetail(this)" class="btn btn-danger btn-xs delete">详细信息</a>
                                         </td>
                                     </tr>
                                 </c:forEach> 
@@ -398,6 +386,40 @@ Purchase: http://wrapbootstrap.com
 
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="detailmenuModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="" method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">详细信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                  <table class="table table-hover">  
+                  <thead class="bordered-darkorange">
+                  <tr role="row">
+                   <th style="width: 200px;" colspan="1" rowspan="1"  tabindex="0"
+                    class="sorting">菜谱名称</th>
+                    </tr>
+                     </thead>
+                     <th rowspan="1" colspan="1"><input class="form-control input-sm" type="text">
+                     
+                     </th>
+                      </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 <!--Basic Scripts-->
 <script src="/resources/assets/js/jquery-2.0.3.min.js"></script>
 <script src="/resources/assets/js/bootstrap.min.js"></script>
@@ -411,6 +433,20 @@ Purchase: http://wrapbootstrap.com
 <script src="/resources/assets/js/charts/sparkline/jquery.sparkline.js"></script>
 <script src="/resources/assets/js/charts/sparkline/sparkline-init.js"></script>
 
+
+<script >
+    jQuery(document).ready(function () {
+    UITree.init();
+});
+    
+    function checkcookbookdetail(event){
+        event = event ? event : window.event;
+        var obj = event.srcElement ? event.srcElement : event.target;
+
+        $("#detailmenuModal").modal('show');
+    }
+
+</script>
 
 </body>
 <!--  /Body -->

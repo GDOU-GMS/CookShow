@@ -92,10 +92,18 @@
                     -->
 
 						<div style="float: left;">
-							<a class="btn btn1"
-								href="${pageContext.request.contextPath}/user/forwardToLogin"
-								role="button">登录/注册</a>
-							<%--<a class="btn btn1" href="#" role="button">注册</a>--%>
+                            <div style="float:left;">
+                                <c:if test="${user!=null}">
+                                    <a class="btn btn1" href="${pageContext.request.contextPath}/user/personCenter">
+                                        欢迎，${user.username}
+                                    </a>
+                                </c:if>
+                                <c:if test="${user==null}">
+                                    <a class="btn btn1"
+                                       href="${pageContext.request.contextPath}/user/forwardToLogin"
+                                       role="button">登录/注册</a>
+                                </c:if>
+                            </div>
 						</div>
 
 						<ul id="personcenter" style="float: left;">
@@ -356,26 +364,26 @@
 					<div class="csright">
 						<div id="owl-demo" class="owl-carousel">
 							<a class="item" href="" target="_blank"><img
-								src="${pageContext.request.contextPath}/resources/customer/images/13.jpg"
+								src="${pageContext.request.contextPath}/resources/customer/images/北京烤鸭.gif"
 								style="width: 750px; height: 435px;" alt=""><b></b><span>秀厨网美食狂欢登场</span></a>
 							<a class="item" href="" target="_blank"><img
-								src="${pageContext.request.contextPath}/resources/customer/images/13.jpg"
+								src="${pageContext.request.contextPath}/resources/customer/images/海鲜.gif"
 								style="width: 750px; height: 435px;" alt=""><b></b><span>秀厨网美食狂欢登场</span></a>
 							<a class="item" href="" target="_blank"><img
 								style="width: 750px; height: 435px;"
-								src="${pageContext.request.contextPath}/resources/customer/images/13.jpg"
+								src="${pageContext.request.contextPath}/resources/customer/images/鸡翅.gif"
 								alt=""><b></b><span>秀厨网美食狂欢登场</span></a> <a class="item"
 								href="" target="_blank"><img
-								src="${pageContext.request.contextPath}/resources/customer/images/13.jpg"
+								src="${pageContext.request.contextPath}/resources/customer/images/丸子.gif"
 								style="width: 750px; height: 435px;" alt=""><b></b><span>秀厨网美食狂欢登场</span></a>
 							<a class="item" href="" target="_blank"><img
-								src="${pageContext.request.contextPath}/resources/customer/images/13.jpg"
+								src="${pageContext.request.contextPath}/resources/customer/images/寿司.gif"
 								style="width: 750px; height: 435px;" alt=""><b></b><span>锐秀厨网美食狂欢登场</span></a>
 							<a class="item" href="" target="_blank"><img
-								src="${pageContext.request.contextPath}/resources/customer/images/13.jpg"
+								src="${pageContext.request.contextPath}/resources/customer/images/虾.gif"
 								style="width: 750px; height: 435px;" alt=""><b></b><span>秀厨网美食狂欢登场</span></a>
 							<a class="item" href="" target="_blank"><img
-								src="${pageContext.request.contextPath}/resources/customer/images/13.jpg"
+								src="${pageContext.request.contextPath}/resources/customer/images/扒.gif"
 								style="width: 750px; height: 435px;" alt=""><b></b><span>秀厨网美食狂欢登场</span></a>
 						</div>
 
@@ -393,12 +401,12 @@
 						<div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
 							<div class="thumbnail">
 								<img
-									src="${pageContext.request.contextPath}/resources/customer/images/255.png"
+									src="${pageContext.request.contextPath}/resources/customer/images/1.gif"
 									alt="..." style="margin: 0px 30x; margin-top: 25px;">
 
 								<div class="caption">
 
-									<h4>美美哒</h4>
+									<h4>甜品</h4>
 									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
 								</div>
 							</div>
@@ -411,12 +419,12 @@
 						<div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
 							<div class="thumbnail">
 								<img
-									src="${pageContext.request.contextPath}/resources/customer/images/255.png"
+									src="${pageContext.request.contextPath}/resources/customer/images/2.gif"
 									alt="..." style="margin: 0px 30x; margin-top: 25px;">
 
 								<div class="caption">
 
-									<h4>美美哒</h4>
+									<h4>麻辣小龙虾</h4>
 									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
 								</div>
 							</div>
@@ -428,12 +436,12 @@
 						<div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
 							<div class="thumbnail">
 								<img
-									src="${pageContext.request.contextPath}/resources/customer/images/255.png"
+									src="${pageContext.request.contextPath}/resources/customer/images/3.gif"
 									alt="..." style="margin: 0px 30x; margin-top: 25px;">
 
 								<div class="caption">
 
-									<h4>美美哒</h4>
+									<h4>绿茶饼</h4>
 									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
 								</div>
 							</div>
@@ -447,12 +455,12 @@
 						<div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
 							<div class="thumbnail">
 								<img
-									src="${pageContext.request.contextPath}/resources/customer/images/255.png"
+									src="${pageContext.request.contextPath}/resources/customer/images/4.gif"
 									alt="..." style="margin: 0px 30x; margin-top: 25px;">
 
 								<div class="caption">
 
-									<h4>美美哒</h4>
+									<h4>小炒</h4>
 									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
 								</div>
 							</div>
@@ -465,12 +473,12 @@
 						<div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
 							<div class="thumbnail">
 								<img
-									src="${pageContext.request.contextPath}/resources/customer/images/255.png"
+									src="${pageContext.request.contextPath}/resources/customer/images/5.gif"
 									alt="..." style="margin: 0px 30x; margin-top: 25px;">
 
 								<div class="caption">
 
-									<h4>美美哒</h4>
+									<h4>鱼香肉丝</h4>
 									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
 								</div>
 							</div>
@@ -482,12 +490,12 @@
 						<div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
 							<div class="thumbnail">
 								<img
-									src="${pageContext.request.contextPath}/resources/customer/images/255.png"
+									src="${pageContext.request.contextPath}/resources/customer/images/6.gif"
 									alt="..." style="margin: 0px 30x; margin-top: 25px;">
 
 								<div class="caption">
 
-									<h4>美美哒</h4>
+									<h4>小炒</h4>
 									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
 								</div>
 							</div>

@@ -1,10 +1,6 @@
 package com.blueshit.cookshow.web.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
 
 import com.blueshit.cookshow.common.helper.Page;
 import com.blueshit.cookshow.common.helper.QueryHelper;
@@ -36,7 +32,7 @@ public class MenuController extends BaseController {
 
     @RequestMapping("/myMenu")
     public String myMenu(){
-        return "customer/menu/personwork";
+        return "customer/user/personwork";
     }
 
     @RequestMapping("/createMenu")
