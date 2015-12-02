@@ -180,22 +180,11 @@ Purchase: http://wrapbootstrap.com
 
                     <ul class="submenu">
                         <li>
-                            <a href="form-layouts.html">
-                                <span class="menu-text">最近流行</span>
+                            <a href="${pageContext.request.contextPath}/admin/menu/list">
+                                <span class="menu-text">菜单列表</span>
                             </a>
                         </li>
 
-                        <li>
-                            <a href="form-inputs.html">
-                                <span class="menu-text">往期头条</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="form-pickers.html">
-                                <span class="menu-text">月度最佳</span>
-                            </a>
-                        </li>
 
                     </ul>
                 </li>
@@ -275,7 +264,7 @@ Purchase: http://wrapbootstrap.com
                             <div class="header bg-blue">
                                菜谱
                             </div>
-                            <table class="table table-hover">
+                            <table id="click" class="table table-hover">
                                 <thead class="bordered-darkorange">
                                 <tr>
                                     <th>
@@ -311,10 +300,10 @@ Purchase: http://wrapbootstrap.com
                                 </tr>
                                 </thead>
                                 <tbody>
-                             <c:forEach items="${cookbooklist}" var="cookbook" varStatus="loop">
+                             <c:forEach items="${page.list}" var="cookbook" varStatus="loop">
                                       <tr>
                                         <td>
-                                                ${cookbook.id}
+                                                ${page.pageSize*(page.pageNum-1)+loop.index+1}
                                         </td>
                                         <td>
                                                 ${cookbook.title}
@@ -398,16 +387,16 @@ Purchase: http://wrapbootstrap.com
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                  <table class="table table-hover">  
-                  <thead class="bordered-darkorange">
-                  <tr role="row">
+                  <table id="tableId tr" class="table table-hover">  
+                                 <tr role="row">
                    <th style="width: 200px;" colspan="1" rowspan="1"  tabindex="0"
                     class="sorting">菜谱名称</th>
                     </tr>
-                     </thead>
-                     <th rowspan="1" colspan="1"><input class="form-control input-sm" type="text">
+                     <th rowspan="1" colspan="1"></th>
+                      <tr>
+                      
+                      </tr>
                      
-                     </th>
                       </table>
                     </div>
                 </div>
@@ -442,8 +431,8 @@ Purchase: http://wrapbootstrap.com
     function checkcookbookdetail(event){
         event = event ? event : window.event;
         var obj = event.srcElement ? event.srcElement : event.target;
+      	 $("#detailmenuModal").modal('show');
 
-        $("#detailmenuModal").modal('show');
     }
 
 </script>

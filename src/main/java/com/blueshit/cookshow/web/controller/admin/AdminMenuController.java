@@ -2,6 +2,9 @@ package com.blueshit.cookshow.web.controller.admin;
 
 import java.util.List;
 
+import com.blueshit.cookshow.common.helper.Page;
+import com.blueshit.cookshow.common.helper.QueryHelper;
+import com.blueshit.cookshow.model.entity.Cookbook;
 import com.blueshit.cookshow.model.entity.Menu;
 import com.blueshit.cookshow.web.basic.BaseController;
 
@@ -17,15 +20,57 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AdminMenuController extends BaseController {
 
 	
+	/*
+	 * 列出菜单
+	 */
+	@RequestMapping("/list")
+	public String list(Integer pageNum,Model model){
+		// TODO Auto-generated method stub
+        pageNum = pageNum==null||pageNum==0?1:pageNum;
+        QueryHelper queryHelper = new QueryHelper(Menu.class,"m").addOrderByProperty("createDate",true);
+        Page page = menuService.getPage(pageNum, queryHelper);
+		model.addAttribute("page",page);
+		return "admin/menu/list";
+	}
 	
 	/*
-	 * 列出最近流行菜谱
+	 * 锁定菜单
 	 */
-	@RequestMapping("/recentmenu")
-   public String list(Model model){
-	 List<Menu> recentmenu=menuService.getRecentPopular();
-	 model.addAttribute("recentmenu",recentmenu);
-	 return "admin/menu/recentmenu";
-  }
+	@RequestMapping("/disable")
+	public String disable(String menuId){
+         
+      Menu menu=menuService.findById(Long.parseLong(menuId));
+      menu.setDeleted(1);
+	  menuService.update(menu);
+	  
+	  return "redirect:list";
+	}
+	
+	/*
+	 * 解锁菜单
+	 */
+	@RequestMapping("/enable")
+	public String enable(String menuId){
+         
+      Menu menu=menuService.findById(Long.parseLong(menuId));
+      menu.setDeleted(0);
+	  menuService.update(menu);
+	  
+	  return "redirect:list";
+	}
+	
+	/*
+	 * 获取详细信息
+	 */
+	@RequestMapping("/detail")
+	public String detail(String menuId,Model model){
+		
+		Menu menu=menuService.findById(Long.parseLong(menuId));
+//		List<Cookbook> cookbook = getSession()
+//				.createQuery("from Menu m left join fetch m.cookbooks where m.menuId = ?");
+		model.addAttribute("menu",menu);
+		return "admin/menu/detail";
+	}
 
+	
 }
