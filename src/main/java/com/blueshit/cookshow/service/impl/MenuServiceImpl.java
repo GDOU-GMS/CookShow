@@ -19,23 +19,20 @@ import org.springframework.transaction.annotation.Transactional;
 public class MenuServiceImpl extends DaoSupportImpl<Menu> implements MenuService {
 
 	
-	/*
-	 * (non-Javadoc)
-	 * 最近流行菜谱信息
-	 * @see com.blueshit.cookshow.service.MenuService#getRecentPopular(int)
+	/**
+	 * 获得流行菜单
 	 */
 	public List<Menu> getRecentPopular() {
 		// TODO Auto-generated method stub
 		
-        List<Menu> allrecentmenu = new ArrayList<Menu>();
+        List<Menu> recentMenuList = new ArrayList<Menu>();
 		@SuppressWarnings("unchecked")
-		List<Menu> recentmenu = getSession()
-                  .createQuery("select Menu.* from Menu m where")
-                 // .setParameter(0,useId)
+		List<Menu> menuList = getSession()
+                  .createQuery("from  Menu  order by createDate desc")
+                  .setMaxResults(10)
                   .list();
-		allrecentmenu.addAll(recentmenu);
-
-		return recentmenu;
+		recentMenuList.addAll(menuList);
+		return recentMenuList;
 	}
 
 

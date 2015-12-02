@@ -12,10 +12,21 @@
 	width:100%;
 	
 }
+
+.cbooktop::after{
+	content:" ";
+	display:block;
+	height:0px;
+	width:0px;
+	clear:both;
+}
 .cbookbottom{
 	float:left;
 	width:100%;
 	margin-left:80px;
+}
+.cbookbottom .active{
+	background:#eeeeee;
 }
 .prod_title h4{
 	padding:0px;
@@ -31,8 +42,12 @@
 	
 }
 .cbooksidecss ul li{
+	display:block;
 	list-style-type:none;
 	padding:5px 5px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
 	
 }
 .cbooksidecss ul li a{
@@ -54,4 +69,34 @@
     float:left;
 	width:100%;
 	height:100%;
+}
+.ssss{
+
+}
+
+.cbookcontent a {
+	font-family:sans-serif;
+	color:#ec8d24;
+}
+.cbookcontent span{
+	font-family:sans-serif;
+}
+
+
+.cbookcontent a {
+	font-family:sans-serif;
+	text-decoration:none;
+	color:#ccc;
+}
+.cbuser:hover p{
+	color:#ec8d24;
+	text-decoration:none;
+}
+.prod_title  a{
+color:#ec8d24;
+
+}
+.prod_title  a:hover{
+background:#ec8d24;
+color:#fff;
 }

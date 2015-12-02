@@ -5,6 +5,7 @@ import com.blueshit.cookshow.common.helper.QueryHelper;
 import com.blueshit.cookshow.model.entity.User;
 import com.blueshit.cookshow.service.UserService;
 import com.blueshit.cookshow.web.basic.BaseController;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +26,7 @@ public class AdminUserController extends BaseController {
         Page page = userService.getPage(pageNum, queryHelper);
 
         model.addAttribute("page",page);
-
+       
         return "admin/user/list";
 
     }

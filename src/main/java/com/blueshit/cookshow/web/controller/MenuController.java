@@ -6,8 +6,12 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.blueshit.cookshow.common.helper.Page;
+import com.blueshit.cookshow.common.helper.QueryHelper;
+import com.blueshit.cookshow.model.entity.Cookbook;
 import com.blueshit.cookshow.model.entity.Menu;
 import com.blueshit.cookshow.model.vo.ClassificationVo;
+import com.blueshit.cookshow.service.MenuService;
 import com.blueshit.cookshow.web.basic.BaseController;
 
 import org.springframework.stereotype.Controller;
@@ -41,10 +45,17 @@ public class MenuController extends BaseController {
     }
 
     @RequestMapping("/cookmenu")
-    public String cookmenu(Model model){
+    public String cookmenu(Integer pageNum,Model model){
         //查询所有分类信息
         List<ClassificationVo> topClassificationVoList = classificationService.getAllClassification();
         model.addAttribute("topClassificationVoList",topClassificationVoList);
+        //查询所有菜谱
+        pageNum = pageNum==null||pageNum==0?1:pageNum;
+        QueryHelper queryHelper = new QueryHelper(Cookbook.class,"cb");
+        Page page = cookbookService.getPage(pageNum, queryHelper);
+        model.addAttribute("page",page);
+        List<Menu> menuList=menuService.getRecentPopular();
+        model.addAttribute("menuList", menuList);
         return "customer/menu/cookmenu";
     }
    
