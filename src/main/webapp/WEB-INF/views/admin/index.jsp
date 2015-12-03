@@ -264,14 +264,6 @@ Purchase: http://wrapbootstrap.com
             </div>
             <!-- /Page Breadcrumb -->
             <!-- Page Header -->
-            <div class="page-header position-relative">
-                <div class="header-title">
-                    <h1>
-                        秀厨网
-                    </h1>
-                </div>
-
-            </div>
             <!-- /Page Header -->
             <!-- Page Body -->
             <div>
