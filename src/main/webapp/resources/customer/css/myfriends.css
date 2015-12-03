@@ -24,12 +24,29 @@
      display:inline;
 	 color:#d9d7d7;
 }
-.mediafriendr a:hover{
+.mediafriendr a{
 	text-decoration:none;
+	
+}
+.mediafriendr a:hover{
+	color:#ec8d24;
 }
 .mediafriendr a:hover span{
-	text-decoration:none;
 	color:#ec8d24;
 	
 
+}
+.mediafriendl img{
+	width:67px;
+	height:67px;
+
+	
+}
+.mediainforight a {
+	
+	text-decoration:none;
+	
+}
+.mediainforight a:hover{
+	color:#ec8d24;
 }

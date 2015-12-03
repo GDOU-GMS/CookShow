@@ -45,9 +45,10 @@
 	display:block;
 	list-style-type:none;
 	padding:5px 5px;
+	-moz-binding: url('ellipsis.xml#ellipsis');  
 	overflow:hidden;
 	text-overflow:ellipsis;
-	white-space: nowrap;
+	white-space: nowrap; 
 	
 }
 .cbooksidecss ul li a{
