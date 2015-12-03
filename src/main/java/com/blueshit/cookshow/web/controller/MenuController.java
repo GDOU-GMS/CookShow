@@ -12,6 +12,7 @@ import com.blueshit.cookshow.web.basic.BaseController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -22,23 +23,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MenuController extends BaseController {
    
 	
-
-	@RequestMapping("/getAllMenu")
-	public String getAllMenu(Long[] ids,Model model)  throws Exception{
-    	 List<Menu> menu=menuService.findByIds(ids);
-         model.addAttribute("menuList", menu); 
-         //System.out.println("menulist");
-    	 return "/getAllMenu";
-     }
-
-    @RequestMapping("/myMenu")
-    public String myMenu(){
-        return "customer/user/personwork";
-    }
-
     @RequestMapping("/createMenu")
     public String createMenu(){
         return "customer/menu/createnewmenu";
+    }
+
+    @RequestMapping("/menuDetail/{id}")
+    public String menuDetail(@PathVariable String id){
+        return "customer/menu/menuDetail";
     }
 
     @RequestMapping("/cookmenu")

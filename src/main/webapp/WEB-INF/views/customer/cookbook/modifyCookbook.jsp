@@ -86,25 +86,26 @@
     <div id="content">
         <div class="cscontent">
 
-            <h3>新建菜谱</h3>
-            <form class="form-horizontal" METHOD="post" action="/cookbook/addCookbook" enctype="multipart/form-data">
+            <h3>编辑菜谱</h3>
+            <form class="form-horizontal" METHOD="post" action="/cookbook/modifyCookbook" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="${cookbook.id}">
                 <div class="form-group">
                     <label for="cookbookName" class="col-sm-2 control-label">菜谱名称</label>
                     <div class="col-sm-10" >
-                        <input type="text" class="form-control" id="cookbookName" name="title" placeholder="菜谱名称">
+                        <input type="text" class="form-control" id="cookbookName" name="title" placeholder="菜谱名称" value="${cookbook.title}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="file0" class="col-sm-2 control-label">上传文件</label>
                     <div class="col-sm-10">
                         <input type="file" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  name="titleImg" id="file0" multiple /><br>
-                        <img class="media-object" src=""  alt="..." style="width:748px;height:475px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/tj.png)"  id="img0" onClick="tempClick0('file0')" >
+                        <img class="media-object" src="${cookbook.titleImage}"  alt="..." style="width:748px;height:475px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/tj.png);background-size: cover"  id="img0" onClick="tempClick0('file0')" >
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="intro" class="col-sm-2 control-label">简介</label>
                     <div class="col-sm-16">
-                        <textarea class="form-control" id="intro" rows="3" name="intro" style="width:600px"></textarea>
+                        <textarea class="form-control" id="intro" rows="3" name="intro" style="width:600px">${cookbook.intro}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -112,10 +113,12 @@
                     <div class="col-sm-10" >
                         <div class="table-responsive">
                             <table id="ci" name="ci" class="table table-bordered " style="width:600px;">
-                                <tr id="tabtr">
-                                    <td ><input type="text" name="material_kind" class="" style="border:none;width:200px;height:20px;" ></td>
-                                    <td><input type="text" class="" name="material_num" style="border:none;width:200px;height:20px;"></td>
-                                </tr>
+                                <c:forEach items="${materialList}" var="material">
+                                    <tr id="tabtr">
+                                        <td ><input type="text" name="material_kind" class="" style="border:none;width:200px;height:20px;" value="${material.kind}"></td>
+                                        <td><input type="text" class="" name="material_num" style="border:none;width:200px;height:20px;" value="${material.num}"></td>
+                                    </tr>
+                                </c:forEach>
                             </table>
                         </div>
                         <div class="trdiv">
@@ -123,83 +126,24 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">步骤</label>
-                    <div class="media">
-                        <div class="media-body media_rself ">
-                            <h4 class="media-heading">1</h4>
-                            <textarea type="text" class="form-control" style="width: 80%" rows="4" name="step_intro"></textarea>
+                <div class="row">
+                    <span class="col-sm-2 control-label">步骤</span>
+                </div>
+                <c:forEach items="${stepList}" var="step" varStatus="loop">
+                    <div class="form-group">
+                        <div class="media medialocation">
+                            <div class="media-body media_rself ">
+                                <h4 class="media-heading">${loop.index+1}</h4>
+                                <textarea type="text" class="form-control" style="width: 80%" rows="4" name="step_intro">${step.intro}</textarea>
+                            </div>
+                            <div class="media-left media_lself ">
+                                <input type="file" class="inputimage" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;" data-imgId="img${loop.index+1}"  name="step_image" id="file${loop.index+1}" multiple /><br>
+                                <img class="media-object" src="${step.image}"  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/fm.png);background-size: cover"  id="img${loop.index+1}" data-inputId="file${loop.index+1}" onClick="tempClick(event)">
+                            </div>
                         </div>
-                        <div class="media-left media_lself ">
-                            <input type="file" class="inputimage" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;" data-imgId="img1"  name="step_image" id="file1" multiple /><br>
-                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/fm.png)"  id="img1" data-inputId="file1" onClick="tempClick(event)">
-                        </div>
-                    </div>
-                </div><!-- form-group-->
+                    </div><!-- form-group-->
+                </c:forEach>
 
-
-                <div class="form-group">
-                    <div class="media medialocation">
-                        <div class="media-body media_rself ">
-                            <h4 class="media-heading">2</h4>
-                            <textarea type="text" class="form-control" style="width: 80%" rows="4" name="step_intro"></textarea>
-                        </div>
-                        <div class="media-left media_lself ">
-                            <input type="file" class="inputimage" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  data-imgId="img2" name="step_image" id="file2" multiple /><br>
-                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/fm.png)"  data-inputId="file2" id="img2" onClick="tempClick(event)" >
-                        </div>
-                    </div>
-                </div><!-- form-group-->
-
-
-
-                <div class="form-group">
-                    <div class="media  medialocation">
-                        <div class="media-body media_rself ">
-                            <h4 class="media-heading">3</h4>
-                            <textarea type="text" class="form-control" style="width: 80%" rows="4" name="step_intro"></textarea>
-                        </div>
-                        <div class="media-left media_lself ">
-                            <input type="file" class="inputimage" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;" data-imgId="img3" name="step_image" id="file3" multiple /><br>
-                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/fm.png)" data-inputId="file3"  id="img3" onClick="tempClick(event)" >
-                        </div>
-                    </div>
-                </div><!-- form-group-->
-
-
-
-                <div class="form-group">
-                    <div class="media  medialocation">
-                        <div class="media-body media_rself ">
-                            <h4 class="media-heading">4</h4>
-                            <textarea type="text" class="form-control" style="width: 80%" rows="4" name="step_intro"></textarea>
-                        </div>
-                        <div class="media-left media_lself ">
-
-                            <input type="file" class="inputimage" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;" data-imgId="img4"  name="step_image" id="file4" multiple /><br>
-                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/fm.png)" data-inputId="file4"  id="img4" onClick="tempClick(event)" >
-
-                            </a>
-                        </div>
-                    </div>
-                </div><!-- form-group-->
-
-                <div class="form-group">
-                    <div class="media  medialocation">
-                        <div class="media-body media_rself ">
-                            <h4 class="media-heading">5</h4>
-                            <textarea type="text" class="form-control" style="width: 80%" rows="4" name="step_intro"></textarea>
-                        </div>
-                        <div class="media-left media_lself ">
-
-                            <input type="file" class="inputimage" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;" data-imgId="img5" name="step_image" id="file5" multiple /><br>
-                            <img class="media-object" src=""  alt="..." style="width:230px;height:230px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/fm.png)" data-inputId="file5"  id="img5" onClick="tempClick(event)" >
-
-                            </a>
-                        </div>
-
-                    </div>
-                </div><!-- form-group-->
 
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
@@ -209,25 +153,25 @@
                 <div class="form-group">
                     <div class="medialocation">
                         <h4 class="media-heading">选择分类：</h4>
-                        <input type="text" class="inputimage" id="checkedName" class="form-control" data-toggle="modal" data-target="#myModal" readonly>
-                        <input type="hidden" id="checkedCode" class="form-control" name="classifications">
+                        <input type="text" class="inputimage form-control" id="checkedName" data-toggle="modal" data-target="#myModal" value="${classifications}" readonly>
+                        <input type="hidden" id="checkedCode" class="form-control" name="classifications" value="${cookbook.classificationCode}">
                     </div>
                 </div>
-              <%--  <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="button" class="btn btn-default tradd" >
-                            选择分类
-                        </button>
-                    </div>
-                </div><!-- form-group-->--%>
+                <%--  <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10">
+                          <button type="button" class="btn btn-default tradd" >
+                              选择分类
+                          </button>
+                      </div>
+                  </div><!-- form-group-->--%>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default btnpublic">发布菜谱</button>
+                        <button type="submit" class="btn btn-default btnpublic">编辑完成</button>
                     </div>
                 </div>
             </form>
 
-
+            {"intro":"5555","image":"http://7xoqvb.com1.z0.glb.clouddn.com/201512031507503_"}]
 
         </div><!--end cscontent -->
     </div><!--end  content-->
@@ -251,16 +195,15 @@
                         <h4>${topClassification.name}</h4><hr>
                         <c:forEach items="${topClassification.list}" var="secondClassification">
                             <h5>${secondClassification.name}：</h5>
-                                <div class="thirdClassification">
-                                    <c:forEach items="${secondClassification.list}" var="thirdClassification">
+                            <div class="thirdClassification">
+                                <c:forEach items="${secondClassification.list}" var="thirdClassification">
                                     <div class="checkbox-inline">
-                                        <label><input type="checkbox" onclick="updateClassification()" value="${thirdClassification.code}" data-name="${thirdClassification.name}">${thirdClassification.name}</label>
+                                        <label><input type="checkbox" onclick="updateClassification()" value="${thirdClassification.code}" data-name="${thirdClassification.name}" <c:if test="${cookbook.classificationCode.contains(thirdClassification.code)}">checked="checked" </c:if>>${thirdClassification.name}</label>
                                     </div>
-                                    </c:forEach>
-                                </div>
+                                </c:forEach>
+                            </div>
                         </c:forEach>
                     </c:forEach>
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -285,7 +228,7 @@
     }
 </script>
 <script>
-    var num=6;
+    var num=${stepList.size()+1};
     function addstep(){
         var div = $(".media:last");                          //获得要克隆的div
 
@@ -319,7 +262,7 @@
          * document.getElementById("upload_main_img").dispatchEvent(a);
          */
 
-        //IE浏览器实现点击图片出现文件上传界面
+            //IE浏览器实现点击图片出现文件上传界面
         document.getElementById(id).click();            //调用main_img的onclick事件
     }
 
@@ -358,8 +301,8 @@
          * document.getElementById("upload_main_img").dispatchEvent(a);
          */
 
-        //IE浏览器实现点击图片出现文件上传界面
-        //$("#"+inputId).click();
+            //IE浏览器实现点击图片出现文件上传界面
+            //$("#"+inputId).click();
         document.getElementById(inputId).click();            //调用main_img的onclick事件
 
     }

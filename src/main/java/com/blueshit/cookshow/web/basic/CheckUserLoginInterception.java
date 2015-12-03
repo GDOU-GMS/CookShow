@@ -6,6 +6,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,9 +23,13 @@ public class CheckUserLoginInterception implements HandlerInterceptor {
         list.add("/user/updatePassword");
         list.add("/user/uploadFace");
         list.add("/user/logout");
-        list.add("/user/personWork/0");
+        list.add("/user/personWork/0");//0的时候代表没登录
         list.add("/cookbook/createCookbook");
         list.add("/cookbook/addCookbook");
+        list.add("/cookbook/forwardModifyCookbook");
+        list.add("/cookbook/modifyCookbook");
+        list.add("/cookbook/deleteCookbook");
+        list.add("/menu/createMenu");
     }
 
     /**

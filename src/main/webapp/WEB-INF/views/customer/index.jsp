@@ -81,16 +81,6 @@
 						<button class="btn btn-default">搜索</button>
 					</div>
 					<div class="landr">
-						<!--
-                    <ul id="userinfo">
-                    <li ><a class="btn btn1" href="#" role="button">用户名</a></li>
-                       <ul style="display:none;" >
-                          <li><a href="">我的个人信息</a></li>
-                          <li><a href="">我的收藏</a></li>
-                       </ul>
-                    </ul>
-                    -->
-
 						<div style="float: left;">
                             <div style="float:left;">
                                 <c:if test="${user!=null}">
@@ -112,7 +102,7 @@
 								role="button">个人中心</a>
 								<ul>
 									<li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>
-									<li><a href="#">我的菜单</a></li>
+									<li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}?target=mymenu">我的菜单</a></li>
 									<li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
 								</ul></li>
 
@@ -125,16 +115,13 @@
 			</div>
 			<div id="navfont">
 				<div id="navcontent">
-
 					<ul class="nav nav-pills">
-						<li role="presentation" class="cbook "><span>全部分类</span></li>
-						<li role="presentation" class="active"><a href="index.html">首页</a></li>
-						<li role="presentation"><a href="cookmenu.html">菜单</a></li>
+						<li role="presentation" class="cbook"><span>全部分类</span></li>
+						<li role="presentation" class="active"><a href="${pageContext.request.contextPath}/">首页</a></li>
+						<li role="presentation"><a href="${pageContext.request.contextPath}/menu/cookmenu">菜单</a></li>
 						<li role="presentation"><a href="#">健康饮食</a></li>
 						<li role="presentation"><a href="#">作品动态</a></li>
 					</ul>
-
-					<div></div>
 				</div>
 			</div>
 			<div id="content">
@@ -142,24 +129,27 @@
 					<div class="csleft">
 						<div class="banner">
 							<ul id="csnav">
+                                <li id="mainCate-1" class="mainCate">
+                                    <h3>
+                                        <span>&gt;</span><a href="javascript:void(0);">热门分类</a>
+                                    </h3>
+                                    <div class="subCate" style="display: none;">
+                                        <ul id="sub-ul-1">
+                                            <a href="${pageContext.request.contextPath}/menu/cookmenu"><h4>最新菜谱</h4></a>
+                                            <%--<li>
+                                                <span>
+                                                    <a href="javascript:void(0);">111</a>
+                                                </span>
+                                            </li>--%>
+                                        </ul>
+                                    </div>
+                                </li>
 								<c:forEach items="${topClassificationVoList}" var="topClassification">
 									<li id="mainCate-1" class="mainCate">
 										<h3>
 											<span>&gt;</span><a href="http://sc.admin5.com/">${topClassification.name }</a>
 										</h3>
-										<!-- <p>
-											<a href="http://sc.admin5.com/">茅台</a><a
-												href="http://sc.admin5.com/">五粮液</a><a
-												href="http://sc.admin5.com/">国窖1573</a>
-										</p>
-
-										<p>
-											<a href="http://sc.admin5.com/">酱香型</a><a
-												href="http://sc.admin5.com/">浓香型</a><a
-												href="http://sc.admin5.com/">贵州</a><a
-												href="http://sc.admin5.com/">四川</a>
-										</p>
- -->									<div class="subCate" style="display: none;">
+    									<div class="subCate" style="display: none;">
 											<c:forEach items="${topClassification.list }" var="secondClassification">
 												<ul id="sub-ul-1">
 												<h4>${secondClassification.name }</h4>

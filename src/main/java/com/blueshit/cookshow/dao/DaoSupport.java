@@ -24,5 +24,7 @@ public abstract void save(T t);
 	
 	public abstract Page getPage(int pageNum, QueryHelper queryHelper);
 
+    public abstract Page getPage(int pageNum,int pageSize,QueryHelper queryHelper);
+
     public abstract void disable(Long id);
 }

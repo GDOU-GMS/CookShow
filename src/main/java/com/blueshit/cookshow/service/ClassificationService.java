@@ -25,4 +25,6 @@ public interface ClassificationService extends DaoSupport<Classification> {
 
     List<ClassificationVo> getAllClassification();
 
+    List<Classification> findByCodes(String[] codes);
+
 }

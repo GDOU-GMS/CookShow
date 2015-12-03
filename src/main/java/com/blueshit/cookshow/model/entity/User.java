@@ -55,6 +55,9 @@ public class User implements Serializable {
 	@OneToMany(mappedBy="User")
 	private Set<Collection> Collections;
 
+    @OneToMany(mappedBy = "User")
+    private Set<Favour> favours;
+
 	//bi-directional many-to-one association to CommentCookbook
 	@OneToMany(mappedBy="User")
 	private Set<CommentCookbook> CommentCookbooks;
@@ -206,7 +209,15 @@ public class User implements Serializable {
 		this.Collections = Collections;
 	}
 
-	public Collection addCollection(Collection Collection) {
+    public Set<Favour> getFavours() {
+        return favours;
+    }
+
+    public void setFavours(Set<Favour> favours) {
+        this.favours = favours;
+    }
+
+    public Collection addCollection(Collection Collection) {
 		getCollections().add(Collection);
 		Collection.setUser(this);
 

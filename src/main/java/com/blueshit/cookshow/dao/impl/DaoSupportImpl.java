@@ -95,50 +95,58 @@ public class  DaoSupportImpl<T> implements DaoSupport<T> {
 	 * 分页查询
 	 */
 	public Page getPage(int pageNum, QueryHelper queryHelper) {
-		
 
 		//获取pageSize信息
 		Configuration conf = new Configuration();
 		int pageSize = conf.getPageSize();
 		
-		//获取数据列表
-		Query query  = getSession().createQuery(queryHelper.getQueryListHql());
-		List<Object> args = queryHelper.getParameters();
-		//设置参数
-		if(args != null || args.size()>0){
-			for(int i=0;i<args.size();i++){
-				query.setParameter(i, args.get(i));
-			}
-		}
-		query.setFirstResult((pageNum -1)*pageSize);
-		query.setMaxResults(pageSize);
-		List list = query.list();
+		return getPage(pageNum,pageSize,queryHelper);
+
+	}
+
+    /**
+     * 分页
+     * @param pageNum
+     * @param pageSize
+     * @param queryHelper
+     * @return
+     */
+    public Page getPage(int pageNum,int pageSize,QueryHelper queryHelper){
+
+        //获取数据列表
+        Query query  = getSession().createQuery(queryHelper.getQueryListHql());
+        List<Object> args = queryHelper.getParameters();
+        //设置参数
+        if(args != null || args.size()>0){
+            for(int i=0;i<args.size();i++){
+                query.setParameter(i, args.get(i));
+            }
+        }
+        query.setFirstResult((pageNum -1)*pageSize);
+        query.setMaxResults(pageSize);
+        List list = query.list();
 		/*//如果为空.
 		if(list.isEmpty()){
 			return null;
 		}*/
-		
-		//获得总记录数
-		query = getSession().createQuery(queryHelper.getQueryCountHql());
-		//设置参数
-		if(args != null || args.size()>0){
-			for(int i=0;i<args.size();i++){
-				query.setParameter(i, args.get(i));
-			}
-		}
-		
-		Long count = (Long)query.uniqueResult();
-		
-		Page page = new Page(pageSize,pageNum,count.intValue());
-		
-		page.setList(list);
-		
-		
-		
-		return page;
-		
-		
-	}
+
+        //获得总记录数
+        query = getSession().createQuery(queryHelper.getQueryCountHql());
+        //设置参数
+        if(args != null || args.size()>0){
+            for(int i=0;i<args.size();i++){
+                query.setParameter(i, args.get(i));
+            }
+        }
+
+        Long count = (Long)query.uniqueResult();
+
+        Page page = new Page(pageSize,pageNum,count.intValue());
+
+        page.setList(list);
+
+        return page;
+    }
 
     /**
      * 设置无效
@@ -146,8 +154,11 @@ public class  DaoSupportImpl<T> implements DaoSupport<T> {
      */
     public void disable(Long id){
 
-        getSession().createQuery("update "+clazz.getSimpleName()+"set deleted=1 where id = ?")
-                .setParameter(0,id);
+
+
+        getSession().createQuery("update "+clazz.getSimpleName()+" set deleted = 1 where id = ?")
+                .setParameter(0,id)
+                .executeUpdate();
 
     }
 

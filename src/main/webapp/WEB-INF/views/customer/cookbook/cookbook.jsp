@@ -6,18 +6,19 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
     <title>秀厨网</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/csnavbook.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/imagestyle.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/cookbookstyle.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/cookmenu.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/csnavbook.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/imagestyle.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/cookbookstyle.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/cookmenu.css">
 
     <script src="${pageContext.request.contextPath}/resources/customer/js/jquery.min.js"></script>
 
@@ -36,20 +37,30 @@
                     <button class="btn btn-default">搜索</button>
                 </div>
                 <div class="landr">
-                    <div style="float:left;">
-                        <a class="btn btn1" href="#" role="button">登录</a>
-                        <a class="btn btn1" href="#" role="button">注册</a>
+                    <div style="float: left;">
+                        <div style="float:left;">
+                            <c:if test="${user!=null}">
+                                <a class="btn btn1" href="${pageContext.request.contextPath}/user/personCenter">
+                                    欢迎，${user.username}
+                                </a>
+                            </c:if>
+                            <c:if test="${user==null}">
+                                <a class="btn btn1"
+                                   href="${pageContext.request.contextPath}/user/forwardToLogin"
+                                   role="button">登录/注册</a>
+                            </c:if>
+                        </div>
                     </div>
 
-                    <ul id="personcenter" style="float:left;">
-                        <li style="width:110px;"><a class="btn btn1" href="#" role="button">个人中心</a>
-                            		<ul>
-                                        <li><a href="userinfo.jsp">账号设置</a></li>
-                                        <li><a href="personwork.jsp">我的菜单</a></li>
-                                         <li><a href="myfriends.jsp">关注的好友</a></li>
-                                        <li><a href="#">退出</a></li>
-                                    </ul>
-                        </li>
+                    <ul id="personcenter" style="float: left;">
+                        <li style="width: 110px;"><a class="btn btn1"
+                                                     href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}"
+                                                     role="button">个人中心</a>
+                            <ul>
+                                <li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>
+                                <li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}?target=mymenu">我的菜单</a></li>
+                                <li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
+                            </ul></li>
 
                     </ul>
                 </div>
@@ -58,71 +69,53 @@
     </div>
     <div id="navfont">
         <div id="navcontent">
-
             <ul class="nav nav-pills">
-                <li role="presentation" class="cbook "><span>全部分类</span></li>
-                <li role="presentation" class="active"><a href="index.html">首页</a></li>
-                <li role="presentation"><a href="cookmenu.html">菜单</a></li>
+                <li role="presentation" class="cbook"><span></span></li>
+                <li role="presentation" class="active"><a href="${pageContext.request.contextPath}/">首页</a></li>
+                <li role="presentation"><a href="${pageContext.request.contextPath}/menu/cookmenu">菜单</a></li>
                 <li role="presentation"><a href="#">健康饮食</a></li>
                 <li role="presentation"><a href="#">作品动态</a></li>
             </ul>
-
         </div>
     </div>
     <div id="content">
         <div class="cscontent">
             <div class="menuleft">
                 <div class="menuimg">
-                    <p>美食疯狂来袭</p>
-
+                    <p>${cookbook.title}</p>
                     <div class="imgcontent">
-
                         <div class="imagetext">
-                            <img src="${pageContext.request.contextPath}/resources/customer/images/tu.jpg">
-
+                            <img src="${cookbook.titleImage}">
                             <div class="menushare">
-                                <span>分享到</span>
-
+                                <span>分享</span>
                                 <div class="shareimg">
-                                    <a href="" alt=""><img src="${pageContext.request.contextPath}/resources/customer/images/weibo.png" style="width:36px;height:29px;"></a>
-
+                                    <a href="javascript:void(0);" alt=""> <img src="${pageContext.request.contextPath}/resources/customer/images/weibo.png" style="width:36px;height:29px;"></a>
                                 </div>
-
-
                             </div>
-                            <a class="btn btn-default acss" href="#" role="button">收藏</a>
-
+                            <a class="btn btn-default acss" href="javascript:void(0)" role="button">收藏</a>
                         </div>
                         <!--end imagetext -->
                     </div>
                     <!--imgcontent-->
-
                 </div>
                 <!--menuimg -->
 
                 <div class="menuinfo">
                     <div class="menusubinfo">
                         <p>简介</p>
-                            <span>我们家其实管这个叫「泡饭」，不过我看叫「烫饭」的地方比较多呀，就随个大流咯~ 这不是重点。我小时候其实很不爱吃这个，虽然爸妈现在也在看我的微信，但是还是要说... 每次就是白水煮一碗剩饭，啥都不放，只能配腐乳和榨菜吃，吃多了很无聊好不好！
-我自己更喜欢把烫饭做成鲜美的，食材多多的，营养丰富的。更多快手早餐的菜谱，欢迎关注我的公众号tianluo_hhhaze，早餐视频和企鹅吃喝指南（qiechihe）合作拍摄。					                          </span>
+                            <span>${cookbook.intro}</span>
                     </div>
                     <div class="menusubinfo">
                         <p>用料</p>
 
                         <div class="table-responsive" style="width:500px;">
                             <table class="table">
-                                <tr>
-                                    <td>隔夜剩米饭</td>
-                                    <td>一碗</td>
-                                </tr>
-                                <tr>
-                                    <td>隔夜剩米饭</td>
-                                    <td>一碗</td>
-                                </tr>
-                                <tr>
-                                    <td>隔夜剩米饭</td>
-                                    <td>一碗</td>
-                                </tr>
+                                <c:forEach items="${materialList}" var="material">
+                                    <tr>
+                                        <td>${material.kind}</td>
+                                        <td>${material.num}</td>
+                                    </tr>
+                                </c:forEach>
                             </table>
                         </div>
 
@@ -130,37 +123,16 @@
 
                     <div class="menusubinfo">
                         <p>做法</p>
-                        <span class="cooktag1">1</span>
-                        <span class="cooktag2">隔夜米饭加上清水，清水的分量大概没过米饭半截指头，再加上火腿和虾米一起煮沸，一直保持中火。</span>
-
-                        <div class="cookimg">
-                            <img src="${pageContext.request.contextPath}/resources/customer/images/11.png">
-                        </div>
-
-
                     </div>
-                    <div class="menusubinfo">
-                        <span class="cooktag1">2</span>
-                        <span class="cooktag2">隔夜米饭加上清水，清水的分量大概没过米饭半截指头，再加上火腿和虾米一起煮					                          </span>
-
-                        <div class="cookimg">
-                            <img src="${pageContext.request.contextPath}/resources/customer/images/11.png">
+                    <c:forEach items="${stepList}" var="step" varStatus="loop">
+                        <div class="menusubinfo">
+                            <span class="cooktag1">${loop.index + 1}</span>
+                            <span class="cooktag2">${step.intro}</span>
+                            <div class="cookimg">
+                                <img src="${step.image}"style="width:200px;height:200px;">
+                            </div>
                         </div>
-
-
-                    </div>
-                    <div class="menusubinfo">
-
-                        <span class="cooktag1">3</span>
-                        <span class="cooktag2">隔夜米饭加上清水，清水的分量大概没过米饭半截指头，再加上火腿和虾米一起煮。					                          </span>
-
-                        <div class="cookimg">
-                            <img src="${pageContext.request.contextPath}/resources/customer/images/11.png">
-                        </div>
-
-
-                    </div>
-
+                    </c:forEach>
                 </div>
                 <!--menuinfo-->
                 <div class="menucomment">
