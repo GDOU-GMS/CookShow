@@ -122,5 +122,14 @@ public class ClassificationServiceImpl extends DaoSupportImpl<Classification> im
         return topClassificationVoList;
     }
 
-
+    /**
+     * 根据code查询
+     * @param codes
+     * @return
+     */
+    public List<Classification> findByCodes(String[] codes) {
+        return getSession().createQuery("from Classification where code in(:codes)")
+                .setParameterList("codes",codes)
+                .list();
+    }
 }

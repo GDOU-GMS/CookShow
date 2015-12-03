@@ -40,23 +40,32 @@
                     <button class="btn btn-default" >搜索</button>
                 </div>
                 <div class="landr">
-                    <div style="float:left;">
-                        <a class="btn btn1" href="#" role="button">登录</a>
-                        <a class="btn btn1" href="#" role="button">注册</a>
+                    <div style="float: left;">
+                        <div style="float:left;">
+                            <c:if test="${user!=null}">
+                                <a class="btn btn1" href="${pageContext.request.contextPath}/user/personCenter">
+                                    欢迎，${user.username}
+                                </a>
+                            </c:if>
+                            <c:if test="${user==null}">
+                                <a class="btn btn1"
+                                   href="${pageContext.request.contextPath}/user/forwardToLogin"
+                                   role="button">登录/注册</a>
+                            </c:if>
+                        </div>
                     </div>
 
-                    <ul id="personcenter" style="float:left;">
-                        <li style="width:110px;"><a class="btn btn1" href="#" role="button">个人中心</a>
+                    <ul id="personcenter" style="float: left;">
+                        <li style="width: 110px;"><a class="btn btn1"
+                                                     href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}"
+                                                     role="button">个人中心</a>
                             <ul>
-                                <li><a href="userinfo.html">账号设置</a></li>
-                                <li><a href="personwork.html">我的菜单</a></li>
-                                <li><a href="myfriends.html">关注的好友</a></li>
-                                <li><a href="#">退出</a></li>
-                            </ul>
-                        </li>
+                                <li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>
+                                <li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}?target=mymenu">我的菜单</a></li>
+                                <li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
+                            </ul></li>
 
                     </ul>
-
                 </div><!--landr-->
 
             </div>
@@ -66,9 +75,9 @@
         <div id="navcontent">
 
             <ul class="nav nav-pills">
-                <li role="presentation" class="cbook "><span>全部分类</span></li>
-                <li role="presentation" class="active"><a href="index.html">首页</a></li>
-                <li role="presentation"><a href="cookmenu.html">菜单</a></li>
+                <li role="presentation" class="cbook"><span></span></li>
+                <li role="presentation" class="active"><a href="${pageContext.request.contextPath}/">首页</a></li>
+                <li role="presentation"><a href="${pageContext.request.contextPath}/menu/cookmenu">菜单</a></li>
                 <li role="presentation"><a href="#">健康饮食</a></li>
                 <li role="presentation"><a href="#">作品动态</a></li>
             </ul>
@@ -93,7 +102,9 @@
                     </div>
                 </div>
                 <div class="media-body">
-                    <a class="btn btn-default createcss">关注</a>
+                    <c:if test="${!empty user}">
+                        <a class="btn btn-default createcss">关注</a>
+                    </c:if>
                    <div class="media-body mediainforight">
                        <a class="mediainforight">关注的人</a>
                        <a class="mediainforight">被关注</a>
@@ -104,15 +115,12 @@
 
             <div>
                 <!-- Nav tabs -->
-                <ul class="nav nav-tabs" role="tablist">
-
-                    <li role="presentation" class="active"><a href="#gaikuang" aria-controls="gaikuang" role="tab" data-toggle="tab">概况</a></li>
-                    <li role="presentation" ><a href="#mymenu" aria-controls="home" role="tab" data-toggle="tab">菜单</a></li>
-
-                    <li role="presentation"><a href="#pwd" aria-controls="messages" role="tab" data-toggle="tab">菜谱</a></li>
-                    <li role="presentation"><a href="#personimage" aria-controls="settings" role="tab" data-toggle="tab">收藏</a></li>
+                <ul class="nav nav-tabs" role="tablist" id="navul">
+                    <li role="presentation" id="target_gaikuang" class="active"><a href="#gaikuang" aria-controls="gaikuang" role="tab" data-toggle="tab">概况</a></li>
+                    <li role="presentation" id="target_mymenu"><a href="#mymenu" aria-controls="home" role="tab" data-toggle="tab">菜单</a></li>
+                    <li role="presentation" id="target_pwd"><a href="#pwd" aria-controls="messages" role="tab" data-toggle="tab">菜谱</a></li>
+                    <li role="presentation" id="target_personimage"><a href="#personimage" aria-controls="settings" role="tab" data-toggle="tab">收藏</a></li>
                 </ul>
-
                 <!-- Tab panes -->
                 <div class="tab-content tagstyle">
 
@@ -123,7 +131,7 @@
                             <div class="row showimg">
                                 <div class="col-sm-6 col-md-4"style="width:100%;padding:0px;">
                                     <div class="thumbnail">
-                                        <img src="images/255.png" alt="..." style="margin:0px 30x;margin-top:25px;">
+                                        <img src="${pageContext.request.contextPath}/resources/customer/images/255.png" alt="..." style="margin:0px 30x;margin-top:25px;">
                                         <div class="caption">
 
                                             <h4>美美哒</h4>
@@ -141,7 +149,7 @@
                             <div class="row showimg imgright">
                                 <div class="col-sm-6 col-md-4"style="width:100%;padding:0px;">
                                     <div class="thumbnail">
-                                        <img src="images/255.png" alt="..." style="margin:0px 30x;margin-top:25px;">
+                                        <img src="${pageContext.request.contextPath}/resources/customer/images/255.png" alt="..." style="margin:0px 30x;margin-top:25px;">
                                         <div class="caption">
 
                                             <h4>美美哒</h4>
@@ -157,7 +165,7 @@
                             <div class="row showimg imgright">
                                 <div class="col-sm-6 col-md-4"style="width:100%;padding:0px;">
                                     <div class="thumbnail">
-                                        <img src="images/255.png" alt="..." style="margin:0px 30x;margin-top:25px;">
+                                        <img src="${pageContext.request.contextPath}/resources/customer/images/255.png" alt="..." style="margin:0px 30x;margin-top:25px;">
                                         <div class="caption">
 
                                             <h4>美美哒</h4>
@@ -192,20 +200,32 @@
                     </div><!-- mymenu-->
 
                     <div role="tabpanel" class="tab-pane" id="pwd">
-                        <a class="btn btn-default createcss" href="${pageContext.request.contextPath}/cookbook/createCookbook" role="button">创建新菜谱</a>
+                        <div class="row">
+                            <a class="btn btn-default createcss" href="${pageContext.request.contextPath}/cookbook/createCookbook" role="button">创建新菜谱</a>
+                        </div>
 
                         <div class="row">
-                            <div class="col-sm-6 col-md-4">
-                                <div class="thumbnail">
-                                    <a href="cookbook.html"><img src="images/255.png" alt="..."></a>
-                                    <div class="caption">
-                                        <h3>最佳情书</h3>
-                                        <p>早就想做这个菜了，一直都是在川菜馆里才会点的菜，因为口感太辣，家里也没敢真尝试着做，昨天LG说，今天休息可以在家吃饭，猫很开心，就做了这</p>
-
+                            <c:forEach items="${cookbookPage.list}" var="cookbook">
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="thumbnail">
+                                        <div>
+                                            <a href="${pageContext.request.contextPath}/cookbook/cookbook/${cookbook.id}"><img src="${cookbook.titleImage}" alt="..."></a>
+                                            <div class="caption">
+                                                <h3>${cookbook.title}</h3>
+                                                <p>${cookbook.intro}</p>
+                                                <c:if test="${!empty user}">
+                                                    <p class="col-md-offset-3">
+                                                        <a href="${pageContext.request.contextPath}/cookbook/forwardModifyCookbook?id=${cookbook.id}" class="btn btn-default" role="button">编辑</a>
+                                                        <a href="${pageContext.request.contextPath}/cookbook/deleteCookbook?id=${cookbook.id}" class="btn btn-default" role="button" onclick="return confirm('确认删除？')">删除</a>
+                                                    </p>
+                                                </c:if>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </c:forEach>
                         </div>
+
                     </div>
                     <div role="tabpanel" class="tab-pane" id="personimage">
 
@@ -233,5 +253,21 @@
 
 </div>
 
+<script>
+    $(function(){
+        var target ='${target}';
+        var $navul = $("#navul");
+       if(target!=null&&target!=''){
+           $navul.find("li").each(function(){
+               $(this).attr("class","");
+           });
+           $("#target_"+target).attr("class","active")
+           $(".tab-pane").removeClass("active");
+           $("#"+target).attr("class","active")
+       }
+    })
+
+
+</script>
 </body>
 </html>

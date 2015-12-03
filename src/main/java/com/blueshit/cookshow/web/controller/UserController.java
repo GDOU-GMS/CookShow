@@ -1,5 +1,6 @@
 package com.blueshit.cookshow.web.controller;
 
+import com.blueshit.cookshow.common.helper.Page;
 import com.blueshit.cookshow.common.utils.MyDataUtils;
 import com.blueshit.cookshow.common.utils.UUIDCreator;
 import com.blueshit.cookshow.model.entity.User;
@@ -190,11 +191,20 @@ public class UserController extends BaseController {
         return resultEntity;
     }
 
-    @RequestMapping("/personWork/{id}")
-    public String personWork(@PathVariable String id,Model model){
-        User user = userService.findById(Long.parseLong(id));
+    @RequestMapping("/personWork/{userId}")
+    public String personWork(@PathVariable String userId,Model model,String target,Integer cookbookpageNum){
+        cookbookpageNum = cookbookpageNum==null||cookbookpageNum<=0?1:cookbookpageNum;
+        User user = userService.findById(Long.parseLong(userId));
         if(user!=null){
+            //处理target，跳转到指定标签页
+            if(!"".equals(target)){
+                model.addAttribute("target",target);
+            }
+            //用户信息
             model.addAttribute("userInfo",user);
+            //查询菜谱
+            Page cookbookPage = cookbookService.findByUserId(user.getId(),cookbookpageNum);
+            model.addAttribute("cookbookPage",cookbookPage);
         }else{
             return "redirect:/error_404";
         }
