@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by Seven on 2015/11/26.
  */
-@Service
+@Service("classificationService")
 @Transactional
 public class ClassificationServiceImpl extends DaoSupportImpl<Classification> implements ClassificationService {
     public int getTopClassificationNum() {

@@ -20,6 +20,22 @@ public class MenuServiceImpl extends DaoSupportImpl<Menu> implements MenuService
 
 	
 
+	/**
+	 * 获得流行菜单
+	 */
+	public List<Menu> getRecentPopular() {
+		// TODO Auto-generated method stub
+		
+        List<Menu> recentMenuList = new ArrayList<Menu>();
+		@SuppressWarnings("unchecked")
+
+		List<Menu> menuList = getSession()
+                  .createQuery("from  Menu  order by createDate desc")
+                  .setMaxResults(10)
+                  .list();
+		recentMenuList.addAll(menuList);
+		return recentMenuList;
+	}
 
 
 

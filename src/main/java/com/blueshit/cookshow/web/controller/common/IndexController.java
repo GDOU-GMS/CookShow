@@ -2,6 +2,7 @@ package com.blueshit.cookshow.web.controller.common;
 
 import com.blueshit.cookshow.model.vo.ClassificationVo;
 import com.blueshit.cookshow.web.basic.BaseController;
+import com.blueshit.cookshow.web.controller.listener.DataCacheListener;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,10 +17,8 @@ public class IndexController extends BaseController{
 
     @RequestMapping("/")
     public String index(Model model){
-
-        //查询所有分类信息
-        List<ClassificationVo> topClassificationVoList = classificationService.getAllClassification();
-        model.addAttribute("topClassificationVoList",topClassificationVoList);
+        //从缓存中获取
+        model.addAttribute("topClassificationVoList", DataCacheListener.classificationList);
         return "customer/index";
 
     }

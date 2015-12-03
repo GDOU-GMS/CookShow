@@ -137,10 +137,26 @@ padding:0 5px 0 0;
 }
 .prod_title{
 color:#a81f22;
-width:66%;
+width:100%;
 padding:5px 0 0 5px;
 font-size:13px;
 }
+.prod_title h3{
+margin:0px;
+overflow:hidden;
+text-overflow:ellipsis;
+white-space:nowrap;
+margin-bottom:5px;
+}
+.prod_title  a{
+color:#ec8d24;
+
+}
+.prod_title  a:hover{
+background:#ec8d24;
+color:#fff;
+}
+
 a.more{
 font-style:italic;
 color:#a81f22;

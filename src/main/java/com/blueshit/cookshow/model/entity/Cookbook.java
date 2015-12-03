@@ -45,6 +45,9 @@ public class Cookbook implements Serializable {
     @Column(columnDefinition = "TEXT")
 	private String step;
 
+    @Column(columnDefinition = "TEXT")
+    private String intro;
+
 	private String title;
 
 	@Column(name="title_image")
@@ -208,5 +211,37 @@ public class Cookbook implements Serializable {
 
     public void setMenus(Set<Menu> menus) {
         this.menus = menus;
+    }
+
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Cookbook{" +
+                "id=" + id +
+                ", classificationCode='" + classificationCode + '\'' +
+                ", clickNum=" + clickNum +
+                ", createDate=" + createDate +
+                ", deleted=" + deleted +
+                ", favourNum=" + favourNum +
+                ", material='" + material + '\'' +
+                ", publicState=" + publicState +
+                ", remind='" + remind + '\'' +
+                ", step='" + step + '\'' +
+                ", intro='" + intro + '\'' +
+                ", title='" + title + '\'' +
+                ", titleImage='" + titleImage + '\'' +
+                ", updateDate=" + updateDate +
+                ", CommentCookbooks=" + CommentCookbooks +
+                ", User=" + User +
+                ", menus=" + menus +
+                '}';
     }
 }
