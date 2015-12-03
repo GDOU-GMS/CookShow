@@ -247,23 +247,38 @@ Purchase: http://wrapbootstrap.com
             </div>
             <!-- /Page Breadcrumb -->
             <!-- Page Header -->
-            <div class="page-header position-relative">
-                <div class="header-title">
-                    <h1>
-                        秀厨网
-                    </h1>
-                </div>
-
-            </div>
+    
             <!-- /Page Header -->
             <!-- Page Body -->
             <div>
                 <div class="row">
                     <div class="col-xs-12 col-md-12">
-                        <div class="well with-header  with-footer">
+                        <div class="well with-header  with-footer" style="margin-bottom:0px;padding-bottom:10px">
                             <div class="header bg-blue">
                                菜谱
                             </div>
+                     <div>   
+                      <div class="row" >
+                        <form action="${pageContext.request.contextPath}/admin/cookbook/query" method="post">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                  <input name="title" class="form-control" style="width: 50%" placeholder="菜谱标题" type="text">
+                                 </div>
+                                </div>
+                                <div class="col-sm-6" >
+                                  <div class="form-group">
+                                      <input name="classificationCode" class="form-control" style="width: 50%" placeholder="菜谱分类" type="text">
+                                    </div>
+                                 </div>
+                          
+                                  <div class="col-sm-6">
+                                     <button class="btn btn-azure" type="submit">查询</button>
+                                     </div>
+                        </form>
+                      </div>
+                  </div>
+                      </div>
+                          
                             <table id="click" class="table table-hover">
                                 <thead class="bordered-darkorange">
                                 <tr>
@@ -337,7 +352,7 @@ Purchase: http://wrapbootstrap.com
                                            class="btn btn-info btn-xs edit"> 锁定</a>
                                            <a href="${pageContext.request.contextPath}/admin/cookbook/enable?cookbookId=${cookbook.id}" method="post" 
                                            class="btn btn-info btn-xs edit"> 解锁</a>
-                                            <a onclick="checkcookbookdetail(this)" class="btn btn-danger btn-xs delete">详细信息</a>
+                                            <a href="${pageContext.request.contextPath}/admin/cookbook/detail?cookbookId=${cookbook.id}" class="btn btn-danger btn-xs delete">详细信息</a>
                                         </td>
                                     </tr>
                                 </c:forEach> 
@@ -377,6 +392,7 @@ Purchase: http://wrapbootstrap.com
 </div>
 
 <!-- Modal -->
+<!--  
 <div class="modal fade" id="detailmenuModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -407,7 +423,7 @@ Purchase: http://wrapbootstrap.com
         </div>
     </div>
 </div>
-
+-->
 
 <!--Basic Scripts-->
 <script src="/resources/assets/js/jquery-2.0.3.min.js"></script>
@@ -422,7 +438,7 @@ Purchase: http://wrapbootstrap.com
 <script src="/resources/assets/js/charts/sparkline/jquery.sparkline.js"></script>
 <script src="/resources/assets/js/charts/sparkline/sparkline-init.js"></script>
 
-
+<!--  
 <script >
     jQuery(document).ready(function () {
     UITree.init();
@@ -436,7 +452,7 @@ Purchase: http://wrapbootstrap.com
     }
 
 </script>
-
+-->
 </body>
 <!--  /Body -->
 </html>

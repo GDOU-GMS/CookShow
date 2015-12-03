@@ -1,5 +1,6 @@
 package com.blueshit.cookshow.web.controller.admin;
 
+import java.util.Date;
 import java.util.List;
 
 import com.blueshit.cookshow.common.helper.Page;
@@ -7,10 +8,13 @@ import com.blueshit.cookshow.common.helper.QueryHelper;
 import com.blueshit.cookshow.model.entity.Cookbook;
 import com.blueshit.cookshow.model.entity.Menu;
 import com.blueshit.cookshow.model.entity.User;
+import com.blueshit.cookshow.service.CookbookService;
 import com.blueshit.cookshow.web.basic.BaseController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -63,17 +67,30 @@ public class AdminCookbookController extends BaseController {
 		
 	
      }
-	
+	  /*
+	   * 详细菜谱信息
+	   */
 	  @RequestMapping("/detail")	
       public String detail(String cookbookId,Model model){
    	 
-   	   Cookbook cookbook=cookbookService.findById(Long.parseLong(cookbookId));
+   	    Cookbook cookbook=cookbookService.findById(Long.parseLong(cookbookId));
    		model.addAttribute("cookbook",cookbook);
-   		return "admin/menu/detail";
+   		return "admin/cookbook/detail";
 		
 	}
-
-
-
+	
+	  @RequestMapping("/query")
+	  public String query(@ModelAttribute Cookbook cookbook,Model model,Integer pageNum) {
+	   
+		  QueryHelper queryHelper=new QueryHelper(Cookbook.class, "c")
+	   	  .addWhereCondition(cookbook.getTitle()!=null&&!"".equals(cookbook.getTitle()),"c.title like ?", "%"+cookbook.getTitle()+"%")
+	   	  .addWhereCondition(cookbook.getClassificationCode()!=null&&!"".equals(cookbook.getClassificationCode()),"c.classificationCode like ?", "%"+cookbook.getClassificationCode()+"%");
+       //    Page page = cookbookService.getPage(pageNum, queryHelper);
+	       model.addAttribute("queryHelper",queryHelper);
+		  
+          return "admin/cookbook/list";
+	   	  
+		  
+	}
 
 }
