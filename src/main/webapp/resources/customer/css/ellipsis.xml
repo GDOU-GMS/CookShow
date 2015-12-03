@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bindings    
+   3.   xmlns="http://www.mozilla.org/xbl"   
+   4.   xmlns:xbl="http://www.mozilla.org/xbl"   
+   5.   xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"   
+   6. >   
+   7.     <binding id="ellipsis">   
+   8.         <content>   
+   9.             <xul:window>   
+10.                 <xul:description crop="end" xbl:inherits="value=xbl:text"><children/>
+11. </xul:description>   
+12.             </xul:window>   
+13.         </content>   
+14.     </binding>   
+15. </bindings> 
