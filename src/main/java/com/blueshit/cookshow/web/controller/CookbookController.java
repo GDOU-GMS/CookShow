@@ -1,11 +1,14 @@
 package com.blueshit.cookshow.web.controller;
 
+import com.blueshit.cookshow.common.helper.Page;
 import com.blueshit.cookshow.common.helper.entity.Material;
 import com.blueshit.cookshow.common.helper.entity.Step;
 import com.blueshit.cookshow.common.utils.MyDataUtils;
 import com.blueshit.cookshow.model.entity.Classification;
 import com.blueshit.cookshow.model.entity.Cookbook;
+import com.blueshit.cookshow.model.entity.Menu;
 import com.blueshit.cookshow.model.entity.User;
+import com.blueshit.cookshow.model.vo.ClassificationVo;
 import com.blueshit.cookshow.qiniu.QiniuUpload;
 import com.blueshit.cookshow.web.basic.BaseController;
 
@@ -104,7 +107,7 @@ public class CookbookController extends BaseController {
     }
 
     @RequestMapping("/cookbook/{cookbookId}")
-    public String cookbook(@PathVariable String cookbookId,Model model){
+    public String cookbook(@PathVariable String cookbookId,Model model,HttpSession session){
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             if (!"".equals(cookbookId)) {
@@ -116,6 +119,10 @@ public class CookbookController extends BaseController {
                 model.addAttribute("materialList",materialList);
                 model.addAttribute("stepList",stepList);
                 model.addAttribute("cookbook", cookbook);
+            }
+            if(getCurrentUser(session)!=null){
+                List<Menu> menuList = menuService.getAllMenuByUserId(getCurrentUser(session).getId());
+                model.addAttribute("menuList", menuList);
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -220,5 +227,25 @@ public class CookbookController extends BaseController {
         //重定向到个人中心
         return "redirect:/user/personWork/"+ user.getId()+"?target=pwd";
 	}
+
+
+    @RequestMapping("/findByClassificationCode/{classificationCode}")
+    public String findByClassificationCode(@PathVariable String classificationCode,Integer pageNum,Model model){
+        pageNum = pageNum==null||pageNum==0?1:pageNum;
+        int pageSize = 20;
+        if(classificationCode!=null&&!"".equals(classificationCode)){
+            Page page = cookbookService.findByClassification(classificationCode,pageNum,pageSize);
+            model.addAttribute("page",page);
+            //查询所有分类信息
+            List<ClassificationVo> topClassificationVoList = classificationService.getAllClassification();
+            model.addAttribute("topClassificationVoList",topClassificationVoList);
+            //相关菜谱
+            List<Menu> menuList=menuService.getRecentPopular();
+            model.addAttribute("menuList", menuList);
+        }
+        return "customer/menu/cookmenu";
+    }
+
+
 }
 	

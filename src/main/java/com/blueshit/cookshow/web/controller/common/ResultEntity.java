@@ -38,19 +38,22 @@ public class ResultEntity {
         Data = data;
     }
 
-    public void setFailureMsg(String msg){
+    public ResultEntity setFailureMsg(String msg){
         this.result = 0;
         this.msg = msg;
+        return this;
     }
 
-    public void setSuccessMsg(String msg){
+    public ResultEntity setSuccessMsg(String msg){
         this.result = 1;
         this.msg = msg;
+        return this;
     }
 
-    public void setExceptionMsg(String msg){
+    public ResultEntity setExceptionMsg(String msg){
         this.result = -1;
         this.msg = msg;
+        return this;
     }
 
     public void setSuccessResult(){

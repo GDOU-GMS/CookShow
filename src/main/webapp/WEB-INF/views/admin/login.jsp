@@ -21,24 +21,22 @@ Purchase: http://wrapbootstrap.com
     <meta name="description" content="login page" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="shortcut icon" href="/resources/assets/img/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/assets/img/favicon.png" type="image/x-icon">
 
     <!--Basic Styles-->
-    <link href="/resources/assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
-    <link href="/resources/assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/resources/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/resources/assets/css/font-awesome.min.css" rel="stylesheet" />
 
     <!--Fonts-->
     <link href="${pageContext.request.contextPath}/resources/assets/css/fonts_useso_com.css" rel="stylesheet" type="text/css">
 
     <!--Beyond styles-->
-    <link href="/resources/assets/css/beyond.min.css" rel="stylesheet" />
-    <link href="/resources/assets/css/demo.min.css" rel="stylesheet" />
-    <link href="/resources/assets/css/animate.min.css" rel="stylesheet" />
-    <link id="skin-link" href="" rel="stylesheet" type="text/css" />
+    <link href="${pageContext.request.contextPath}/resources/assets/css/beyond.min.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/resources/assets/css/demo.min.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/resources/assets/css/animate.min.css" rel="stylesheet" />
 
     <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
-    <script src="/resources/assets/js/skins.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/assets/js/skins.min.js"></script>
 </head>
 <!--Head Ends-->
 <!--Body-->
@@ -70,12 +68,12 @@ Purchase: http://wrapbootstrap.com
 </div>
 
 <!--Basic Scripts-->
-<script src="/resources/assets/js/jquery-2.0.3.min.js"></script>
-<script src="/resources/assets/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/assets/js/jquery-2.0.3.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/assets/js/bootstrap.min.js"></script>
 
 <!--Beyond Scripts-->
-<script src="/resources/assets/js/beyond.js"></script>
-<script src="/resources/assets/plugins/jquery_form/jquery.form.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/assets/js/beyond.js"></script>
+<script src="${pageContext.request.contextPath}/resources/assets/plugins/jquery_form/jquery.form.min.js"></script>
 
 <script>
 

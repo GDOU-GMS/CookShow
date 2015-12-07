@@ -76,6 +76,22 @@
 					<div class="csleft">
 						<div class="banner">
 							<ul id="csnav">
+                                <li id="mainCate-1" class="mainCate">
+                                    <h3>
+                                        <span>&gt;</span><a href="javascript:void(0);">热门分类</a>
+                                    </h3>
+                                    <div class="subCate" style="display: none;">
+                                        <ul id="sub-ul-1">
+                                            <a href="${pageContext.request.contextPath}/menu/cookmenu"><span>最新菜谱</span></a>
+                                            <a href="${pageContext.request.contextPath}/classification/allClassification"><span>所有分类</span></a>
+                                            <%--<li>
+                                                <span>
+                                                    <a href="javascript:void(0);">111</a>
+                                                </span>
+                                            </li>--%>
+                                        </ul>
+                                    </div>
+                                </li>
 								<c:forEach items="${topClassificationVoList}" var="topClassification">
 									<li id="mainCate-1" class="mainCate">
 										<h3>
@@ -147,28 +163,25 @@
 
                     <nav>
                         <ul class="pagination">
-                           
+
                             <c:if test="${page.pageNum gt 1}">
-                                        <li>
-                                            <a href="${pageContext.request.contextPath}/menu/cookmenu?pageNum=${page.pageNum-1}" aria-label="Previous">
-                                                <span aria-hidden="true">上一页</span>
-                                            </a>
-                                        </li>
-                                    </c:if>
-                                   <%--  <c:forEach begin="${page.startIndex}" end="${page.startIndex}" step="1" var="index">
-                                        <li><a href="${pageContext.request.contextPath}/menu/cookmenu?pageNum=${index+1}" <c:if test="${index+1 eq page.pageNum}">class="active"</c:if>>${index+1}</a></li>
-                                    </c:forEach> --%>
-                             
-                                    <c:forEach begin="${page.startPage-1}" end="${page.endPage-1}" step="1" var="index" >
-                                    	 <li><a href="${pageContext.request.contextPath}/menu/cookmenu?pageNum=${index+1}" <c:if test="${index+1 eq page.pageNum}">class="active"</c:if>>${index+1}</a></li>
-                                    </c:forEach> 
-                                    <c:if test="${page.pageNum lt page.totalPage}">
-                                        <li>
-                                            <a href="${pageContext.request.contextPath}/menu/cookmenu?pageNum=${page.pageNum+1}" aria-label="Next">
-                                                <span aria-hidden="true">下一页</span>
-                                            </a>
-                                        </li>
-                                    </c:if>
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/menu/cookmenu?pageNum=${page.pageNum-1}" aria-label="Previous">
+                                        <span aria-hidden="true">上一页</span>
+                                    </a>
+                                </li>
+                            </c:if>
+                            <c:forEach begin="${page.startPage-1}" end="${page.endPage-1}" step="1" var="index" >
+                                 <li><a href="${pageContext.request.contextPath}/menu/cookmenu?pageNum=${index+1}" <c:if test="${index+1 eq page.pageNum}">class="active"</c:if>>${index+1}</a></li>
+                            </c:forEach>
+                            <c:if test="${page.pageNum lt page.totalPage}">
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/menu/cookmenu?pageNum=${page.pageNum+1}" aria-label="Next">
+                                        <span aria-hidden="true">下一页</span>
+                                    </a>
+                                </li>
+                            </c:if>
+
                         </ul>
                     </nav>
                 </div>

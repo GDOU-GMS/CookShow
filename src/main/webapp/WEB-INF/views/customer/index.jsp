@@ -135,7 +135,8 @@
                                     </h3>
                                     <div class="subCate" style="display: none;">
                                         <ul id="sub-ul-1">
-                                            <a href="${pageContext.request.contextPath}/menu/cookmenu"><h4>最新菜谱</h4></a>
+                                            <a href="${pageContext.request.contextPath}/menu/cookmenu"><span>最新菜谱</span></a>
+                                            <a href="${pageContext.request.contextPath}/classification/allClassification"><span>所有分类</span></a>
                                             <%--<li>
                                                 <span>
                                                     <a href="javascript:void(0);">111</a>
@@ -156,7 +157,7 @@
 													<li>
 														<span>
 															<c:forEach items="${secondClassification.list }" var="thirdClassification">
-																<a href="http://sc.admin5.com/">${thirdClassification.name }</a>
+																<a href="${pageContext.request.contextPath}/cookbook/findByClassificationCode/${thirdClassification.code}">${thirdClassification.name }</a>
 															</c:forEach>
 														</span>
 													</li>

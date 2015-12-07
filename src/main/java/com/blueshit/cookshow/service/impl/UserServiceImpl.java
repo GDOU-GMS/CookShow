@@ -24,4 +24,10 @@ public class UserServiceImpl extends DaoSupportImpl<User> implements UserService
                 .setParameter(0,username)
                 .uniqueResult();
     }
+
+    public User findByEmail(String email){
+        return (User)getSession().createQuery("from User u where u.email = ?")
+                .setParameter(0,email)
+                .uniqueResult();
+    }
 }

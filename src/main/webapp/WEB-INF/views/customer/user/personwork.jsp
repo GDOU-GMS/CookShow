@@ -127,7 +127,6 @@
 
                     <div role="tabpanel" class="tab-pane active" id="gaikuang">
                         <div class="creatediv">
-
                             <div class="row showimg">
                                 <div class="col-sm-6 col-md-4"style="width:100%;padding:0px;">
                                     <div class="thumbnail">
@@ -188,15 +187,34 @@
 
                     <div role="tabpanel" class="tab-pane" id="mymenu">
                         <div class="creatediv">
-                            <a class="btn btn-default createcss" href="createnewmenu.html" role="button">创建新菜单</a>
+                            <a class="btn btn-default createcss" href="${pageContext.request.contextPath}/menu/createMenu" role="button">创建新菜单</a>
                         </div>
                         <div class="menuname">
-                            <a  href="#" role="button">菜单名称</a>
-
-                            <a  href="#" role="button">菜单名称</a>
-                            <a  href="#" role="button">菜单名称</a>
+                            <c:forEach items="${menuPage.list}" var="menu">
+                                <a style="float: left" href="${pageContext.request.contextPath}/menu/menuDetail/${menu.id}" role="button">${menu.name}&nbsp;&nbsp;<span><fmt:formatDate value="${menu.createDate}" pattern="yyyy-MM-dd"/>创建</span></a>
+                            </c:forEach>
                         </div>
-
+                        <nav>
+                            <ul class="pagination">
+                                <c:if test="${menuPage.pageNum-1 gt 1}">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=mymenu&menupageNum=${menuPage.pageNum-1}" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                </c:if>
+                                <c:forEach begin="${menuPage.startIndex}" end="${menuPage.startIndex}" step="1" var="index">
+                                    <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=mymenu&menupageNum=${index+1}" <c:if test="${index+1 eq menuPage.pageNum}">class="active"</c:if>>${index+1}</a></li>
+                                </c:forEach>
+                                <c:if test="${menuPage.pageNum+1 lt menuPage.totalRecord}">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=mymenu&menupageNum=${menuPage.pageNum+1}" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </c:if>
+                            </ul>
+                        </nav>
                     </div><!-- mymenu-->
 
                     <div role="tabpanel" class="tab-pane" id="pwd">
@@ -225,14 +243,33 @@
                                 </div>
                             </c:forEach>
                         </div>
+                        <nav>
+                            <ul class="pagination">
+                                <c:if test="${cookbookPage.pageNum-1 gt 1}">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=pwd&cookbookpageNum=${cookbookPage.pageNum-1}" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                </c:if>
+                                <c:forEach begin="${cookbookPage.startIndex}" end="${cookbookPage.startIndex}" step="1" var="index">
+                                    <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=pwd&cookbookpageNum=${index+1}" <c:if test="${index+1 eq cookbookPage.pageNum}">class="active"</c:if>>${index+1}</a></li>
+                                </c:forEach>
+                                <c:if test="${cookbookPage.pageNum+1 lt cookbookPage.totalRecord}">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=pwd&cookbookpageNum=${cookbookPage.pageNum+1}" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </c:if>
+                            </ul>
+                        </nav>
 
                     </div>
                     <div role="tabpanel" class="tab-pane" id="personimage">
 
 
                     </div>
-
-                    <div role="tabpanel" class="tab-pane" id="settings">...</div>
                 </div>
 
             </div>
@@ -259,11 +296,13 @@
         var $navul = $("#navul");
        if(target!=null&&target!=''){
            $navul.find("li").each(function(){
-               $(this).attr("class","");
+               $(this).removeClass("active");
            });
-           $("#target_"+target).attr("class","active")
-           $(".tab-pane").removeClass("active");
-           $("#"+target).attr("class","active")
+           $("#target_"+target).attr("class","active");
+           $(".tab-pane").each(function(){
+               $(this).removeClass("active");
+           });
+           $("#"+target).addClass("active")
        }
     })
 

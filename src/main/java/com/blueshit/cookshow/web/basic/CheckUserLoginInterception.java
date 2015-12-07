@@ -30,6 +30,8 @@ public class CheckUserLoginInterception implements HandlerInterceptor {
         list.add("/cookbook/modifyCookbook");
         list.add("/cookbook/deleteCookbook");
         list.add("/menu/createMenu");
+        list.add("/menu/addMenu");
+        list.add("/menu/addCookbook");
     }
 
     /**
