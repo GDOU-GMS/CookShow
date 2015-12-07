@@ -12,6 +12,7 @@ import com.blueshit.cookshow.service.MenuService;
 import com.blueshit.cookshow.web.basic.BaseController;
 
 import com.blueshit.cookshow.web.controller.common.ResultEntity;
+import com.blueshit.cookshow.web.controller.listener.DataCacheListener;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -66,8 +67,7 @@ public class MenuController extends BaseController {
     @RequestMapping("/cookmenu")
     public String cookmenu(Integer pageNum,Model model){
         //查询所有分类信息
-        List<ClassificationVo> topClassificationVoList = classificationService.getAllClassification();
-        model.addAttribute("topClassificationVoList",topClassificationVoList);
+        model.addAttribute("topClassificationVoList", DataCacheListener.classificationList);
         //查询所有菜谱
         pageNum = pageNum==null||pageNum==0?1:pageNum;
         QueryHelper queryHelper = new QueryHelper(Cookbook.class,"cb");

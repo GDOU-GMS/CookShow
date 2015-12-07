@@ -174,12 +174,19 @@
 					</div>
 					<div class="csright">
 						<div id="owl-demo" class="owl-carousel">
-							<%--<a class="item" href="" target="_blank"><img
+                            <c:forEach items="${headlineCookbooks}" var="cookbook">
+                                <a class="item" href="" target="_blank">
+                                    <img src="${cookbook.titleImage}" style="width: 750px; height: 435px;" alt="">
+                                    <b></b>
+                                    <span>${cookbook.title}</span>
+                                </a>
+                            </c:forEach>
+							<%--&lt;%&ndash;<a class="item" href="" target="_blank"><img
 								src="${pageContext.request.contextPath}/resources/customer/images/北京烤鸭.gif"
 								style="width: 750px; height: 435px;" alt=""><b></b><span>秀厨网美食狂欢登场</span></a>
 							<a class="item" href="" target="_blank"><img
 								src="${pageContext.request.contextPath}/resources/customer/images/海鲜.gif"
-								style="width: 750px; height: 435px;" alt=""><b></b><span>秀厨网美食狂欢登场</span></a>--%>
+								style="width: 750px; height: 435px;" alt=""><b></b><span>秀厨网美食狂欢登场</span></a>&ndash;%&gt;
 							<a class="item" href="" target="_blank"><img
 								style="width: 750px; height: 435px;"
 								src="${pageContext.request.contextPath}/resources/customer/images/鸡翅.gif"
@@ -195,7 +202,7 @@
 								style="width: 750px; height: 435px;" alt=""><b></b><span>秀厨网美食狂欢登场</span></a>
 							<a class="item" href="" target="_blank"><img
 								src="${pageContext.request.contextPath}/resources/customer/images/扒.gif"
-								style="width: 750px; height: 435px;" alt=""><b></b><span>秀厨网美食狂欢登场</span></a>
+								style="width: 750px; height: 435px;" alt=""><b></b><span>秀厨网美食狂欢登场</span></a>--%>
 						</div>
 
 

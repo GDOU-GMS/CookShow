@@ -237,14 +237,14 @@ public class CookbookController extends BaseController {
             Page page = cookbookService.findByClassification(classificationCode,pageNum,pageSize);
             model.addAttribute("page",page);
             //查询所有分类信息
-            List<ClassificationVo> topClassificationVoList = classificationService.getAllClassification();
-            model.addAttribute("topClassificationVoList",topClassificationVoList);
+            model.addAttribute("topClassificationVoList",DataCacheListener.classificationList);
             //相关菜谱
             List<Menu> menuList=menuService.getRecentPopular();
             model.addAttribute("menuList", menuList);
         }
         return "customer/menu/cookmenu";
     }
+
 
 
 }
