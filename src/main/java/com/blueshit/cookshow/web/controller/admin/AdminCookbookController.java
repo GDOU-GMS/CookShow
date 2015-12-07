@@ -90,7 +90,12 @@ public class AdminCookbookController extends BaseController {
 		  
           return "admin/cookbook/list";
 	   	  
-		  
 	}
+	  
+	  @RequestMapping("/cookbookreport")
+	  public String cookbookReport(){
+		  
+		  return "admin/cookbook/cookbookreport";
+	  }
 
 }
