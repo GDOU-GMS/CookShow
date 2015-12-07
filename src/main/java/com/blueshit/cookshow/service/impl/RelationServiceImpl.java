@@ -36,5 +36,13 @@ public class RelationServiceImpl extends DaoSupportImpl<Relation> implements Rel
 		return relation;
 		
 	}
+
+	public Relation getFocusOnFriend(Long followerId, Long byFollowerId) {
+		return (Relation) getSession().createQuery("from Relation r where r.Follower.id=? and r.ByFollower.id=?")
+		.setParameter(0, followerId)
+		.setParameter(1, byFollowerId)
+		.uniqueResult();
+		
+	}
 	
 }
