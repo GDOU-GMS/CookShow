@@ -56,6 +56,12 @@ public class Cookbook implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updateDate;
 
+    private Date publishDate;
+
+    @Column(name = "is_headline")
+    @org.hibernate.annotations.Type(type="yes_no")
+    private Boolean isHeadline = false;
+
 	//bi-directional many-to-one association to CommentCookbook
 	@OneToMany(mappedBy="Cookbook")
 	private Set<CommentCookbook> CommentCookbooks;
@@ -221,6 +227,21 @@ public class Cookbook implements Serializable {
         this.intro = intro;
     }
 
+    public Date getPublishDate() {
+        return publishDate;
+    }
+
+    public void setPublishDate(Date publishDate) {
+        this.publishDate = publishDate;
+    }
+
+    public Boolean getIsHeadline() {
+        return isHeadline;
+    }
+
+    public void setIsHeadline(Boolean isHeadline) {
+        this.isHeadline = isHeadline;
+    }
 
     @Override
     public String toString() {
@@ -239,9 +260,8 @@ public class Cookbook implements Serializable {
                 ", title='" + title + '\'' +
                 ", titleImage='" + titleImage + '\'' +
                 ", updateDate=" + updateDate +
-                ", CommentCookbooks=" + CommentCookbooks +
-                ", User=" + User +
-                ", menus=" + menus +
+                ", publishDate=" + publishDate +
+                ", isHeadline=" + isHeadline +
                 '}';
     }
 }
