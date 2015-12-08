@@ -287,6 +287,9 @@ public class UserController extends BaseController {
             model.addAttribute("collectionCookbookPage",collectionCookbookPage);
             //查询我收藏的菜单
 
+            Page collectionMenuPage = collectionService.findByUserId(user.getId(),CollectionEnum.MENU.getCode(),collectionMenupageNum,20);
+            collectionMenuPage = getCollectionObject(collectionMenuPage);
+            model.addAttribute("collectionMenuPage",collectionMenuPage);
             //查询是否已关注
             User currentUser=(User) request.getSession().getAttribute("user");
             if(currentUser!=null){
