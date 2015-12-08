@@ -5,6 +5,7 @@ import com.blueshit.cookshow.common.helper.entity.Step;
 import com.blueshit.cookshow.common.utils.MyDataUtils;
 import com.blueshit.cookshow.model.entity.Classification;
 import com.blueshit.cookshow.model.entity.Cookbook;
+import com.blueshit.cookshow.model.entity.Menu;
 import com.blueshit.cookshow.model.entity.User;
 import com.blueshit.cookshow.qiniu.QiniuUpload;
 import com.blueshit.cookshow.web.basic.BaseController;
@@ -12,6 +13,7 @@ import com.blueshit.cookshow.web.basic.BaseController;
 import com.blueshit.cookshow.web.controller.listener.DataCacheListener;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.shiro.web.session.HttpServletSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -104,7 +106,7 @@ public class CookbookController extends BaseController {
     }
 
     @RequestMapping("/cookbook/{cookbookId}")
-    public String cookbook(@PathVariable String cookbookId,Model model){
+    public String cookbook(HttpSession session,@PathVariable String cookbookId,Model model){
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             if (!"".equals(cookbookId)) {
@@ -116,6 +118,10 @@ public class CookbookController extends BaseController {
                 model.addAttribute("materialList",materialList);
                 model.addAttribute("stepList",stepList);
                 model.addAttribute("cookbook", cookbook);
+            }
+            if(getCurrentUser(session)!=null){
+                List<Menu> menuList = menuService.getAllMenuByUserId(getCurrentUser(session).getId());
+                model.addAttribute("menuList", menuList);
             }
         }catch (Exception e){
             e.printStackTrace();

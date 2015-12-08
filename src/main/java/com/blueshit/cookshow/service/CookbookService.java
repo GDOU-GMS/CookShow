@@ -13,11 +13,10 @@ public interface CookbookService extends DaoSupport<Cookbook> {
 
     public Page findByUserId(Long userId,int pageNum);
 
-	public List<Cookbook> getReport();
+    public Page findByMenuId(Long menuId,int pageNum,int pageSize);
 
-	public List<Cookbook> query(String title, String classificationCode);
+    public Page findByClassification(String classificationCode,int pugeNum,int pageSize);
 
-	public List<Cookbook> getHeadlineCookbooks();
+    public List<Cookbook> getHeadlineCookbooks();
 
-	
 }

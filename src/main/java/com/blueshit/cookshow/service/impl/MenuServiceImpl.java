@@ -38,9 +38,7 @@ public class MenuServiceImpl extends DaoSupportImpl<Menu> implements MenuService
                   .list();
 		recentMenuList.addAll(menuList);
 		return recentMenuList;
-	
 	}
-
 
 
     public Page getMenuByUserId(Long userId,int pageNum){
