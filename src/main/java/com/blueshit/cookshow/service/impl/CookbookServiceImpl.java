@@ -44,8 +44,9 @@ public class CookbookServiceImpl extends DaoSupportImpl<Cookbook> implements Coo
 	}
 
 	public List<Cookbook> getHeadlineCookbooks() {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().createQuery("from Cookbook c where c.isHeadline = true and deleted = 0 order by createDate desc")
+                .setMaxResults(5)
+                .list();
 	}
 
 
