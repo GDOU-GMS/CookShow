@@ -19,7 +19,7 @@ public interface MenuService extends DaoSupport<Menu> {
 
     public void addCookbook(Long menuId,Long cookbookId);
 
-    public boolean cookBookExistInMenu(Long cookbookId,Long menuId); 
-    
+    public boolean cookBookExistInMenu(Long cookbookId,Long menuId);
+
 	public List<Menu> query(String name);
 }
