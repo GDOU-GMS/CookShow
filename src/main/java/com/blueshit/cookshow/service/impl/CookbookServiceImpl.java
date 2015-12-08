@@ -73,6 +73,12 @@ public class CookbookServiceImpl extends DaoSupportImpl<Cookbook> implements Coo
                 .setMaxResults(5)
                 .list();
 	}
+	public Page findByTitle(String title, int pageNum, int pageSize) {
+		
+		QueryHelper queryHelper=new QueryHelper(Cookbook.class, "c")
+    	.addWhereCondition("c.title like ? ", "%"+title+"%");
+    	return getPage(pageNum,pageSize,queryHelper);
+	}
 
 
 }

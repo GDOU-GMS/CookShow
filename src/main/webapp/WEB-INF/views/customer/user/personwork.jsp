@@ -103,8 +103,26 @@
                     </div>
                 </div>
                 <div class="media-body">
-                    <c:if test="${!empty user}">
-                        <a class="btn btn-default createcss">关注</a>
+                    <c:if test="${(!empty user)&&(empty relation)&&(!empty tag)}">
+                       <span style="display:none;" id="focusid">${userInfo.id}</span>
+                       <span style="display:none;" id="currentid">${user.id}</span>
+                        
+                       <a id="focushref" class="btn btn-default createcss" href="javascript:void(0)" >关注</a>
+                   		 
+                   		<!-- 
+                   		<form method="post" action="${pageContext.request.contextPath}/relation/addFocusOnFriend/${userInfo.id}/${user.id}" id="focushref">
+                   			
+                   			 <button type="submit" class="btn btn-default" >关注</button>
+                   		</form>
+                   		 -->
+                    </c:if>
+                    <c:if  test="${(!empty user)&&(!empty relation)&&(!empty tag)}">
+                       <span style="display:none;" id="focusid">${userInfo.id}</span>
+                       <span style="display:none;" id="currentid">${user.id}</span>
+                        
+                       <a id="focushref" class="btn btn-default createcss createcss1"  href="javascript:void(0)">已关注</a>
+                   		 
+                    	
                     </c:if>
                    <div class="media-body mediainforight">
                        <a class="mediainforight">关注的人</a>
@@ -309,7 +327,76 @@
            $(".tab-pane").removeClass("active");
            $("#"+target).attr("class","active")
        }
+       if($('#focushref').text()=="已关注"){
+    	   $('#focushref').mouseover(function(){
+	        	$('#focushref').text("取消关注");
+	        });
+	        $('#focushref').mouseout(function(){
+	        	$('#focushref').text("已关注");
+	        });
+	        $('#focushref').removeClass("changea");
+	        $('#focushref').addClass("createcss");
+       }
+       
     })
+     $(document).ready(function() { 
+       
+    	$('#focushref').click(function(){
+    		aa();
+    	})
+    })
+    
+     function aa(){
+    	    if($('#focushref').text()=="关注"){
+	    	    var url = 'http://localhost:8080/relation/addFocusOnFriend/'; 
+	    	    var focusid=$('#focusid').text();
+	    	    var currentid=$('#currentid').text();
+	    	    var param=currentid+'/'+focusid;
+	    	    url += param;  
+	    	    //alert(url);  
+	    	    $.get(url, function(data) { 
+	    	        $('#focushref').text(data.msg);
+	    	        $('#focushref').removeClass("createcss");
+	    	        $('#focushref').addClass("changea");
+	    	        //$('#myModal').modal('show');
+	    	        $('#focushref').mouseover(function(){
+	    	        	$('#focushref').text("取消关注");
+	    	        });
+	    	        $('#focushref').mouseout(function(){
+	    	        	$('#focushref').text(data.msg);
+	    	        });
+	    	        
+	    	    });  
+    	    }else if($('#focushref').text()=="取消关注"){
+    	    	
+    	    	var url = 'http://localhost:8080/relation/deleteFocusOnFriend/'; 
+	    	    var focusid=$('#focusid').text();
+	    	    var currentid=$('#currentid').text();
+	    	   //alert(focusid);
+	    	    var param=currentid+'/'+focusid;
+	    	    url += param;  
+	    	    //alert(url);  
+	    	    $.get(url, function(data) { 
+	    	        $('#focushref').text(data.msg);
+	    	        $('#focushref').removeClass("changea");
+	    	        $('#focushref').addClass("createcss");
+	    	        //$('#myModal').modal('show');
+	    	       /*  $('#focushref').mouseover(function(){
+	    	        	$('#focushref').text("取消关注");
+	    	        }); */
+	    	        $('#focushref').mouseover(function(){
+	    	        	$('#focushref').text("关注");
+	    	        });
+	    	        $('#focushref').mouseout(function(){
+	    	        	$('#focushref').text("关注");
+	    	        });
+	    	        
+	    	    });  
+    	    	
+    	    }
+    	   
+    	    
+    }
 
 
 </script>
