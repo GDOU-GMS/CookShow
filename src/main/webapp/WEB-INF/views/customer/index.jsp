@@ -118,7 +118,7 @@
 			<div id="navfont">
 				<div id="navcontent">
 					<ul class="nav nav-pills">
-						<li role="presentation" class="cbook"><span>全部分类</span></li>
+						<li role="presentation" class="cbook"><a href="${pageContext.request.contextPath}/">全部分类</a></li>
 						<li role="presentation" class="active"><a href="${pageContext.request.contextPath}/">首页</a></li>
 						<li role="presentation"><a href="${pageContext.request.contextPath}/menu/cookmenu">菜单</a></li>
 						<li role="presentation"><a href="#">健康饮食</a></li>
