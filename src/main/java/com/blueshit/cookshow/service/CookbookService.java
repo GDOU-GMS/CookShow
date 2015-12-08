@@ -13,5 +13,11 @@ public interface CookbookService extends DaoSupport<Cookbook> {
 
     public Page findByUserId(Long userId,int pageNum);
 
+	public List<Cookbook> getReport();
+
+	public List<Cookbook> query(String title, String classificationCode);
+
+	public List<Cookbook> getHeadlineCookbooks();
+
 	
 }

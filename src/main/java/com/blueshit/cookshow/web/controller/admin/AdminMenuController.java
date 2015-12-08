@@ -67,7 +67,7 @@ public class AdminMenuController extends BaseController {
 	public String detail(String menuId,Model model){
 		
 		Menu menu=menuService.findById(Long.parseLong(menuId));
-		QueryHelper queryHelper=new QueryHelper(Cookbook.class, )
+	//	QueryHelper queryHelper=new QueryHelper(Cookbook.cla );
 		model.addAttribute("menu",menu);
 		return "admin/menu/detail";
 	}

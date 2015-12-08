@@ -1,6 +1,8 @@
 package com.blueshit.cookshow.service.impl;
 
 
+import java.util.List;
+
 import com.blueshit.cookshow.common.helper.Page;
 import com.blueshit.cookshow.common.helper.QueryHelper;
 import com.blueshit.cookshow.dao.impl.DaoSupportImpl;
@@ -30,6 +32,21 @@ public class CookbookServiceImpl extends DaoSupportImpl<Cookbook> implements Coo
                 .addOrderByProperty("createDate",false);
         return getPage(pageNum,queryHelper);
     }
+
+	public List<Cookbook> getReport() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Cookbook> query(String title, String classificationCode) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Cookbook> getHeadlineCookbooks() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 }
