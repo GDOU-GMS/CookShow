@@ -67,8 +67,9 @@ public class AdminMenuController extends BaseController {
 	public String detail(String menuId,Model model){
 		
 		Menu menu=menuService.findById(Long.parseLong(menuId));
-		QueryHelper queryHelper=new QueryHelper(Cookbook.class,"c" )
-		.addWhereCondition("FROM Cookbook c join c.menus m join m.books b where b.name = 'a'" );
+//		QueryHelper queryHelper=new QueryHelper(Cookbook.class,"c" )
+//		.addWhereCondition("FROM Cookbook c join c.menus m join m.books b where b.name = 'a'" );
+		
 		model.addAttribute("menu",menu);
 		return "admin/menu/detail";
 	}

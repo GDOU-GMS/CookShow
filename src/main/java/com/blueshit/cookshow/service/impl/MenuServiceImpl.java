@@ -100,6 +100,8 @@ public class MenuServiceImpl extends DaoSupportImpl<Menu> implements MenuService
 //		List<Menu> query=getSession().createQuery("from Menu m where m.name like '%"+name+"%'")
 //				.list();
 //		return query;
+    
+    
 		
 	
 

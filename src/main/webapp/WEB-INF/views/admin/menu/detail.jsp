@@ -257,26 +257,136 @@ Purchase: http://wrapbootstrap.com
             </div>
             <!-- /Page Header -->
             <!-- Page Body -->
-            <div>
+           <div>
                 <div class="row">
                     <div class="col-xs-12 col-md-12">
-                        <div class="well with-header  with-footer">
+                        <div class="well with-header  with-footer" style="margin-bottom:0px;padding-bottom:10px">
                             <div class="header bg-blue">
-                               菜单详细信息
-                            </div>  <br/>
-                       
-                         <div >
-                         <h4>菜单标题：</h4>
-                          <ul >
+                               菜谱
+                            </div>
+                     <div>   
+                      <div class="row" >
+                        <form action="${pageContext.request.contextPath}/admin/cookbook/query" method="post">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                  <input name="title" class="form-control" style="width: 50%" placeholder="菜谱标题" type="text">
+                                 </div>
+                                </div>
+                                <div class="col-sm-6" >
+                                  <div class="form-group">
+                                      <input name="classificationCode" class="form-control" style="width: 50%" placeholder="菜谱分类" type="text">
+                                    </div>
+                                 </div>
                           
-                          <li>${menu.title}</li>
-                          <li>${menu.name }</li>
-                         
-                     
-                          </ul>
-                         </div>
+                                  <div class="col-sm-6">
+                                     <button class="btn btn-azure" type="submit">查询</button>
+                                     </div>
+                        </form>
+                      </div>
+                  </div>
+                      </div>
                           
-                            
+                            <table id="click" class="table table-hover">
+                                <thead class="bordered-darkorange">
+                                <tr>
+                                    <th>
+                                        #
+                                    </th>
+                                                                        <th>
+                                        菜谱标题
+                                    </th>
+                                    <th>
+                                        菜谱类型
+                                    </th>
+          
+                                    <th>
+                                        访问数
+                                    </th>
+                                    <th>
+                                        点赞数
+                                    </th>
+                                                              <th>
+                                        创建时间
+                                    </th>
+                                                              <th>
+                                        更新时间
+                                    </th>
+                                    <th>
+                                
+                                     <th>
+              是否有效           
+                                    </th>
+                                    <th>
+              操作                      
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                             <c:forEach items="${page.list}" var="cookbook" varStatus="loop">
+                                      <tr>
+                                        <td>
+                                                ${page.pageSize*(page.pageNum-1)+loop.index+1}
+                                        </td>
+                                        <td>
+                                                ${cookbook.title}
+                                        </td>
+                                        <td>
+                                                ${cookbook.classificationCode}
+                                        </td>
+                                    
+                                         <td>
+                                                 ${cookbook.clickNum}                                        </td>
+                                         <td>
+                                                ${cookbook.favourNum}
+                                        </td>
+                                            <td>
+                                                ${cookbook.createDate}
+                                        </td>
+                                        <td>
+                                                ${cookbook.updateDate}
+                                        </td>
+                                               </td> <td>
+                                        <td>
+                                        <c:if test="${cookbook.deleted eq 1}">
+                                            已锁定
+                                        </c:if>
+                                        <c:if test="${cookbook.deleted eq 0}">
+                                            未锁定
+                                        </c:if>
+                                        </td>
+                                        <td>
+                                           <a href="${pageContext.request.contextPath}/admin/cookbook/disable?cookbookId=${cookbook.id}" method="post" 
+                                           class="btn btn-info btn-xs edit"> 锁定</a>
+                                           <a href="${pageContext.request.contextPath}/admin/cookbook/enable?cookbookId=${cookbook.id}" method="post" 
+                                           class="btn btn-info btn-xs edit"> 解锁</a>
+                                            <a href="${pageContext.request.contextPath}/admin/cookbook/detail?cookbookId=${cookbook.id}" class="btn btn-danger btn-xs delete">详细信息</a>
+                                        </td>
+                                    </tr>
+                                </c:forEach> 
+                                </tbody>
+                            </table>
+                            <br/>
+                            <nav>
+                                <ul class="pagination">
+                                    <c:if test="${page.pageNum-1 gt 1}">
+                                        <li>
+                                            <a href="${pageContext.request.contextPath}/cookbook/list?pageNum=${page.pageNum-1}" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                    </c:if>
+                                    <c:forEach begin="${page.startIndex}" end="${page.startIndex}" step="1" var="index">
+                                        <li><a href="${pageContext.request.contextPath}/cookbook/list?pageNum=${index+1}" <c:if test="${index+1 eq page.pageNum}">class="active"</c:if>>${index+1}</a></li>
+                                    </c:forEach>
+                                    <c:if test="${page.pageNum+1 lt page.totalRecord}">
+                                        <li>
+                                            <a href="${pageContext.request.contextPath}/cookbook/list?pageNum=${page.pageNum+1}" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                    </c:if>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                 </div>
