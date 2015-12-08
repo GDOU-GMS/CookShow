@@ -1,5 +1,6 @@
 package com.blueshit.cookshow.web.controller;
 
+import com.blueshit.cookshow.common.helper.Page;
 import com.blueshit.cookshow.common.helper.entity.Material;
 import com.blueshit.cookshow.common.helper.entity.Step;
 import com.blueshit.cookshow.common.utils.MyDataUtils;
@@ -7,6 +8,7 @@ import com.blueshit.cookshow.model.entity.Classification;
 import com.blueshit.cookshow.model.entity.Cookbook;
 import com.blueshit.cookshow.model.entity.Menu;
 import com.blueshit.cookshow.model.entity.User;
+import com.blueshit.cookshow.model.vo.ClassificationVo;
 import com.blueshit.cookshow.qiniu.QiniuUpload;
 import com.blueshit.cookshow.web.basic.BaseController;
 
@@ -245,5 +247,22 @@ public class CookbookController extends BaseController {
 	         model.addAttribute("title",cookbook.getTitle());
 	         return "customer/menu/cookbooksearch";
 	    }
+
+    @RequestMapping("/findByClassificationCode/{classificationCode}")
+    public String findByClassificationCode(@PathVariable String classificationCode,Integer pageNum,Model model){
+        pageNum = pageNum==null||pageNum==0?1:pageNum;
+        int pageSize = 20;
+        if(classificationCode!=null&&!"".equals(classificationCode)){
+            Page page = cookbookService.findByClassification(classificationCode,pageNum,pageSize);
+            model.addAttribute("page",page);
+            //查询所有分类信息
+            model.addAttribute("topClassificationVoList",DataCacheListener.classificationList);
+            //相关菜谱
+            List<Menu> menuList=menuService.getRecentPopular();
+            model.addAttribute("menuList", menuList);
+        }
+        return "customer/menu/cookmenu";
+    }
+
 }
 	

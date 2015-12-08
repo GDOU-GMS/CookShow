@@ -23,7 +23,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
-import javax.persistence.Entity;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -257,9 +256,7 @@ public class UserController extends BaseController {
                              Integer menupageNum,
                              Integer productionpageNum,
                              Integer collectionCookbookpageNum,
-                             Integer collectionMenupageNum){
-
-                             Integer productionpageNum,
+                             Integer collectionMenupageNum,
                              HttpServletRequest request){
         cookbookpageNum = cookbookpageNum==null||cookbookpageNum<=0?1:cookbookpageNum;
         menupageNum = menupageNum==null||menupageNum<=0?1:menupageNum;

@@ -18,9 +18,11 @@ public interface CookbookService extends DaoSupport<Cookbook> {
     public Page findByClassification(String classificationCode,int pugeNum,int pageSize);
 
     public List<Cookbook> getHeadlineCookbooks();
-	public List<Cookbook> getHeadlineCookbooks();
-	
+
 	public Page findByTitle(String title,int pageNum,int pageSize);
 
-	
+    public Page findByMenuId(Long menuId,int pageNum,int pageSize);
+
+
+
 }
