@@ -11,6 +11,8 @@ import org.hibernate.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by Seven on 2015/11/26.
  */
@@ -71,7 +73,6 @@ public class CookbookServiceImpl extends DaoSupportImpl<Cookbook> implements Coo
                 .addWhereCondition("c.classificationCode like ? ","%,"+classificationCode+",%")
                 .addOrderByProperty("createDate",false);
         return getPage(pugeNum,pageSize,queryHelper);
-
     }
     
     
@@ -84,5 +85,14 @@ public class CookbookServiceImpl extends DaoSupportImpl<Cookbook> implements Coo
     	return getPage(pageNum,pageSize,queryHelper);
     }
 
+    /**
+     * 获取所有分类头条
+     * @return
+     */
+    public List<Cookbook> getHeadlineCookbooks(){
+        return getSession().createQuery("from Cookbook where isHeadline = true order by publishDate desc ")
+                .setMaxResults(5)
+                .list();
+    }
 
 }
