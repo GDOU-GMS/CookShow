@@ -3,11 +3,8 @@ package com.blueshit.cookshow.web.controller;
 import com.blueshit.cookshow.model.entity.Collection;
 import com.blueshit.cookshow.model.entity.User;
 import com.blueshit.cookshow.model.enums.CollectionEnum;
-import com.blueshit.cookshow.service.CollectionService;
 import com.blueshit.cookshow.web.basic.BaseController;
 import com.blueshit.cookshow.web.controller.common.ResultEntity;
-import org.hibernate.loader.custom.CustomLoader;
-import org.hibernate.type.IntegerType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -67,7 +64,6 @@ public class CollectionController extends BaseController {
         if(objectId!=null&&type!=null&&state!=null){
             if(user!=null){
                 if(Boolean.parseBoolean(state)){
-                    System.out.println("===========取消===========");
                     //取消收藏
                     collectionService.deleteCollection(Long.parseLong(objectId),Integer.parseInt(type),user.getId());
                 }else{

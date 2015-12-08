@@ -26,6 +26,12 @@ public class IndexController extends BaseController{
         //获取首页轮播
         List<Cookbook>  headlineCookbooks = cookbookService.getHeadlineCookbooks();
         model.addAttribute("headlineCookbooks",headlineCookbooks);
+        //获取新秀菜谱
+        List<Cookbook> newCreateCookbook = cookbookService.getNewCreateCookbooks();
+        model.addAttribute("newCreateCookbook",newCreateCookbook);
+        //获取最受欢迎的菜谱
+        List<Cookbook> popularCookbooks = cookbookService.getPopularCookbooks();
+        model.addAttribute("popularCookbooks",popularCookbooks);
         return "customer/index";
 
     }
