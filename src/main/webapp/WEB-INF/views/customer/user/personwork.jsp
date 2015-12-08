@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!doctype html>
 <html>
 <head>
@@ -28,7 +29,6 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="${pageContext.request.contextPath}/resources/customer/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/customer/js/jquery.SuperSlide.2.1.js"></script>
-     <script src="${pageContext.request.contextPath}/resources/customer/js/modal.js"></script>
 </head>
 
 <body>
@@ -103,28 +103,9 @@
                     </div>
                 </div>
                 <div class="media-body">
-                    <c:if test="${(!empty user)&&(empty relation)&&(!empty tag)}">
-                       <span style="display:none;" id="focusid">${userInfo.id}</span>
-                       <span style="display:none;" id="currentid">${user.id}</span>
-                        
-                       <a id="focushref" class="btn btn-default createcss" href="javascript:void(0)" >关注</a>
-                   		 
-                   		<!-- 
-                   		<form method="post" action="${pageContext.request.contextPath}/relation/addFocusOnFriend/${userInfo.id}/${user.id}" id="focushref">
-                   			
-                   			 <button type="submit" class="btn btn-default" >关注</button>
-                   		</form>
-                   		 -->
+                    <c:if test="${!empty user}">
+                        <a class="btn btn-default createcss">关注</a>
                     </c:if>
-                    <c:if  test="${(!empty user)&&(!empty relation)&&(!empty tag)}">
-                       <span style="display:none;" id="focusid">${userInfo.id}</span>
-                       <span style="display:none;" id="currentid">${user.id}</span>
-                        
-                       <a id="focushref" class="btn btn-default createcss createcss1"  href="javascript:void(0)">已关注</a>
-                   		 
-                    	
-                    </c:if>
-                   
                    <div class="media-body mediainforight">
                        <a class="mediainforight">关注的人</a>
                        <a class="mediainforight">被关注</a>
@@ -139,6 +120,7 @@
                     <li role="presentation" id="target_gaikuang" class="active"><a href="#gaikuang" aria-controls="gaikuang" role="tab" data-toggle="tab">概况</a></li>
                     <li role="presentation" id="target_mymenu"><a href="#mymenu" aria-controls="home" role="tab" data-toggle="tab">菜单</a></li>
                     <li role="presentation" id="target_pwd"><a href="#pwd" aria-controls="messages" role="tab" data-toggle="tab">菜谱</a></li>
+                    <li role="presentation" id="target_production"><a href="#production" aria-controls="production" role="tab" data-toggle="tab">作品</a></li>
                     <li role="presentation" id="target_personimage"><a href="#personimage" aria-controls="settings" role="tab" data-toggle="tab">收藏</a></li>
                 </ul>
                 <!-- Tab panes -->
@@ -147,10 +129,11 @@
 
                     <div role="tabpanel" class="tab-pane active" id="gaikuang">
                         <div class="creatediv">
+
                             <div class="row showimg">
                                 <div class="col-sm-6 col-md-4"style="width:100%;padding:0px;">
                                     <div class="thumbnail">
-                                        <img src="${pageContext.request.contextPath}/resources/customer/images/255.png" alt="..." style="margin:0px 30x;margin-top:25px;">
+                                        <img src="${pageContext.request.contextPath}/resources/customer/images/255.png" alt="..." style="margin:0px 30px;margin-top:25px;">
                                         <div class="caption">
 
                                             <h4>美美哒</h4>
@@ -168,7 +151,7 @@
                             <div class="row showimg imgright">
                                 <div class="col-sm-6 col-md-4"style="width:100%;padding:0px;">
                                     <div class="thumbnail">
-                                        <img src="${pageContext.request.contextPath}/resources/customer/images/255.png" alt="..." style="margin:0px 30x;margin-top:25px;">
+                                        <img src="${pageContext.request.contextPath}/resources/customer/images/255.png" alt="..." style="margin:0px 30px;margin-top:25px;">
                                         <div class="caption">
 
                                             <h4>美美哒</h4>
@@ -184,7 +167,7 @@
                             <div class="row showimg imgright">
                                 <div class="col-sm-6 col-md-4"style="width:100%;padding:0px;">
                                     <div class="thumbnail">
-                                        <img src="${pageContext.request.contextPath}/resources/customer/images/255.png" alt="..." style="margin:0px 30x;margin-top:25px;">
+                                        <img src="${pageContext.request.contextPath}/resources/customer/images/255.png" alt="..." style="margin:0px 30px;margin-top:25px;">
                                         <div class="caption">
 
                                             <h4>美美哒</h4>
@@ -207,34 +190,15 @@
 
                     <div role="tabpanel" class="tab-pane" id="mymenu">
                         <div class="creatediv">
-                            <a class="btn btn-default createcss" href="${pageContext.request.contextPath}/menu/createMenu" role="button">创建新菜单</a>
+                            <a class="btn btn-default createcss" href="createnewmenu.html" role="button">创建新菜单</a>
                         </div>
                         <div class="menuname">
-                            <c:forEach items="${menuPage.list}" var="menu">
-                                <a style="float: left" href="${pageContext.request.contextPath}/menu/menuDetail/${menu.id}" role="button">${menu.name}&nbsp;&nbsp;<span><fmt:formatDate value="${menu.createDate}" pattern="yyyy-MM-dd"/>创建</span></a>
-                            </c:forEach>
+                            <a  href="#" role="button">菜单名称</a>
+
+                            <a  href="#" role="button">菜单名称</a>
+                            <a  href="#" role="button">菜单名称</a>
                         </div>
-                        <nav>
-                            <ul class="pagination">
-                                <c:if test="${menuPage.pageNum-1 gt 1}">
-                                    <li>
-                                        <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=mymenu&menupageNum=${menuPage.pageNum-1}" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                </c:if>
-                                <c:forEach begin="${menuPage.startIndex}" end="${menuPage.startIndex}" step="1" var="index">
-                                    <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=mymenu&menupageNum=${index+1}" <c:if test="${index+1 eq menuPage.pageNum}">class="active"</c:if>>${index+1}</a></li>
-                                </c:forEach>
-                                <c:if test="${menuPage.pageNum+1 lt menuPage.totalRecord}">
-                                    <li>
-                                        <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=mymenu&menupageNum=${menuPage.pageNum+1}" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                </c:if>
-                            </ul>
-                        </nav>
+
                     </div><!-- mymenu-->
 
                     <div role="tabpanel" class="tab-pane" id="pwd">
@@ -263,39 +227,62 @@
                                 </div>
                             </c:forEach>
                         </div>
-                        <nav>
-                            <ul class="pagination">
-                                <c:if test="${cookbookPage.pageNum-1 gt 1}">
-                                    <li>
-                                        <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=pwd&cookbookpageNum=${cookbookPage.pageNum-1}" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                </c:if>
-                                <c:forEach begin="${cookbookPage.startIndex}" end="${cookbookPage.startIndex}" step="1" var="index">
-                                    <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=pwd&cookbookpageNum=${index+1}" <c:if test="${index+1 eq cookbookPage.pageNum}">class="active"</c:if>>${index+1}</a></li>
-                                </c:forEach>
-                                <c:if test="${cookbookPage.pageNum+1 lt cookbookPage.totalRecord}">
-                                    <li>
-                                        <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=pwd&cookbookpageNum=${cookbookPage.pageNum+1}" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                </c:if>
-                            </ul>
-                        </nav>
 
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="production">
+                        <c:forEach items="${productionPage.list}" var="production">
+                            <div class="row showimg imgright">
+                                <div class="col-sm-6 col-md-4"style="width:100%;padding:0px;">
+                                    <div class="thumbnail">
+                                        <a href="${pageContext.request.contextPath}/production/detail/${production.id}">
+                                            <img src="${production.titleImage}" alt="..." style="margin:0px 30px;margin-top:25px; overflow: hidden" width="250px" >
+                                        </a>
+                                        <div class="caption">
+                                            <h4>${production.title}</h4>
+                                            <p>${fn:length(production.intro) lt 20 ? production.intro : fn:substring(production.intro,0,20).concat('...')}</p>
+                                            <c:if test="${!empty user}">
+                                                <p class="col-md-offset-3">
+                                                    <a href="${pageContext.request.contextPath}/production/forwardToModify?productionId=${production.id}" class="btn btn-default" role="button">编辑</a>
+                                                    <a href="${pageContext.request.contextPath}/production/disableProduction?productionId=${production.id}" class="btn btn-default" role="button" onclick="return confirm('确认删除？')">删除</a>
+                                                </p>
+                                            </c:if>
+                                            <span style="color:#ccc;font-size:12px;"><fmt:formatDate value="${production.createDate}" pattern="yyyy-MM-dd"/> </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!--  end row-->
+                        </c:forEach>
+                        <div class="page row col-md-12">
+                            <nav>
+                                <ul class="pagination">
+                                    <c:if test="${productionPage.pageNum-1 gt 1}">
+                                        <li>
+                                            <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=production&productionpageNum=${productionPage.pageNum-1}" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                    </c:if>
+                                    <c:forEach begin="${productionPage.startIndex}" end="${productionPage.startIndex}" step="1" var="index">
+                                        <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=production&productionpageNum=${index+1}" <c:if test="${index+1 eq productionPage.pageNum}">class="active"</c:if>>${index+1}</a></li>
+                                    </c:forEach>
+                                    <c:if test="${productionPage.pageNum+1 lt productionPage.totalRecord}">
+                                        <li>
+                                            <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=production&productionpageNum=${productionPage.pageNum+1}" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                    </c:if>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="personimage">
-
-
+                        2
                     </div>
+
+                    <div role="tabpanel" class="tab-pane" id="settings">...</div>
                 </div>
-
             </div>
-
-
-
         </div><!--end cscontent -->
     </div><!--end  content-->
 
@@ -310,99 +297,21 @@
 
 </div>
 
-
-
 <script>
-	
-	
-
     $(function(){
         var target ='${target}';
         var $navul = $("#navul");
        if(target!=null&&target!=''){
            $navul.find("li").each(function(){
-               $(this).removeClass("active");
+               $(this).attr("class","");
            });
-           $("#target_"+target).attr("class","active");
-           $(".tab-pane").each(function(){
-               $(this).removeClass("active");
-           });
-           $("#"+target).addClass("active")
+           $("#target_"+target).attr("class","active")
+           $(".tab-pane").removeClass("active");
+           $("#"+target).attr("class","active")
        }
-       if($('#focushref').text()=="已关注"){
-    	   $('#focushref').mouseover(function(){
-	        	$('#focushref').text("取消关注");
-	        });
-	        $('#focushref').mouseout(function(){
-	        	$('#focushref').text("已关注");
-	        });
-	        $('#focushref').removeClass("changea");
-	        $('#focushref').addClass("createcss");
-       }
-       
-     
     })
-    $(document).ready(function() { 
-       
-    	$('#focushref').click(function(){
-    		aa();
-    	})
-    })
-    function aa(){
-    	    if($('#focushref').text()=="关注"){
-	    	    var url = 'http://localhost:8080/relation/addFocusOnFriend/'; 
-	    	    var focusid=$('#focusid').text();
-	    	    var currentid=$('#currentid').text();
-	    	    var param=currentid+'/'+focusid;
-	    	    url += param;  
-	    	    //alert(url);  
-	    	    $.get(url, function(data) { 
-	    	        $('#focushref').text(data.msg);
-	    	        $('#focushref').removeClass("createcss");
-	    	        $('#focushref').addClass("changea");
-	    	        //$('#myModal').modal('show');
-	    	        $('#focushref').mouseover(function(){
-	    	        	$('#focushref').text("取消关注");
-	    	        });
-	    	        $('#focushref').mouseout(function(){
-	    	        	$('#focushref').text(data.msg);
-	    	        });
-	    	        
-	    	    });  
-    	    }else if($('#focushref').text()=="取消关注"){
-    	    	
-    	    	var url = 'http://localhost:8080/relation/deleteFocusOnFriend/'; 
-	    	    var focusid=$('#focusid').text();
-	    	    var currentid=$('#currentid').text();
-	    	   //alert(focusid);
-	    	    var param=currentid+'/'+focusid;
-	    	    url += param;  
-	    	    //alert(url);  
-	    	    $.get(url, function(data) { 
-	    	        $('#focushref').text(data.msg);
-	    	        $('#focushref').removeClass("changea");
-	    	        $('#focushref').addClass("createcss");
-	    	        //$('#myModal').modal('show');
-	    	       /*  $('#focushref').mouseover(function(){
-	    	        	$('#focushref').text("取消关注");
-	    	        }); */
-	    	        $('#focushref').mouseover(function(){
-	    	        	$('#focushref').text("关注");
-	    	        });
-	    	        $('#focushref').mouseout(function(){
-	    	        	$('#focushref').text("关注");
-	    	        });
-	    	        
-	    	    });  
-    	    	
-    	    }
-    	   
-    	    
-    }
-    
-   
+
 
 </script>
-
 </body>
 </html>

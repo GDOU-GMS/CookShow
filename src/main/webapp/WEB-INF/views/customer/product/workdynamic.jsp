@@ -11,21 +11,21 @@
 <head>
     <meta charset="utf-8">
     <title>秀厨网</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/csnavbook.css">
-    <link rel="stylesheet" href="css/imagestyle.css">
-    <link rel="stylesheet" href="css/cookbookstyle.css">
-    <link rel="stylesheet" href="css/userinfo.css">
-    <link rel="stylesheet" href="css/workdynamic.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/csnavbook.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/imagestyle.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/cookbookstyle.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/userinfo.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/workdynamic.css">
 
 
-    <script src="js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/customer/js/jquery.min.js"></script>
 
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.SuperSlide.2.1.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/customer/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/customer/js/jquery.SuperSlide.2.1.js"></script>
 </head>
 
 <body>

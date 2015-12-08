@@ -117,7 +117,6 @@
                                     <tr id="tabtr">
                                         <td ><input type="text" name="material_kind" class="" style="border:none;width:200px;height:20px;" value="${material.kind}"></td>
                                         <td><input type="text" class="" name="material_num" style="border:none;width:200px;height:20px;" value="${material.num}"></td>
-                                        <td style="border-color: #fff"><a href="javascript:void(0)"  onclick="removeLine(event)"><i class="glyphicon glyphicon-remove" title="移除"></i></a></td>
                                     </tr>
                                 </c:forEach>
                             </table>
@@ -149,8 +148,6 @@
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <a class="btn btn-default tradd" href="javascript:void(0)" onclick="addstep()" role="button">添加步骤</a>
-                        <a class="btn btn-default tradd" href="javascript:void(0)" onclick="removestep()" role="button">移除步骤</a>
-
                     </div>
                 </div>
                 <div class="form-group">
@@ -173,8 +170,6 @@
                     </div>
                 </div>
             </form>
-
-            {"intro":"5555","image":"http://7xoqvb.com1.z0.glb.clouddn.com/201512031507503_"}]
 
         </div><!--end cscontent -->
     </div><!--end  content-->
@@ -227,19 +222,7 @@
         e_id.innerHTML = '<input type="text" style="border:none;width:200px;height:20px;" name="material_kind">';
         var memo = tr.insertCell(1);
         memo.innerHTML = '<input type="text" style="border:none;width:200px;height:20px;" name="material_num">';
-        var removeBtn = tr.insertCell(2);
-        $(removeBtn).attr("style","border-color:#fff")
-        removeBtn.innerHTML = '<a href="javascript:void(0)"><i class="glyphicon glyphicon-remove" title="移除"/></a>'
-        $(removeBtn).click(function(){
-            $(this).parent("tr").remove();
-        });
         count++;
-    }
-    function removeLine(event){
-        event = event ? event : window.event;
-        var obj = event.srcElement ? event.srcElement : event.target;
-        var target_tr = obj.parentNode.parentNode.parentNode
-        $(target_tr).remove()
     }
 </script>
 <script>
@@ -265,10 +248,6 @@
         newdiv.find("h4").text(num);
         div.after(newdiv);                                   //放在所在div之后
         num++;
-    }
-    function removestep(){
-        $(".media:last").remove();
-        num--;
     }
 </script>
 <script type="text/javascript">

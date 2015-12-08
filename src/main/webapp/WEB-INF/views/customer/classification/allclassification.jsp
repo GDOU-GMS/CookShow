@@ -94,7 +94,7 @@
                     <div class="panel-body menukinds ">
                         <a href="#"><span class="secmenu">${secondClassification.name}</span></a> <a href="#"><span class="secmenu">:</span></a>
                     <c:forEach items="${secondClassification.list}" var="thirdClassification">
-                            <a href="#"><span>${thirdClassification.name}</span></a>
+                            <a href="${pageContext.request.contextPath}/cookbook/findByClassificationCode/${thirdClassification.code}"><span>${thirdClassification.name}</span></a>
                     </c:forEach>
                     </div>
                 </c:forEach>
