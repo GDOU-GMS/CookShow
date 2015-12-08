@@ -22,4 +22,5 @@ public interface MenuService extends DaoSupport<Menu> {
     public boolean cookBookExistInMenu(Long cookbookId,Long menuId);
 
 //	public List<Menu> query(String name);
+    public List<Menu> getDetail(Long menuId);
 }

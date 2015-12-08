@@ -129,25 +129,7 @@ Purchase: http://wrapbootstrap.com
                                 <span class="menu-text">用户列表</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="#" class="menu-dropdown">
-                                    <span class="menu-text">
-                                      我的厨房
-                                    </span>
-                                <i class="menu-expand"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="tabs.html">
-                                    <span class="menu-text">我的菜单</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="alerts.html">
-                                <span class="menu-text">好友</span>
-                            </a>
-                        </li>
-
+                     
                     </ul>
                 </li>
                 <li>
@@ -162,12 +144,7 @@ Purchase: http://wrapbootstrap.com
                                 <span class="menu-text">分类列表</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="tables-data.html">
-                                <span class="menu-text">菜谱分类</span>
-                            </a>
-                        </li>
-                    </ul>
+                       </ul>
                 </li>
                 <li>
                     <a href="#" class="menu-dropdown">
@@ -178,15 +155,10 @@ Purchase: http://wrapbootstrap.com
                     <ul class="submenu">
                         <li>
                             <a href="${pageContext.request.contextPath}/admin/cookbook/list">
-                                <span class="menu-text">热门专题</span>
+                                <span class="menu-text">菜谱列表</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="tables-data.html">
-                                <span class="menu-text">菜谱分类</span>
-                            </a>
-                        </li>
-                    </ul>
+                      </ul>
                 </li>
                 <li>
                     <a href="#" class="menu-dropdown">
@@ -206,30 +178,7 @@ Purchase: http://wrapbootstrap.com
                     </ul>
                 </li>
                 <!--Charts-->
-                <li>
-                    <a href="#" class="menu-dropdown">
-                        <i class="menu-icon fa fa-bar-chart-o"></i>
-                        <span class="menu-text"> 作品关注</span>
-
-                        <i class="menu-expand"></i>
-                    </a>
-
-                    <ul class="submenu">
                         <li>
-                            <a href="flot.html">
-                                <span class="menu-text">我的关注</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="morris.html">
-                                <span class="menu-text"> 我的收藏</span>
-                            </a>
-                        </li>
-
-                    </ul>
-                </li>
-                <li>
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-desktop"></i>
                         <span class="menu-text"> 管理员管理 </span>
@@ -258,14 +207,7 @@ Purchase: http://wrapbootstrap.com
                                 <span class="menu-text">月度菜谱上传统计</span>
                             </a>
                         </li>
-
-                        <li>
-                            <a href="morris.html">
-                                <span class="menu-text"> 我的收藏</span>
-                            </a>
-                        </li>
-
-                    </ul>
+                       </ul>
                 </li>
                 <!--Profile-->
 

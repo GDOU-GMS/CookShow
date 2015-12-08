@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 import com.blueshit.cookshow.common.helper.Page;
 import com.blueshit.cookshow.common.helper.QueryHelper;
 import com.blueshit.cookshow.model.entity.Classification;
@@ -16,12 +18,14 @@ import com.blueshit.cookshow.service.CookbookService;
 import com.blueshit.cookshow.web.basic.BaseController;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.mysql.fabric.Response;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by Seven on 2015/11/26.
@@ -84,7 +88,9 @@ public class AdminCookbookController extends BaseController {
    		return "admin/cookbook/detail";
 		
 	}
-	
+	/*
+	 * 模糊查询菜谱信息
+	 */
 	  @RequestMapping("/query")
 	  public String query(@ModelAttribute Cookbook cookbook,Model model,Integer pageNum) {
 	     
@@ -99,16 +105,22 @@ public class AdminCookbookController extends BaseController {
           return "admin/cookbook/list";
 	   	  
 	}
-	  
+	  /*
+	   * 获取月度上传菜谱数量
+	   */
 	  @RequestMapping("/cookbookreport")
-	  public String cookbookReport(Model model){
-		  List<Cookbook> report=cookbookService.getReport();
-	      Map<String, Object> map = new HashMap<String, Object>();
-		  map.put("report", report);
-		  List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();  
-		  list.add(map);  
+	  @ResponseBody  //自动返回json格式数据到前台
+	  public String cookbookReport(Model model,HttpServletResponse response){
+		  List list=cookbookService.getReport();
+	     // Map<String, Object> map = new HashMap<String, Object>();
+		//  map.put("report", report);
+		 // List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();  
+		//  list.add(map);  
 	      Gson gson = new GsonBuilder().create();
 	      String result = gson.toJson(list);
+	    //  System.out.println("带泛型的list转化为json==" + result);  
+	      response.
+	     
 		  return "admin/cookbook/cookbookreport";
 	  }
 

@@ -2,12 +2,14 @@ package com.blueshit.cookshow.web.controller.admin;
 
 import com.blueshit.cookshow.common.helper.Page;
 import com.blueshit.cookshow.common.helper.QueryHelper;
+import com.blueshit.cookshow.model.entity.Cookbook;
 import com.blueshit.cookshow.model.entity.User;
 import com.blueshit.cookshow.service.UserService;
 import com.blueshit.cookshow.web.basic.BaseController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -30,6 +32,50 @@ public class AdminUserController extends BaseController {
         return "admin/user/list";
 
     }
+    
+    
+	/*
+	 * 锁定菜谱
+	 */
+	@RequestMapping("/disable")
+	public String disable(String userId){
+         
+      User user=userService.findById(Long.parseLong(userId));
+      user.setDeleted(1);
+      userService.update(user);
+	  
+	  return "redirect:list";
+	}
 
+	
+	/*
+	 * 解锁菜谱
+	 */
+	@RequestMapping("/enable")
+	public String enable(String userId){
+		
+		User user=userService.findById(Long.parseLong(userId));
+		
+		user.setDeleted(0);
+		userService.update(user);
+		  
+		return "redirect:list";
+		
+	
+     }
+	
+     @RequestMapping("/query")
+     public String query(@ModelAttribute User user,Integer pageNum,Model model){
+    	 pageNum = pageNum==null||pageNum==0?1:pageNum;
+		  QueryHelper queryHelper=new QueryHelper(User.class, "u")
+	   	  .addWhereCondition(user.getUsername()!=null&&!"".equals(user.getUsername()),"u.username like '%"+user.getUsername()+"%'")
+	   	  .addWhereCondition(user.getRealName()!=null&&!"".equals(user.getRealName()),"u.realName like '%"+user.getRealName()+"%'")
+	   	  .addOrderByProperty("createDate",true);
+		   Page page = userService.getPage(pageNum, queryHelper);
+	      //Page page = cookbookService.getPage(pageNum, list);
+		  model.addAttribute("page",page);
+		  return "admin/user/list";
+    	 
+     }
 
 }

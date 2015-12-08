@@ -14,4 +14,5 @@ public interface UserService extends DaoSupport<User> {
 
     User findByUsernameOrEmail(String token);
 
+    
 }

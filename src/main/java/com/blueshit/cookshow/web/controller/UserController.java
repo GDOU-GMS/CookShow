@@ -293,6 +293,7 @@ public class UserController extends BaseController {
             collectionCookbookPage = getCollectionObject(collectionCookbookPage);
             model.addAttribute("collectionCookbookPage",collectionCookbookPage);
             //查询我收藏的菜单
+
             Page collectionMenuPage = collectionService.findByUserId(user.getId(),CollectionEnum.MENU.getCode(),collectionMenupageNum,20);
             collectionMenuPage = getCollectionObject(collectionMenuPage);
             model.addAttribute("collectionMenuPage",collectionMenuPage);

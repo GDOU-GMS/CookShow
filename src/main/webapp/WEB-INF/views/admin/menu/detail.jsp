@@ -257,26 +257,102 @@ Purchase: http://wrapbootstrap.com
             </div>
             <!-- /Page Header -->
             <!-- Page Body -->
-            <div>
+           <div>
                 <div class="row">
                     <div class="col-xs-12 col-md-12">
-                        <div class="well with-header  with-footer">
+                        <div class="well with-header  with-footer" style="margin-bottom:0px;padding-bottom:10px">
                             <div class="header bg-blue">
-                               菜单详细信息
-                            </div>  <br/>
-                       
-                         <div >
-                         <h4>菜单标题：</h4>
-                          <ul >
-                          
-                          <li>${menu.title}</li>
-                          <li>${menu.name }</li>
-                         
+                                       菜单详细信息
+                            </div>
+                     <div>   
                      
-                          </ul>
-                         </div>
+                      </div>
+                             </div>
+                      </div>
                           
-                            
+                            <table id="click" class="table table-hover">
+                                <thead class="bordered-darkorange">
+                                <tr>
+                                    <th>
+                                        #
+                                    </th>
+                                                                        <th>
+                                        菜谱标题
+                                    </th>
+                                    <th>
+                                        菜谱类型
+                                    </th>
+          
+                                    <th>
+                                        访问数
+                                    </th>
+                                    <th>
+                                        点赞数
+                                    </th>
+                                                              <th>
+                                        创建时间
+                                    </th>
+                                                              <th>
+                                        更新时间
+                                    </th>
+                                    <th>
+                                
+                                     <th>
+              是否有效           
+                                    </th>
+                                    <th>
+              操作                      
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                             <c:forEach items="${list}" var="list" varStatus="loop">
+                                      <tr>
+                                       <td>
+                                       
+                                       </td>
+                                        <td>
+                                                ${list.title}
+                                        </td>
+                                        <td>
+                                                ${list.classificationCode}
+                                        </td>
+                                    
+                                         <td>
+                                                 ${list.clickNum}                                        </td>
+                                         <td>
+                                                ${list.favourNum}
+                                        </td>
+                                            <td>
+                                                ${list.createDate}
+                                        </td>
+                                        <td>
+                                                ${list.updateDate}
+                                        </td>
+                                               </td> <td>
+                                        <td>
+                                        <c:if test="${list.deleted eq 1}">
+                                            已锁定
+                                        </c:if>
+                                        <c:if test="${list.deleted eq 0}">
+                                            未锁定
+                                        </c:if>
+                                        </td>
+                                        <td>
+                                           <a href="${pageContext.request.contextPath}/admin/cookbook/disable?cookbookId=${list.id}" method="post" 
+                                           class="btn btn-info btn-xs edit"> 锁定</a>
+                                           <a href="${pageContext.request.contextPath}/admin/cookbook/enable?cookbookId=${list.id}" method="post" 
+                                           class="btn btn-info btn-xs edit"> 解锁</a>
+                                            <a href="${pageContext.request.contextPath}/admin/cookbook/detail?cookbookId=${list.id}" class="btn btn-danger btn-xs delete">详细信息</a>
+                                        </td>
+                                    </tr>
+                                </c:forEach> 
+                                </tbody>
+                            </table>
+                            <br/>
+                            <nav>
+                               
+                            </nav>
                         </div>
                     </div>
                 </div>
