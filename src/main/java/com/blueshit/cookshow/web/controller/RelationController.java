@@ -69,5 +69,13 @@ public class RelationController extends BaseController {
 		resultEntity.setSuccessMsg("关注");
 	    return resultEntity;
 	}
-
+   
+	
+	@RequestMapping("/getBerelation/{id}")
+	public String getBeRelation(@PathVariable String id,Model model)  throws Exception{
+    	 List<Relation> relation=(List<Relation>) relationService.getPersonRelations(Long.parseLong(id));
+    	 model.addAttribute("relationList", relation);
+    	 return "customer/user/myrelation";
+     }
+   
 }

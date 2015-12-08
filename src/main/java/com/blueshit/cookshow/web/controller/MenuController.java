@@ -68,7 +68,7 @@ public class MenuController extends BaseController {
         //查询所有分类信息
         List<ClassificationVo> topClassificationVoList = classificationService.getAllClassification();
         model.addAttribute("topClassificationVoList",topClassificationVoList);
-        //查询所有菜谱
+        //查询对应菜谱
         pageNum = pageNum==null||pageNum==0?1:pageNum;
         QueryHelper queryHelper = new QueryHelper(Cookbook.class,"cb");
         Page page = cookbookService.getPage(pageNum, queryHelper);
@@ -102,6 +102,9 @@ public class MenuController extends BaseController {
 
         return resultEntity.setFailureMsg("非法访问！");
     }
+    
+    
+  
    
 
 }

@@ -15,4 +15,6 @@ public interface RelationService extends DaoSupport<Relation> {
 	public List<Relation> getPersonRelations(Long userid);
 	
 	public Relation getFocusOnFriend(Long followerId,Long byFollowerId);
+	//获得被关注的人
+	public List<Relation> getBeRelation(Long userid);
 }

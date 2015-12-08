@@ -1,6 +1,7 @@
 package com.blueshit.cookshow.web.controller;
 
 import com.blueshit.cookshow.common.helper.Page;
+import com.blueshit.cookshow.common.helper.QueryHelper;
 import com.blueshit.cookshow.common.helper.entity.Material;
 import com.blueshit.cookshow.common.helper.entity.Step;
 import com.blueshit.cookshow.common.utils.MyDataUtils;
@@ -11,10 +12,10 @@ import com.blueshit.cookshow.model.entity.User;
 import com.blueshit.cookshow.model.vo.ClassificationVo;
 import com.blueshit.cookshow.qiniu.QiniuUpload;
 import com.blueshit.cookshow.web.basic.BaseController;
-
 import com.blueshit.cookshow.web.controller.listener.DataCacheListener;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,6 +26,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -245,7 +247,25 @@ public class CookbookController extends BaseController {
         }
         return "customer/menu/cookmenu";
     }
-
+    @RequestMapping("/findByTitle")
+    public String findByTitle(@ModelAttribute Cookbook cookbook,Integer pageNum,Model model){
+    	 
+    	 List<ClassificationVo> topClassificationVoList = classificationService.getAllClassification();
+         model.addAttribute("topClassificationVoList",topClassificationVoList);
+    	 pageNum = pageNum==null||pageNum==0?1:pageNum;
+         int pageSize = 10;
+         if(cookbook.getTitle()==null){
+        	 cookbook.setTitle("");
+         }
+         Page page = cookbookService.findByTitle(cookbook.getTitle(), pageNum, pageSize);
+         model.addAttribute("page",page);
+         List<Menu> menuList=menuService.getRecentPopular();
+         model.addAttribute("menuList", menuList);
+         model.addAttribute("title",cookbook.getTitle());
+         return "customer/menu/cookbooksearch";
+    }
+      
+   
 
 }
 	

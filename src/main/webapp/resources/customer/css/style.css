@@ -2,6 +2,17 @@
 body{
 	background:#fff;
 	font-size:15px;
+	font-family:宋体;
+	color:#000;
+}
+a{
+	color:#ec8d24;
+}
+a:active,
+a:hover{
+	color:#fff;
+	background:#eb8d24;
+	text-decoration:none;
 }
 .csw{
 	width:100%;
@@ -128,6 +139,23 @@ body{
 	width:1000px;
 	margin:auto;
 }
+
+.cstitle{
+	float:left;
+	display:block;
+	width:100%;
+	color:#252525;
+	background:#f5f4f2;
+	margin-top:15px;
+	margin-bottom:0px;
+	padding:0 5px;
+    line-height:40px;
+    border:1px solid #e8e7e7;
+    font:normal 16px/40px 宋体;
+   
+    
+}
+
 .showimg{
 	float:left;
 	margin:0px;
@@ -136,6 +164,9 @@ body{
 }
 .caption h3{
 	padding:0px;
+}
+.caption a:hover {
+	background:ec8d24;
 }
 .imgright{
 	margin-left:2%;

@@ -17,4 +17,5 @@ public interface CookbookService extends DaoSupport<Cookbook> {
 
     public Page findByClassification(String classificationCode,int pugeNum,int pageSize);
 	
+    public Page findByTitle(String title,int pageNum,int pageSize);
 }
