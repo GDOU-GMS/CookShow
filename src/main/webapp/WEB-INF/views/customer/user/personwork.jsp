@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!doctype html>
 <html>
 <head>
@@ -130,6 +131,7 @@
                     <li role="presentation" id="target_gaikuang" class="active"><a href="#gaikuang" aria-controls="gaikuang" role="tab" data-toggle="tab">概况</a></li>
                     <li role="presentation" id="target_mymenu"><a href="#mymenu" aria-controls="home" role="tab" data-toggle="tab">菜单</a></li>
                     <li role="presentation" id="target_pwd"><a href="#pwd" aria-controls="messages" role="tab" data-toggle="tab">菜谱</a></li>
+                    <li role="presentation" id="target_production"><a href="#production" aria-controls="production" role="tab" data-toggle="tab">作品</a></li>
                     <li role="presentation" id="target_personimage"><a href="#personimage" aria-controls="settings" role="tab" data-toggle="tab">收藏</a></li>
                 </ul>
                 <!-- Tab panes -->
@@ -141,7 +143,7 @@
                             <div class="row showimg">
                                 <div class="col-sm-6 col-md-4"style="width:100%;padding:0px;">
                                     <div class="thumbnail">
-                                        <img src="${pageContext.request.contextPath}/resources/customer/images/255.png" alt="..." style="margin:0px 30x;margin-top:25px;">
+                                        <img src="${pageContext.request.contextPath}/resources/customer/images/255.png" alt="..." style="margin:0px 30px;margin-top:25px;">
                                         <div class="caption">
 
                                             <h4>美美哒</h4>
@@ -159,7 +161,7 @@
                             <div class="row showimg imgright">
                                 <div class="col-sm-6 col-md-4"style="width:100%;padding:0px;">
                                     <div class="thumbnail">
-                                        <img src="${pageContext.request.contextPath}/resources/customer/images/255.png" alt="..." style="margin:0px 30x;margin-top:25px;">
+                                        <img src="${pageContext.request.contextPath}/resources/customer/images/255.png" alt="..." style="margin:0px 30px;margin-top:25px;">
                                         <div class="caption">
 
                                             <h4>美美哒</h4>
@@ -175,7 +177,7 @@
                             <div class="row showimg imgright">
                                 <div class="col-sm-6 col-md-4"style="width:100%;padding:0px;">
                                     <div class="thumbnail">
-                                        <img src="${pageContext.request.contextPath}/resources/customer/images/255.png" alt="..." style="margin:0px 30x;margin-top:25px;">
+                                        <img src="${pageContext.request.contextPath}/resources/customer/images/255.png" alt="..." style="margin:0px 30px;margin-top:25px;">
                                         <div class="caption">
 
                                             <h4>美美哒</h4>
@@ -277,16 +279,58 @@
                         </nav>
 
                     </div>
+                    <div role="tabpanel" class="tab-pane" id="production">
+                        <c:forEach items="${productionPage.list}" var="production">
+                            <div class="row showimg imgright">
+                                <div class="col-sm-6 col-md-4"style="width:100%;padding:0px;">
+                                    <div class="thumbnail">
+                                        <a href="${pageContext.request.contextPath}/production/detail/${production.id}">
+                                            <img src="${production.titleImage}" alt="..." style="margin:0px 30px;margin-top:25px; overflow: hidden" width="250px" >
+                                        </a>
+                                        <div class="caption">
+                                            <h4>${production.title}</h4>
+                                            <p>${fn:length(production.intro) lt 20 ? production.intro : fn:substring(production.intro,0,20).concat('...')}</p>
+                                            <c:if test="${!empty user}">
+                                                <p class="col-md-offset-3">
+                                                    <a href="${pageContext.request.contextPath}/production/forwardToModify?productionId=${production.id}" class="btn btn-default" role="button">编辑</a>
+                                                    <a href="${pageContext.request.contextPath}/production/disableProduction?productionId=${production.id}" class="btn btn-default" role="button" onclick="return confirm('确认删除？')">删除</a>
+                                                </p>
+                                            </c:if>
+                                            <span style="color:#ccc;font-size:12px;"><fmt:formatDate value="${production.createDate}" pattern="yyyy-MM-dd"/> </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!--  end row-->
+                        </c:forEach>
+                        <div class="page row col-md-12">
+                            <nav>
+                                <ul class="pagination">
+                                    <c:if test="${productionPage.pageNum-1 gt 1}">
+                                        <li>
+                                            <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=production&productionpageNum=${productionPage.pageNum-1}" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                    </c:if>
+                                    <c:forEach begin="${productionPage.startIndex}" end="${productionPage.startIndex}" step="1" var="index">
+                                        <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=production&productionpageNum=${index+1}" <c:if test="${index+1 eq productionPage.pageNum}">class="active"</c:if>>${index+1}</a></li>
+                                    </c:forEach>
+                                    <c:if test="${productionPage.pageNum+1 lt productionPage.totalRecord}">
+                                        <li>
+                                            <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=production&productionpageNum=${productionPage.pageNum+1}" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                    </c:if>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
                     <div role="tabpanel" class="tab-pane" id="personimage">
-
-
+                        2
                     </div>
                 </div>
-
             </div>
-
-
-
         </div><!--end cscontent -->
     </div><!--end  content-->
 

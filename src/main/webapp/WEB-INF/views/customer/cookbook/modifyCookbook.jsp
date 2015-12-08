@@ -174,8 +174,6 @@
                 </div>
             </form>
 
-            {"intro":"5555","image":"http://7xoqvb.com1.z0.glb.clouddn.com/201512031507503_"}]
-
         </div><!--end cscontent -->
     </div><!--end  content-->
     <div id="pagebottom">

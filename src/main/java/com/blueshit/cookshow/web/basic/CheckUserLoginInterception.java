@@ -32,6 +32,11 @@ public class CheckUserLoginInterception implements HandlerInterceptor {
         list.add("/menu/createMenu");
         list.add("/menu/addMenu");
         list.add("/menu/addCookbook");
+        list.add("/production/forwardToCreateProduction");
+        list.add("/production/createProduction");
+        list.add("/production/forwardToModify");
+        list.add("/production/modifyProduction");
+        list.add("/production/disableProduction");
     }
 
     /**

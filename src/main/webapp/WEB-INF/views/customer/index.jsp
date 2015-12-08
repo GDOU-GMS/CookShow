@@ -116,7 +116,7 @@
 			<div id="navfont">
 				<div id="navcontent">
 					<ul class="nav nav-pills">
-						<li role="presentation" class="cbook"><span>全部分类</span></li>
+						<li role="presentation" class="cbook"><a title="点击查看所有分类" href="${pageContext.request.contextPath}/classification/allClassification">全部分类</a></li>
 						<li role="presentation" class="active"><a href="${pageContext.request.contextPath}/">首页</a></li>
 						<li role="presentation"><a href="${pageContext.request.contextPath}/menu/cookmenu">菜单</a></li>
 						<li role="presentation"><a href="#">健康饮食</a></li>
@@ -175,7 +175,7 @@
 					<div class="csright">
 						<div id="owl-demo" class="owl-carousel">
                             <c:forEach items="${headlineCookbooks}" var="cookbook">
-                                <a class="item" href="" target="_blank">
+                                <a class="item" href="${pageContext.request.contextPath}/cookbook/cookbook/${cookbook.id}">
                                     <img src="${cookbook.titleImage}" style="width: 750px; height: 435px;" alt="">
                                     <b></b>
                                     <span>${cookbook.title}</span>
@@ -220,7 +220,7 @@
 							<div class="thumbnail">
 								<img
 									src="${pageContext.request.contextPath}/resources/customer/images/1.gif"
-									alt="..." style="margin: 0px 30x; margin-top: 25px;">
+									alt="..." style="margin: 0px 30px; margin-top: 25px;">
 
 								<div class="caption">
 
@@ -238,7 +238,7 @@
 							<div class="thumbnail">
 								<img
 									src="${pageContext.request.contextPath}/resources/customer/images/2.gif"
-									alt="..." style="margin: 0px 30x; margin-top: 25px;">
+									alt="..." style="margin: 0px 30px; margin-top: 25px;">
 
 								<div class="caption">
 
@@ -255,7 +255,7 @@
 							<div class="thumbnail">
 								<img
 									src="${pageContext.request.contextPath}/resources/customer/images/3.gif"
-									alt="..." style="margin: 0px 30x; margin-top: 25px;">
+									alt="..." style="margin: 0px 30px; margin-top: 25px;">
 
 								<div class="caption">
 
@@ -274,7 +274,7 @@
 							<div class="thumbnail">
 								<img
 									src="${pageContext.request.contextPath}/resources/customer/images/4.gif"
-									alt="..." style="margin: 0px 30x; margin-top: 25px;">
+									alt="..." style="margin: 0px 30px; margin-top: 25px;">
 
 								<div class="caption">
 
@@ -292,7 +292,7 @@
 							<div class="thumbnail">
 								<img
 									src="${pageContext.request.contextPath}/resources/customer/images/5.gif"
-									alt="..." style="margin: 0px 30x; margin-top: 25px;">
+									alt="..." style="margin: 0px 30px; margin-top: 25px;">
 
 								<div class="caption">
 
@@ -309,7 +309,7 @@
 							<div class="thumbnail">
 								<img
 									src="${pageContext.request.contextPath}/resources/customer/images/6.gif"
-									alt="..." style="margin: 0px 30x; margin-top: 25px;">
+									alt="..." style="margin: 0px 30px; margin-top: 25px;">
 
 								<div class="caption">
 

@@ -243,9 +243,15 @@ public class UserController extends BaseController {
     }
 
     @RequestMapping("/personWork/{userId}")
-    public String personWork(@PathVariable String userId,Model model,String target,Integer cookbookpageNum,Integer menupageNum){
+    public String personWork(@PathVariable String userId,
+                             Model model,
+                             String target,
+                             Integer cookbookpageNum,
+                             Integer menupageNum,
+                             Integer productionpageNum){
         cookbookpageNum = cookbookpageNum==null||cookbookpageNum<=0?1:cookbookpageNum;
         menupageNum = menupageNum==null||menupageNum<=0?1:menupageNum;
+        productionpageNum = productionpageNum==null||productionpageNum<=0?1:productionpageNum;
         User user = userService.findById(Long.parseLong(userId));
         if(user!=null){
             //处理target，跳转到指定标签页
@@ -260,6 +266,9 @@ public class UserController extends BaseController {
             //查询菜单
             Page menuPage = menuService.getMenuByUserId(user.getId(),menupageNum);
             model.addAttribute("menuPage",menuPage);
+            //查询作品
+            Page productionPage = productionService.getProductionByUserId(user.getId(),productionpageNum,20);
+            model.addAttribute("productionPage",productionPage);
         }else{
             return "redirect:/error_404";
         }

@@ -12,13 +12,13 @@
 <head>
     <meta charset="utf-8">
     <title>秀厨网</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/bootstrap.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/style.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/csnavbook.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/imagestyle.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/cookbookstyle.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/cookmenu.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/csnavbook.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/imagestyle.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/cookbookstyle.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/customer/css/cookmenu.css">
 
     <script src="${pageContext.request.contextPath}/resources/customer/js/jquery.min.js"></script>
 
@@ -84,11 +84,11 @@
     <div id="content">
         <div class="cscontent">
             <div class="menuleft">
-                <div class="menuimg">
-                    <p>${cookbook.title}</p>
+                <div class="menuimg" style="height: 500px;">
+                    <p>${production.title}</p>
                     <div class="imgcontent">
                         <div class="imagetext">
-                            <img src="${cookbook.titleImage}">
+                            <img src="${production.titleImage}">
                             <div class="menushare">
                                 <span>分享</span>
                                 <div class="shareimg">
@@ -96,53 +96,20 @@
                                 </div>
                             </div>
                             <a class="btn btn-default acss" href="javascript:void(0)" role="button">收藏</a>
-                            <c:if test="${!empty user}">
-                                <button data-toggle="modal" data-target="#myModal" class="btn btn-default acss" role="button" style="border-right: solid #fff">添加到...</button>
-                            </c:if>
-                        </div>
+                            <a class="btn btn-default acss" href="${pageContext.request.contextPath}/cookbook/cookbook/${production.cookbookId}" role="button" style="border-right: solid #fff">做法</a></div>
                         <!--end imagetext -->
                     </div>
                     <!--imgcontent-->
                 </div>
                 <!--menuimg -->
-
                 <div class="menuinfo">
                     <div class="menusubinfo">
                         <p>简介</p>
-                            <span>${cookbook.intro}</span>
+                        <span>${production.intro}</span>
                     </div>
-                    <div class="menusubinfo">
-                        <p>用料</p>
-
-                        <div class="table-responsive" style="width:500px;">
-                            <table class="table">
-                                <c:forEach items="${materialList}" var="material">
-                                    <tr>
-                                        <td>${material.kind}</td>
-                                        <td>${material.num}</td>
-                                    </tr>
-                                </c:forEach>
-                            </table>
-                        </div>
-
-                    </div>
-
-                    <div class="menusubinfo">
-                        <p>做法</p>
-                    </div>
-                    <c:forEach items="${stepList}" var="step" varStatus="loop">
-                        <div class="menusubinfo">
-                            <span class="cooktag1">${loop.index + 1}</span>
-                            <span class="cooktag2">${step.intro}</span>
-                            <div class="cookimg">
-                                <img src="${step.image}"style="width:200px;height:200px;">
-                            </div>
-                        </div>
-                    </c:forEach>
-
-                    <a class="btn btn-default col-md-2 col-md-offset-5" href="${pageContext.request.contextPath}/production/forwardToCreateProduction?cookbookId=${cookbook.id}" role="button">上传我的作品</a>
-
                 </div>
+
+
                 <!--menuinfo-->
                 <div class="menucomment">
                     <div class="eachcomment">
@@ -230,7 +197,7 @@
 
             <div class="cbookside">
                 <div class="cbooksidecss">
-                    <p>相关菜单</p>
+                    <p>该用户的其他作品</p>
                     <ul>
                         <li><a href="">美食疯狂来袭美食疯狂来袭美食疯狂</a></li>
                         <li><a href="">美食疯狂来袭美食疯狂来袭美食疯狂</a></li>
@@ -259,12 +226,12 @@
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-            <form id="addToMenuForm" action="${pageContext.request.contextPath}/menu/addCookbook" method="post">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">添加到我的菜单</h4>
-                </div>
-                <div class="modal-body">
+                <form id="addToMenuForm" action="${pageContext.request.contextPath}/menu/addCookbook" method="post">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">添加到我的菜单</h4>
+                    </div>
+                    <div class="modal-body">
                         <div class="form-group">
                             <label for="menuselect">请选择菜单：</label><br>
                             <select id="menuselect" class="form-control" name="menuId">
@@ -276,12 +243,12 @@
                             </select>
                             <input name="cookbookId" type="hidden" value="${cookbook.id}">
                         </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="submit" class="btn btn-primary">保存</button>
-                </div>
-            </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary">保存</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -298,34 +265,6 @@
         returnDefault: true
     });
 
-    var options = {
-        beforeSubmit:  showRequest,  //提交前处理
-        success:       showResponse,  //处理完成
-        resetForm:     true,
-        url:           '/menu/addCookbook',
-        dataType:      'json'
-    };
-
-    $('#addToMenuForm').submit(function() {
-        $(this).ajaxSubmit(options);
-        // !!! Important !!!
-        // always return false to prevent standard browser submit and page navigation
-        return false;
-    });
-    function showRequest(formData, jqForm, options) {
-        return true;
-    }
-
-    function showResponse(responseText, statusText,xhr, $form)  {
-        console.log(responseText)
-        var result = responseText.result;
-        if(result==0||result==-1){
-            alert(responseText.msg)
-        }else{
-            alert(responseText.msg)
-            $(".modal").modal('hide');
-        }
-    }
 </script>
 </body>
 </html>

@@ -37,6 +37,14 @@ public class Production implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updateDate;
 
+    @Column(name = "cookbook_title")
+    private String cookbookTitle;
+
+    @Column(name = "cookbook_id")
+    private Long cookbookId;
+
+    private String titleImage;
+
 	//bi-directional many-to-one association to CommentProduction
 	@OneToMany(mappedBy="Production")
 	private Set<CommentProduction> CommentProductions;
@@ -142,4 +150,28 @@ public class Production implements Serializable {
 		this.User = User;
 	}
 
+
+    public String getCookbookTitle() {
+        return cookbookTitle;
+    }
+
+    public void setCookbookTitle(String cookbookTitle) {
+        this.cookbookTitle = cookbookTitle;
+    }
+
+    public Long  getCookbookId() {
+        return cookbookId;
+    }
+
+    public void setCookbookId(Long cookbookId) {
+        this.cookbookId = cookbookId;
+    }
+
+    public String getTitleImage() {
+        return titleImage;
+    }
+
+    public void setTitleImage(String titleImage) {
+        this.titleImage = titleImage;
+    }
 }
