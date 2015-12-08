@@ -244,6 +244,29 @@ Purchase: http://wrapbootstrap.com
                         </li>
                     </ul>
                 </li>
+                 <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-bar-chart-o"></i>
+                        <span class="menu-text"> 报表统计</span>
+
+                        <i class="menu-expand"></i>
+                    </a>
+
+                    <ul class="submenu">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/admin/cookbook/cookbookreport">
+                                <span class="menu-text">月度菜谱上传统计</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="morris.html">
+                                <span class="menu-text"> 我的收藏</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
                 <!--Profile-->
 
             </ul>

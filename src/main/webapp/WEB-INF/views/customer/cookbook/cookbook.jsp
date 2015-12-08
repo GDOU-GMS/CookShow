@@ -25,9 +25,6 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="${pageContext.request.contextPath}/resources/customer/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/customer/js/jquery.SuperSlide.2.1.js"></script>
-
-    <script src="${pageContext.request.contextPath}/resources/assets/plugins/jquery_form/jquery.form.min.js"></script>
-
 </head>
 
 <body>
@@ -96,9 +93,6 @@
                                 </div>
                             </div>
                             <a class="btn btn-default acss" href="javascript:void(0)" role="button">收藏</a>
-                            <c:if test="${!empty user}">
-                                <button data-toggle="modal" data-target="#myModal" class="btn btn-default acss" role="button" style="border-right: solid #fff">添加到...</button>
-                            </c:if>
                         </div>
                         <!--end imagetext -->
                     </div>
@@ -254,38 +248,6 @@
     </div>
     <!--pagebottom-->
 
-
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <form id="addToMenuForm" action="${pageContext.request.contextPath}/menu/addCookbook" method="post">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">添加到我的菜单</h4>
-                </div>
-                <div class="modal-body">
-                        <div class="form-group">
-                            <label for="menuselect">请选择菜单：</label><br>
-                            <select id="menuselect" class="form-control" name="menuId">
-                                <c:if test="${!empty menuList}">
-                                    <c:forEach items="${menuList}" var="menu">
-                                        <option value="${menu.id}">${menu.name}</option>
-                                    </c:forEach>
-                                </c:if>
-                            </select>
-                            <input name="cookbookId" type="hidden" value="${cookbook.id}">
-                        </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="submit" class="btn btn-primary">保存</button>
-                </div>
-            </form>
-            </div>
-        </div>
-    </div>
-
 </div>
 <script type="text/javascript">
     jQuery("#csnav").slide({
@@ -297,35 +259,6 @@
         defaultPlay: false,
         returnDefault: true
     });
-
-    var options = {
-        beforeSubmit:  showRequest,  //提交前处理
-        success:       showResponse,  //处理完成
-        resetForm:     true,
-        url:           '/menu/addCookbook',
-        dataType:      'json'
-    };
-
-    $('#addToMenuForm').submit(function() {
-        $(this).ajaxSubmit(options);
-        // !!! Important !!!
-        // always return false to prevent standard browser submit and page navigation
-        return false;
-    });
-    function showRequest(formData, jqForm, options) {
-        return true;
-    }
-
-    function showResponse(responseText, statusText,xhr, $form)  {
-        console.log(responseText)
-        var result = responseText.result;
-        if(result==0||result==-1){
-            alert(responseText.msg)
-        }else{
-            alert(responseText.msg)
-            $(".modal").modal('hide');
-        }
-    }
 </script>
 </body>
 </html>
