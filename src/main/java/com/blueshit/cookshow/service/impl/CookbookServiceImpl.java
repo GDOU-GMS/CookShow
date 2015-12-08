@@ -70,7 +70,7 @@ public class CookbookServiceImpl extends DaoSupportImpl<Cookbook> implements Coo
       */
 	public List<Cookbook> getReport() {
 		// TODO Auto-generated method stub
-		@SuppressWarnings("unchecked")
+	//	@SuppressWarnings("unchecked")
 	   String sql="select count(*) from  t_cookbook "
 	   		      + "where createDate between '2015-01-01 00:00:00' and '2015-01-31 23:59:59' union all "
 	   		      + "select count(*) from  t_cookbook "

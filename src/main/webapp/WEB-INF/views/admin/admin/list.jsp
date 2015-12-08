@@ -232,7 +232,7 @@ Purchase: http://wrapbootstrap.com
                             </div>
                      <div>   
                       <div class="row" >
-                        <form action="${pageContext.request.contextPath}/admin/admin/query" method="post">
+                        <form action="${pageContext.request.contextPath}/admin/query" method="post">
                             <div class="col-sm-6">
                                 <div class="form-group">
                                   <input name="username" class="form-control" style="width: 50%" placeholder="用户名" type="text">

@@ -111,14 +111,16 @@ public class AdminCookbookController extends BaseController {
 	  @RequestMapping("/cookbookreport")
 	  @ResponseBody  //自动返回json格式数据到前台
 	  public String cookbookReport(Model model,HttpServletResponse response){
-		  List<Cookbook> list=cookbookService.getReport();
+		  List list=cookbookService.getReport();
 	     // Map<String, Object> map = new HashMap<String, Object>();
 		//  map.put("report", report);
 		 // List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();  
 		//  list.add(map);  
 	      Gson gson = new GsonBuilder().create();
 	      String result = gson.toJson(list);
-	  //    response.w
+	    //  System.out.println("带泛型的list转化为json==" + result);  
+	      response.
+	     
 		  return "admin/cookbook/cookbookreport";
 	  }
 
