@@ -81,13 +81,13 @@
         </div>
         <div id="navfont">
             <div id="navcontent">
-                <ul class="nav nav-pills">
-                    <li role="presentation" class="cbook"><span></span></li>
-                    <li role="presentation" class="active"><a href="${pageContext.request.contextPath}/">首页</a></li>
-                    <li role="presentation"><a href="${pageContext.request.contextPath}/menu/cookmenu">菜单</a></li>
-                    <li role="presentation"><a href="#">健康饮食</a></li>
-                    <li role="presentation"><a href="#">作品动态</a></li>
-                </ul>
+            <ul class="nav nav-pills">
+                <li role="presentation" class="cbook"><a title="点击查看所有分类" href="${pageContext.request.contextPath}/classification/allClassification">全部分类</a></li>
+                <li role="presentation" class=""><a href="${pageContext.request.contextPath}/">首页</a></li>
+                <li role="presentation"><a href="${pageContext.request.contextPath}/menu/cookmenu">菜单</a></li>
+                <li role="presentation"><a href="${pageContext.request.contextPath}/production/productionIndex">作品动态</a></li>
+                <li role="presentation"><a href="#">健康饮食</a></li>
+            </ul>
             </div>
         </div>
         <div id="content">
