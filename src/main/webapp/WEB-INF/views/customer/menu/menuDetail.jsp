@@ -97,7 +97,7 @@
                         </div>
                     </div>
                     <div class="mobtopr">
-                        <a class="btn btn-default acss" style="margin-top:125px;" href="#" role="button">收藏</a>
+                        <a class="btn btn-default acss" style="margin-top:125px;" href="javascript:void(0)" role="button" id="collection" onclick="doCollection()"></a>
                         <div class="mobshare">
                             <span style="">分享到</span><a href=""><img src="${pageContext.request.contextPath}/resources/customer/images/weibo.png" style="width:36px;height:29px;"></a>                    </div>
                     </div>
@@ -174,7 +174,91 @@
 
 </div>
 <script type="text/javascript">
+
+    $(document).ready(function(){
+        checkCollection();
+    });
+
+
     jQuery("#csnav").slide({  type:"menu", titCell:".mainCate", targetCell:".subCate", delayTime:0, triggerTime:0, defaultPlay:false, returnDefault:true });
+
+
+    var result;
+    function checkCollection(){
+        var data = {
+            date: new Date(),
+            objectId : ${menu.id},
+            type:   1
+        };
+        $.ajax({
+            type:       "POST",
+            url:        "/collection/checkCollection",
+            dataType:   "json",
+            data    : data,
+            success: function(data){
+                if(data.msg=='yes'){
+                    result = true;
+                }else if(data.msg = 'no'){
+                    result = false;
+                }else{
+                    alert(data.msg);
+                }
+                var $collection = $("#collection");
+                if(result){
+                    $collection.html("已收藏")
+                }else{
+                    $collection.html("收藏")
+                }
+            }
+        })
+    }
+
+    function checkLogin(){
+        var test = false;
+        var data = {
+            date: new Date()
+        }
+        $.ajax({
+            type:       "POST",
+            url:        "/checkLogin",
+            dataType:   "json",
+            async:      false,
+            data    : data,
+            success: function(data){
+                if(data.result = 1){
+                    test =  true;
+                }else{
+                    test =  false;
+                }
+            }
+        });
+        return test;
+    }
+
+    function doCollection(){
+        //如果已经登录
+        if(checkLogin()){
+            var data = {
+                objectId : ${menu.id},
+                type     : 1,
+                state    : result,
+                date     : new Date()
+            }
+            $.ajax({
+                type:       "POST",
+                url:        "/collection/doCollection",
+                dataType:   "json",
+                data    : data,
+                success: function(data){
+                    if(data.result==0){
+                        alert(data.msg)
+                    }else{
+                        checkCollection();
+                    }
+                }
+            })
+        }
+    }
 </script>
 </body>
 </html>
