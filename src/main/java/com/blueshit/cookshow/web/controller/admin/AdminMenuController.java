@@ -67,8 +67,7 @@ public class AdminMenuController extends BaseController {
 	public String detail(String menuId,Model model){
 		
 		Menu menu=menuService.findById(Long.parseLong(menuId));
-//		List<Cookbook> cookbook = getSession()
-//				.createQuery("from Menu m left join fetch m.cookbooks where m.menuId = ?");
+		QueryHelper queryHelper=new QueryHelper(Cookbook.class, )
 		model.addAttribute("menu",menu);
 		return "admin/menu/detail";
 	}
