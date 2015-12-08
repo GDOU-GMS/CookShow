@@ -15,7 +15,6 @@ public interface CookbookService extends DaoSupport<Cookbook> {
 
 	public List<Cookbook> getReport();
 
-	public List<Cookbook> query(String title, String classificationCode);
 
 	public List<Cookbook> getHeadlineCookbooks();
 
