@@ -63,6 +63,7 @@
                             <ul>
                                 <li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>
                                 <li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}?target=mymenu">我的菜单</a></li>
+                                <li><a href="">关注的好友</a></li>
                                 <li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
                             </ul></li>
 
@@ -125,8 +126,8 @@
                     	
                     </c:if>
                    <div class="media-body mediainforight">
-                       <a class="mediainforight">关注的人</a>
-                       <a class="mediainforight">被关注</a>
+                       <a  href="${pageContext.request.contextPath}/relation/getAllrelation/${userInfo.id}" class="mediainforight">关注的人</a>
+                       <a href="${pageContext.request.contextPath}/relation/getBeRelation/${userInfo.id}" class="mediainforight">被关注</a>
                    </div>
                 </div>
             </div><!--end  media-->
@@ -208,7 +209,7 @@
 
                     <div role="tabpanel" class="tab-pane" id="mymenu">
                         <div class="creatediv">
-                            <a class="btn btn-default createcss" href="createnewmenu.html" role="button">创建新菜单</a>
+                            <a class="btn btn-default createcss" href="${pageContext.request.contextPath}/menu/createMenu" role="button">创建新菜单</a>
                         </div>
                         <div class="menuname">
                             <a  href="#" role="button">菜单名称</a>

@@ -84,24 +84,29 @@
                   </div>
                 </div><!--end  media-->
                  
-                <h4>${relationList[0].follower.username}关注的好友</h4>
-                <c:forEach var="relation" items="${relationList}">
-                <div class="media mediafriend">
-                  
-                  <div class="media-left mediafriendl">
-                    <a href="#">
-                      <img class="media-object" style="width:67px;height:67px;" src="${relation.byFollower.face}" alt="">
-                    </a>
-                  </div>
-                  <div class="media-body  mediafriendr">
-                   <h4 class="media-heading"><a href="#">${relation.byFollower.username}</a></h4>
-                   <%-- <span>${relation.toCreateDate}</span><br/> --%>
-                    <span>${relation.createDate}</span><br/> 
-                   <a href="#"><span></span></a>
-                     
-                  </div>
-                </div>
-                </c:forEach>
+                <h4>${relationList[0].follower.username}${relationstr}</h4>
+                <c:if test="${!empty relationList}">
+	                <c:forEach var="relation" items="${relationList}">
+	                <div class="media mediafriend">
+	                  
+	                  <div class="media-left mediafriendl">
+	                    <a href="#">
+	                      <img class="media-object" style="width:67px;height:67px;" src="${relation.byFollower.face}" alt="">
+	                    </a>
+	                  </div>
+	                  <div class="media-body  mediafriendr">
+	                   <h4 class="media-heading"><a href="#">${relation.byFollower.username}</a></h4>
+	                   <%-- <span>${relation.toCreateDate}</span><br/> --%>
+	                    <span>${relation.createDate}</span><br/> 
+	                   <a href="#"><span></span></a>
+	                     
+	                  </div>
+	                </div>
+	                </c:forEach>
+                </c:if>
+                <c:if test="${empty relationList}">
+                  		  <h4 style="color:#ccc" class="media-heading">目前还没有关注的好友，请赶块添加吧！</h4>
+                </c:if>
                 <!--  
                 <div class="media mediafriend">
                   

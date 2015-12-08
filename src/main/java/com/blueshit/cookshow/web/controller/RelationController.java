@@ -34,7 +34,10 @@ public class RelationController extends BaseController {
 	@RequestMapping("/getAllrelation/{id}")
 	public String getAllRelation(@PathVariable String id,Model model)  throws Exception{
     	 List<Relation> relation=(List<Relation>) relationService.getPersonRelations(Long.parseLong(id));
+    	 if(relation!=null){
     	 model.addAttribute("relationList", relation);
+    	 }
+    	 model.addAttribute("relationstr", "关注的好友");
     	 return "customer/user/myrelation";
      }
 	
@@ -71,10 +74,13 @@ public class RelationController extends BaseController {
 	}
    
 	
-	@RequestMapping("/getBerelation/{id}")
+	@RequestMapping("/getBeRelation/{id}")
 	public String getBeRelation(@PathVariable String id,Model model)  throws Exception{
-    	 List<Relation> relation=(List<Relation>) relationService.getPersonRelations(Long.parseLong(id));
-    	 model.addAttribute("relationList", relation);
+    	 List<Relation> relation=(List<Relation>) relationService.getBeRelation(Long.parseLong(id));
+    	 if(relation!=null){
+    		 model.addAttribute("relationList", relation);
+    	 }
+    	 model.addAttribute("relationstr", "被以下好友关注");
     	 return "customer/user/myrelation";
      }
    

@@ -144,7 +144,7 @@
 
                             <div class="box_center">
                                 <div class="prod_title"><h3><a href="cookbook.html">${cookbook.title}</a></h3></div>
-                                <p style="margin:0px 5px;padding:0px;height:60px;overflow:hidden;text-overflow:ellipsis;font-family:宋体;">${cookbook.material}</p>
+                                <p style="margin:0px 5px;padding:0px;height:60px;overflow:hidden;text-overflow:ellipsis;font-family:宋体;">${cookbook.intro}</p>
 								<a href="#" class="cbuser"><p style="margin:0px 5px;padding:0px;font-family:宋体;">${cookbook.user.username}</p></a> 
                            		<p style="margin:0px 5px;padding:0px;color:#ccc;">${cookbook.createDate}</p> 
                                 <div class="clear"></div>

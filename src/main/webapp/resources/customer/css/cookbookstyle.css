@@ -3,6 +3,15 @@ body{
 	font-size:15px;
 	font-family:宋体;
 }
+a{
+	color:#ec8d24;
+}
+a:active,
+a:hover{
+	color:#fff;
+	background:#eb8d24;
+	text-decoration:none;
+}
 h1,h2,h3,h4{
 	font-family:宋体;
 }
