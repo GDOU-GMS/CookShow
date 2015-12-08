@@ -266,6 +266,7 @@ Purchase: http://wrapbootstrap.com
                             </div>
                                <div>   
                       <div class="row" >
+                      <form action="${pageContext.request.contextPath}/admin/menu/query" method="post">
                             <div class="col-sm-6">
                                   <input name="name" id="queryName" class="form-control" style="width: 50%" placeholder="菜单名字" type="text">
                                 </div>

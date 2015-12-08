@@ -67,7 +67,8 @@ public class AdminMenuController extends BaseController {
 	public String detail(String menuId,Model model){
 		
 		Menu menu=menuService.findById(Long.parseLong(menuId));
-	//	QueryHelper queryHelper=new QueryHelper(Cookbook.cla );
+		QueryHelper queryHelper=new QueryHelper(Cookbook.class,"c" )
+		.addWhereCondition("FROM Cookbook c join c.menus m join m.books b where b.name = 'a'" );
 		model.addAttribute("menu",menu);
 		return "admin/menu/detail";
 	}
@@ -76,16 +77,15 @@ public class AdminMenuController extends BaseController {
 	 * 模糊查询
 	 */
 	@RequestMapping("/query")
-	public String query(@ModelAttribute Menu menu,Model model){
+	public String query(@ModelAttribute Menu menu,Model model,Integer pageNum){
 		
-		List<Menu> list=menuService.query(menu.getName());
-//        	 menu.setName(menu.getName()); 
-//             menu.setTitle(menu.getTitle());
-//             menu.setUpdateDate(menu.getCreateDate());
-//             menu.setCreateDate(menu.getCreateDate());
-//             menu.setDeleted(menu.getDeleted());
-             
-     	  model.addAttribute("list",list);
+        pageNum = pageNum==null||pageNum==0?1:pageNum;
+	//	List<Menu> list=menuService.query(menu.getName());
+       QueryHelper queryHelper = new QueryHelper(Menu.class,"m")
+       .addWhereCondition(menu.getName()!=null&&!"".equals(menu.getName()),"m.name like '%"+menu.getName()+"%'")
+       .addOrderByProperty("createDate",true);
+       Page page = menuService.getPage(pageNum, queryHelper);
+		model.addAttribute("page",page);
         
 		return "admin/menu/list";
 	}
