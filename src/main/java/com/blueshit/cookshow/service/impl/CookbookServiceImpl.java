@@ -12,8 +12,11 @@ import com.blueshit.cookshow.model.entity.Cookbook;
 import com.blueshit.cookshow.model.entity.Menu;
 import com.blueshit.cookshow.service.CookbookService;
 
+import org.hibernate.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Created by Seven on 2015/11/26.
@@ -34,6 +37,31 @@ public class CookbookServiceImpl extends DaoSupportImpl<Cookbook> implements Coo
                 .addWhereCondition("c.deleted = 0")
                 .addOrderByProperty("createDate",false);
         return getPage(pageNum,queryHelper);
+    }
+
+    /**
+     * 根据菜单名称查找
+     * @param menuId
+     * @param pageNum
+     * @return
+     */
+    public Page findByMenuId(Long menuId,int pageNum,int pageSize){
+
+        long totalRecord = (Long)getSession()
+                .createQuery("select count(*) from  Cookbook c join c.menus m where m.id = ?")
+                .setParameter(0, menuId).uniqueResult();
+
+        Page page = new Page(pageSize,pageNum,(int)totalRecord);
+
+        Query query = getSession()
+                .createQuery("select c from Cookbook c join fetch  c.menus m where m.id = ?")
+                .setParameter(0,menuId)
+                .setFirstResult((pageNum -1)*pageSize)
+                .setMaxResults(pageSize);
+
+        page.setList(query.list());
+
+        return page;
     }
      /*
       * 得到报表信息
@@ -69,17 +97,44 @@ public class CookbookServiceImpl extends DaoSupportImpl<Cookbook> implements Coo
 	   		      + "where createDate between '2015-12-01 00:00:00' and '2016-01-01 23:59:59'";
 	  List list=getSession().createSQLQuery(sql)
 				 			.list();
-				 	
-
-		return list;
+	  return list;
 	}
     
 
-	public List<Cookbook> getHeadlineCookbooks() {
+
+
+    /**
+     * 根据分类编码查询.
+     * @param classificationCode
+     * @param pugeNum
+     * @param pageSize
+     * @return
+     */
+    public Page findByClassification(String classificationCode,int pugeNum,int pageSize){
+
+        QueryHelper queryHelper = new QueryHelper(Cookbook.class,"c")
+                .addWhereCondition("c.classificationCode like ? ","%,"+classificationCode+",%")
+                .addOrderByProperty("createDate",false);
+        return getPage(pugeNum,pageSize,queryHelper);
+    }
+
+    /**
+     * 获取所有分类头条
+     * @return
+     */
+    public List<Cookbook> getHeadlineCookbooks(){
 		return getSession().createQuery("from Cookbook c where c.isHeadline = true and deleted = 0 order by createDate desc")
                 .setMaxResults(5)
                 .list();
 	}
+
+	public Page findByTitle(String title, int pageNum, int pageSize) {
+		QueryHelper queryHelper=new QueryHelper(Cookbook.class, "c")
+    	.addWhereCondition("c.title like ? ", "%"+title+"%");
+    	return getPage(pageNum,pageSize,queryHelper);
+	}
+
+
 
 
 }

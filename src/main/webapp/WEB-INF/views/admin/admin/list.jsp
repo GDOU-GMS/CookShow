@@ -121,30 +121,25 @@ Purchase: http://wrapbootstrap.com
 
                     <ul class="submenu">
                         <li>
-                            <a href="elements.html">
-                                <span class="menu-text">登录注册</span>
+                            <a href="${pageContext.request.contextPath}/admin/user/list">
+                                <span class="menu-text">用户列表</span>
                             </a>
                         </li>
+                     </ul>
+                </li>
+                <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-table"></i>
+                        <span class="menu-text">分类管理</span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
                         <li>
-                            <a href="#" class="menu-dropdown">
-                                    <span class="menu-text">
-                                      我的厨房
-                                    </span>
-                                <i class="menu-expand"></i>
+                            <a href="${pageContext.request.contextPath}/admin/classification/list">
+                                <span class="menu-text">分类列表</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="tabs.html">
-                                    <span class="menu-text">我的菜单</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="alerts.html">
-                                <span class="menu-text">好友</span>
-                            </a>
-                        </li>
-
-                    </ul>
+                       </ul>
                 </li>
                 <!--Tables-->
                 <li>
@@ -157,16 +152,11 @@ Purchase: http://wrapbootstrap.com
 
                     <ul class="submenu">
                         <li>
-                            <a href="/cookbook/list">
-                                <span class="menu-text">热门专题</span>
+                            <a href="${pageContext.request.contextPath}/admin/cookbook/list">
+                                <span class="menu-text">菜谱列表</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="tables-data.html">
-                                <span class="menu-text">菜谱分类</span>
-                            </a>
-                        </li>
-                    </ul>
+                       </ul>
                 </li>
                 <!--Forms-->
                 <li>
@@ -179,49 +169,15 @@ Purchase: http://wrapbootstrap.com
 
                     <ul class="submenu">
                         <li>
-                            <a href="form-layouts.html">
-                                <span class="menu-text">最近流行</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="form-inputs.html">
-                                <span class="menu-text">往期头条</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="form-pickers.html">
-                                <span class="menu-text">月度最佳</span>
+                            <a href="${pageContext.request.contextPath}/admin/cookbook/list">
+                                <span class="menu-text">菜单列表</span>
                             </a>
                         </li>
 
                     </ul>
                 </li>
                 <!--Charts-->
-                <li>
-                    <a href="#" class="menu-dropdown">
-                        <i class="menu-icon fa fa-bar-chart-o"></i>
-                        <span class="menu-text"> 作品关注</span>
-
-                        <i class="menu-expand"></i>
-                    </a>
-
-                    <ul class="submenu">
-                        <li>
-                            <a href="flot.html">
-                                <span class="menu-text">我的关注</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="morris.html">
-                                <span class="menu-text"> 我的收藏</span>
-                            </a>
-                        </li>
-
-                    </ul>
-                </li>
+           
                 <li class="active open">
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-desktop"></i>
@@ -267,13 +223,30 @@ Purchase: http://wrapbootstrap.com
             </div>
             <!-- /Page Header -->
             <!-- Page Body -->
-            <div>
+               <div>
                 <div class="row">
                     <div class="col-xs-12 col-md-12">
-                        <div class="well with-header  with-footer">
+                        <div class="well with-header  with-footer" style="margin-bottom:0px;padding-bottom:10px">
                             <div class="header bg-blue">
-                                管理员列表
+                               管理员列表
                             </div>
+                     <div>   
+                      <div class="row" >
+                        <form action="${pageContext.request.contextPath}/admin/admin/query" method="post">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                  <input name="username" class="form-control" style="width: 50%" placeholder="用户名" type="text">
+                                 </div>
+                                </div>
+          
+                          
+                                  <div class="col-sm-6">
+                                     <button class="btn btn-azure" type="submit">查询</button>
+                                     </div>
+                        </form>
+                      </div>
+                  </div>
+                      </div>
                             <table class="table table-hover">
                                 <thead class="bordered-darkorange">
                                 <tr>

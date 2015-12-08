@@ -59,18 +59,21 @@
                         </div>
                     </div>
 
-                    <ul id="personcenter" style="float: left;">
-                        <li style="width: 110px;"><a class="btn btn1"
-                                                     href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}"
-                                                     role="button">个人中心</a>
-                            <ul>
-                                <li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>
-                                <li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}?target=mymenu">我的菜单</a></li>
-                                <li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
-                            </ul></li>
+                     <c:if test="${!empty user }">
+						<ul id="personcenter" style="float: left;">
+							<li style="width: 110px;"><a class="btn btn1"
+								href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}"
+								role="button">个人中心</a>
+								<ul>
+									<li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>
+									<li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}">我的厨房</a></li>
+									<li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}?target=mymenu">我的菜单</a></li>
+									<li><a href="${pageContext.request.contextPath}/relation/getAllrelation/${user.id==null ? 0 : user.id}">关注的好友</a></li>
+									<li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
+								</ul></li>
 
-                    </ul>
-
+						</ul>
+					</c:if>
 
                 </div>
             </div>
@@ -96,7 +99,7 @@
                     <div class="form-group">
                         <label for="file0" class="col-sm-2 control-label">选择文件</label>
                         <div class="col-sm-10">
-                            <input type="file" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  name="titleImg" id="file0" multiple required="required" /><br>
+                            <input type="file" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  name="titleImg" id="file0" multiple required="required"  /><br>
                             <img class="media-object" src="${production.titleImage}"  alt="..." style="width:748px;height:475px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/tj.png)"  id="img0" onClick="tempClick0('file0')" >
                         </div>
                     </div>
@@ -132,6 +135,9 @@
 </div>
 
 <script>
+    $(document).ready(function(){
+
+    });
     function tempClick0(id){
         /**
          * 火狐浏览器实现点击图片出现文件上传界面
@@ -143,7 +149,6 @@
             //IE浏览器实现点击图片出现文件上传界面
         document.getElementById(id).click();            //调用main_img的onclick事件
     }
-
 
     $("#file0").change(function(){
         var objUrl = getObjectURL(this.files[0]) ;

@@ -54,17 +54,21 @@
                         </div>
                     </div>
 
-                    <ul id="personcenter" style="float:left;">
-                        <li style="width:110px;"><a class="btn btn1" href="#" role="button">个人中心</a>
-                            <ul>
-                                <li><a href="userinfo.html">账号设置</a></li>
-                                <li><a href="personwork.html">我的菜单</a></li>
-                                <li><a href="myfriends.html">关注的好友</a></li>
-                                <li><a href="#">退出</a></li>
-                            </ul>
-                        </li>
+                    <c:if test="${!empty user }">
+						<ul id="personcenter" style="float: left;">
+							<li style="width: 110px;"><a class="btn btn1"
+								href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}"
+								role="button">个人中心</a>
+								<ul>
+									<li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>
+									<li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}">我的厨房</a></li>
+									<li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}?target=mymenu">我的菜单</a></li>
+									<li><a href="${pageContext.request.contextPath}/relation/getAllrelation/${user.id==null ? 0 : user.id}">关注的好友</a></li>
+									<li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
+								</ul></li>
 
-                    </ul>
+						</ul>
+					</c:if>
                 </div>
             </div>
         </div>
@@ -73,7 +77,7 @@
         <div id="navcontent">
 
             <ul class="nav nav-pills">
-                <li role="presentation" class="cbook "><span>全部分类</span></li>
+                <li role="presentation" class="cbook "><span></span></li>
                 <li role="presentation" class="active"><a href="index.html">首页</a></li>
                 <li role="presentation"><a href="cookmenu.html">菜单</a></li>
                 <li role="presentation"><a href="#">健康饮食</a></li>
@@ -98,7 +102,7 @@
                     <label for="file0" class="col-sm-2 control-label">菜谱封面</label>
                     <div class="col-sm-10">
                         <input type="file" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  name="titleImg" id="file0" multiple /><br>
-                        <img class="media-object" src=""  alt="..." style="width:748px;height:475px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/addcb.gif)"  id="img0" onClick="tempClick0('file0')" >
+                        <img class="media-object" src=""  alt="" style="width:748px;height:475px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/addcb.gif)"  id="img0" onClick="tempClick0('file0')" >
                     </div>
                 </div>
                 <div class="form-group">
@@ -132,7 +136,7 @@
                         </div>
                         <div class="media-left media_lself ">
                             <input type="file" class="inputimage" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;" data-imgId="img1"  name="step_image" id="file1" multiple /><br>
-                            <img class="media-object" src=""  alt="" style="width:230px;height:230px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/bucb.gif)"  id="img1" data-inputId="file1" onClick="tempClick(event)">
+                            <img class="media-object" src=""  alt="" style="width:230px;height:230px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/addbz.gif)"  id="img1" data-inputId="file1" onClick="tempClick(event)">
                         </div>
                     </div>
                 </div><!-- form-group-->
@@ -146,7 +150,7 @@
                         </div>
                         <div class="media-left media_lself ">
                             <input type="file" class="inputimage" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  data-imgId="img2" name="step_image" id="file2" multiple /><br>
-                            <img class="media-object" src=""  alt="" style="width:230px;height:230px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/bucb.gif)"  data-inputId="file2" id="img2" onClick="tempClick(event)" >
+                            <img class="media-object" src=""  alt="" style="width:230px;height:230px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/addbz.gif)"  data-inputId="file2" id="img2" onClick="tempClick(event)" >
                         </div>
                     </div>
                 </div><!-- form-group-->
@@ -161,7 +165,7 @@
                         </div>
                         <div class="media-left media_lself ">
                             <input type="file" class="inputimage" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;" data-imgId="img3" name="step_image" id="file3" multiple /><br>
-                            <img class="media-object" src=""  alt="" style="width:230px;height:230px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/bucb.gif)" data-inputId="file3"  id="img3" onClick="tempClick(event)" >
+                            <img class="media-object" src=""  alt="" style="width:230px;height:230px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/addbz.gif)" data-inputId="file3"  id="img3" onClick="tempClick(event)" >
                         </div>
                     </div>
                 </div><!-- form-group-->
@@ -177,7 +181,7 @@
                         <div class="media-left media_lself ">
 
                             <input type="file" class="inputimage" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;" data-imgId="img4"  name="step_image" id="file4" multiple /><br>
-                            <img class="media-object" src=""  alt="" style="width:230px;height:230px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/bucb.gif)" data-inputId="file4"  id="img4" onClick="tempClick(event)" >
+                            <img class="media-object" src=""  alt="" style="width:230px;height:230px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/addbz.gif)" data-inputId="file4"  id="img4" onClick="tempClick(event)" >
 
                             </a>
                         </div>
@@ -193,7 +197,7 @@
                         <div class="media-left media_lself ">
 
                             <input type="file" class="inputimage" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;" data-imgId="img5" name="step_image" id="file5" multiple /><br>
-                            <img class="media-object" src=""  alt="" style="width:230px;height:230px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/bucb.gif)" data-inputId="file5"  id="img5" onClick="tempClick(event)" >
+                            <img class="media-object" src=""  alt="" style="width:230px;height:230px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/addbz.gif)" data-inputId="file5"  id="img5" onClick="tempClick(event)" >
 
                             </a>
                         </div>
@@ -204,30 +208,22 @@
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <a class="btn btn-default tradd" href="javascript:void(0)" onclick="addstep()" role="button">添加步骤</a>
+                        <a class="btn btn-default tradd" href="javascript:void(0)" onclick="removestep()" role="button">移除步骤</a>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="medialocation">
                         <h4 class="media-heading">选择分类：</h4>
-                        <input type="text" class="inputimage" id="checkedName" class="form-control" data-toggle="modal" data-target="#myModal" readonly>
+                        <input type="text" id="checkedName" class="inputimage form-control" data-toggle="modal" data-target="#myModal" readonly>
                         <input type="hidden" id="checkedCode" class="form-control" name="classifications">
                     </div>
                 </div>
-              <%--  <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="button" class="btn btn-default tradd" >
-                            选择分类
-                        </button>
-                    </div>
-                </div><!-- form-group-->--%>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-default btnpublic">发布菜谱</button>
                     </div>
                 </div>
             </form>
-
-
 
         </div><!--end cscontent -->
     </div><!--end  content-->
@@ -281,6 +277,12 @@
         e_id.innerHTML = '<input type="text" style="border:none;width:200px;height:20px;" name="material_kind">';
         var memo = tr.insertCell(1);
         memo.innerHTML = '<input type="text" style="border:none;width:200px;height:20px;" name="material_num">';
+        var removeBtn = tr.insertCell(2);
+        $(removeBtn).attr("style","border-color:#fff")
+        removeBtn.innerHTML = '<a href="javascript:void(0)"><i class="glyphicon glyphicon-remove" title="移除"/></a>'
+        $(removeBtn).click(function(){
+            $(this).parent("tr").remove();
+        });
         count++;
     }
 </script>
@@ -300,13 +302,18 @@
             $(this).change(changeImgSource);
         })
         newdiv.find("img").each(function(i){
-            $(this).attr("src","${pageContext.request.contextPath}/resources/customer/images/bucb.gif")
+            $(this).attr("src","${pageContext.request.contextPath}/resources/customer/images/addbz.gif")
             $(this).attr("data-inputId","file"+num)
             $(this).attr("id","img"+num)
         })
         newdiv.find("h4").text(num);
         div.after(newdiv);                                   //放在所在div之后
         num++;
+    }
+
+    function removestep(){
+        $(".media:last").remove();
+        num--;
     }
 </script>
 <script type="text/javascript">

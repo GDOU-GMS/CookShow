@@ -38,17 +38,21 @@
                              <a class="btn btn1" href="#" role="button">注册</a>
                              </div>
                              
-                             <ul id="personcenter" style="float:left;">
-                                <li style="width:110px;"><a class="btn btn1" href="#" role="button">个人中心</a>
-                                    <ul>
-                                        <li><a href="userinfo.html">账号设置</a></li>
-                                        <li><a href="personwork.html">我的菜单</a></li>
-                                        <li><a href="#">退出</a></li>
-                                    </ul>
-                                </li>
-                                
-                            </ul>
-                           
+                        <c:if test="${!empty user }">
+						<ul id="personcenter" style="float: left;">
+							<li style="width: 110px;"><a class="btn btn1"
+								href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}"
+								role="button">个人中心</a>
+								<ul>
+									<li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>
+									<li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}">我的厨房</a></li>
+									<li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}?target=mymenu">我的菜单</a></li>
+									<li><a href="${pageContext.request.contextPath}/relation/getAllrelation/${user.id==null ? 0 : user.id}">关注的好友</a></li>
+									<li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
+								</ul></li>
+
+						</ul>
+						</c:if>
             			 </div><!--landr-->
                         
                   </div>
@@ -84,24 +88,29 @@
                   </div>
                 </div><!--end  media-->
                  
-                <h4>${relationList[0].follower.username}关注的好友</h4>
-                <c:forEach var="relation" items="${relationList}">
-                <div class="media mediafriend">
-                  
-                  <div class="media-left mediafriendl">
-                    <a href="#">
-                      <img class="media-object" style="width:67px;height:67px;" src="${relation.byFollower.face}" alt="">
-                    </a>
-                  </div>
-                  <div class="media-body  mediafriendr">
-                   <h4 class="media-heading"><a href="#">${relation.byFollower.username}</a></h4>
-                   <%-- <span>${relation.toCreateDate}</span><br/> --%>
-                    <span>${relation.createDate}</span><br/> 
-                   <a href="#"><span></span></a>
-                     
-                  </div>
-                </div>
-                </c:forEach>
+                <h4>${relationList[0].follower.username}${relationstr}</h4>
+                <c:if test="${!empty relationList}">
+	                <c:forEach var="relation" items="${relationList}">
+	                <div class="media mediafriend">
+	                  
+	                  <div class="media-left mediafriendl">
+	                    <a href="#">
+	                      <img class="media-object" style="width:67px;height:67px;" src="${relation.byFollower.face}" alt="">
+	                    </a>
+	                  </div>
+	                  <div class="media-body  mediafriendr">
+	                   <h4 class="media-heading"><a href="#">${relation.byFollower.username}</a></h4>
+	                   <%-- <span>${relation.toCreateDate}</span><br/> --%>
+	                    <span>${relation.createDate}</span><br/> 
+	                   <a href="#"><span></span></a>
+	                     
+	                  </div>
+	                </div>
+	                </c:forEach>
+                </c:if>
+                <c:if test="${empty relationList}">
+                  		  <h4 style="color:#ccc" class="media-heading">目前还没有关注的好友，请赶块添加吧！</h4>
+                </c:if>
                 <!--  
                 <div class="media mediafriend">
                   

@@ -2,11 +2,38 @@
 body{
 	background:#fff;
 	font-size:15px;
+	font-family:宋体;
+	color:#000;
+}
+a{
+	color:#ec8d24;
+}
+a:active,
+a:hover{
+	color:#fff;
+	background:#eb8d24;
+	text-decoration:none;
 }
 .csw{
 	width:100%;
 	
 }
+.cstitle{
+	float:left;
+	display:block;
+	width:100%;
+	color:#252525;
+	background:#f5f4f2;
+	margin-top:15px;
+	margin-bottom:0px;
+	padding:0 5px;
+    line-height:40px;
+    border:1px solid #e8e7e7;
+    font:normal 16px/40px 宋体;
+   
+    
+}
+
 #top{
 	float:left;
 	display:block;
@@ -34,6 +61,7 @@ body{
 }
 .nav li a{
 	padding:15px 35px;
+	color:#ec8d24;
 }
 .navcenter{
 	padding-top:65px;
@@ -48,10 +76,11 @@ body{
 	
 }
 .landr{
-	float:left;
-	margin-left:100px;
 	width:300px;
-	
+	position:absolute;
+	left:900px;
+	top:70px;
+	z-index:2000;
 }
 
 .form-control{
@@ -224,6 +253,10 @@ padding-top:1px;
 	text-decoration: none;
 	padding-left: 1em;
 	color: #fff;
+}
+#personcenter a:hover{
+	background:#ce7008;
+    border-color: #ce7008;
 }
 #personcenter ul { 
 	display: none;

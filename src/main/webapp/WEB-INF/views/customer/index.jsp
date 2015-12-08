@@ -75,12 +75,14 @@
 		<div id="top">
 			<div id="navigation">
 				<div class="navcenter">
-					<div class="seach">
-						<input type="text" class="form-control" id="exampleInputName2"
-							placeholder="搜索商品或菜单">
-						<button class="btn btn-default">搜索</button>
-					</div>
-					<div class="landr">
+					 <form action="${pageContext.request.contextPath}/cookbook/findByTitle" method="post">
+						<div class="seach">
+							<input type="text" name="title" class="form-control" id="exampleInputName2"
+								placeholder="搜索菜单或菜谱">
+							<button class="btn btn-default">搜索</button>
+						</div>
+					</form>
+					<div class="landr" style="">
 						<div style="float: left;">
                             <div style="float:left;">
                                 <c:if test="${user!=null}">
@@ -95,19 +97,21 @@
                                 </c:if>
                             </div>
 						</div>
-
+     				    <c:if test="${!empty user }">
 						<ul id="personcenter" style="float: left;">
 							<li style="width: 110px;"><a class="btn btn1"
 								href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}"
 								role="button">个人中心</a>
 								<ul>
 									<li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>
+									<li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}">我的厨房</a></li>
 									<li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}?target=mymenu">我的菜单</a></li>
+									<li><a href="${pageContext.request.contextPath}/relation/getAllrelation/${user.id==null ? 0 : user.id}">关注的好友</a></li>
 									<li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
 								</ul></li>
 
 						</ul>
-
+						</c:if>
 
 					</div>
 				</div>
@@ -217,6 +221,7 @@
 			<!--中间内容结束-->
 			<div class="contentbottom">
 				<div class="csbottom">
+				<h4 class="cstitle" >新秀菜谱</h4>
 					<div class="row showimg">
 						<div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
 							<div class="thumbnail">
@@ -226,7 +231,7 @@
 
 								<div class="caption">
 
-									<h4>甜品</h4>
+									<h4 ><a class="captionhref" href="#">甜品</a></h4>
 									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
 								</div>
 							</div>
@@ -244,7 +249,7 @@
 
 								<div class="caption">
 
-									<h4>麻辣小龙虾</h4>
+									<h4 ><a class="captionhref" href="#">麻辣小龙虾</a></h4>
 									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
 								</div>
 							</div>
@@ -261,7 +266,7 @@
 
 								<div class="caption">
 
-									<h4>绿茶饼</h4>
+									<h4 ><a class="captionhref" href="#">绿茶饼</a></h4>
 									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
 								</div>
 							</div>
@@ -280,7 +285,7 @@
 
 								<div class="caption">
 
-									<h4>小炒</h4>
+									<h4 ><a class="captionhref" href="#">小炒</a></h4>
 									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
 								</div>
 							</div>
@@ -298,7 +303,7 @@
 
 								<div class="caption">
 
-									<h4>鱼香肉丝</h4>
+									<h4 ><a class="captionhref" href="#">鱼香肉丝</a></h4>
 									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
 								</div>
 							</div>
@@ -315,7 +320,7 @@
 
 								<div class="caption">
 
-									<h4>小炒</h4>
+									<h4 ><a class="captionhref" href="#">小炒</a></h4>
 									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
 								</div>
 							</div>
@@ -323,7 +328,25 @@
 
 					</div>
 					<!--  end row-->
+					
+					<h4 class="cstitle" >本周最受欢迎</h4>
+					<div class="row showimg ">
+						<div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
+							<div class="thumbnail">
+								<img
+									src="${pageContext.request.contextPath}/resources/customer/images/1.gif"
+									alt="..." style="margin: 0px 30x; margin-top: 25px;">
 
+								<div class="caption">
+
+									<h4>甜品</h4>
+									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
+								</div>
+							</div>
+						</div>
+
+					</div>
+					 <!--  end row-->
 				</div>
 				<!--csbottom-->
 
