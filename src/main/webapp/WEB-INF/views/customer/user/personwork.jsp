@@ -81,7 +81,7 @@
         <div id="navcontent">
 
             <ul class="nav nav-pills">
-                <li role="presentation" class="cbook"><a title="点击查看所有分类" href="${pageContext.request.contextPath}/classification/allClassification">全部分类</a></li>
+                <li role="presentation" class="cbook"></li>
                 <li role="presentation" class=""><a href="${pageContext.request.contextPath}/">首页</a></li>
                 <li role="presentation"><a href="${pageContext.request.contextPath}/menu/cookmenu">菜单</a></li>
                 <li role="presentation"><a href="${pageContext.request.contextPath}/production/productionIndex">作品动态</a></li>
@@ -153,61 +153,21 @@
 
                     <div role="tabpanel" class="tab-pane active" id="gaikuang">
                         <div class="creatediv">
-
-                            <div class="row showimg">
-                                <div class="col-sm-6 col-md-4"style="width:100%;padding:0px;">
-                                    <div class="thumbnail">
-                                        <img src="${pageContext.request.contextPath}/resources/customer/images/255.png" alt="..." style="margin:0px 30px;margin-top:25px;">
-                                        <div class="caption">
-
-                                            <h4>美美哒</h4>
-                                            <!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  		<p>
-                                            				 btn-default" role="button">Button</a></p>-->
-                                            <p>简介</p>
-                                            <span style="color:#ccc;font-size:12px;">2015/01/01</span>
+                            <c:forEach items="${recentlyCookbooks}" var="cookbook">
+                                <div class="row showimg">
+                                    <div class="col-sm-6 col-md-4"style="width:100%;padding:0px;">
+                                        <div class="thumbnail">
+                                            <img src="${cookbook.titleImage}" alt="..." style="margin:0px 30px;margin-top:25px;">
+                                            <div class="caption">
+                                                <h4>${cookbook.title}</h4>
+                                                <p>${cookbook.intro}</p>
+                                                <span style="color:#ccc;font-size:12px;"><fmt:formatDate value="${cookbook.createDate}" pattern="yyyy-MM-dd"/></span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
-                            </div><!--  end row-->
-
-
-                            <div class="row showimg imgright">
-                                <div class="col-sm-6 col-md-4"style="width:100%;padding:0px;">
-                                    <div class="thumbnail">
-                                        <img src="${pageContext.request.contextPath}/resources/customer/images/255.png" alt="..." style="margin:0px 30px;margin-top:25px;">
-                                        <div class="caption">
-
-                                            <h4>美美哒</h4>
-                                            <p>简介</p>
-                                            <span style="color:#ccc;font-size:12px;">2015/01/01</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div><!--  end row-->
-
-
-                            <div class="row showimg imgright">
-                                <div class="col-sm-6 col-md-4"style="width:100%;padding:0px;">
-                                    <div class="thumbnail">
-                                        <img src="${pageContext.request.contextPath}/resources/customer/images/255.png" alt="..." style="margin:0px 30px;margin-top:25px;">
-                                        <div class="caption">
-
-                                            <h4>美美哒</h4>
-                                            <!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn
-                                            				 btn-default" role="button">Button</a></p>-->
-                                            <p>简介</p>
-                                            <span style="color:#ccc;font-size:12px;">2015/01/01</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div><!--  end row-->
-
-
+                                </div><!--  end row-->
+                            </c:forEach>
                         </div>
-
                     </div><!-- mymenu-->
 
 
@@ -218,7 +178,9 @@
                         </div>
                         <div class="menuname">
                             <c:forEach items="${menuPage.list}" var="menu">
-                                <a style="float: left" href="${pageContext.request.contextPath}/menu/menuDetail/${menu.id}" role="button">${menu.name}&nbsp;&nbsp;<span><fmt:formatDate value="${menu.createDate}" pattern="yyyy-MM-dd"/>创建</span></a>
+                                <div class="row">
+                                    <a style="float: left" href="${pageContext.request.contextPath}/menu/menuDetail/${menu.id}" role="button">${menu.name}&nbsp;&nbsp;<span><fmt:formatDate value="${menu.createDate}" pattern="yyyy-MM-dd"/>创建</span></a>
+                                </div>
                             </c:forEach>
                         </div>
                         <nav>
@@ -230,9 +192,11 @@
                                         </a>
                                     </li>
                                 </c:if>
-                                <c:forEach begin="${menuPage.startIndex}" end="${menuPage.startIndex}" step="1" var="index">
-                                    <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=mymenu&menupageNum=${index+1}" <c:if test="${index+1 eq menuPage.pageNum}">class="active"</c:if>>${index+1}</a></li>
-                                </c:forEach>
+                                <c:if test="${menuPage.totalPage gt 1}">
+                                    <c:forEach begin="${menuPage.startIndex}" end="${menuPage.startIndex}" step="1" var="index">
+                                        <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=mymenu&menupageNum=${index+1}" <c:if test="${index+1 eq menuPage.pageNum}">class="active"</c:if>>${index+1}</a></li>
+                                    </c:forEach>
+                                </c:if>
                                 <c:if test="${menuPage.pageNum+1 lt menuPage.totalRecord}">
                                     <li>
                                         <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=mymenu&menupageNum=${menuPage.pageNum+1}" aria-label="Next">
@@ -279,9 +243,11 @@
                                         </a>
                                     </li>
                                 </c:if>
-                                <c:forEach begin="${cookbookPage.startIndex}" end="${cookbookPage.startIndex}" step="1" var="index">
-                                    <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=pwd&cookbookpageNum=${index+1}" <c:if test="${index+1 eq cookbookPage.pageNum}">class="active"</c:if>>${index+1}</a></li>
-                                </c:forEach>
+                                <c:if test="${cookbookPage.totalPage gt 1}">
+                                    <c:forEach begin="${cookbookPage.startIndex}" end="${cookbookPage.startIndex}" step="1" var="index">
+                                        <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=pwd&cookbookpageNum=${index+1}" <c:if test="${index+1 eq cookbookPage.pageNum}">class="active"</c:if>>${index+1}</a></li>
+                                    </c:forEach>
+                                </c:if>
                                 <c:if test="${cookbookPage.pageNum+1 lt cookbookPage.totalRecord}">
                                     <li>
                                         <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=pwd&cookbookpageNum=${cookbookPage.pageNum+1}" aria-label="Next">
@@ -325,9 +291,11 @@
                                             </a>
                                         </li>
                                     </c:if>
-                                    <c:forEach begin="${productionPage.startIndex}" end="${productionPage.startIndex}" step="1" var="index">
-                                        <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=production&productionpageNum=${index+1}" <c:if test="${index+1 eq productionPage.pageNum}">class="active"</c:if>>${index+1}</a></li>
-                                    </c:forEach>
+                                    <c:if test="${productionPage.totalPage gt 1}">
+                                        <c:forEach begin="${productionPage.startIndex}" end="${productionPage.startIndex}" step="1" var="index">
+                                            <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=production&productionpageNum=${index+1}" <c:if test="${index+1 eq productionPage.pageNum}">class="active"</c:if>>${index+1}</a></li>
+                                        </c:forEach>
+                                    </c:if>
                                     <c:if test="${productionPage.pageNum+1 lt productionPage.totalRecord}">
                                         <li>
                                             <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=production&productionpageNum=${productionPage.pageNum+1}" aria-label="Next">
@@ -364,9 +332,11 @@
                                         </a>
                                     </li>
                                 </c:if>
-                                <c:forEach begin="${collectionCookbookPage.startIndex}" end="${collectionCookbookPage.startIndex}" step="1" var="index">
-                                    <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=pwd&collectionCookbookpageNum=${index+1}" <c:if test="${index+1 eq collectionCookbookPage.pageNum}">class="active"</c:if>>${index+1}</a></li>
-                                </c:forEach>
+                                <c:if test="${collectionCookbookPage.totalPage gt 1}">
+                                    <c:forEach begin="${collectionCookbookPage.startIndex}" end="${collectionCookbookPage.startIndex}" step="1" var="index">
+                                        <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=pwd&collectionCookbookpageNum=${index+1}" <c:if test="${index+1 eq collectionCookbookPage.pageNum}">class="active"</c:if>>${index+1}</a></li>
+                                    </c:forEach>
+                                </c:if>
                                 <c:if test="${cookbookPage.pageNum+1 lt cookbookPage.totalRecord}">
                                     <li>
                                         <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=pwd&collectionCookbookpageNum=${collectionCookbookPage.pageNum+1}" aria-label="Next">
@@ -379,8 +349,6 @@
 
                     </div>
                     <div role="tabpanel" class="tab-pane" id="collectionMenu">
-                        3
-
                         <div class="menuname">
                             <c:forEach items="${collectionMenuPage.list}" var="menu">
                                 <a style="float: left" href="${pageContext.request.contextPath}/menu/menuDetail/${menu.id}" role="button">${menu.name}&nbsp;&nbsp;<span><fmt:formatDate value="${menu.createDate}" pattern="yyyy-MM-dd"/>创建</span></a>
@@ -395,9 +363,11 @@
                                         </a>
                                     </li>
                                 </c:if>
-                                <c:forEach begin="${collectionMenuPage.startIndex}" end="${collectionMenuPage.startIndex}" step="1" var="index">
-                                    <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=mymenu&menupageNum=${index+1}" <c:if test="${index+1 eq collectionMenuPage.pageNum}">class="active"</c:if>>${index+1}</a></li>
-                                </c:forEach>
+                                <c:if test="${collectionMenuPage.totalPage gt 1}">
+                                    <c:forEach begin="${collectionMenuPage.startIndex}" end="${collectionMenuPage.startIndex}" step="1" var="index">
+                                        <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=mymenu&menupageNum=${index+1}" <c:if test="${index+1 eq collectionMenuPage.pageNum}">class="active"</c:if>>${index+1}</a></li>
+                                    </c:forEach>
+                                </c:if>
                                 <c:if test="${collectionMenuPage.pageNum+1 lt collectionMenuPage.totalRecord}">
                                     <li>
                                         <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=mymenu&menupageNum=${collectionMenuPage.pageNum+1}" aria-label="Next">

@@ -195,12 +195,6 @@
 			<div class="contentbottom">
 				<div class="csbottom">
 				<h4 class="cstitle" >新秀菜谱</h4>
-					<div class="row showimg">
-						<div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
-							<div class="thumbnail">
-								<img
-									src="${pageContext.request.contextPath}/resources/customer/images/1.gif"
-									alt="..." style="margin: 0px 30px; margin-top: 25px;">
                     <c:forEach items="${newCreateCookbook}" var="cookbook">
                         <div class="row showimg">
                             <div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
@@ -214,114 +208,7 @@
                         </div>
                         <!--  end row-->
                     </c:forEach>
-
-								<div class="caption">
-
-									<h4 ><a class="captionhref" href="#">甜品</a></h4>
-									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
-								</div>
-							</div>
-						</div>
-
-					</div>
-					<!--  end row-->
-
-					<div class="row showimg imgright">
-						<div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
-							<div class="thumbnail">
-								<img
-									src="${pageContext.request.contextPath}/resources/customer/images/2.gif"
-									alt="..." style="margin: 0px 30px; margin-top: 25px;">
-
-								<div class="caption">
-
-									<h4 ><a class="captionhref" href="#">麻辣小龙虾</a></h4>
-									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
-								</div>
-							</div>
-						</div>
-
-					</div>
-					<!--  end row-->
-					<div class="row showimg imgright">
-						<div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
-							<div class="thumbnail">
-								<img
-									src="${pageContext.request.contextPath}/resources/customer/images/3.gif"
-									alt="..." style="margin: 0px 30px; margin-top: 25px;">
-
-								<div class="caption">
-
-									<h4 ><a class="captionhref" href="#">绿茶饼</a></h4>
-									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
-								</div>
-							</div>
-						</div>
-
-					</div>
-					<!--  end row-->
-
-
-					<div class="row showimg">
-						<div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
-							<div class="thumbnail">
-								<img
-									src="${pageContext.request.contextPath}/resources/customer/images/4.gif"
-									alt="..." style="margin: 0px 30px; margin-top: 25px;">
-
-								<div class="caption">
-
-									<h4 ><a class="captionhref" href="#">小炒</a></h4>
-									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
-								</div>
-							</div>
-						</div>
-
-					</div>
-					<!--  end row-->
-
-					<div class="row showimg imgright">
-						<div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
-							<div class="thumbnail">
-								<img
-									src="${pageContext.request.contextPath}/resources/customer/images/5.gif"
-									alt="..." style="margin: 0px 30px; margin-top: 25px;">
-
-								<div class="caption">
-
-									<h4 ><a class="captionhref" href="#">鱼香肉丝</a></h4>
-									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
-								</div>
-							</div>
-						</div>
-
-					</div>
-					<!--  end row-->
-					<div class="row showimg imgright">
-						<div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
-							<div class="thumbnail">
-								<img
-									src="${pageContext.request.contextPath}/resources/customer/images/6.gif"
-									alt="..." style="margin: 0px 30px; margin-top: 25px;">
-
-								<div class="caption">
-
-									<h4 ><a class="captionhref" href="#">小炒</a></h4>
-									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
-								</div>
-							</div>
-						</div>
-
-					</div>
-					<!--  end row-->
 					
-					<h4 class="cstitle" >本周最受欢迎</h4>
-					<div class="row showimg ">
-						<div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
-							<div class="thumbnail">
-								<img
-									src="${pageContext.request.contextPath}/resources/customer/images/1.gif"
-									alt="..." style="margin: 0px 30x; margin-top: 25px;">
 					<h4 class="cstitle" >本周最受欢迎</h4>
                     <c:forEach items="${popularCookbooks}" var="cookbook">
                         <div class="row showimg ">
@@ -336,17 +223,6 @@
                         </div>
                         <!--  end row-->
                     </c:forEach>
-
-								<div class="caption">
-
-									<h4>甜品</h4>
-									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
-								</div>
-							</div>
-						</div>
-
-					</div>
-					 <!--  end row-->
 				</div>
 				<!--csbottom-->
 

@@ -83,6 +83,15 @@
         <div class="cscontent">
 
             <div>
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#info" aria-controls="home" role="tab" data-toggle="tab">好友动态</a></li>
+
+                    <li role="presentation"><a href="#pwd" aria-controls="messages" role="tab" data-toggle="tab">全部动态</a></li>
+
+                </ul>
+
                 <!-- Tab panes -->
                 <div class="tab-content tagstyle">
                     <div role="tabpanel" class="tab-pane active" id="info">
@@ -96,8 +105,10 @@
                                         </a>
                                     </div>
                                     <div class="media-body dynamictopr">
+
                                         <a href="#"><h4 class="media-heading">鬼鬼</h4></a><span>做过</span>
                                         <a href="#"><h4 class="media-heading">烤鱼</h4></a>
+
                                     </div>
                                 </div>
                             </div><!--end dynamictop-->
@@ -114,7 +125,9 @@
                                         <a href="#"><span>酸菜鱼的做法</span></a>
                                         <a href="#" class="zanzan"><span class="glyphicon glyphicon-thumbs-up dianzan" aria-hidden="true"></span></a>
                                     </div>
+
                                 </div>
+
                                 <div class="dynamiccomment">
                                     <form class="form-horizontal">
                                         <div class="form-group">
@@ -125,7 +138,13 @@
                                         </div>
                                     </form>
                                 </div>
+
+
+
                             </div><!--end dynamicbottom-->
+
+
+
                         </div><!--end mediadynamic-->
 
 
@@ -141,6 +160,7 @@
                                         </a>
                                     </div>
                                     <div class="media-body dynamictopr">
+
                                         <a href="#"><h4 class="media-heading">鬼鬼</h4></a><span>做过</span>
                                         <a href="#"><h4 class="media-heading">烤鱼</h4></a>
 
@@ -160,7 +180,9 @@
                                         <a href="#"><span>酸菜鱼的做法</span></a>
                                         <a href="#" class="zanzan"><span class="glyphicon glyphicon-thumbs-up dianzan" aria-hidden="true"></span></a>
                                     </div>
+
                                 </div>
+
                                 <div class="dynamiccomment">
                                     <form class="form-horizontal">
                                         <div class="form-group">
@@ -171,8 +193,16 @@
                                         </div>
                                     </form>
                                 </div>
+
+
+
                             </div><!--end dynamicbottom-->
+
+
+
                         </div><!--end mediadynamic-->
+
+
 
                         <div  class="mediadynamic">
                             <div class="dynamictop">
@@ -183,8 +213,10 @@
                                         </a>
                                     </div>
                                     <div class="media-body dynamictopr">
+
                                         <a href="#"><h4 class="media-heading">鬼鬼</h4></a><span>做过</span>
                                         <a href="#"><h4 class="media-heading">烤鱼</h4></a>
+
                                     </div>
                                 </div>
                             </div><!--end dynamictop-->
@@ -201,7 +233,65 @@
                                         <a href="#"><span>酸菜鱼的做法</span></a>
                                         <a href="#" class="zanzan"><span class="glyphicon glyphicon-thumbs-up dianzan" aria-hidden="true"></span></a>
                                     </div>
+
                                 </div>
+
+                                <div class="dynamiccomment">
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <div class="col-sm-3" style="width:100%;" >
+                                                <input type="email" style="width:700px;" class="form-control" id="inputEmail3" >
+                                                <button type="submit" class="btn btn-default dcomment">评论</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+
+
+                            </div><!--end dynamicbottom-->
+
+
+
+                        </div><!--end mediadynamic-->
+
+
+
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="pwd">
+
+                        <div  class="mediadynamic">
+                            <div class="dynamictop">
+                                <div class="media">
+                                    <div class="media-left dynamictopl">
+                                        <a href="#">
+                                            <img class="media-object" src="images/tx1.png" alt="...">
+                                        </a>
+                                    </div>
+                                    <div class="media-body dynamictopr">
+
+                                        <a href="#"><h4 class="media-heading">鬼鬼</h4></a><span>做过</span>
+                                        <a href="#"><h4 class="media-heading">烤鱼</h4></a>
+
+                                    </div>
+                                </div>
+                            </div><!--end dynamictop-->
+
+                            <div class="dynamicbottom">
+                                <div class="media">
+                                    <div class="media-left dynamicbottoml">
+                                        <a href="#">
+                                            <img class="media-object" src="images/zp.png" alt="...">
+                                        </a>
+                                    </div>
+                                    <div class="media-body dynamicbottomr">
+                                        <h4 class="media-heading">无可替代哈</h4>
+                                        <a href="#"><span>酸菜鱼的做法</span></a>
+                                        <a href="#" class="zanzan"><span class="glyphicon glyphicon-thumbs-up dianzan" aria-hidden="true"></span></a>
+                                    </div>
+
+                                </div>
+
                                 <div class="dynamiccomment">
                                     <form class="form-horizontal">
                                         <div class="form-group">
@@ -215,8 +305,15 @@
                             </div><!--end dynamicbottom-->
                         </div><!--end mediadynamic-->
                     </div>
+                    <div role="tabpanel" class="tab-pane" id="personimage">
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="settings">...</div>
                 </div>
+
             </div>
+
+
+
         </div><!--end cscontent -->
     </div><!--end  content-->
     <div id="pagebottom">
@@ -224,6 +321,9 @@
             <p>广东海洋大学秀厨网&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright©2015秀厨网第四组</p>
         </div>
     </div><!--pagebottom-->
+
+
+
 </div>
 <script>
 

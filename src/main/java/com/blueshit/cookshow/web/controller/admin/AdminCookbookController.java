@@ -119,7 +119,7 @@ public class AdminCookbookController extends BaseController {
 	      Gson gson = new GsonBuilder().create();
 	      String result = gson.toJson(list);
 	    //  System.out.println("带泛型的list转化为json==" + result);  
-	      response.
+	     // response.
 	     
 		  return "admin/cookbook/cookbookreport";
 	  }

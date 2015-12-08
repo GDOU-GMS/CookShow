@@ -5,6 +5,7 @@ import com.blueshit.cookshow.common.mail.MailUtils;
 import com.blueshit.cookshow.common.utils.MyDataUtils;
 import com.blueshit.cookshow.common.utils.UUIDCreator;
 import com.blueshit.cookshow.model.entity.Collection;
+import com.blueshit.cookshow.model.entity.Cookbook;
 import com.blueshit.cookshow.model.entity.Relation;
 import com.blueshit.cookshow.model.entity.User;
 import com.blueshit.cookshow.model.enums.CollectionEnum;
@@ -279,6 +280,9 @@ public class UserController extends BaseController {
             }
             //用户信息
             model.addAttribute("userInfo",user);
+            //概况（最近四个）
+            List<Cookbook> recentlyCookbooks = cookbookService.getRecentlyCookbookByUserId(user.getId());
+            model.addAttribute("recentlyCookbooks",recentlyCookbooks);
             //查询菜谱
             Page cookbookPage = cookbookService.findByUserId(user.getId(),cookbookpageNum);
             model.addAttribute("cookbookPage",cookbookPage);

@@ -27,7 +27,5 @@ public interface CookbookService extends DaoSupport<Cookbook> {
 
     public List<Cookbook> getPopularCookbooks();
 
-
-
-
+    List<Cookbook> getRecentlyCookbookByUserId(Long userId);
 }

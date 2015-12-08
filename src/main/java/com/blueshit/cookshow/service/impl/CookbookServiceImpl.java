@@ -158,4 +158,16 @@ public class CookbookServiceImpl extends DaoSupportImpl<Cookbook> implements Coo
     }
 
 
+    /**
+     * 查询概况
+     * @param userId
+     * @return
+     */
+    public List<Cookbook> getRecentlyCookbookByUserId(Long userId){
+        return getSession().createQuery("from Cookbook c where c.User.id = ? and deleted=0 order by createDate")
+                .setParameter(0,userId)
+                .setMaxResults(3)
+                .list();
+    }
+
 }
