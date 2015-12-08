@@ -12,7 +12,7 @@ import com.blueshit.cookshow.model.entity.Menu;
 public interface MenuService extends DaoSupport<Menu> {
 
 	public List<Menu> getRecentPopular();
-	
+
     public Page getMenuByUserId(Long userId,int pageNum);
 
     public List<Menu> getAllMenuByUserId(Long userId);

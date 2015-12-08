@@ -41,6 +41,8 @@ public class MenuServiceImpl extends DaoSupportImpl<Menu> implements MenuService
 	
 	}
 
+
+
     public Page getMenuByUserId(Long userId,int pageNum){
 
         int pageSize = 10;
@@ -93,9 +95,6 @@ public class MenuServiceImpl extends DaoSupportImpl<Menu> implements MenuService
 
 
     }
-
-
-
 
      public List<Menu> query(String name){
 		List<Menu> query=getSession().createQuery("from Menu m where m.name like '%"+name+"%'")
