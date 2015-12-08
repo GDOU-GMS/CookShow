@@ -11,4 +11,6 @@ import com.blueshit.cookshow.model.entity.Menu;
 public interface MenuService extends DaoSupport<Menu> {
 
 	public List<Menu> getRecentPopular();
+
+	public List<Menu> query(String name);
 }

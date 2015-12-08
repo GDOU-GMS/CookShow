@@ -10,6 +10,7 @@ import com.blueshit.cookshow.web.basic.BaseController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -72,5 +73,21 @@ public class AdminMenuController extends BaseController {
 		return "admin/menu/detail";
 	}
 
-	
+	/*
+	 * 模糊查询
+	 */
+	@RequestMapping("/query")
+	public String query(@ModelAttribute Menu menu,Model model){
+		
+		List<Menu> list=menuService.query(menu.getName());
+//        	 menu.setName(menu.getName()); 
+//             menu.setTitle(menu.getTitle());
+//             menu.setUpdateDate(menu.getCreateDate());
+//             menu.setCreateDate(menu.getCreateDate());
+//             menu.setDeleted(menu.getDeleted());
+             
+     	  model.addAttribute("list",list);
+        
+		return "admin/menu/list";
+	}
 }
