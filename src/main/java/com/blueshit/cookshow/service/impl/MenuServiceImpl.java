@@ -38,7 +38,9 @@ public class MenuServiceImpl extends DaoSupportImpl<Menu> implements MenuService
                   .list();
 		recentMenuList.addAll(menuList);
 		return recentMenuList;
+	
 	}
+
 
 
     public Page getMenuByUserId(Long userId,int pageNum){
@@ -93,5 +95,13 @@ public class MenuServiceImpl extends DaoSupportImpl<Menu> implements MenuService
 
 
     }
+
+     public List<Menu> query(String name){
+		List<Menu> query=getSession().createQuery("from Menu m where m.name like '%"+name+"%'")
+				.list();
+		return query;
+		
+	}
+
 
 }

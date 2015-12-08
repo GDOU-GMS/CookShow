@@ -1,16 +1,17 @@
 package com.blueshit.cookshow.web.controller;
 
 import com.blueshit.cookshow.common.helper.Page;
-import com.blueshit.cookshow.common.mail.MailUtils;
 import com.blueshit.cookshow.common.utils.MyDataUtils;
 import com.blueshit.cookshow.common.utils.UUIDCreator;
-import com.blueshit.cookshow.model.entity.Relation;
 import com.blueshit.cookshow.model.entity.User;
 import com.blueshit.cookshow.qiniu.QiniuUpload;
 import com.blueshit.cookshow.shiro.ShiroMD5;
 import com.blueshit.cookshow.web.basic.BaseController;
 import com.blueshit.cookshow.web.controller.common.ResultEntity;
-
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,13 +20,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
-import javax.persistence.Entity;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
+import java.io.File;
 import java.util.Date;
 import java.util.Iterator;
 
@@ -43,6 +44,7 @@ public class UserController extends BaseController {
         if(user!=null){
             return "redirect:/";
         }
+
         return "customer/login";
     }
 
@@ -52,48 +54,27 @@ public class UserController extends BaseController {
     }
 
     @RequestMapping("/login")
-    @ResponseBody
-    public ResultEntity login(@ModelAttribute User user,ServletRequest request,HttpSession session){
-        ResultEntity resultEntity = new ResultEntity();
+    public String login(@ModelAttribute User user,ServletRequest request,HttpSession session){
         if(user.getUsername()!=null&&user.getPassword()!=null){
             User u = userService.findByUsername(user.getUsername());
             if(u!=null){
                 if(u.getPassword().equals(ShiroMD5.getMd5WithSalt(user.getPassword(),u.getSalt()))){
                     //登录成功
                     session.setAttribute("user",u);
-                    //成功
-                    resultEntity.setSuccessMsg("登录成功");
-                }else{
-                    resultEntity.setFailureMsg("账号或密码错误！");
+                    return "redirect:/";
                 }
             }
-        }else{
-            resultEntity.setFailureMsg("账号或密码错误");
         }
-        return resultEntity;
+        return "redirect:/user/forwardToLogin";
     }
 
 
     @RequestMapping("/register")
-    @ResponseBody
-    public ResultEntity register(HttpServletRequest request,@ModelAttribute User user,String captcha,Model model) {
-        ResultEntity resultEntity = new ResultEntity();
-        try{
-            if (user != null && user.getUsername() != null && user.getPassword() != null && user.getEmail() != null) {
+    public String register(@ModelAttribute User user,Model model){
+        if(user!=null&&user.getUsername()!=null&&user.getPassword()!=null&&user.getEmail()!=null){
             //判断用户名是否存在
             User olduser = userService.findByUsername(user.getUsername());
-            //校验邮箱是否存在
-            User oldemailUser = userService.findByEmail(user.getEmail());
-            //校验邮箱是否验证
-            //验证码
-            String sessionCaptcha = (String) request.getSession().getAttribute("captcha");
-            if (olduser != null) {
-                resultEntity.setFailureMsg("用户名已经存在！");
-            } else if (oldemailUser != null) {
-                resultEntity.setFailureMsg("邮箱已经存在！");
-            } else if (sessionCaptcha == null || !sessionCaptcha.equals(captcha)) {
-                resultEntity.setFailureMsg("验证码不正确！");
-            } else {
+            if(olduser==null){
                 User u = new User();
                 String salt = UUIDCreator.generateUUID();
                 u.setSalt(salt);
@@ -103,46 +84,13 @@ public class UserController extends BaseController {
                 u.setPassword(ShiroMD5.getMd5WithSalt(user.getPassword(), salt));
                 u.setEmail(user.getEmail());
                 userService.save(u);
-                //发送邮件
-                MailUtils.sendVerifyMail(u.getEmail(), u.getUsername(), getDomainName(request) + "/user/validateEmail");
-                resultEntity.setSuccessMsg("注册成功,请及时认证邮箱！");
-            }
-            model.addAttribute("resultEntity", resultEntity);
-        } else {
-            resultEntity.setFailureMsg("非法提交!");
-        }
-    }catch(Exception e) {
-        e.printStackTrace();
-        resultEntity.setExceptionMsg("服务器异常");
-    }
-        return resultEntity;
-    }
-
-    @RequestMapping("/validateEmail")
-    public String validateEmail(String token,String username,Model model){
-
-        ResultEntity resultEntity = new ResultEntity();
-
-        String validateStr = ShiroMD5.getMd5WithSalt(username,MailUtils.SALT);
-
-        if(validateStr.equals(token)){
-            //找出该用户
-            User user = userService.findByUsername(username);
-            if(user.getAuthentication()==0){
-                //更新
-                user.setAuthentication(1);
-                userService.update(user);
-                resultEntity.setSuccessMsg("邮箱验证成功！");
             }else{
-                //已经失效
-                resultEntity.setFailureMsg("该链接已经失效！");
+                ResultEntity resultEntity = new ResultEntity();
+                resultEntity.setFailureMsg("用户名已经存在！");
+                model.addAttribute("resultEntity",resultEntity);
             }
-        }else{
-            //非法修改url
-            return "redirect:/error_404";
         }
-        model.addAttribute("resultEntity",resultEntity);
-        return "customer/common/msg";
+        return "redirect:/user/forwardToLogin";
     }
 
 
@@ -200,8 +148,6 @@ public class UserController extends BaseController {
     public ResultEntity validateOldPassword(String oldPassword){
         ResultEntity resultEntity = new ResultEntity();
 
-
-
         return resultEntity;
     }
 
@@ -246,9 +192,8 @@ public class UserController extends BaseController {
     }
 
     @RequestMapping("/personWork/{userId}")
-    public String personWork(@PathVariable String userId,Model model,String target,Integer cookbookpageNum,Integer menupageNum,HttpServletRequest request){
+    public String personWork(@PathVariable String userId,Model model,String target,Integer cookbookpageNum){
         cookbookpageNum = cookbookpageNum==null||cookbookpageNum<=0?1:cookbookpageNum;
-        menupageNum = menupageNum==null||menupageNum<=0?1:menupageNum;
         User user = userService.findById(Long.parseLong(userId));
         if(user!=null){
             //处理target，跳转到指定标签页
@@ -260,51 +205,10 @@ public class UserController extends BaseController {
             //查询菜谱
             Page cookbookPage = cookbookService.findByUserId(user.getId(),cookbookpageNum);
             model.addAttribute("cookbookPage",cookbookPage);
-            //查询菜单
-            Page menuPage = menuService.getMenuByUserId(user.getId(),menupageNum);
-            model.addAttribute("menuPage",menuPage);
-            //查询是否已关注
-            User currentUser=(User) request.getSession().getAttribute("user");
-            if(currentUser!=null){
-            	  if(currentUser.getId()!=Long.parseLong(userId)){
-                   	model.addAttribute("tag", 1);
-            	  }
-	            Relation relation=relationService.getFocusOnFriend(currentUser.getId(), user.getId());
-	            model.addAttribute("relation",relation);
-            }
         }else{
             return "redirect:/error_404";
         }
         return "customer/user/personwork";
-    }
-
-
-    @RequestMapping("/validateLogin")
-    @ResponseBody
-    public ResultEntity validateLogin(HttpServletRequest request,String username,String email,String captcha){
-        ResultEntity resultEntity = new ResultEntity();
-        //用户名
-        User user = userService.findByUsername(username);
-        if(user!=null){
-            resultEntity.setFailureMsg("用户名已经存在!");
-            return resultEntity;
-        }
-        //邮箱
-        user = userService.findByEmail(email);
-        if(user!=null){
-            resultEntity.setFailureMsg("邮箱已经存在!");
-            return resultEntity;
-        }
-        //验证码
-        String sessionCaptcha = (String)request.getSession().getAttribute("captcha");
-        if(sessionCaptcha==null||!sessionCaptcha.equals(captcha)){
-            resultEntity.setFailureMsg("验证码不正确");
-            return resultEntity;
-        }
-        //如果以上都成立
-        resultEntity.setSuccessMsg("success");
-        return resultEntity;
-
     }
 
 }

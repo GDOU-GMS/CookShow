@@ -75,13 +75,11 @@
 		<div id="top">
 			<div id="navigation">
 				<div class="navcenter">
-				    <form action="${pageContext.request.contextPath}/cookbook/findByTitle" method="post">
-						<div class="seach">
-							<input type="text" name="title" class="form-control" id="exampleInputName2"
-								placeholder="搜索菜单或菜谱">
-							<button class="btn btn-default">搜索</button>
-						</div>
-					</form>
+					<div class="seach">
+						<input type="text" class="form-control" id="exampleInputName2"
+							placeholder="搜索商品或菜单">
+						<button class="btn btn-default">搜索</button>
+					</div>
 					<div class="landr">
 						<div style="float: left;">
                             <div style="float:left;">
@@ -137,9 +135,7 @@
                                     </h3>
                                     <div class="subCate" style="display: none;">
                                         <ul id="sub-ul-1">
-                                            <a href="${pageContext.request.contextPath}/menu/cookmenu"><span>最新菜谱</span></a>
-                                            <a href="${pageContext.request.contextPath}/classification/allClassification"><span>所有分类</span></a>
-                                            <a href="javascript:void(0)"><span>往期头条</span></a>
+                                            <a href="${pageContext.request.contextPath}/menu/cookmenu"><h4>最新菜谱</h4></a>
                                             <%--<li>
                                                 <span>
                                                     <a href="javascript:void(0);">111</a>
@@ -160,7 +156,7 @@
 													<li>
 														<span>
 															<c:forEach items="${secondClassification.list }" var="thirdClassification">
-																<a href="${pageContext.request.contextPath}/cookbook/findByClassificationCode/${thirdClassification.code}">${thirdClassification.name }</a>
+																<a href="http://sc.admin5.com/">${thirdClassification.name }</a>
 															</c:forEach>
 														</span>
 													</li>
@@ -171,24 +167,198 @@
 								</c:forEach>
 							</ul>
 
+							<!-- <ul id="csnav">
+								<li id="mainCate-1" class="mainCate">
+									<h3>
+										<span>&gt;</span><a href="http://sc.admin5.com/">白酒</a>
+									</h3>
+
+									<p>
+										<a href="http://sc.admin5.com/">茅台</a><a
+											href="http://sc.admin5.com/">五粮液</a><a
+											href="http://sc.admin5.com/">国窖1573</a>
+									</p>
+
+									<p>
+										<a href="http://sc.admin5.com/">酱香型</a><a
+											href="http://sc.admin5.com/">浓香型</a><a
+											href="http://sc.admin5.com/">贵州</a><a
+											href="http://sc.admin5.com/">四川</a>
+									</p>
+
+									<div class="subCate" style="display: none;">
+										<ul id="sub-ul-1">
+											<h4>品牌</h4>
+											<li><span><a href="http://sc.admin5.com/">茅台</a><a
+													href="http://sc.admin5.com/">五粮液</a><a
+													href="http://sc.admin5.com/">国窖1573</a><a
+													href="http://sc.admin5.com/">郎酒</a><a
+													href="http://sc.admin5.com/">汾酒</a></span> <span><a
+													href="http://sc.admin5.com/" class="sub_width">剑南春</a><a
+													href="http://sc.admin5.com/">泸州老窖</a><a
+													href="http://sc.admin5.com/">水井坊</a><a
+													href="http://sc.admin5.com/">洋河</a><a
+													href="http://sc.admin5.com/" class="sub_width">金六福</a></span><span><a
+													href="http://sc.admin5.com/">牛栏山</a><a
+													href="http://sc.admin5.com/">丰谷</a><a
+													href="http://sc.admin5.com/">杜康</a><a
+													href="http://sc.admin5.com/">景芝</a><a
+													href="http://sc.admin5.com/" class="sub_width1">河套</a><a
+													href="http://sc.admin5.com/" class="sub_width">红楼梦</a></span></li>
+											<li><span><a href="http://sc.admin5.com/">古贝春</a><a
+													href="http://sc.admin5.com/">宋河</a><a
+													href="http://sc.admin5.com/">泰山</a><a
+													href="http://sc.admin5.com/">青花瓷</a><a
+													href="http://sc.admin5.com/">董酒</a></span><span><a
+													href="http://sc.admin5.com/" class="sub_width">唐王宴</a><a
+													href="http://sc.admin5.com/">红星</a><a
+													href="http://sc.admin5.com/">皖酒</a><a
+													href="http://sc.admin5.com/">古井</a><a
+													href="http://sc.admin5.com/">西凤</a><a
+													href="http://sc.admin5.com/" class="sub_width">伊力特</a></span></li>
+											<li><span><a href="http://sc.admin5.com/">小糊涂仙</a><a
+													href="http://sc.admin5.com/">醉卿</a><a
+													href="http://sc.admin5.com/">诗仙太白</a><a
+													href="http://sc.admin5.com/">沱牌</a><a
+													href="http://sc.admin5.com/" class="sub_width1">四特</a></span><span><a
+													href="http://sc.admin5.com/">汾阳王 </a><a
+													href="http://sc.admin5.com/">白云边</a><a
+													href="http://sc.admin5.com/">珍酒</a><a
+													href="http://sc.admin5.com/" class="sub_width">扳倒井</a><a
+													href="http://sc.admin5.com/">金门高粱</a></span><span><a
+													href="http://sc.admin5.com/">永不分梨</a><a
+													href="http://sc.admin5.com/">国台</a><a
+													href="http://sc.admin5.com/">孔府家</a><a
+													href="http://sc.admin5.com/">舍得</a><a
+													href="http://sc.admin5.com/">今世缘</a></span></li>
+										</ul>
+										<ul id="sub-ul-2">
+											<h4>香型</h4>
+											<li><span><a href="http://sc.admin5.com/">酱香型</a><a
+													href="http://sc.admin5.com/">浓香型</a><a
+													href="http://sc.admin5.com/">清香型</a><a
+													href="http://sc.admin5.com/">馥郁香型</a></span><span><a
+													href="http://sc.admin5.com/" class="sub_width">兼香型</a><a
+													href="http://sc.admin5.com/">特香型</a><a
+													href="http://sc.admin5.com/">芝麻香型</a><a
+													href="http://sc.admin5.com/">豉香型</a></span><span><a
+													href="http://sc.admin5.com/">董香型</a><a
+													href="http://sc.admin5.com/">凤香型</a><a
+													href="http://sc.admin5.com/">老白干香型</a><a
+													href="http://sc.admin5.com/">復合香</a></span><span><a
+													href="http://sc.admin5.com/" class="sub_width">荞香型</a><a
+													href="http://sc.admin5.com/">青稞清香型</a><a
+													href="http://sc.admin5.com/">米香型</a><a
+													href="http://sc.admin5.com/">其他</a></span></li>
+										</ul>
+									</div>
+								</li>
+								<li id="mainCate-2" class="mainCate evenLeval">
+									<h3>
+										<span>&gt;</span><a href="http://sc.admin5.com/">葡萄酒</a>
+									</h3>
+
+									<p>
+										<a href="http://sc.admin5.com/">法国</a><a
+											href="http://sc.admin5.com/">德国</a><a
+											href="http://sc.admin5.com/">意大利</a><a
+											href="http://sc.admin5.com/">西班牙</a>
+									</p>
+
+									<p>
+										<a href="http://sc.admin5.com/">赤霞珠</a><a
+											href="http://sc.admin5.com/">梅鹿辄</a><a
+											href="http://sc.admin5.com/">西拉</a><a
+											href="http://sc.admin5.com/">霞多丽</a>
+									</p>
+
+									<div class="subCate" style="display: none;">
+										<div style="height: 300px;">葡萄酒</div>
+									</div>
+								</li>
+								<li id="mainCate-3" class="mainCate">
+									<h3>
+										<span>&gt;</span><a href="http://sc.admin5.com/">洋酒</a>
+									</h3>
+
+									<p>
+										<a href="http://sc.admin5.com/">白兰地</a><a
+											href="http://sc.admin5.com/">威士忌</a><a
+											href="http://sc.admin5.com/">伏特加</a><a
+											href="http://sc.admin5.com/">金酒</a>
+									</p>
+
+									<p>
+										<a href="http://sc.admin5.com/">人头马</a><a
+											href="http://sc.admin5.com/">芝华士</a><a
+											href="http://sc.admin5.com/">马爹利</a><a
+											href="http://sc.admin5.com/">深蓝</a>
+									</p>
+
+									<div class="subCate" style="display: none;">
+										<div style="height: 300px;">洋酒</div>
+									</div>
+								</li>
+								<li id="mainCate-4" class="mainCate evenLeval">
+									<h3>
+										<span>&gt;</span><a href="http://sc.admin5.com/">啤酒</a>
+									</h3>
+
+									<p>
+										<a href="http://sc.admin5.com/">弗伦斯堡</a><a
+											href="http://sc.admin5.com/">哈尔博</a><a
+											href="http://sc.admin5.com/">喜力</a><a
+											href="http://sc.admin5.com/">海特</a>
+									</p>
+
+									<p>
+										<a href="http://sc.admin5.com/">青岛啤酒</a><a
+											href="http://sc.admin5.com/">百威</a><a
+											href="http://sc.admin5.com/">雪花</a><a
+											href="http://sc.admin5.com/">德国</a>
+									</p>
+
+									<div class="subCate" style="display: none;">
+										<div style="height: 300px;">啤酒</div>
+									</div>
+								</li>
+								<li id="mainCate-5" class="mainCate">
+									<h3>
+										<span>&gt;</span><a href="http://sc.admin5.com/">保健酒/</a><a
+											href="http://sc.admin5.com/">黄酒</a>
+									</h3>
+
+									<p>
+										<a href="http://sc.admin5.com/">青梅</a><a
+											href="http://sc.admin5.com/">竹叶青</a><a
+											href="http://sc.admin5.com/">劲牌</a><a
+											href="http://sc.admin5.com/">椰岛</a>
+									</p>
+
+									<p>
+										<a href="http://sc.admin5.com/">宁夏红</a><a
+											href="http://sc.admin5.com/">唐宋</a><a
+											href="http://sc.admin5.com/">即墨</a><a
+											href="http://sc.admin5.com/">会稽山</a>
+									</p>
+
+									<div class="subCate" style="display: none;">
+										<div style="height: 300px;">保健酒</div>
+									</div>
+								</li>
+
+							</ul> -->
 						</div>
 
 					</div>
 					<div class="csright">
 						<div id="owl-demo" class="owl-carousel">
-                            <c:forEach items="${headlineCookbooks}" var="cookbook">
-                                <a class="item" href="" target="_blank">
-                                    <img src="${cookbook.titleImage}" style="width: 750px; height: 435px;" alt="">
-                                    <b></b>
-                                    <span>${cookbook.title}</span>
-                                </a>
-                            </c:forEach>
-							<%--&lt;%&ndash;<a class="item" href="" target="_blank"><img
+							<a class="item" href="" target="_blank"><img
 								src="${pageContext.request.contextPath}/resources/customer/images/北京烤鸭.gif"
 								style="width: 750px; height: 435px;" alt=""><b></b><span>秀厨网美食狂欢登场</span></a>
 							<a class="item" href="" target="_blank"><img
 								src="${pageContext.request.contextPath}/resources/customer/images/海鲜.gif"
-								style="width: 750px; height: 435px;" alt=""><b></b><span>秀厨网美食狂欢登场</span></a>&ndash;%&gt;
+								style="width: 750px; height: 435px;" alt=""><b></b><span>秀厨网美食狂欢登场</span></a>
 							<a class="item" href="" target="_blank"><img
 								style="width: 750px; height: 435px;"
 								src="${pageContext.request.contextPath}/resources/customer/images/鸡翅.gif"
@@ -204,7 +374,7 @@
 								style="width: 750px; height: 435px;" alt=""><b></b><span>秀厨网美食狂欢登场</span></a>
 							<a class="item" href="" target="_blank"><img
 								src="${pageContext.request.contextPath}/resources/customer/images/扒.gif"
-								style="width: 750px; height: 435px;" alt=""><b></b><span>秀厨网美食狂欢登场</span></a>--%>
+								style="width: 750px; height: 435px;" alt=""><b></b><span>秀厨网美食狂欢登场</span></a>
 						</div>
 
 
@@ -217,7 +387,6 @@
 			<!--中间内容结束-->
 			<div class="contentbottom">
 				<div class="csbottom">
-				    	<h4 class="cstitle" >新秀菜谱</h4>
 					<div class="row showimg">
 						<div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
 							<div class="thumbnail">
@@ -227,7 +396,7 @@
 
 								<div class="caption">
 
-									<h4 ><a class="captionhref" href="#">甜品</a></h4>
+									<h4>甜品</h4>
 									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
 								</div>
 							</div>
@@ -245,7 +414,7 @@
 
 								<div class="caption">
 
-									<h4 ><a class="captionhref" href="#">麻辣小龙虾</a></h4>
+									<h4>麻辣小龙虾</h4>
 									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
 								</div>
 							</div>
@@ -262,7 +431,7 @@
 
 								<div class="caption">
 
-									<h4 ><a class="captionhref" href="#">绿茶饼</a></h4>
+									<h4>绿茶饼</h4>
 									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
 								</div>
 							</div>
@@ -281,7 +450,7 @@
 
 								<div class="caption">
 
-									<h4 ><a class="captionhref" href="#">小炒</a></h4>
+									<h4>小炒</h4>
 									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
 								</div>
 							</div>
@@ -299,7 +468,7 @@
 
 								<div class="caption">
 
-									<h4 ><a class="captionhref" href="#">鱼香肉丝</a></h4>
+									<h4>鱼香肉丝</h4>
 									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
 								</div>
 							</div>
@@ -316,7 +485,7 @@
 
 								<div class="caption">
 
-									<h4 ><a class="captionhref" href="#">小炒</a></h4>
+									<h4>小炒</h4>
 									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
 								</div>
 							</div>
@@ -324,112 +493,6 @@
 
 					</div>
 					<!--  end row-->
-					<h4 class="cstitle" >本周最受欢迎</h4>
-					<div class="row showimg ">
-						<div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
-							<div class="thumbnail">
-								<img
-									src="${pageContext.request.contextPath}/resources/customer/images/1.gif"
-									alt="..." style="margin: 0px 30x; margin-top: 25px;">
-
-								<div class="caption">
-
-									<h4>甜品</h4>
-									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
-								</div>
-							</div>
-						</div>
-
-					</div>
-					 <!--  end row-->
-					 <div class="row showimg imgright">
-						<div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
-							<div class="thumbnail">
-								<img
-									src="${pageContext.request.contextPath}/resources/customer/images/1.gif"
-									alt="..." style="margin: 0px 30x; margin-top: 25px;">
-
-								<div class="caption">
-
-									<h4>甜品</h4>
-									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
-								</div>
-							</div>
-						</div>
-
-					</div>
-					 <!--  end row-->
-					 <div class="row showimg imgright">
-						<div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
-							<div class="thumbnail">
-								<img
-									src="${pageContext.request.contextPath}/resources/customer/images/1.gif"
-									alt="..." style="margin: 0px 30x; margin-top: 25px;">
-
-								<div class="caption">
-
-									<h4>甜品</h4>
-									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
-								</div>
-							</div>
-						</div>
-
-					</div>
-					 <!--  end row-->
-					 
-					 
-					 
-					 <div class="row showimg ">
-						<div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
-							<div class="thumbnail">
-								<img
-									src="${pageContext.request.contextPath}/resources/customer/images/1.gif"
-									alt="..." style="margin: 0px 30x; margin-top: 25px;">
-
-								<div class="caption">
-
-									<h4>甜品</h4>
-									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
-								</div>
-							</div>
-						</div>
-
-					</div>
-					 <!--  end row-->
-					 <div class="row showimg imgright">
-						<div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
-							<div class="thumbnail">
-								<img
-									src="${pageContext.request.contextPath}/resources/customer/images/1.gif"
-									alt="..." style="margin: 0px 30x; margin-top: 25px;">
-
-								<div class="caption">
-
-									<h4>甜品</h4>
-									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
-								</div>
-							</div>
-						</div>
-
-					</div>
-					 <!--  end row-->
-					 <div class="row showimg imgright">
-						<div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
-							<div class="thumbnail">
-								<img
-									src="${pageContext.request.contextPath}/resources/customer/images/1.gif"
-									alt="..." style="margin: 0px 30x; margin-top: 25px;">
-
-								<div class="caption">
-
-									<h4>甜品</h4>
-									<!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn 							  						 btn-default" role="button">Button</a></p>-->
-								</div>
-							</div>
-						</div>
-
-					</div>
-					 <!--  end row-->
 
 				</div>
 				<!--csbottom-->
