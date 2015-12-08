@@ -17,10 +17,10 @@ $(function(){
 		$('#qlogin').css('display','block');
 		$('#web_qr_login').css('display','none');
 		});
-if(getParam("a")=='0')
-{
-	$('#switch_login').trigger('click');
-}
+        if(getParam("a")=='0')
+        {
+	        $('#switch_login').trigger('click');
+        }
 
 	});
 	
@@ -55,6 +55,7 @@ function getParam(pname) {
 
 
 var reMethod = "GET",
+
 	pwdmin = 6;
 
 $(document).ready(function() {
@@ -71,8 +72,6 @@ $(document).ready(function() {
 			return false;
 		}
 
-
-
 		if ($('#user').val().length < 4 || $('#user').val().length > 16) {
 
 			$('#user').focus().css({
@@ -83,29 +82,6 @@ $(document).ready(function() {
 			return false;
 
 		}
-		$.ajax({
-			type: reMethod,
-			url: "/member/ajaxyz.php",
-			data: "uid=" + $("#user").val() + '&temp=' + new Date(),
-			dataType: 'html',
-			success: function(result) {
-
-				if (result.length > 2) {
-					$('#user').focus().css({
-						border: "1px solid red",
-						boxShadow: "0 0 2px red"
-					});$("#userCue").html(result);
-					return false;
-				} else {
-					$('#user').css({
-						border: "1px solid #D7D7D7",
-						boxShadow: "none"
-					});
-				}
-
-			}
-		});
-
 
 		if ($('#passwd').val().length < pwdmin) {
 			$('#passwd').focus();
@@ -119,22 +95,80 @@ $(document).ready(function() {
 		}
 
 		var sqq =/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+
 		if (!sqq.test($('#qq').val())) {
 			$('#qq').focus().css({
 				border: "1px solid red",
 				boxShadow: "0 0 2px red"
 			});
-			$('#userCue').html("<font color='red'><b>×邮箱格式不正确</b></font>");return false;
+			$('#userCue').html("<font color='red'><b>×邮箱格式不正确</b></font>");
+            return false;
 		} else {
 			$('#qq').css({
 				border: "1px solid #D7D7D7",
 				boxShadow: "none"
 			});
-			
 		}
 
-		$('#regUser').submit();
+        if($("#captcha_input").val()==null||$("#captcha_input").val()==""){
+            $('#captcha_input').focus().css({
+                border: "1px solid red",
+                boxShadow: "0 0 2px red"
+            });
+            $('#userCue').html("<font color='red'><b>×验证码不能为空</b></font>");
+            return false;
+        }else{
+            $('#captcha_input').css({
+                border: "1px solid #D7D7D7",
+                boxShadow: "none"
+            });
+        }
+
+
+        //校验用户名、邮箱、验证码是否存在
+        var username = $('#user').val();
+        var email = $('#qq').val();
+        var captcha = $("#captcha_input").val();
+        var data = {
+            username : username,
+            email    : email,
+            captcha  : captcha
+        }
+        $.ajax({
+            type:       'get',
+            url:        '/user/validateLogin',
+            data:       data,
+            success:    function(data){
+                var result = data.result;
+                if(result==0||result==-1){
+                    $('#userCue').html("<font color='red'><b>×"+data.msg+"</b></font>");
+                }else{
+                   $('#regUser').submit();
+                }
+            }
+        })
+
 	});
-	
+
+    var opts = {
+        beforeSubmit:  showRequest,  //提交前处理
+        success:       showResponse,  //处理完成
+        resetForm:     true,
+        url:           '/user/register',
+        dataType:      'json'
+    };
+    $('#regUser').submit(function() {
+        $(this).ajaxSubmit(opts);
+        // !!! Important !!!
+        // always return false to prevent standard browser submit and page navigation
+        return false;
+    });
+    function showRequest(formData, jqForm, options) {
+        return true;
+    }
+    function showResponse(responseText, statusText,xhr, $form)  {
+        alert(responseText.msg)
+    }
+
 
 });

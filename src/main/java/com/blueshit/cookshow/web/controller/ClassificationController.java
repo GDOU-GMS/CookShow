@@ -1,7 +1,9 @@
 package com.blueshit.cookshow.web.controller;
 
 import com.blueshit.cookshow.web.basic.BaseController;
+import com.blueshit.cookshow.web.controller.listener.DataCacheListener;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -12,6 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ClassificationController extends BaseController {
     
 
+
+    @RequestMapping("/allClassification")
+    public String allClassification(Model model){
+        model.addAttribute("topClassificationList", DataCacheListener.classificationList);
+        return "customer/classification/allclassification";
+    }
 
 
 }

@@ -91,20 +91,65 @@
                         </div>
                     </li>
                     <li>
+                        <label for="captcha_input" class="input-tips2">验证码：</label>
+                        <div class="inputOuter2">
+                            <input type="email" id="captcha_input" name="captcha" class="inputstyle2" required/>
+                            <img src="/getCaptcha" id="captcha"/>
+                        </div>
+                    </li>
+                    <li>
                         <div class="inputArea">
                             <input type="button" id="reg" style="margin-top:10px;margin-left:85px;" class="button_blue" value="同意协议并注册"/>
                             <a href="javascript:void(0);" class="zcxy" target="_blank">注册协议</a>
                         </div>
                     </li>
-                    <div class="cl"></div>
                 </ul>
             </form>
         </div>
     </div>
     <!--注册end-->
 </div>
+<script src="${pageContext.request.contextPath}/resources/assets/plugins/jquery_form/jquery.form.min.js"></script>
 <script>
+    $(function () {
+        $("#captcha").click(function(){
+            this.src = "/getCaptcha?date="+new Date();
+        })
 
+        var options = {
+            beforeSubmit:  showRequest,  //提交前处理
+            success:       showResponse,  //处理完成
+            resetForm:     false,
+            url:           '/user/login',
+            dataType:      'json'
+        };
+
+        $('#login_form').submit(function() {
+            $(this).ajaxSubmit(options);
+            // !!! Important !!!
+            // always return false to prevent standard browser submit and page navigation
+            return false;
+        });
+
+        function showRequest(formData, jqForm, options) {
+            return true;
+        }
+
+        function showResponse(responseText, statusText,xhr, $form)  {
+            var result = responseText.result;
+            if(result==0||result==-1){
+                alert(responseText.msg)
+            }else{
+                window.location.href="/";
+            }
+        }
+
+        var msg = '${resultEntity.msg}' + "";
+        if(msg!=""){
+            alert(msg);
+            msg = '';
+        }
+    })
 
 </script>
 </body>

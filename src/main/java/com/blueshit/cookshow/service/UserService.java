@@ -10,4 +10,6 @@ public interface UserService extends DaoSupport<User> {
 
     User findByUsername(String username);
 
+    User findByEmail(String email);
+
 }

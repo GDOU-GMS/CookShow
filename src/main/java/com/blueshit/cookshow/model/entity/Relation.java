@@ -39,7 +39,7 @@ public class Relation implements Serializable {
 	@JoinColumn(name="user_by_follower")
 	private User ByFollower;
 
-	public Relation() {
+	public Relation() { 
 	}
 
 	public Long getId() {

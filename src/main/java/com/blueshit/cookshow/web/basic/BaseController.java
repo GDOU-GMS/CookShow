@@ -5,6 +5,7 @@ import com.blueshit.cookshow.model.entity.User;
 import com.blueshit.cookshow.service.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -34,7 +35,11 @@ public class BaseController {
 
     public User getCurrentUser(HttpSession session){
         User user = (User)session.getAttribute("user");
-        return userService.findByUsername(user.getUsername());
+        if(user==null){
+            return null;
+        }else{
+            return userService.findByUsername(user.getUsername());
+        }
     }
 
 
@@ -43,5 +48,16 @@ public class BaseController {
         return null;
     }
 
+    public String getDomainName(HttpServletRequest request){
+
+        String http = "http://";
+
+        String server = request.getServerName();
+
+        int port = request.getServerPort();
+
+        return http+server+":"+port;
+
+    }
 
 }

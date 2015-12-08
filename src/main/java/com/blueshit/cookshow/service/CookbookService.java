@@ -1,7 +1,6 @@
 package com.blueshit.cookshow.service;
 
 import java.util.List;
-import java.util.Map;
 
 import com.blueshit.cookshow.common.helper.Page;
 import com.blueshit.cookshow.dao.DaoSupport;
@@ -13,11 +12,6 @@ import com.blueshit.cookshow.model.entity.Cookbook;
 public interface CookbookService extends DaoSupport<Cookbook> {
 
     public Page findByUserId(Long userId,int pageNum);
-    
-    public List<Cookbook> query(String title,String classificationCode);
 
-	public List<Cookbook> getReport();
-
-	
 	
 }

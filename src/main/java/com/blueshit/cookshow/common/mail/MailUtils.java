@@ -1,5 +1,7 @@
 package com.blueshit.cookshow.common.mail;
 
+import com.blueshit.cookshow.shiro.ShiroMD5;
+
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.List;
@@ -25,11 +27,16 @@ public class MailUtils {
 	/**
 	 * 发送者邮箱账户.
 	 */
-	private static  String username = "seven_linzegeng@163.com";
+	private static  String username = "740972287@qq.com";
 	/**
 	 * 发送者邮箱密码.
 	 */
-	private static  String password = "LinZeGeng930427";
+	private static  String password = "13729438225";
+	private static  String IMAP_SMTP = "ivfjgysdmkzobcjg";
+	private static  String POP3_SMTP = "pigqxfeukunibajf";
+
+    //加密的盐
+    public static final String SALT = "14(1)*%*^H5687Ijioj";
 
 	/**
 	 * 初始化并获得message对象.
@@ -40,13 +47,13 @@ public class MailUtils {
 		// 设置属性值
 		Properties properties = new Properties();
 		properties.put("mail.transport.protocol", "smtp");		// 邮件传输协议
-		properties.put("mail.smtp.host", "smtp.163.com");	    // smtp主机名
+		properties.put("mail.smtp.host", "smtp.qq.com");	    // smtp主机名
 		properties.put("mail.smtp.port", "25");		            // 邮件服务器的端口号为指定的协议。如果没有指定使用协议的默认端口号。
         properties.put("mail.smtp.auth", "true");				// 获得授权
 		
 		// 获得邮箱认证器
 		MailAuthenticator mailAutenticator = new MailAuthenticator(username,
-				password);
+                IMAP_SMTP);
 		Session session = Session.getDefaultInstance(properties,
 				mailAutenticator);
 		Message message = new MimeMessage(session);
@@ -85,16 +92,17 @@ public class MailUtils {
 	 * @return	-
 	 */
 	public static final String getVerifyContent(final String nick, final String url) {
+        String targetUrl = url + "?token="+getToken(nick)+"&username="+nick;
 		String content =  "<font face=\"微软雅黑\">"
 							+ "<div>"
 								+ "<center>"
-									+ "<h2>亲爱的" + nick + ",感谢您注册了时尚show网站</h2>"
+									+ "<h2>亲爱的" + nick + ",感谢您注册了cookShow网站</h2>"
 									+ "<p>点击以下链接完成验证</p>"
 									+ "<div style=\"width:500px;color: #5cb85c\">"
-										+ "<a href=\"" + url + "\">→_点_我_验_证_←</a>"
+										+ "<a href=\"" + targetUrl + "\">→_点_我_验_证_←</a>"
 									+ "</div>"
 									+ "<div>或者</div>"
-									+ "<div><a href=\""+url+"\"><pre>"+url+"</pre></div>"
+									+ "<div><a href=\""+targetUrl+"\"><pre>"+targetUrl+"</pre></div>"
 									+ "<p>如果以上网址不可点击，请将它复制到浏览地址栏直接访问。</p>"
 								+ "</center>"
 							+ "</div>"
@@ -116,7 +124,7 @@ public class MailUtils {
 		    // 获得message
 			Message message = getMessage();
 		    // 设置发信人
-			String senderNick = MimeUtility.encodeText("时尚show");	//设置发信人的名称
+			String senderNick = MimeUtility.encodeText("cookshow");	//设置发信人的名称
 			message.setFrom(new InternetAddress(senderNick + "<" + username + ">"));
 		
 		    // 设置收件人们
@@ -147,12 +155,12 @@ public class MailUtils {
 			final String url) throws UnsupportedEncodingException, AddressException, MessagingException{
 		Message message = getMessage();
 		//设置发信人的名称
-		String senderNick = MimeUtility.encodeText("时尚show");
+		String senderNick = MimeUtility.encodeText("cookshow");
 		message.setFrom(new InternetAddress(senderNick + "<" + username + ">"));
 		message.setRecipient(RecipientType.TO, new InternetAddress(receiverEmail));
 		message.setSentDate(new Date());
 
-		message.setSubject("时尚Show接收到您修改密码的请求！");
+		message.setSubject("cookShow接收到您修改密码的请求！");
 		
 		message.setContent(getForgetPasswordMail(nick, url), "text/html;charset=utf-8");
 
@@ -182,7 +190,16 @@ public class MailUtils {
 		return content; 
 	}
 
+    /**
+     * 获取token
+     * @param username
+     * @return
+     */
+    private static String getToken(String username){
+        return ShiroMD5.getMd5WithSalt(username,SALT);
+    }
+
     public static void main(String[] args) throws Exception{
-        sendVerifyMail("seven_linzegeng@163.com","sevenlin","http://localhost:8080");
+        sendVerifyMail("690793583@qq.com","ziliang","http://localhost:8080");
     }
 }
