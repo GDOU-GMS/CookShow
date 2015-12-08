@@ -23,6 +23,11 @@ public interface CookbookService extends DaoSupport<Cookbook> {
 
     public Page findByMenuId(Long menuId,int pageNum,int pageSize);
 
+    public List<Cookbook> getNewCreateCookbooks();
+
+    public List<Cookbook> getPopularCookbooks();
+
+
 
 
 }

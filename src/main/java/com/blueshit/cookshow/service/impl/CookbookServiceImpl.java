@@ -98,6 +98,7 @@ public class CookbookServiceImpl extends DaoSupportImpl<Cookbook> implements Coo
 	  List list=getSession().createSQLQuery(sql)
 				 			.list();
 	  return list;
+
 	}
     
 
@@ -135,6 +136,26 @@ public class CookbookServiceImpl extends DaoSupportImpl<Cookbook> implements Coo
 	}
 
 
+    /**
+     * 首页展示新秀菜谱
+     * @return
+     */
+    public List<Cookbook> getNewCreateCookbooks(){
+        return getSession().createQuery("from Cookbook where deleted=0 order by createDate desc ")
+                .setMaxResults(6)
+                .list();
+    }
+
+
+    /**
+     * 获取本周最受欢迎的菜谱.
+     * @return
+     */
+    public List<Cookbook> getPopularCookbooks(){
+        return getSession().createQuery("from Cookbook where deleted=0 order by favourNum desc , createDate desc ")
+                .setMaxResults(6)
+                .list();
+    }
 
 
 }

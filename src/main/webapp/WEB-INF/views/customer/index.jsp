@@ -144,79 +144,52 @@
                                             <a href="${pageContext.request.contextPath}/menu/cookmenu"><span>最新菜谱</span></a>
                                             <a href="${pageContext.request.contextPath}/classification/allClassification"><span>所有分类</span></a>
                                             <a href="javascript:void(0)"><span>往期头条</span></a>
-                                            <%--<li>
-                                                <span>
-                                                    <a href="javascript:void(0);">111</a>
-                                                </span>
-                                            </li>--%>
                                         </ul>
                                     </div>
                                 </li>
-								<c:forEach items="${topClassificationVoList}" var="topClassification">
-									<li id="mainCate-1" class="mainCate">
-										<h3>
-											<span>&gt;</span><a href="http://sc.admin5.com/">${topClassification.name }</a>
-										</h3>
-    									<div class="subCate" style="display: none;">
-											<c:forEach items="${topClassification.list }" var="secondClassification">
-												<ul id="sub-ul-1">
-												<h4>${secondClassification.name }</h4>
-													<li>
+								<c:forEach items="${topClassificationVoList}" var="topClassification" varStatus="loop">
+                                    <c:if test="${loop.index lt 10}">
+                                        <li id="mainCate-1" class="mainCate">
+                                            <h3>
+                                                <span>&gt;</span><a href="http://sc.admin5.com/">${topClassification.name }</a>
+                                            </h3>
+                                            <div class="subCate" style="display: none;">
+                                                <c:forEach items="${topClassification.list }" var="secondClassification">
+                                                    <ul id="sub-ul-1">
+                                                        <h4>${secondClassification.name }</h4>
+                                                        <li>
 														<span>
 															<c:forEach items="${secondClassification.list }" var="thirdClassification">
-																<a href="${pageContext.request.contextPath}/cookbook/findByClassificationCode/${thirdClassification.code}">${thirdClassification.name }</a>
-															</c:forEach>
+                                                                <a href="${pageContext.request.contextPath}/cookbook/findByClassificationCode/${thirdClassification.code}">${thirdClassification.name }</a>
+                                                            </c:forEach>
 														</span>
-													</li>
-												</ul>
-											</c:forEach>
-										</div>
-									</li>
+                                                        </li>
+                                                    </ul>
+                                                </c:forEach>
+                                            </div>
+                                        </li>
+                                    </c:if>
 								</c:forEach>
+                                <li id="mainCate-1" class="mainCate">
+                                    <h3>
+                                        <span>&gt;</span><a href="${pageContext.request.contextPath}/classification/allClassification">更多</a>
+                                    </h3>
+                                </li>
 							</ul>
-
 						</div>
-
 					</div>
 					<div class="csright">
 						<div id="owl-demo" class="owl-carousel">
                             <c:forEach items="${headlineCookbooks}" var="cookbook">
                                 <a class="item" href="${pageContext.request.contextPath}/cookbook/cookbook/${cookbook.id}">
-                                    <img src="${cookbook.titleImage}" style="width: 750px; height: 435px;" alt="">
+                                    <img src="${cookbook.titleImage}" style="width: 750px; height: 455px;" alt="">
                                     <b></b>
                                     <span>${cookbook.title}</span>
                                 </a>
                             </c:forEach>
-							<%--&lt;%&ndash;<a class="item" href="" target="_blank"><img
-								src="${pageContext.request.contextPath}/resources/customer/images/北京烤鸭.gif"
-								style="width: 750px; height: 435px;" alt=""><b></b><span>秀厨网美食狂欢登场</span></a>
-							<a class="item" href="" target="_blank"><img
-								src="${pageContext.request.contextPath}/resources/customer/images/海鲜.gif"
-								style="width: 750px; height: 435px;" alt=""><b></b><span>秀厨网美食狂欢登场</span></a>&ndash;%&gt;
-							<a class="item" href="" target="_blank"><img
-								style="width: 750px; height: 435px;"
-								src="${pageContext.request.contextPath}/resources/customer/images/鸡翅.gif"
-								alt=""><b></b><span>秀厨网美食狂欢登场</span></a> <a class="item"
-								href="" target="_blank"><img
-								src="${pageContext.request.contextPath}/resources/customer/images/丸子.gif"
-								style="width: 750px; height: 435px;" alt=""><b></b><span>秀厨网美食狂欢登场</span></a>
-							<a class="item" href="" target="_blank"><img
-								src="${pageContext.request.contextPath}/resources/customer/images/寿司.gif"
-								style="width: 750px; height: 435px;" alt=""><b></b><span>锐秀厨网美食狂欢登场</span></a>
-							<a class="item" href="" target="_blank"><img
-								src="${pageContext.request.contextPath}/resources/customer/images/虾.gif"
-								style="width: 750px; height: 435px;" alt=""><b></b><span>秀厨网美食狂欢登场</span></a>
-							<a class="item" href="" target="_blank"><img
-								src="${pageContext.request.contextPath}/resources/customer/images/扒.gif"
-								style="width: 750px; height: 435px;" alt=""><b></b><span>秀厨网美食狂欢登场</span></a>--%>
 						</div>
-
-
 					</div>
-
-
 				</div>
-
 			</div>
 			<!--中间内容结束-->
 			<div class="contentbottom">
@@ -228,6 +201,19 @@
 								<img
 									src="${pageContext.request.contextPath}/resources/customer/images/1.gif"
 									alt="..." style="margin: 0px 30px; margin-top: 25px;">
+                    <c:forEach items="${newCreateCookbook}" var="cookbook">
+                        <div class="row showimg">
+                            <div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
+                                <div class="thumbnail">
+                                    <img src="${cookbook.titleImage}"  alt="..." style="margin: 0px 30px; margin-top: 25px;">
+                                    <div class="caption">
+                                        <h4 ><a class="captionhref" href="#">${cookbook.title}</a></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  end row-->
+                    </c:forEach>
 
 								<div class="caption">
 
@@ -336,6 +322,20 @@
 								<img
 									src="${pageContext.request.contextPath}/resources/customer/images/1.gif"
 									alt="..." style="margin: 0px 30x; margin-top: 25px;">
+					<h4 class="cstitle" >本周最受欢迎</h4>
+                    <c:forEach items="${popularCookbooks}" var="cookbook">
+                        <div class="row showimg ">
+                            <div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
+                                <div class="thumbnail">
+                                    <img src="${cookbook.titleImage}" alt="..." style="margin: 0px 30px; margin-top: 25px;">
+                                    <div class="caption">
+                                        <h4>${cookbook.title}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  end row-->
+                    </c:forEach>
 
 								<div class="caption">
 
@@ -359,7 +359,6 @@
 				</div>
 			</div>
 			<!--pagebottom-->
-
 		</div>
 
 
