@@ -38,7 +38,7 @@
                         <div class="uinArea" id="uinArea">
                             <label class="input-tips" for="u">帐号：</label>
                             <div class="inputOuter" id="uArea">
-                                <input type="text" id="u" name="username" class="inputstyle" required/>
+                                <input type="text" id="u" name="username" class="inputstyle" placeholder="用户名/邮箱" required/>
                             </div>
                         </div>
                         <div class="pwdArea" id="pwdArea">
@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         <div class="rememberMe" id="rememberMe" style="display: block">
-                            <input type="checkbox" name="rememberMe" value="1" />记住我<a  href="javascript:void(0);" style="margin-left: 50%;">忘记密码？</a>
+                            <input type="checkbox" name="rememberMe" value="1" />记住我<a  href="javascript:void(0);" style="margin-left: 50%;" onclick="forgetPassword()">忘记密码？</a>
                         </div>
 
                         <div style="padding-left:50px;margin-top:20px;">
@@ -150,6 +150,32 @@
             msg = '';
         }
     })
+
+    function forgetPassword(){
+        var username = $("#u").val();
+
+        if(username==null){
+            alert("请填写用户名或则有邮箱！");
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/user/forgetPassword",
+            data: {username:username},
+            dataType: "json",
+            success: function(data){
+                alert(data.msg);
+            }
+
+
+        })
+
+
+
+
+
+    }
 
 </script>
 </body>

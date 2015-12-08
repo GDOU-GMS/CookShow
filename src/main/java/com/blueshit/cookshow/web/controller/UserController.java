@@ -56,18 +56,25 @@ public class UserController extends BaseController {
 
     @RequestMapping("/login")
     @ResponseBody
-    public ResultEntity login(@ModelAttribute User user,ServletRequest request,HttpSession session){
+    public ResultEntity login(@ModelAttribute User user,HttpServletRequest request,HttpSession session) throws Exception{
         ResultEntity resultEntity = new ResultEntity();
         if(user.getUsername()!=null&&user.getPassword()!=null){
-            User u = userService.findByUsername(user.getUsername());
+            User u = userService.findByUsernameOrEmail(user.getUsername());
             if(u!=null){
-                if(u.getPassword().equals(ShiroMD5.getMd5WithSalt(user.getPassword(),u.getSalt()))){
-                    //登录成功
-                    session.setAttribute("user",u);
-                    //成功
-                    resultEntity.setSuccessMsg("登录成功");
+                //判断邮箱是否验证
+                if(u.getAuthentication()==0){
+                    //发送邮件
+                    MailUtils.sendVerifyMail(u.getEmail(), u.getUsername(), getDomainName(request) + "/user/validateEmail");
+                    resultEntity.setFailureMsg("请认证邮箱之后再登录");
                 }else{
-                    resultEntity.setFailureMsg("账号或密码错误！");
+                    if(u.getPassword().equals(ShiroMD5.getMd5WithSalt(user.getPassword(),u.getSalt()))){
+                        //登录成功
+                        session.setAttribute("user",u);
+                        //成功
+                        resultEntity.setSuccessMsg("登录成功");
+                    }else{
+                        resultEntity.setFailureMsg("账号或密码错误！");
+                    }
                 }
             }
         }else{
@@ -333,6 +340,49 @@ public class UserController extends BaseController {
 
     }
 
+
+    @RequestMapping("/forgetPassword")
+    @ResponseBody
+    public ResultEntity forgetPassword(HttpServletRequest request,String username) throws Exception{
+        ResultEntity resultEntity = new ResultEntity();
+        if(username!=null){
+            User user = userService.findByUsernameOrEmail(username);
+            if(user!=null){
+                //发送邮件
+                MailUtils.sendForgetPasswordMail(user.getEmail(), user.getUsername(), getDomainName(request) + "/user/resetPassword");
+
+                resultEntity.setSuccessMsg("我们已经发邮件到您注册的邮箱，请注意查收！");
+            }else{
+                resultEntity.setFailureMsg("您输入的用户名不存在！");
+            }
+        }else{
+            resultEntity.setFailureMsg("非法访问！");
+        }
+        return resultEntity;
+    }
+
+    @RequestMapping("/resetPassword")
+    public String  resetPassword(String token,String username,Model model){
+
+        ResultEntity resultEntity = new ResultEntity();
+
+        String validateStr = ShiroMD5.getMd5WithSalt(username,MailUtils.SALT);
+
+        if(validateStr.equals(token)){
+            //找出该用户
+            User user = userService.findByUsername(username);
+            //重置密码
+            user.setPassword(ShiroMD5.getMd5WithSalt("123456",user.getSalt()));
+            userService.update(user);
+            resultEntity.setSuccessMsg("您好，您的密码重置为123456，请及时登录然后到个人中心修改自己的密码");
+        }else{
+            //非法修改url
+            return "redirect:/error_404";
+        }
+        model.addAttribute("resultEntity",resultEntity);
+        return "customer/common/msg";
+    }
+
     /**
      * 获取收藏实体
      * @param page
@@ -352,5 +402,8 @@ public class UserController extends BaseController {
         page.setList(resultList);
         return page;
     }
+
+
+
 
 }

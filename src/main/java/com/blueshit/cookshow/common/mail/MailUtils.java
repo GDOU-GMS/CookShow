@@ -153,6 +153,7 @@ public class MailUtils {
 	 */
 	public static final void sendForgetPasswordMail(final String receiverEmail, final String nick, 
 			final String url) throws UnsupportedEncodingException, AddressException, MessagingException{
+        String targetUrl =  url + "?token="+getToken(nick)+"&username="+nick;
 		Message message = getMessage();
 		//设置发信人的名称
 		String senderNick = MimeUtility.encodeText("cookshow");
@@ -162,7 +163,7 @@ public class MailUtils {
 
 		message.setSubject("cookShow接收到您修改密码的请求！");
 		
-		message.setContent(getForgetPasswordMail(nick, url), "text/html;charset=utf-8");
+		message.setContent(getForgetPasswordMail(nick, targetUrl), "text/html;charset=utf-8");
 
 		Transport.send(message);
 	}
@@ -179,7 +180,7 @@ public class MailUtils {
 						+ "<h2>亲爱的" + nick + ",您修改密码的请求已经接收到</h2>"
 						+ "<p>点击以下链接完成密码修改</p>"
 						+ "<div style=\"width:500px;color: #5cb85c\">"
-							+ "<a href=\"" + url + "\">→_点_我_修_改_密_码←</a>"
+							+ "<a href=\"" + url + "\">→_点_我_重_置_密_码←</a>"
 						+ "</div>"
 						+ "<div>或者</div>"
 						+ "<div><a href=\""+url+"\"><pre>"+url+"</pre></div>"
