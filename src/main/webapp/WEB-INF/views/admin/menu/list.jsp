@@ -265,14 +265,17 @@ Purchase: http://wrapbootstrap.com
                                菜谱
                             </div>
                                <div>   
-                      <div class="row" >
-                      <form action="${pageContext.request.contextPath}/admin/menu/query" method="post">
+                     <div class="row" >
+                        <form action="${pageContext.request.contextPath}/admin/menu/query" method="post">
                             <div class="col-sm-6">
-                                  <input name="name" id="queryName" class="form-control" style="width: 50%" placeholder="菜单名字" type="text">
+                                <div class="form-group">
+                                  <input name="name" class="form-control" style="width: 50%" placeholder="菜单名称" type="text">
+                                 </div>
                                 </div>
+                          
                                   <div class="col-sm-6">
                                      <button class="btn btn-azure" type="submit">查询</button>
-                                 </div>
+                                     </div>
                         </form>
                       </div>
                   </div>
@@ -314,12 +317,12 @@ Purchase: http://wrapbootstrap.com
                                                 ${page.pageSize*(page.pageNum-1)+loop.index+1}
                                         </td>
                                         <td>
-                                                ${menu.title}
+                                                ${menu.name}
                                         </td>
 
                                     
                                          <td>
-                                                 ${menu.name}                                        </td>
+                                                 ${menu.title}                                        </td>
                                        </td>
                                             <td>
                                                 ${menu.createDate}

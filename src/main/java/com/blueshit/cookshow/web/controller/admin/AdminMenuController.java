@@ -1,6 +1,8 @@
 package com.blueshit.cookshow.web.controller.admin;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import com.blueshit.cookshow.common.helper.Page;
 import com.blueshit.cookshow.common.helper.QueryHelper;
@@ -66,28 +68,28 @@ public class AdminMenuController extends BaseController {
 	@RequestMapping("/detail")
 	public String detail(String menuId,Model model){
 		
-		Menu menu=menuService.findById(Long.parseLong(menuId));
-//		QueryHelper queryHelper=new QueryHelper(Cookbook.class,"c" )
-//		.addWhereCondition("FROM Cookbook c join c.menus m join m.books b where b.name = 'a'" );
+   	    Menu menu=menuService.findById(Long.parseLong(menuId));
+   	    //menuList.addAll(menu.setCookbooks(menu.getCookbooks()));
+   	    Set<Cookbook> menu1=menu.getCookbooks();
+   	   // menuService.save(menu1);
+		model.addAttribute("list",menu1);
 		
-		model.addAttribute("menu",menu);
 		return "admin/menu/detail";
 	}
 
 	/*
 	 * 模糊查询
 	 */
-	@RequestMapping("/query")
-	public String query(@ModelAttribute Menu menu,Model model,Integer pageNum){
-		
-        pageNum = pageNum==null||pageNum==0?1:pageNum;
-	//	List<Menu> list=menuService.query(menu.getName());
-       QueryHelper queryHelper = new QueryHelper(Menu.class,"m")
-       .addWhereCondition(menu.getName()!=null&&!"".equals(menu.getName()),"m.name like '%"+menu.getName()+"%'")
-       .addOrderByProperty("createDate",true);
-       Page page = menuService.getPage(pageNum, queryHelper);
-		model.addAttribute("page",page);
-        
-		return "admin/menu/list";
+	  @RequestMapping("/query")
+	  public String query(@ModelAttribute Menu menu,Model model,Integer pageNum) {
+	     
+		  pageNum = pageNum==null||pageNum==0?1:pageNum;
+		  QueryHelper queryHelper=new QueryHelper(Menu.class, "m")
+	   	  .addWhereCondition(menu.getName()!=null&&!"".equals(menu.getName()),"m.name like '%"+menu.getName()+"%'")
+	   	  .addOrderByProperty("createDate",true);
+		   Page page = menuService.getPage(pageNum, queryHelper);
+		  model.addAttribute("page",page);
+          return "admin/menu/list";
+	   	  
 	}
 }

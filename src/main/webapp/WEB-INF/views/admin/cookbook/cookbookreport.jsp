@@ -101,7 +101,7 @@ Purchase: http://wrapbootstrap.com
         });
     });
 		</script>-->
-<script type="text/javascript">
+<script>
 
 $(function () {
 	
@@ -111,13 +111,14 @@ $(function () {
       //var color = ["gray","pink","red","blue","yellow","green","#fff"];
       $.ajax({
           type:'get',
-          url:'${pageContext.request.contextPath}/admin/cookbook/cookbookreport',//请求数据的地址
+          url:'http://localhost:8080/admin/cookbook/cookbookReport',//请求数据的地址
           data:{"result":result}
           success:function(data){
           	
               var json = eval("("+data+")");
               //var s = 1;
                //for in 语句用于遍历数组及对象的属性
+               
               for(var key in json){
               	vals.push(parseInt(json));
                  // json[key].y = json[key].list; //给Y轴赋值
@@ -413,7 +414,8 @@ $(function () {
                     </div>
                 </div>
               
-                <div id="container" style="min-width: 310px; height: 400px;"></div>                                </div>
+                <div id="container" style="min-width: 310px; height: 400px;"></div> 
+                                              // </div>
                           
                         </div>
                     </div>

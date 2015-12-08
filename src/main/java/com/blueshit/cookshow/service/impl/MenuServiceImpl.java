@@ -10,6 +10,7 @@ import com.blueshit.cookshow.dao.impl.DaoSupportImpl;
 import com.blueshit.cookshow.model.entity.Classification;
 import com.blueshit.cookshow.model.entity.Menu;
 import com.blueshit.cookshow.service.MenuService;
+import com.sun.mail.handlers.message_rfc822;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -96,12 +97,17 @@ public class MenuServiceImpl extends DaoSupportImpl<Menu> implements MenuService
 
     }
 
-//     public List<Menu> query(String name){
-//		List<Menu> query=getSession().createQuery("from Menu m where m.name like '%"+name+"%'")
-//				.list();
-//		return query;
-    
-    
+
+
+	public List<Menu> getDetail(Long menuId) {
+		// TODO Auto-generated method stub
+		List<Menu> list=getSession().createQuery("from Menu where m.id = "+menuId+"")
+				.list();
+		return list; 
+	}
+
+
+  
 		
 	
 

@@ -3,6 +3,8 @@ package com.blueshit.cookshow.service.impl;
 
 import java.util.List;
 
+import javax.mail.Session;
+
 import com.blueshit.cookshow.common.helper.Page;
 import com.blueshit.cookshow.common.helper.QueryHelper;
 import com.blueshit.cookshow.dao.impl.DaoSupportImpl;
@@ -41,29 +43,34 @@ public class CookbookServiceImpl extends DaoSupportImpl<Cookbook> implements Coo
 	public List<Cookbook> getReport() {
 		// TODO Auto-generated method stub
 		@SuppressWarnings("unchecked")
-		List<Cookbook> list=getSession().createQuery("SELECT count(*) FROM Cookbook c "
-		 		+ "WHERE to_days(createDate)>='2015-01-01 00:00:00','yyyy-mm-dd hh24:mi:ss') and to_days(createDate)<=to_days('2015-01-31 23:59:59:59','yyyy-mm-dd hh24:mi:ss')"
-		 		+ "union all SELECT count(*) FROM Cookbook c "
-		 		+ "WHERE to_days(createDate)>=to_days('2015-02-01 00:00:00','yyyy-mm-dd hh24:mi:ss') and to_days(createDate)<=to_days('2015-02-29 23:59:59:59','yyyy-mm-dd hh24:mi:ss')"
-		 		+ "union all SELECT count(*) FROM Cookbook c"
-		 		+ "WHERE to_days(createDate)>=to_days('2015-03-01 00:00:00','yyyy-mm-dd hh24:mi:ss') and to_days(createDate)<=to_days('2015-03-31 23:59:59:59','yyyy-mm-dd hh24:mi:ss')"
-		 		+ "union all SELECT count(*) FROM Cookbook c"
-		 		+ "WHERE to_days(createDate)>=to_days('2015-04-01 00:00:00','yyyy-mm-dd hh24:mi:ss') and to_days(createDate)<=to_days('2015-04-31 23:59:59:59','yyyy-mm-dd hh24:mi:ss')"
-		 		+ "union all SELECT count(*) FROM Cookbook c"
-		 		+ "WHERE to_days(createDate)>=to_days('2015-05-01 00:00:00','yyyy-mm-dd hh24:mi:ss') and to_days(createDate)<=to_days('2015-05-31 23:59:59:59','yyyy-mm-dd hh24:mi:ss')"
-		 		+ "union all SELECT count(*) FROM Cookbook c"
-		 		+ "WHERE to_days(createDate)>=to_days('2015-6-01 00:00:00','yyyy-mm-dd hh24:mi:ss') and to_days(createDate)<=to_days('2015-06-31 23:59:59:59','yyyy-mm-dd hh24:mi:ss')"
-		 		+ "union all SELECT count(*) FROM Cookbook c"
-		 		+ "WHERE to_days(createDate)>=to_days('2015-07-01 00:00:00','yyyy-mm-dd hh24:mi:ss') and to_days(createDate)<=to_days('2015-07-31 23:59:59:59','yyyy-mm-dd hh24:mi:ss')"
-		 		+ "union all SELECT count(*) FROM Cookbook c"
-		 		+ "WHERE to_days(createDate)>=to_days('2015-08-01 00:00:00','yyyy-mm-dd hh24:mi:ss') and to_days(createDate)<=to_days('2015-08-31 23:59:59:59','yyyy-mm-dd hh24:mi:ss')"
-		 		+ "union all SELECT count(*) FROM Cookbook c"
-		 		+ "WHERE to_days(createDate)>=to_days('2015-09-01 00:00:00','yyyy-mm-dd hh24:mi:ss') and to_days(createDate)<=to_days('2015-09-31 23:59:59:59','yyyy-mm-dd hh24:mi:ss')"
-		 		+ "union all SELECT count(*) FROM Cookbook c"
-		 		+ "WHERE to_days(createDate)>=to_days('2015-10-01 00:00:00','yyyy-mm-dd hh24:mi:ss') and to_days(createDate)<=to_days('2015-10-31 23:59:59:59','yyyy-mm-dd hh24:mi:ss')"
-		 		+ "union all SELECT count(*) FROM Cookbook c"
-		 		+ "WHERE to_days(createDate)>=to_days('2015-11-01 00:00:00','yyyy-mm-dd hh24:mi:ss') and to_days(createDate)<=to_days('2015-11-31 23:59:59:59','yyyy-mm-dd hh24:mi:ss')")
-		 		.list();
+	   String sql="select count(*) from  t_cookbook "
+	   		      + "where createDate between '2015-01-01 00:00:00' and '2015-01-31 23:59:59' union all "
+	   		      + "select count(*) from  t_cookbook "
+	   		      + "where createDate between '2015-02-01 00:00:00' and '2015-02-31 23:59:59' union all "
+	   		      + "select count(*) from  t_cookbook "
+	   		      + "where createDate between '2015-03-01 00:00:00' and '2015-03-31 23:59:59' union all "
+	   		      + "select count(*) from  t_cookbook "
+	   		      + "where createDate between '2015-04-01 00:00:00' and '2015-04-31 23:59:59' union all "
+	   		      + "select count(*) from  t_cookbook "
+	   		      + "where createDate between '2015-05-01 00:00:00' and '2015-05-31 23:59:59' union all "
+	   		      + "select count(*) from  t_cookbook "
+	   		      + "where createDate between '2015-06-01 00:00:00' and '2015-06-31 23:59:59' union all "
+	   		      + "select count(*) from  t_cookbook "
+	   		      + "where createDate between '2015-07-01 00:00:00' and '2015-07-31 23:59:59' union all "
+	   		      + "select count(*) from  t_cookbook "
+	   		      + "where createDate between '2015-08-01 00:00:00' and '2015-08-31 23:59:59' union all "
+	   		      + "select count(*) from  t_cookbook "
+	   		      + "where createDate between '2015-09-01 00:00:00' and '2015-09-31 23:59:59' union all "
+	   		      + "select count(*) from  t_cookbook "
+	   		      + "where createDate between '2015-10-01 00:00:00' and '2015-10-31 23:59:59' union all "
+	   		      + "select count(*) from  t_cookbook "
+	   		      + "where createDate between '2015-11-01 00:00:00' and '2015-11-31 23:59:59' union all "
+	   		      + "select count(*) from  t_cookbook "
+	   		      + "where createDate between '2015-12-01 00:00:00' and '2016-01-01 23:59:59'";
+	  List list=getSession().createSQLQuery(sql)
+				 			.list();
+				 	
+
 		return list;
 	}
     
