@@ -5,12 +5,14 @@ import com.blueshit.cookshow.common.mail.MailUtils;
 import com.blueshit.cookshow.common.utils.MyDataUtils;
 import com.blueshit.cookshow.common.utils.UUIDCreator;
 import com.blueshit.cookshow.model.entity.Collection;
+import com.blueshit.cookshow.model.entity.Relation;
 import com.blueshit.cookshow.model.entity.User;
 import com.blueshit.cookshow.model.enums.CollectionEnum;
 import com.blueshit.cookshow.qiniu.QiniuUpload;
 import com.blueshit.cookshow.shiro.ShiroMD5;
 import com.blueshit.cookshow.web.basic.BaseController;
 import com.blueshit.cookshow.web.controller.common.ResultEntity;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,6 +28,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -256,6 +259,8 @@ public class UserController extends BaseController {
                              Integer collectionCookbookpageNum,
                              Integer collectionMenupageNum){
 
+                             Integer productionpageNum,
+                             HttpServletRequest request){
         cookbookpageNum = cookbookpageNum==null||cookbookpageNum<=0?1:cookbookpageNum;
         menupageNum = menupageNum==null||menupageNum<=0?1:menupageNum;
         productionpageNum = productionpageNum==null||productionpageNum<=0?1:productionpageNum;
@@ -285,6 +290,15 @@ public class UserController extends BaseController {
             model.addAttribute("collectionCookbookPage",collectionCookbookPage);
             //查询我收藏的菜单
 
+            //查询是否已关注
+            User currentUser=(User) request.getSession().getAttribute("user");
+            if(currentUser!=null){
+            	  if(currentUser.getId()!=Long.parseLong(userId)){
+                   	model.addAttribute("tag", 1);
+            	  }
+	            Relation relation=relationService.getFocusOnFriend(currentUser.getId(), user.getId());
+	            model.addAttribute("relation",relation);
+            }
         }else{
             return "redirect:/error_404";
         }

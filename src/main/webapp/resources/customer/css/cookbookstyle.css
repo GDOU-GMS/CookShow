@@ -1,4 +1,11 @@
 /* CSS Document */
+body{
+	font-size:15px;
+	font-family:宋体;
+}
+h1,h2,h3,h4{
+	font-family:宋体;
+}
 .cbookright{
 	float:left;
 	width:50%;
@@ -30,9 +37,11 @@
 }
 .prod_title h4{
 	padding:0px;
+	font-family:宋体;
 }
 .prod_title p{
 	margin:0px 5px;
+	font-family:宋体;
 }
 .cbooksidecss p{
 	color:#ccc;

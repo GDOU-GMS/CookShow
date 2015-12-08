@@ -226,5 +226,24 @@ public class CookbookController extends BaseController {
         //重定向到个人中心
         return "redirect:/user/personWork/"+ user.getId()+"?target=pwd";
 	}
+	
+	
+	 @RequestMapping("/findByTitle")
+	    public String findByTitle(@ModelAttribute Cookbook cookbook,Integer pageNum,Model model){
+	    	 
+	    	 List<ClassificationVo> topClassificationVoList = classificationService.getAllClassification();
+	         model.addAttribute("topClassificationVoList",topClassificationVoList);
+	    	 pageNum = pageNum==null||pageNum==0?1:pageNum;
+	         int pageSize = 10;
+	         if(cookbook.getTitle()==null){
+	        	 cookbook.setTitle("");
+	         }
+	         Page page = cookbookService.findByTitle(cookbook.getTitle(), pageNum, pageSize);
+	         model.addAttribute("page",page);
+	         List<Menu> menuList=menuService.getRecentPopular();
+	         model.addAttribute("menuList", menuList);
+	         model.addAttribute("title",cookbook.getTitle());
+	         return "customer/menu/cookbooksearch";
+	    }
 }
 	

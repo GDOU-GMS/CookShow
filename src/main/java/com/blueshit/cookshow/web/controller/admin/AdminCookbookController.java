@@ -86,17 +86,16 @@ public class AdminCookbookController extends BaseController {
 	}
 	
 	  @RequestMapping("/query")
-	  public String query(@ModelAttribute Cookbook cookbook,Model model) {
-	   
-//		  QueryHelper queryHelper=new QueryHelper(Cookbook.class, "c")
-//	   	  .addWhereCondition(cookbook.getTitle()!=null&&!"".equals(cookbook.getTitle()),"c.title like ?", "%"+cookbook.getTitle()+"%")
-//	   	  .addWhereCondition(cookbook.getClassificationCode()!=null&&!"".equals(cookbook.getClassificationCode()),"c.classificationCode like ?", "'%"+cookbook.getClassificationCode()+"%'")
-//	   	  .addOrderByProperty("createDate",true);
-//		   Page page = cookbookService.getPage(1, queryHelper);
-		  
-//		  model.addAttribute("page",page);
-		  List<Cookbook> list=cookbookService.query(cookbook.getTitle(),cookbook.getClassificationCode());		  
-		  model.addAttribute("query",list);
+	  public String query(@ModelAttribute Cookbook cookbook,Model model,Integer pageNum) {
+	     
+		  pageNum = pageNum==null||pageNum==0?1:pageNum;
+		  QueryHelper queryHelper=new QueryHelper(Cookbook.class, "c")
+	   	  .addWhereCondition(cookbook.getTitle()!=null&&!"".equals(cookbook.getTitle()),"c.title like '%"+cookbook.getTitle()+"%'")
+	   	  .addWhereCondition(cookbook.getClassificationCode()!=null&&!"".equals(cookbook.getClassificationCode()),"c.classificationCode like '%"+cookbook.getClassificationCode()+"%'")
+	   	  .addOrderByProperty("createDate",true);
+		   Page page = cookbookService.getPage(pageNum, queryHelper);
+	      //Page page = cookbookService.getPage(pageNum, list);
+		  model.addAttribute("page",page);
           return "admin/cookbook/list";
 	   	  
 	}
