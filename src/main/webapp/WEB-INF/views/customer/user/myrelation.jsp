@@ -38,17 +38,21 @@
                              <a class="btn btn1" href="#" role="button">注册</a>
                              </div>
                              
-                             <ul id="personcenter" style="float:left;">
-                                <li style="width:110px;"><a class="btn btn1" href="#" role="button">个人中心</a>
-                                    <ul>
-                                        <li><a href="userinfo.html">账号设置</a></li>
-                                        <li><a href="personwork.html">我的菜单</a></li>
-                                        <li><a href="#">退出</a></li>
-                                    </ul>
-                                </li>
-                                
-                            </ul>
-                           
+                        <c:if test="${!empty user }">
+						<ul id="personcenter" style="float: left;">
+							<li style="width: 110px;"><a class="btn btn1"
+								href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}"
+								role="button">个人中心</a>
+								<ul>
+									<li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>
+									<li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}">我的厨房</a></li>
+									<li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}?target=mymenu">我的菜单</a></li>
+									<li><a href="${pageContext.request.contextPath}/relation/getAllrelation/${user.id==null ? 0 : user.id}">关注的好友</a></li>
+									<li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
+								</ul></li>
+
+						</ul>
+						</c:if>
             			 </div><!--landr-->
                         
                   </div>
