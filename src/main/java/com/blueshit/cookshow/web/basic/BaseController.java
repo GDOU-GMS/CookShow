@@ -31,6 +31,8 @@ public class BaseController {
     protected RelationService relationService;
     @Resource
     protected UserService userService;
+    @Resource
+    protected ProductionService productionService;
 
 
     public User getCurrentUser(HttpSession session){
