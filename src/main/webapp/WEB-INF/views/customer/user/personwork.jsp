@@ -57,17 +57,21 @@
                         </div>
                     </div>
 
-                    <ul id="personcenter" style="float: left;">
-                        <li style="width: 110px;"><a class="btn btn1"
-                                                     href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}"
-                                                     role="button">个人中心</a>
-                            <ul>
-                                <li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>
-                                <li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}?target=mymenu">我的菜单</a></li>
-                                <li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
-                            </ul></li>
+                    <c:if test="${!empty user }">
+						<ul id="personcenter" style="float: left;">
+							<li style="width: 110px;"><a class="btn btn1"
+								href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}"
+								role="button">个人中心</a>
+								<ul>
+									<li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>
+									<li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}">我的厨房</a></li>
+									<li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}?target=mymenu">我的菜单</a></li>
+									<li><a href="${pageContext.request.contextPath}/relation/getAllrelation/${user.id==null ? 0 : user.id}">关注的好友</a></li>
+									<li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
+								</ul></li>
 
-                    </ul>
+						</ul>
+					</c:if>
                 </div><!--landr-->
 
             </div>
@@ -104,16 +108,16 @@
                     </div>
                 </div>
                 <div class="media-body">
-                    <c:if test="${!empty user}">
+                    <c:if test="${(!empty user)&&(empty relation)&&(!empty tag)}">
                        <span style="display:none;" id="focusid">${userInfo.id}</span>
                        <span style="display:none;" id="currentid">${user.id}</span>
-
+                        
                        <a id="focushref" class="btn btn-default createcss" href="javascript:void(0)" >关注</a>
-
-                   		<!--
+                   		 
+                   		<!-- 
                    		<form method="post" action="${pageContext.request.contextPath}/relation/addFocusOnFriend/${userInfo.id}/${user.id}" id="focushref">
-
-                   			 <button type="submit" class="btn btn-default createcss" >关注</button>
+                   			
+                   			 <button type="submit" class="btn btn-default" >关注</button>
                    		</form>
                    		 -->
                     </c:if>
@@ -126,8 +130,8 @@
                     	
                     </c:if>
                    <div class="media-body mediainforight">
-                       <a class="mediainforight">关注的人</a>
-                       <a class="mediainforight">被关注</a>
+                       <a  href="${pageContext.request.contextPath}/relation/getAllrelation/${userInfo.id}" class="mediainforight">关注的人</a>
+                       <a href="${pageContext.request.contextPath}/relation/getBeRelation/${userInfo.id}" class="mediainforight">被关注</a>
                    </div>
                 </div>
             </div><!--end  media-->

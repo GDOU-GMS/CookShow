@@ -2,7 +2,19 @@
 body{
 	background:#fff;
 	font-size:15px;
+	font-family:宋体;
+	color:#000;
 }
+a{
+	color:#ec8d24;
+}
+a:active,
+a:hover{
+	color:#fff;
+	background:#eb8d24;
+	text-decoration:none;
+}
+
 .csw{
 	width:100%;
 	

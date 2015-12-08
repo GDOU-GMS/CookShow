@@ -47,7 +47,7 @@ public class RelationServiceImpl extends DaoSupportImpl<Relation> implements Rel
 	
 	
 	public List<Relation> getBeRelation(Long userid){
-		List<Relation> relation=getSession().createQuery("from Relation r where r.byFollower.id = ?")
+		List<Relation> relation=getSession().createQuery("from Relation  where ByFollower.id = ?")
 				.setParameter(0, userid)
 				.list();
 		return relation;
