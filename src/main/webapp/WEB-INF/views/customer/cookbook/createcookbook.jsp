@@ -73,7 +73,7 @@
         <div id="navcontent">
 
             <ul class="nav nav-pills">
-                <li role="presentation" class="cbook "><span>全部分类</span></li>
+                <li role="presentation" class="cbook "><span></span></li>
                 <li role="presentation" class="active"><a href="index.html">首页</a></li>
                 <li role="presentation"><a href="cookmenu.html">菜单</a></li>
                 <li role="presentation"><a href="#">健康饮食</a></li>
@@ -204,30 +204,22 @@
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <a class="btn btn-default tradd" href="javascript:void(0)" onclick="addstep()" role="button">添加步骤</a>
+                        <a class="btn btn-default tradd" href="javascript:void(0)" onclick="removestep()" role="button">移除步骤</a>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="medialocation">
                         <h4 class="media-heading">选择分类：</h4>
-                        <input type="text" class="inputimage" id="checkedName" class="form-control" data-toggle="modal" data-target="#myModal" readonly>
+                        <input type="text" id="checkedName" class="inputimage form-control" data-toggle="modal" data-target="#myModal" readonly>
                         <input type="hidden" id="checkedCode" class="form-control" name="classifications">
                     </div>
                 </div>
-              <%--  <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="button" class="btn btn-default tradd" >
-                            选择分类
-                        </button>
-                    </div>
-                </div><!-- form-group-->--%>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-default btnpublic">发布菜谱</button>
                     </div>
                 </div>
             </form>
-
-
 
         </div><!--end cscontent -->
     </div><!--end  content-->
@@ -281,6 +273,12 @@
         e_id.innerHTML = '<input type="text" style="border:none;width:200px;height:20px;" name="material_kind">';
         var memo = tr.insertCell(1);
         memo.innerHTML = '<input type="text" style="border:none;width:200px;height:20px;" name="material_num">';
+        var removeBtn = tr.insertCell(2);
+        $(removeBtn).attr("style","border-color:#fff")
+        removeBtn.innerHTML = '<a href="javascript:void(0)"><i class="glyphicon glyphicon-remove" title="移除"/></a>'
+        $(removeBtn).click(function(){
+            $(this).parent("tr").remove();
+        });
         count++;
     }
 </script>
@@ -307,6 +305,11 @@
         newdiv.find("h4").text(num);
         div.after(newdiv);                                   //放在所在div之后
         num++;
+    }
+
+    function removestep(){
+        $(".media:last").remove();
+        num--;
     }
 </script>
 <script type="text/javascript">

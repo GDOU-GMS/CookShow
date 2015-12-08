@@ -1,12 +1,15 @@
 package com.blueshit.cookshow.web.controller.common;
 
 import com.blueshit.cookshow.model.entity.Cookbook;
+import com.blueshit.cookshow.model.entity.User;
 import com.blueshit.cookshow.web.basic.BaseController;
 import com.blueshit.cookshow.web.controller.listener.DataCacheListener;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
@@ -37,5 +40,18 @@ public class IndexController extends BaseController{
         return "error_404";
     }
 
+
+    @RequestMapping("/checkLogin")
+    @ResponseBody
+    public ResultEntity checkLogin(HttpServletRequest request){
+        ResultEntity resultEntity = new ResultEntity();
+        User user = getCurrentUser(request.getSession());
+        if(user==null){
+            resultEntity.setResult(0);
+        }else{
+            resultEntity.setResult(1);
+        }
+        return resultEntity;
+    }
 
 }

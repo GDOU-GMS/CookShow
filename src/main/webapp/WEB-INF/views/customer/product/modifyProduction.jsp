@@ -96,7 +96,7 @@
                     <div class="form-group">
                         <label for="file0" class="col-sm-2 control-label">选择文件</label>
                         <div class="col-sm-10">
-                            <input type="file" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  name="titleImg" id="file0" multiple required="required" /><br>
+                            <input type="file" style="position: absolute; filter: alpha(opacity = 0); opacity: 0; width: 30px;"  name="titleImg" id="file0" multiple required="required"  /><br>
                             <img class="media-object" src="${production.titleImage}"  alt="..." style="width:748px;height:475px;cursor:pointer;background:url(${pageContext.request.contextPath}/resources/customer/images/tj.png)"  id="img0" onClick="tempClick0('file0')" >
                         </div>
                     </div>
@@ -132,6 +132,9 @@
 </div>
 
 <script>
+    $(document).ready(function(){
+
+    });
     function tempClick0(id){
         /**
          * 火狐浏览器实现点击图片出现文件上传界面
@@ -143,7 +146,6 @@
             //IE浏览器实现点击图片出现文件上传界面
         document.getElementById(id).click();            //调用main_img的onclick事件
     }
-
 
     $("#file0").change(function(){
         var objUrl = getObjectURL(this.files[0]) ;

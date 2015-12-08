@@ -75,25 +75,23 @@
     <div id="content">
         <div class="cscontent">
             <h3>新建菜单</h3>
-
-            <form class="form-horizontal">
+            <form class="form-horizontal" method="post" action="${pageContext.request.contextPath}/menu/addMenu">
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">菜单名称</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputEmail3" placeholder="请输入菜单名称">
+                        <input type="text" class="form-control" id="inputEmail3" name="name"  placeholder="请输入菜单名称">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">菜单简介</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control" rows="3"></textarea>
+                        <textarea class="form-control" rows="3" name="title"></textarea>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-default">确定</button>
-                        <button type="reset" class="btn btn-default">取消</button>
+                        <button type="reset" class="btn btn-default" onclick="window.location.href='${pageContext.request.contextPath}/user/personWork/${user.id}?target=mymenu'">取消</button>
                     </div>
 
                 </div>

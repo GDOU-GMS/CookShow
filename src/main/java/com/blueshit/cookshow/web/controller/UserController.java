@@ -4,8 +4,10 @@ import com.blueshit.cookshow.common.helper.Page;
 import com.blueshit.cookshow.common.mail.MailUtils;
 import com.blueshit.cookshow.common.utils.MyDataUtils;
 import com.blueshit.cookshow.common.utils.UUIDCreator;
+import com.blueshit.cookshow.model.entity.Collection;
 import com.blueshit.cookshow.model.entity.Relation;
 import com.blueshit.cookshow.model.entity.User;
+import com.blueshit.cookshow.model.enums.CollectionEnum;
 import com.blueshit.cookshow.qiniu.QiniuUpload;
 import com.blueshit.cookshow.shiro.ShiroMD5;
 import com.blueshit.cookshow.web.basic.BaseController;
@@ -21,13 +23,14 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
-import javax.persistence.Entity;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by Seven on 2015/11/26.
@@ -163,7 +166,7 @@ public class UserController extends BaseController {
             //更新
             userService.update(oldUser);
             //更新session的user
-            session.setAttribute("user",oldUser);
+            session.setAttribute("user", oldUser);
         }
         return "redirect:/user/personCenter";
     }
@@ -252,10 +255,15 @@ public class UserController extends BaseController {
                              Integer cookbookpageNum,
                              Integer menupageNum,
                              Integer productionpageNum,
+                             Integer collectionCookbookpageNum,
+                             Integer collectionMenupageNum,
                              HttpServletRequest request){
         cookbookpageNum = cookbookpageNum==null||cookbookpageNum<=0?1:cookbookpageNum;
         menupageNum = menupageNum==null||menupageNum<=0?1:menupageNum;
         productionpageNum = productionpageNum==null||productionpageNum<=0?1:productionpageNum;
+        collectionCookbookpageNum = collectionCookbookpageNum==null||collectionCookbookpageNum<=0?1:collectionCookbookpageNum;
+        collectionMenupageNum = collectionMenupageNum==null||collectionMenupageNum<=0?1:collectionMenupageNum;
+
         User user = userService.findById(Long.parseLong(userId));
         if(user!=null){
             //处理target，跳转到指定标签页
@@ -273,6 +281,12 @@ public class UserController extends BaseController {
             //查询作品
             Page productionPage = productionService.getProductionByUserId(user.getId(),productionpageNum,20);
             model.addAttribute("productionPage",productionPage);
+            //查询我收藏的菜谱
+            Page collectionCookbookPage = collectionService.findByUserId(user.getId(), CollectionEnum.COOKBOOK.getCode(),collectionCookbookpageNum,20);
+            collectionCookbookPage = getCollectionObject(collectionCookbookPage);
+            model.addAttribute("collectionCookbookPage",collectionCookbookPage);
+            //查询我收藏的菜单
+
             //查询是否已关注
             User currentUser=(User) request.getSession().getAttribute("user");
             if(currentUser!=null){
@@ -315,6 +329,26 @@ public class UserController extends BaseController {
         resultEntity.setSuccessMsg("success");
         return resultEntity;
 
+    }
+
+    /**
+     * 获取收藏实体
+     * @param page
+     * @return
+     */
+    private Page getCollectionObject(Page page){
+
+        List<Collection> list = page.getList();
+        List<Object> resultList = new ArrayList<Object>();
+        for(Collection collection : list){
+            if(collection.getType()==CollectionEnum.COOKBOOK.getCode()){
+                resultList.add(cookbookService.findById(collection.getObjectId()));
+            }else{
+                resultList.add(menuService.findById(collection.getObjectId()));
+            }
+        }
+        page.setList(resultList);
+        return page;
     }
 
 }
