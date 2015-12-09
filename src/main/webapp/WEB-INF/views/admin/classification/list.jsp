@@ -33,7 +33,8 @@ Purchase: http://wrapbootstrap.com
     <link href="${pageContext.request.contextPath}/resources/assets/css/weather-icons.min.css" rel="stylesheet"/>
 
     <!--Fonts-->
-    <link href="${pageContext.request.contextPath}/resources/assets/css/fonts_useso_com.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/assets/css/fonts_useso_com.css" rel="stylesheet"
+          type="text/css">
 
     <!--Beyond styles-->
     <link href="${pageContext.request.contextPath}/resources/assets/css/beyond.min.css" rel="stylesheet"
@@ -114,12 +115,12 @@ Purchase: http://wrapbootstrap.com
             </div>
             <!-- /Page Sidebar Header -->
             <!-- Sidebar Menu -->
-              <ul class="nav sidebar-menu">
+            <ul class="nav sidebar-menu">
                 <!--Dashboard-->
-                <li class="active">
+                <li>
                     <a href="${pageContext.request.contextPath}/admin/index">
                         <i class="menu-icon glyphicon glyphicon-home"></i>
-                        <span class="menu-text" > 首页 </span>
+                        <span class="menu-text"> 首页 </span>
                     </a>
                 </li>
                 <!--Databoxes-->
@@ -138,37 +139,40 @@ Purchase: http://wrapbootstrap.com
                                 <span class="menu-text">用户列表</span>
                             </a>
                         </li>
-                     
                     </ul>
                 </li>
-                <li>
+                <li class="active open">
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-table"></i>
                         <span class="menu-text">分类管理</span>
                         <i class="menu-expand"></i>
                     </a>
                     <ul class="submenu">
-                        <li>
+                        <li class="active">
                             <a href="${pageContext.request.contextPath}/admin/classification/list">
                                 <span class="menu-text">分类列表</span>
                             </a>
                         </li>
-                       </ul>
+                    </ul>
                 </li>
+                <!--Tables-->
                 <li>
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-table"></i>
-                        <span class="menu-text">菜谱模块</span>
+                        <span class="menu-text"> 菜谱模块 </span>
+
                         <i class="menu-expand"></i>
                     </a>
+
                     <ul class="submenu">
                         <li>
                             <a href="${pageContext.request.contextPath}/admin/cookbook/list">
                                 <span class="menu-text">菜谱列表</span>
                             </a>
                         </li>
-                      </ul>
+                    </ul>
                 </li>
+                <!--Forms-->
                 <li>
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-pencil-square-o"></i>
@@ -187,7 +191,8 @@ Purchase: http://wrapbootstrap.com
                     </ul>
                 </li>
                 <!--Charts-->
-                        <li>
+
+                <li>
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-desktop"></i>
                         <span class="menu-text"> 管理员管理 </span>
@@ -201,22 +206,6 @@ Purchase: http://wrapbootstrap.com
                             </a>
                         </li>
                     </ul>
-                </li>
-                 <li>
-                    <a href="#" class="menu-dropdown">
-                        <i class="menu-icon fa fa-bar-chart-o"></i>
-                        <span class="menu-text"> 报表统计</span>
-
-                        <i class="menu-expand"></i>
-                    </a>
-
-                    <ul class="submenu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/admin/cookbook/cookbookreport">
-                                <span class="menu-text">月度菜谱上传统计</span>
-                            </a>
-                        </li>
-                       </ul>
                 </li>
                 <!--Profile-->
 
@@ -261,92 +250,130 @@ Purchase: http://wrapbootstrap.com
                                     <div class="tree-folder" style="display: block;">
                                         <div class="tree-folder-header">
                                             <i class="fa fa-folder"></i>
+
                                             <div class="tree-folder-name">所有分类
                                                 <div class="tree-actions">
-                                                    <i class="fa fa-plus green" data-parentcode="" onclick=addClassification(event)></i>
-                                                <%--<i class="fa fa-trash-o danger"></i>
-                                                    <i class="fa fa-rotate-right blizzard"></i>--%>
+                                                    <i class="fa fa-plus green" data-parentcode=""
+                                                       onclick=addClassification(event)></i>
+                                                    <%--<i class="fa fa-trash-o danger"></i>
+                                                        <i class="fa fa-rotate-right blizzard"></i>--%>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="tree-folder-content" style="display: block">
-                                           <c:forEach items="${topClassificationVoList}" var="topClassification">
-                                               <div class="tree-folder" style="display: block;">
-                                                   <div class="tree-folder-header">
-                                                       <i class="fa fa-folder"></i>
-                                                       <div class="tree-folder-name">
-                                                           <c:if test="${topClassification.deleted eq 1}">
-                                                               <span style="text-decoration:line-through;">${topClassification.name}</span>
-                                                           </c:if>
-                                                           <c:if test="${topClassification.deleted eq 0}">
+                                            <c:forEach items="${topClassificationVoList}" var="topClassification">
+                                                <div class="tree-folder" style="display: block;">
+                                                    <div class="tree-folder-header">
+                                                        <i class="fa fa-folder"></i>
+
+                                                        <div class="tree-folder-name">
+                                                            <c:if test="${topClassification.deleted eq 1}">
+                                                                <span style="text-decoration:line-through;">${topClassification.name}</span>
+                                                            </c:if>
+                                                            <c:if test="${topClassification.deleted eq 0}">
                                                                 ${topClassification.name}
-                                                           </c:if>
-                                                           <div class="tree-actions">
-                                                               <i class="fa fa-plus green" title="添加" data-parentcode="${topClassification.code}" onclick="addClassification(event)"></i>
-                                                               <i class="fa fa-edit blizzard" title="编辑" data-id="${topClassification.id}" data-name="${topClassification.name}" onclick="updateClassification(event)"></i>
-                                                               <c:if test="${topClassification.deleted eq 1}">
-                                                                   <a href="${pageContext.request.contextPath}/admin/classification/recover?classificationId=${topClassification.id}" onclick="return confirm('确认要恢复吗?')"><i class="fa fa-reply danger" title="恢复"></i></a>
-                                                               </c:if>
-                                                               <c:if test="${topClassification.deleted eq 0}">
-                                                                    <a href="${pageContext.request.contextPath}/admin/classification/disable?classificationId=${topClassification.id}" onclick="return confirm('确认要删除吗?')"><i class="fa fa-trash-o danger" title="删除"></i></a>
-                                                               </c:if>
-                                                           </div>
-                                                       </div>
-                                                   </div>
-                                                   <div class="tree-folder-content" style="display: none">
-                                                       <c:forEach items="${topClassification.list}" var="secondClassification">
-                                                           <div class="tree-folder" style="display: block;">
-                                                               <div class="tree-folder-header">
-                                                                   <i class="fa fa-folder"></i>
-                                                                   <div class="tree-folder-name">
-                                                                   <c:if test="${secondClassification.deleted eq 1}">
-                                                                       <span style="text-decoration:line-through;">${secondClassification.name}</span>
-                                                                   </c:if>
-                                                                   <c:if test="${secondClassification.deleted eq 0}">
-                                                                        ${secondClassification.name}
-                                                                   </c:if>
-                                                                       <div class="tree-actions">
-                                                                           <i class="fa fa-plus green" title="添加" data-parentcode="${secondClassification.code}" onclick="addClassification(event)"></i>
-                                                                           <i class="fa fa-edit blizzard" title="编辑" data-id="${secondClassification.id}" data-name="${secondClassification.name}" onclick="updateClassification(event)"></i>
-                                                                           <c:if test="${secondClassification.deleted eq 1}">
-                                                                               <a href="${pageContext.request.contextPath}/admin/classification/recover?classificationId=${secondClassification.id}" onclick="return confirm('确认要恢复吗?')"><i class="fa fa-reply danger" title="恢复"></i></a>
-                                                                           </c:if>
-                                                                           <c:if test="${secondClassification.deleted eq 0}">
-                                                                                <a href="${pageContext.request.contextPath}/admin/classification/disable?classificationId=${secondClassification.id}" onclick="return confirm('确认要删除吗?')"><i class="fa fa-trash-o danger" title="删除"></i></a>
-                                                                           </c:if>
-                                                                       </div>
-                                                                   </div>
-                                                               </div>
-                                                               <div class="tree-folder-content" style="display: none">
-                                                                   <c:forEach items="${secondClassification.list}" var="thirdClassification">
-                                                                       <div class="tree-item">
-                                                                           <i class="tree-dot"></i>
-                                                                           <div class="tree-item-name">
-                                                                               <c:if test="${thirdClassification.deleted eq 1}">
-                                                                                   <span style="text-decoration:line-through;">${thirdClassification.name}</span>
-                                                                               </c:if>
-                                                                               <c:if test="${thirdClassification.deleted eq 0}">
+                                                            </c:if>
+                                                            <div class="tree-actions">
+                                                                <i class="fa fa-plus green" title="添加"
+                                                                   data-parentcode="${topClassification.code}"
+                                                                   onclick="addClassification(event)"></i>
+                                                                <i class="fa fa-edit blizzard" title="编辑"
+                                                                   data-id="${topClassification.id}"
+                                                                   data-name="${topClassification.name}"
+                                                                   onclick="updateClassification(event)"></i>
+                                                                <c:if test="${topClassification.deleted eq 1}">
+                                                                    <a href="${pageContext.request.contextPath}/admin/classification/recover?classificationId=${topClassification.id}"
+                                                                       onclick="return confirm('确认要恢复吗?')"><i
+                                                                            class="fa fa-reply danger"
+                                                                            title="恢复"></i></a>
+                                                                </c:if>
+                                                                <c:if test="${topClassification.deleted eq 0}">
+                                                                    <a href="${pageContext.request.contextPath}/admin/classification/disable?classificationId=${topClassification.id}"
+                                                                       onclick="return confirm('确认要删除吗?')"><i
+                                                                            class="fa fa-trash-o danger" title="删除"></i></a>
+                                                                </c:if>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tree-folder-content" style="display: none">
+                                                        <c:forEach items="${topClassification.list}"
+                                                                   var="secondClassification">
+                                                            <div class="tree-folder" style="display: block;">
+                                                                <div class="tree-folder-header">
+                                                                    <i class="fa fa-folder"></i>
+
+                                                                    <div class="tree-folder-name">
+                                                                        <c:if test="${secondClassification.deleted eq 1}">
+                                                                            <span style="text-decoration:line-through;">${secondClassification.name}</span>
+                                                                        </c:if>
+                                                                        <c:if test="${secondClassification.deleted eq 0}">
+                                                                            ${secondClassification.name}
+                                                                        </c:if>
+                                                                        <div class="tree-actions">
+                                                                            <i class="fa fa-plus green" title="添加"
+                                                                               data-parentcode="${secondClassification.code}"
+                                                                               onclick="addClassification(event)"></i>
+                                                                            <i class="fa fa-edit blizzard" title="编辑"
+                                                                               data-id="${secondClassification.id}"
+                                                                               data-name="${secondClassification.name}"
+                                                                               onclick="updateClassification(event)"></i>
+                                                                            <c:if test="${secondClassification.deleted eq 1}">
+                                                                                <a href="${pageContext.request.contextPath}/admin/classification/recover?classificationId=${secondClassification.id}"
+                                                                                   onclick="return confirm('确认要恢复吗?')"><i
+                                                                                        class="fa fa-reply danger"
+                                                                                        title="恢复"></i></a>
+                                                                            </c:if>
+                                                                            <c:if test="${secondClassification.deleted eq 0}">
+                                                                                <a href="${pageContext.request.contextPath}/admin/classification/disable?classificationId=${secondClassification.id}"
+                                                                                   onclick="return confirm('确认要删除吗?')"><i
+                                                                                        class="fa fa-trash-o danger"
+                                                                                        title="删除"></i></a>
+                                                                            </c:if>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="tree-folder-content" style="display: none">
+                                                                    <c:forEach items="${secondClassification.list}"
+                                                                               var="thirdClassification">
+                                                                        <div class="tree-item">
+                                                                            <i class="tree-dot"></i>
+
+                                                                            <div class="tree-item-name">
+                                                                                <c:if test="${thirdClassification.deleted eq 1}">
+                                                                                    <span style="text-decoration:line-through;">${thirdClassification.name}</span>
+                                                                                </c:if>
+                                                                                <c:if test="${thirdClassification.deleted eq 0}">
                                                                                     ${thirdClassification.name}</div>
-                                                                               </c:if>
-                                                                           <div class="tree-actions">
-                                                                               <i class="fa fa-edit blizzard" title="编辑" data-id="${thirdClassification.id}" data-name="${thirdClassification.name}" onclick="updateClassification(event)"></i>
-                                                                               <c:if test="${thirdClassification.deleted eq 1}">
-                                                                                   <a href="${pageContext.request.contextPath}/admin/classification/recover?classificationId=${thirdClassification.id}" onclick="return confirm('确认要恢复吗?')"><i class="fa fa-reply danger" title="恢复"></i></a>
-                                                                               </c:if>
-                                                                               <c:if test="${thirdClassification.deleted eq 0}">
-                                                                                    <a href="${pageContext.request.contextPath}/admin/classification/disable?classificationId=${thirdClassification.id}" onclick="return confirm('确认要删除吗?')"><i class="fa fa-trash-o danger" title="删除"></i></a>
-                                                                               </c:if>
-                                                                           </div>
-                                                                       </div>
-                                                                   </c:forEach>
-                                                               </div>
-                                                               <div class="tree-loader" style="display: none;"></div>
-                                                           </div>
-                                                       </c:forEach>
-                                                   </div>
-                                                   <div class="tree-loader" style="display: none;"></div>
-                                               </div>
-                                           </c:forEach>
+                                                                            </c:if>
+                                                                            <div class="tree-actions">
+                                                                                <i class="fa fa-edit blizzard"
+                                                                                   title="编辑"
+                                                                                   data-id="${thirdClassification.id}"
+                                                                                   data-name="${thirdClassification.name}"
+                                                                                   onclick="updateClassification(event)"></i>
+                                                                                <c:if test="${thirdClassification.deleted eq 1}">
+                                                                                    <a href="${pageContext.request.contextPath}/admin/classification/recover?classificationId=${thirdClassification.id}"
+                                                                                       onclick="return confirm('确认要恢复吗?')"><i
+                                                                                            class="fa fa-reply danger"
+                                                                                            title="恢复"></i></a>
+                                                                                </c:if>
+                                                                                <c:if test="${thirdClassification.deleted eq 0}">
+                                                                                    <a href="${pageContext.request.contextPath}/admin/classification/disable?classificationId=${thirdClassification.id}"
+                                                                                       onclick="return confirm('确认要删除吗?')"><i
+                                                                                            class="fa fa-trash-o danger"
+                                                                                            title="删除"></i></a>
+                                                                                </c:if>
+                                                                            </div>
+                                                                        </div>
+                                                                    </c:forEach>
+                                                                </div>
+                                                                <div class="tree-loader" style="display: none;"></div>
+                                                            </div>
+                                                        </c:forEach>
+                                                    </div>
+                                                    <div class="tree-loader" style="display: none;"></div>
+                                                </div>
+                                            </c:forEach>
                                         </div>
                                         <div class="tree-loader" style="display: none;"></div>
                                     </div>
@@ -371,14 +398,15 @@ Purchase: http://wrapbootstrap.com
         <div class="modal-content">
             <form action="${pageContext.request.contextPath}/admin/classification/add" method="post">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">添加分类</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">分类名</label>
                         <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder="分类名">
-                        <input type="hidden" name="parentCode" class="parentCode" >
+                        <input type="hidden" name="parentCode" class="parentCode">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -395,14 +423,15 @@ Purchase: http://wrapbootstrap.com
         <div class="modal-content">
             <form action="${pageContext.request.contextPath}/admin/classification/update" method="post">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="updateModalLabel">修改分类</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="classificationName">分类名</label>
                         <input type="text" class="form-control" name="name" id="classificationName" placeholder="分类名">
-                        <input type="hidden" name="classificationId" class="classificationId" id="classificationId" >
+                        <input type="hidden" name="classificationId" class="classificationId" id="classificationId">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -431,7 +460,7 @@ Purchase: http://wrapbootstrap.com
         UITree.init();
     });
 
-    function addClassification(event){
+    function addClassification(event) {
         event = event ? event : window.event;
         var obj = event.srcElement ? event.srcElement : event.target;
         var parentcode = $(obj).data('parentcode');
@@ -440,7 +469,7 @@ Purchase: http://wrapbootstrap.com
         $('#myModal').modal('show');
     }
 
-    function updateClassification(event){
+    function updateClassification(event) {
         event = event ? event : window.event;
         var obj = event.srcElement ? event.srcElement : event.target;
         var id = $(obj).data("id");
@@ -453,16 +482,16 @@ Purchase: http://wrapbootstrap.com
         $("#updateModal").modal('show');
     }
 
-    function deleteClassification(event){
-        if(confirm("确认要删除吗？")){
+    function deleteClassification(event) {
+        if (confirm("确认要删除吗？")) {
             event = event ? event : window.event;
             var obj = event.srcElement ? event.srcElement : event.target;
             var code = $(obj).data("code");
             var url = "${pageContext.request.contextPath}/admin/classification/disable";
             var data = {
-                "code":code
+                "code": code
             }
-            $.post(url,data);
+            $.post(url, data);
         }
 
     }

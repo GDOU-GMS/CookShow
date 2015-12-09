@@ -10,30 +10,31 @@ Purchase: http://wrapbootstrap.com
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!-- Head -->
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>秀厨网</title>
 
-    <meta name="description" content="Dashboard" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Dashboard"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="shortcut icon" href="/resources/assets/img/favicon.png" type="image/x-icon">
 
 
     <!--Basic Styles-->
-    <link href="/resources/assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
-    <link href="/resources/assets/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="/resources/assets/css/weather-icons.min.css" rel="stylesheet" />
+    <link href="/resources/assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link id="bootstrap-rtl-link" href="" rel="stylesheet"/>
+    <link href="/resources/assets/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="/resources/assets/css/weather-icons.min.css" rel="stylesheet"/>
 
     <!--Fonts-->
-    <link href="${pageContext.request.contextPath}/resources/assets/css/fonts_useso_com.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/assets/css/fonts_useso_com.css" rel="stylesheet"
+          type="text/css">
 
     <!--Beyond styles-->
-    <link href="/resources/assets/css/beyond.min.css" rel="stylesheet" type="text/css" />
-    <link href="/resources/assets/css/demo.min.css" rel="stylesheet" />
-    <link href="/resources/assets/css/typicons.min.css" rel="stylesheet" />
-    <link href="/resources/assets/css/animate.min.css" rel="stylesheet" />
-    <link id="skin-link" href="" rel="stylesheet" type="text/css" />
+    <link href="/resources/assets/css/beyond.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/resources/assets/css/demo.min.css" rel="stylesheet"/>
+    <link href="/resources/assets/css/typicons.min.css" rel="stylesheet"/>
+    <link href="/resources/assets/css/animate.min.css" rel="stylesheet"/>
+    <link id="skin-link" href="" rel="stylesheet" type="text/css"/>
 
     <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
     <script src="/resources/assets/js/skins.min.js"></script>
@@ -72,7 +73,7 @@ Purchase: http://wrapbootstrap.com
             <div class="navbar-header pull-left">
                 <a href="#" class="navbar-brand">
                     <small>
-                        <img src="/resources/assets/img/cs.png" alt="" />
+                        <img src="/resources/assets/img/cs.png" alt=""/>
                     </small>
                 </a>
             </div>
@@ -96,24 +97,25 @@ Purchase: http://wrapbootstrap.com
         <div class="page-sidebar" id="sidebar">
             <!-- Page Sidebar Header-->
             <div class="sidebar-header-wrapper">
-                <input type="text" class="searchinput" />
+                <input type="text" class="searchinput"/>
                 <i class="searchicon fa fa-search"></i>
+
                 <div class="searchhelper">Search Reports, Charts, Emails or Notifications</div>
             </div>
             <!-- /Page Sidebar Header -->
             <!-- Sidebar Menu -->
-                  <ul class="nav sidebar-menu">
+            <ul class="nav sidebar-menu">
                 <!--Dashboard-->
-                <li class="active">
+                <li>
                     <a href="${pageContext.request.contextPath}/admin/index">
                         <i class="menu-icon glyphicon glyphicon-home"></i>
-                        <span class="menu-text" > 首页 </span>
+                        <span class="menu-text"> 首页 </span>
                     </a>
                 </li>
                 <!--Databoxes-->
 
                 <!--UI Elements-->
-                <li>
+                <li class="active open">
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-desktop"></i>
                         <span class="menu-text"> 用户模块 </span>
@@ -121,12 +123,11 @@ Purchase: http://wrapbootstrap.com
                     </a>
 
                     <ul class="submenu">
-                        <li>
+                        <li class="active">
                             <a href="${pageContext.request.contextPath}/admin/user/list">
                                 <span class="menu-text">用户列表</span>
                             </a>
                         </li>
-                     
                     </ul>
                 </li>
                 <li>
@@ -141,22 +142,26 @@ Purchase: http://wrapbootstrap.com
                                 <span class="menu-text">分类列表</span>
                             </a>
                         </li>
-                       </ul>
+                    </ul>
                 </li>
+                <!--Tables-->
                 <li>
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-table"></i>
-                        <span class="menu-text">菜谱模块</span>
+                        <span class="menu-text"> 菜谱模块 </span>
+
                         <i class="menu-expand"></i>
                     </a>
+
                     <ul class="submenu">
                         <li>
                             <a href="${pageContext.request.contextPath}/admin/cookbook/list">
                                 <span class="menu-text">菜谱列表</span>
                             </a>
                         </li>
-                      </ul>
+                    </ul>
                 </li>
+                <!--Forms-->
                 <li>
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-pencil-square-o"></i>
@@ -175,7 +180,8 @@ Purchase: http://wrapbootstrap.com
                     </ul>
                 </li>
                 <!--Charts-->
-                        <li>
+
+                <li>
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-desktop"></i>
                         <span class="menu-text"> 管理员管理 </span>
@@ -189,22 +195,6 @@ Purchase: http://wrapbootstrap.com
                             </a>
                         </li>
                     </ul>
-                </li>
-                 <li>
-                    <a href="#" class="menu-dropdown">
-                        <i class="menu-icon fa fa-bar-chart-o"></i>
-                        <span class="menu-text"> 报表统计</span>
-
-                        <i class="menu-expand"></i>
-                    </a>
-
-                    <ul class="submenu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/admin/cookbook/cookbookreport">
-                                <span class="menu-text">月度菜谱上传统计</span>
-                            </a>
-                        </li>
-                       </ul>
                 </li>
                 <!--Profile-->
 
@@ -225,7 +215,7 @@ Purchase: http://wrapbootstrap.com
                 </ul>
             </div>
             <!-- /Page Breadcrumb -->
-          
+
             <!-- Page Header -->
             <div class="page-header position-relative">
                 <div class="header-title">
@@ -244,27 +234,29 @@ Purchase: http://wrapbootstrap.com
                             <div class="header bg-blue" style="margin-bottom:0px;padding-bottom:10px">
                                 用户列表
                             </div>
-                            
-                              <div>
-                   <div class="row" >
-                        <form action="${pageContext.request.contextPath}/admin/user/query" method="post">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                  <input name="username" class="form-control" style="width: 50%" placeholder="用户名" type="text">
-                                 </div>
+
+                            <div>
+                                <div class="row">
+                                    <form action="${pageContext.request.contextPath}/admin/user/query" method="post">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input name="username" class="form-control" style="width: 50%"
+                                                       placeholder="用户名" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input name="realname" class="form-control" style="width: 50%"
+                                                       placeholder="真实姓名" type="text">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <button class="btn btn-azure" type="submit">查询</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="col-sm-6" >
-                                  <div class="form-group">
-                                      <input name="realname" class="form-control" style="width: 50%" placeholder="真实姓名" type="text">
-                                    </div>
-                                 </div>
-                          
-                                  <div class="col-sm-6">
-                                     <button class="btn btn-azure" type="submit">查询</button>
-                                     </div>
-                        </form>
-                      </div>
-                      </div>
+                            </div>
                             <table class="table table-hover">
                                 <thead class="bordered-darkorange">
                                 <tr>
@@ -318,28 +310,28 @@ Purchase: http://wrapbootstrap.com
                                         <td>
                                                 ${user.realName}
                                         </td>
-                                         <td>
+                                        <td>
                                                 ${user.gender}
                                         </td>
-                                         <td>
+                                        <td>
                                                 ${user.createDate}
                                         </td>
-                                         <td>
+                                        <td>
                                                 ${user.updateDate}
                                         </td>
                                         <td>
-                                        <c:if test="${user.deleted eq 1}">
-                                            已锁定
-                                        </c:if>
-                                        <c:if test="${user.deleted eq 0}">
-                                            未锁定
-                                        </c:if>
+                                            <c:if test="${user.deleted eq 1}">
+                                                已锁定
+                                            </c:if>
+                                            <c:if test="${user.deleted eq 0}">
+                                                未锁定
+                                            </c:if>
                                         </td>
                                         <td>
-                                           <a href="${pageContext.request.contextPath}/admin/user/disable?userId=${user.id}" method="post" 
-                                           class="btn btn-info btn-xs edit"> 锁定</a>
-                                           <a href="${pageContext.request.contextPath}/admin/user/enable?userId=${user.id}" method="post" 
-                                           class="btn btn-info btn-xs edit"> 解锁</a>
+                                            <a href="${pageContext.request.contextPath}/admin/user/disable?userId=${user.id}" method="post"
+                                               class="btn btn-info btn-xs edit"> 锁定</a>
+                                            <a href="${pageContext.request.contextPath}/admin/user/enable?userId=${user.id}" method="post"
+                                               class="btn btn-info btn-xs edit"> 解锁</a>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -350,17 +342,23 @@ Purchase: http://wrapbootstrap.com
                                 <ul class="pagination">
                                     <c:if test="${page.pageNum-1 gt 1}">
                                         <li>
-                                            <a href="${pageContext.request.contextPath}/user/list?pageNum=${page.pageNum-1}" aria-label="Previous">
+                                            <a href="${pageContext.request.contextPath}/admin/user/list?pageNum=${page.pageNum-1}"
+                                               aria-label="Previous">
                                                 <span aria-hidden="true">&laquo;</span>
                                             </a>
                                         </li>
                                     </c:if>
-                                    <c:forEach begin="${page.startIndex}" end="${page.startIndex}" step="1" var="index">
-                                        <li><a href="${pageContext.request.contextPath}/user/list?pageNum=${index+1}" <c:if test="${index+1 eq page.pageNum}">class="active"</c:if>>${index+1}</a></li>
-                                    </c:forEach>
-                                    <c:if test="${page.pageNum+1 lt page.totalRecord}">
+                                    <c:if test="${page.totalPage gt 1}">
+                                        <c:forEach begin="${page.startIndex}" end="${page.startIndex}" step="1" var="index">
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/admin/user/list?pageNum=${index+1}"
+                                                   <c:if test="${index+1 eq page.pageNum}">class="active"</c:if>>${index+1}</a>
+                                            </li>
+                                        </c:forEach>
+                                    </c:if>
+                                    <c:if test="${page.pageNum+1 lt page.totalPage}">
                                         <li>
-                                            <a href="${pageContext.request.contextPath}/user/list?pageNum=${page.pageNum+1}" aria-label="Next">
+                                            <a href="${pageContext.request.contextPath}/admin/user/list?pageNum=${page.pageNum+1}" aria-label="Next">
                                                 <span aria-hidden="true">&raquo;</span>
                                             </a>
                                         </li>

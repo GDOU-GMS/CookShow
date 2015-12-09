@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
 <head>
@@ -87,7 +88,91 @@
                 <div class="tab-content tagstyle">
                     <div role="tabpanel" class="tab-pane active" id="info">
 
-                        <div  class="mediadynamic">
+                        <c:forEach items="${page.list}" var="production">
+                            <div  class="mediadynamic">
+                                <div class="dynamictop">
+                                    <div class="media">
+                                        <div class="media-left dynamictopl">
+                                            <a href="#">
+                                                <img class="media-object" src="${production.user.face}" alt="...">
+                                            </a>
+                                        </div>
+                                        <div class="media-body dynamictopr">
+                                            <a href="#"><h4 class="media-heading">${production.user.username}</h4></a>
+                                        </div>
+                                    </div>
+                                </div><!--end dynamictop-->
+
+                                <div class="dynamicbottom">
+                                    <div class="media">
+                                        <div class="media-left dynamicbottoml">
+                                            <a href="${pageContext.request.contextPath}/production/detail/${production.id}">
+                                                <img class="media-object" src="${production.titleImage}">
+                                            </a>
+                                        </div>
+                                        <div class="media-body dynamicbottomr">
+                                            <h4 class="media-heading">${production.intro}</h4>
+                                            <a href="${pageContext.request.contextPath}/cookbook/cookbook/${production.cookbookId}"><span>${production.title}的做法</span></a>
+                                            <a href="#" class="zanzan"><span class="glyphicon glyphicon-thumbs-up dianzan" aria-hidden="true"></span></a>
+                                        </div>
+                                    </div>
+                                    <%--<div class="dynamiccomment">
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <div class="col-sm-3" style="width:100%;" >
+                                                    <input type="email" style="width:700px;" class="form-control" id="inputEmail3" >
+                                                    <button type="submit" class="btn btn-default dcomment">评论</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>--%>
+                                </div><!--end dynamicbottom-->
+                            </div><!--end mediadynamic-->
+                        </c:forEach>
+
+                        <%--<div  class="mediadynamic">
+                            <div class="dynamictop">
+                                <div class="media">
+                                    <div class="media-left dynamictopl">
+                                        <a href="#">
+                                            <img class="media-object" src="images/tx1.png" alt="...">
+                                        </a>
+                                    </div>
+                                    <div class="media-body dynamictopr">
+                                        <a href="#"><h4 class="media-heading">鬼鬼</h4></a><span>做过</span>
+                                        <a href="#"><h4 class="media-heading">烤鱼</h4></a>
+
+                                    </div>
+                                </div>
+                            </div><!--end dynamictop-->
+
+                            <div class="dynamicbottom">
+                                <div class="media">
+                                    <div class="media-left dynamicbottoml">
+                                        <a href="#">
+                                            <img class="media-object" src="images/zp.png" alt="...">
+                                        </a>
+                                    </div>
+                                    <div class="media-body dynamicbottomr">
+                                        <h4 class="media-heading">无可替代哈</h4>
+                                        <a href="#"><span>酸菜鱼的做法</span></a>
+                                        <a href="#" class="zanzan"><span class="glyphicon glyphicon-thumbs-up dianzan" aria-hidden="true"></span></a>
+                                    </div>
+                                </div>
+                                <div class="dynamiccomment">
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <div class="col-sm-3" style="width:100%;" >
+                                                <input type="email" style="width:700px;" class="form-control" id="inputEmail3" >
+                                                <button type="submit" class="btn btn-default dcomment">评论</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div><!--end dynamicbottom-->
+                        </div><!--end mediadynamic-->--%>
+
+                        <%--<div  class="mediadynamic">
                             <div class="dynamictop">
                                 <div class="media">
                                     <div class="media-left dynamictopl">
@@ -126,94 +211,7 @@
                                     </form>
                                 </div>
                             </div><!--end dynamicbottom-->
-                        </div><!--end mediadynamic-->
-
-
-
-
-
-                        <div  class="mediadynamic">
-                            <div class="dynamictop">
-                                <div class="media">
-                                    <div class="media-left dynamictopl">
-                                        <a href="#">
-                                            <img class="media-object" src="images/tx1.png" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="media-body dynamictopr">
-                                        <a href="#"><h4 class="media-heading">鬼鬼</h4></a><span>做过</span>
-                                        <a href="#"><h4 class="media-heading">烤鱼</h4></a>
-
-                                    </div>
-                                </div>
-                            </div><!--end dynamictop-->
-
-                            <div class="dynamicbottom">
-                                <div class="media">
-                                    <div class="media-left dynamicbottoml">
-                                        <a href="#">
-                                            <img class="media-object" src="images/zp.png" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="media-body dynamicbottomr">
-                                        <h4 class="media-heading">无可替代哈</h4>
-                                        <a href="#"><span>酸菜鱼的做法</span></a>
-                                        <a href="#" class="zanzan"><span class="glyphicon glyphicon-thumbs-up dianzan" aria-hidden="true"></span></a>
-                                    </div>
-                                </div>
-                                <div class="dynamiccomment">
-                                    <form class="form-horizontal">
-                                        <div class="form-group">
-                                            <div class="col-sm-3" style="width:100%;" >
-                                                <input type="email" style="width:700px;" class="form-control" id="inputEmail3" >
-                                                <button type="submit" class="btn btn-default dcomment">评论</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div><!--end dynamicbottom-->
-                        </div><!--end mediadynamic-->
-
-                        <div  class="mediadynamic">
-                            <div class="dynamictop">
-                                <div class="media">
-                                    <div class="media-left dynamictopl">
-                                        <a href="#">
-                                            <img class="media-object" src="images/tx1.png" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="media-body dynamictopr">
-                                        <a href="#"><h4 class="media-heading">鬼鬼</h4></a><span>做过</span>
-                                        <a href="#"><h4 class="media-heading">烤鱼</h4></a>
-                                    </div>
-                                </div>
-                            </div><!--end dynamictop-->
-
-                            <div class="dynamicbottom">
-                                <div class="media">
-                                    <div class="media-left dynamicbottoml">
-                                        <a href="#">
-                                            <img class="media-object" src="images/zp.png" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="media-body dynamicbottomr">
-                                        <h4 class="media-heading">无可替代哈</h4>
-                                        <a href="#"><span>酸菜鱼的做法</span></a>
-                                        <a href="#" class="zanzan"><span class="glyphicon glyphicon-thumbs-up dianzan" aria-hidden="true"></span></a>
-                                    </div>
-                                </div>
-                                <div class="dynamiccomment">
-                                    <form class="form-horizontal">
-                                        <div class="form-group">
-                                            <div class="col-sm-3" style="width:100%;" >
-                                                <input type="email" style="width:700px;" class="form-control" id="inputEmail3" >
-                                                <button type="submit" class="btn btn-default dcomment">评论</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div><!--end dynamicbottom-->
-                        </div><!--end mediadynamic-->
+                        </div><!--end mediadynamic-->--%>
                     </div>
                 </div>
             </div>

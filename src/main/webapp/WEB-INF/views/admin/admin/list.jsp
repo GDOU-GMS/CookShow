@@ -10,29 +10,32 @@ Purchase: http://wrapbootstrap.com
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!-- Head -->
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>秀厨网</title>
 
-    <meta name="description" content="Dashboard" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/assets/img/favicon.png" type="image/x-icon">
+    <meta name="description" content="Dashboard"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/assets/img/favicon.png"
+          type="image/x-icon">
 
 
     <!--Basic Styles-->
-    <link href="${pageContext.request.contextPath}/resources/assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="${pageContext.request.contextPath}/resources/assets/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="${pageContext.request.contextPath}/resources/assets/css/weather-icons.min.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/resources/assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/resources/assets/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/resources/assets/css/weather-icons.min.css" rel="stylesheet"/>
 
     <!--Fonts-->
-    <link href="${pageContext.request.contextPath}/resources/assets/css/fonts_useso_com.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/assets/css/fonts_useso_com.css" rel="stylesheet"
+          type="text/css">
 
     <!--Beyond styles-->
-    <link href="${pageContext.request.contextPath}/resources/assets/css/beyond.min.css" rel="stylesheet" type="text/css" />
-    <link href="${pageContext.request.contextPath}/resources/assets/css/demo.min.css" rel="stylesheet" />
-    <link href="${pageContext.request.contextPath}/resources/assets/css/typicons.min.css" rel="stylesheet" />
-    <link href="${pageContext.request.contextPath}/resources/assets/css/animate.min.css" rel="stylesheet" />
-    <link id="skin-link" href="" rel="stylesheet" type="text/css" />
+    <link href="${pageContext.request.contextPath}/resources/assets/css/beyond.min.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="${pageContext.request.contextPath}/resources/assets/css/demo.min.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/resources/assets/css/typicons.min.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/resources/assets/css/animate.min.css" rel="stylesheet"/>
+    <link id="skin-link" href="" rel="stylesheet" type="text/css"/>
 
     <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
     <script src="${pageContext.request.contextPath}/resources/assets/js/skins.min.js"></script>
@@ -71,7 +74,7 @@ Purchase: http://wrapbootstrap.com
             <div class="navbar-header pull-left">
                 <a href="#" class="navbar-brand">
                     <small>
-                        <img src="${pageContext.request.contextPath}/resources/assets/img/cs.png" alt="" />
+                        <img src="${pageContext.request.contextPath}/resources/assets/img/cs.png" alt=""/>
                     </small>
                 </a>
             </div>
@@ -95,8 +98,9 @@ Purchase: http://wrapbootstrap.com
         <div class="page-sidebar" id="sidebar">
             <!-- Page Sidebar Header-->
             <div class="sidebar-header-wrapper">
-                <input type="text" class="searchinput" />
+                <input type="text" class="searchinput"/>
                 <i class="searchicon fa fa-search"></i>
+
                 <div class="searchhelper">Search Reports, Charts, Emails or Notifications</div>
             </div>
             <!-- /Page Sidebar Header -->
@@ -104,9 +108,9 @@ Purchase: http://wrapbootstrap.com
             <ul class="nav sidebar-menu">
                 <!--Dashboard-->
                 <li>
-                    <a href="index.html">
+                    <a href="${pageContext.request.contextPath}/admin/index">
                         <i class="menu-icon glyphicon glyphicon-home"></i>
-                        <span class="menu-text" > 首页 </span>
+                        <span class="menu-text"> 首页 </span>
                     </a>
                 </li>
                 <!--Databoxes-->
@@ -125,7 +129,7 @@ Purchase: http://wrapbootstrap.com
                                 <span class="menu-text">用户列表</span>
                             </a>
                         </li>
-                     </ul>
+                    </ul>
                 </li>
                 <li>
                     <a href="#" class="menu-dropdown">
@@ -139,7 +143,7 @@ Purchase: http://wrapbootstrap.com
                                 <span class="menu-text">分类列表</span>
                             </a>
                         </li>
-                       </ul>
+                    </ul>
                 </li>
                 <!--Tables-->
                 <li>
@@ -156,7 +160,7 @@ Purchase: http://wrapbootstrap.com
                                 <span class="menu-text">菜谱列表</span>
                             </a>
                         </li>
-                       </ul>
+                    </ul>
                 </li>
                 <!--Forms-->
                 <li>
@@ -177,7 +181,7 @@ Purchase: http://wrapbootstrap.com
                     </ul>
                 </li>
                 <!--Charts-->
-           
+
                 <li class="active open">
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-desktop"></i>
@@ -223,68 +227,68 @@ Purchase: http://wrapbootstrap.com
             </div>
             <!-- /Page Header -->
             <!-- Page Body -->
-               <div>
+            <div>
                 <div class="row">
                     <div class="col-xs-12 col-md-12">
                         <div class="well with-header  with-footer" style="margin-bottom:0px;padding-bottom:10px">
                             <div class="header bg-blue">
-                               管理员列表
+                                管理员列表
                             </div>
-                     <div>   
-                      <div class="row" >
-                        <form action="${pageContext.request.contextPath}/admin/query" method="post">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                  <input name="username" class="form-control" style="width: 50%" placeholder="用户名" type="text">
-                                 </div>
+                            <div>
+                                <div class="row">
+                                    <form action="${pageContext.request.contextPath}/admin/query" method="post">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input name="username" class="form-control" style="width: 50%"
+                                                       placeholder="用户名" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <button class="btn btn-azure" type="submit">查询</button>
+                                        </div>
+                                    </form>
                                 </div>
-          
-                          
-                                  <div class="col-sm-6">
-                                     <button class="btn btn-azure" type="submit">查询</button>
-                                     </div>
-                        </form>
-                      </div>
-                  </div>
-                      </div>
-                            <table class="table table-hover">
-                                <thead class="bordered-darkorange">
+                            </div>
+                        </div>
+                        <table class="table table-hover">
+                            <thead class="bordered-darkorange">
+                            <tr>
+                                <th>
+                                    #
+                                </th>
+                                <th>
+                                    用户名
+                                </th>
+                                <th>
+                                    创建时间
+                                </th>
+                                <th>
+                                    更新时间
+                                </th>
+                                <th>
+                                    是否有效
+                                </th>
+                                <th>
+                                    操作
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach items="${page.list}" var="admin" varStatus="loop">
                                 <tr>
-                                    <th>
-                                        #
-                                    </th>
-                                    <th>
-                                        用户名
-                                    </th>
-                                    <th>
-                                        创建时间
-                                    </th>
-                                    <th>
-                                        更新时间
-                                    </th>
-                                    <th>
-                                        是否有效
-                                    </th>
-                                    <th>
-                                        操作
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach items="${page.list}" var="admin" varStatus="loop">
-                                    <tr>
-                                        <td>
+                                    <td>
                                             ${page.pageSize*(page.pageNum-1)+loop.index+1}
-                                        </td>
-                                        <td>
+                                    </td>
+                                    <td>
                                             ${admin.username}
-                                        </td>
-                                        <td>
+                                    </td>
+                                    <td>
                                             ${admin.createDate}
-                                        </td>
-                                        <td>
+                                    </td>
+                                    <td>
                                             ${admin.updateDate}
-                                        </td> <td>
+                                    </td>
+                                    <td>
                                         <c:if test="${admin.deleted eq 1}">
                                             已删除
                                         </c:if>
@@ -293,62 +297,68 @@ Purchase: http://wrapbootstrap.com
                                         </c:if>
                                     </td>
                                     <td>
-                                       <c:if test="${! admin.username eq 'admin'}">
-                                           <a>删除</a>
-                                           <a>修改</a>
-                                       </c:if>
+                                        <c:if test="${! admin.username eq 'admin'}">
+                                            <a>删除</a>
+                                            <a>修改</a>
+                                        </c:if>
                                         <c:if test="${admin.username eq 'admin'}">
                                             超级管理员
                                         </c:if>
                                     </td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
-                            <br/>
-                            <nav>
-                                <ul class="pagination">
-                                    <c:if test="${page.pageNum-1 gt 1}">
-                                        <li>
-                                            <a href="${pageContext.request.contextPath}/admin/list?pageNum=${page.pageNum-1}" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
-                                            </a>
-                                        </li>
-                                    </c:if>
-                                    <c:forEach begin="${page.startIndex}" end="${page.startIndex}" step="1" var="index">
-                                        <li><a href="${pageContext.request.contextPath}/admin/list?pageNum=${index+1}" <c:if test="${index+1 eq page.pageNum}">class="active"</c:if>>${index+1}</a></li>
-                                    </c:forEach>
-                                    <c:if test="${page.pageNum+1 lt page.totalRecord}">
-                                        <li>
-                                            <a href="${pageContext.request.contextPath}/admin/list?pageNum=${page.pageNum+1}" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
-                                            </a>
-                                        </li>
-                                    </c:if>
-                                </ul>
-                            </nav>
-                        </div>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                        <br/>
+                        <nav>
+                            <ul class="pagination">
+                                <c:if test="${page.pageNum-1 gt 1}">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/admin/list?pageNum=${page.pageNum-1}"
+                                           aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                </c:if>
+                               <c:if test="${page.totalPage gt 1}">
+                                   <c:forEach begin="${page.startIndex}" end="${page.startIndex}" step="1" var="index">
+                                       <li><a href="${pageContext.request.contextPath}/admin/list?pageNum=${index+1}"
+                                              <c:if test="${index+1 eq page.pageNum}">class="active"</c:if>>${index+1}</a>
+                                       </li>
+                                   </c:forEach>
+                               </c:if>
+                                <c:if test="${page.pageNum+1 lt page.totalRecord}">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/admin/list?pageNum=${page.pageNum+1}"
+                                           aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </c:if>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
-            <!-- /Page Container -->
         </div>
-        <!-- Main Container -->
-
+        <!-- /Page Container -->
     </div>
+    <!-- Main Container -->
+
 </div>
-    <!--Basic Scripts-->
-    <script src="${pageContext.request.contextPath}/resources/assets/js/jquery-2.0.3.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/assets/js/bootstrap.min.js"></script>
+</div>
+<!--Basic Scripts-->
+<script src="${pageContext.request.contextPath}/resources/assets/js/jquery-2.0.3.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/assets/js/bootstrap.min.js"></script>
 
-    <!--Beyond Scripts-->
-    <script src="${pageContext.request.contextPath}/resources/assets/js/beyond.min.js"></script>
+<!--Beyond Scripts-->
+<script src="${pageContext.request.contextPath}/resources/assets/js/beyond.min.js"></script>
 
 
-    <!--Page Related Scripts-->
-    <!--Sparkline Charts Needed Scripts-->
-    <script src="${pageContext.request.contextPath}/resources/assets/js/charts/sparkline/jquery.sparkline.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/assets/js/charts/sparkline/sparkline-init.js"></script>
+<!--Page Related Scripts-->
+<!--Sparkline Charts Needed Scripts-->
+<script src="${pageContext.request.contextPath}/resources/assets/js/charts/sparkline/jquery.sparkline.js"></script>
+<script src="${pageContext.request.contextPath}/resources/assets/js/charts/sparkline/sparkline-init.js"></script>
 
 
 </body>

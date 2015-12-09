@@ -10,30 +10,31 @@ Purchase: http://wrapbootstrap.com
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!-- Head -->
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>秀厨网</title>
 
-    <meta name="description" content="Dashboard" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Dashboard"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="shortcut icon" href="/resources/assets/img/favicon.png" type="image/x-icon">
 
 
     <!--Basic Styles-->
-    <link href="/resources/assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
-    <link href="/resources/assets/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="/resources/assets/css/weather-icons.min.css" rel="stylesheet" />
+    <link href="/resources/assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link id="bootstrap-rtl-link" href="" rel="stylesheet"/>
+    <link href="/resources/assets/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="/resources/assets/css/weather-icons.min.css" rel="stylesheet"/>
 
     <!--Fonts-->
-    <link href="${pageContext.request.contextPath}/resources/assets/css/fonts_useso_com.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/assets/css/fonts_useso_com.css" rel="stylesheet"
+          type="text/css">
 
     <!--Beyond styles-->
-    <link href="/resources/assets/css/beyond.min.css" rel="stylesheet" type="text/css" />
-    <link href="/resources/assets/css/demo.min.css" rel="stylesheet" />
-    <link href="/resources/assets/css/typicons.min.css" rel="stylesheet" />
-    <link href="/resources/assets/css/animate.min.css" rel="stylesheet" />
-    <link id="skin-link" href="" rel="stylesheet" type="text/css" />
+    <link href="/resources/assets/css/beyond.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/resources/assets/css/demo.min.css" rel="stylesheet"/>
+    <link href="/resources/assets/css/typicons.min.css" rel="stylesheet"/>
+    <link href="/resources/assets/css/animate.min.css" rel="stylesheet"/>
+    <link id="skin-link" href="" rel="stylesheet" type="text/css"/>
 
     <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
     <script src="/resources/assets/js/skins.min.js"></script>
@@ -72,7 +73,7 @@ Purchase: http://wrapbootstrap.com
             <div class="navbar-header pull-left">
                 <a href="#" class="navbar-brand">
                     <small>
-                        <img src="/resources/assets/img/cs.png" alt="" />
+                        <img src="/resources/assets/img/cs.png" alt=""/>
                     </small>
                 </a>
             </div>
@@ -96,18 +97,19 @@ Purchase: http://wrapbootstrap.com
         <div class="page-sidebar" id="sidebar">
             <!-- Page Sidebar Header-->
             <div class="sidebar-header-wrapper">
-                <input type="text" class="searchinput" />
+                <input type="text" class="searchinput"/>
                 <i class="searchicon fa fa-search"></i>
+
                 <div class="searchhelper">Search Reports, Charts, Emails or Notifications</div>
             </div>
             <!-- /Page Sidebar Header -->
             <!-- Sidebar Menu -->
-                   <ul class="nav sidebar-menu">
+            <ul class="nav sidebar-menu">
                 <!--Dashboard-->
-                <li class="active">
+                <li>
                     <a href="${pageContext.request.contextPath}/admin/index">
                         <i class="menu-icon glyphicon glyphicon-home"></i>
-                        <span class="menu-text" > 首页 </span>
+                        <span class="menu-text"> 首页 </span>
                     </a>
                 </li>
                 <!--Databoxes-->
@@ -126,7 +128,6 @@ Purchase: http://wrapbootstrap.com
                                 <span class="menu-text">用户列表</span>
                             </a>
                         </li>
-                     
                     </ul>
                 </li>
                 <li>
@@ -141,22 +142,26 @@ Purchase: http://wrapbootstrap.com
                                 <span class="menu-text">分类列表</span>
                             </a>
                         </li>
-                       </ul>
+                    </ul>
                 </li>
-                <li>
+                <!--Tables-->
+                <li class="active open">
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-table"></i>
-                        <span class="menu-text">菜谱模块</span>
+                        <span class="menu-text"> 菜谱模块 </span>
+
                         <i class="menu-expand"></i>
                     </a>
+
                     <ul class="submenu">
-                        <li>
+                        <li class="active">
                             <a href="${pageContext.request.contextPath}/admin/cookbook/list">
                                 <span class="menu-text">菜谱列表</span>
                             </a>
                         </li>
-                      </ul>
+                    </ul>
                 </li>
+                <!--Forms-->
                 <li>
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-pencil-square-o"></i>
@@ -175,7 +180,8 @@ Purchase: http://wrapbootstrap.com
                     </ul>
                 </li>
                 <!--Charts-->
-                        <li>
+
+                <li>
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-desktop"></i>
                         <span class="menu-text"> 管理员管理 </span>
@@ -189,22 +195,6 @@ Purchase: http://wrapbootstrap.com
                             </a>
                         </li>
                     </ul>
-                </li>
-                 <li>
-                    <a href="#" class="menu-dropdown">
-                        <i class="menu-icon fa fa-bar-chart-o"></i>
-                        <span class="menu-text"> 报表统计</span>
-
-                        <i class="menu-expand"></i>
-                    </a>
-
-                    <ul class="submenu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/admin/cookbook/cookbookreport">
-                                <span class="menu-text">月度菜谱上传统计</span>
-                            </a>
-                        </li>
-                       </ul>
                 </li>
                 <!--Profile-->
 
@@ -226,7 +216,7 @@ Purchase: http://wrapbootstrap.com
             </div>
             <!-- /Page Breadcrumb -->
             <!-- Page Header -->
-    
+
             <!-- /Page Header -->
             <!-- Page Body -->
             <div>
@@ -234,140 +224,152 @@ Purchase: http://wrapbootstrap.com
                     <div class="col-xs-12 col-md-12">
                         <div class="well with-header  with-footer" style="margin-bottom:0px;padding-bottom:10px">
                             <div class="header bg-blue">
-                               菜谱
+                                菜谱
                             </div>
-                     <div>   
-                      <div class="row" >
-                        <form action="${pageContext.request.contextPath}/admin/cookbook/query" method="post">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                  <input name="title" class="form-control" style="width: 50%" placeholder="菜谱标题" type="text">
-                                 </div>
+                            <div>
+                                <div class="row">
+                                    <form action="${pageContext.request.contextPath}/admin/cookbook/query"
+                                          method="post">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input name="title" class="form-control" style="width: 50%"
+                                                       placeholder="菜谱标题" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input name="classificationCode" class="form-control" style="width: 50%"
+                                                       placeholder="菜谱分类" type="text">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <button class="btn btn-azure" type="submit">查询</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="col-sm-6" >
-                                  <div class="form-group">
-                                      <input name="classificationCode" class="form-control" style="width: 50%" placeholder="菜谱分类" type="text">
-                                    </div>
-                                 </div>
-                          
-                                  <div class="col-sm-6">
-                                     <button class="btn btn-azure" type="submit">查询</button>
-                                     </div>
-                        </form>
-                      </div>
-                  </div>
-                      </div>
-                          
-                            <table id="click" class="table table-hover">
-                                <thead class="bordered-darkorange">
+                            </div>
+                        </div>
+
+                        <table id="click" class="table table-hover">
+                            <thead class="bordered-darkorange">
+                            <tr>
+                                <th>
+                                    #
+                                </th>
+                                <th>
+                                    菜谱标题
+                                </th>
+                                <th>
+                                    菜谱类型
+                                </th>
+
+                                <th>
+                                    访问数
+                                </th>
+                                <th>
+                                    点赞数
+                                </th>
+                                <th>
+                                    创建时间
+                                </th>
+                                <th>
+                                    更新时间
+                                </th>
+                                <th>
+
+                                <th>
+                                    是否有效
+                                </th>
+                                <th>
+                                    操作
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach items="${page.list}" var="cookbook" varStatus="loop">
                                 <tr>
-                                    <th>
-                                        #
-                                    </th>
-                                                                        <th>
-                                        菜谱标题
-                                    </th>
-                                    <th>
-                                        菜谱类型
-                                    </th>
-          
-                                    <th>
-                                        访问数
-                                    </th>
-                                    <th>
-                                        点赞数
-                                    </th>
-                                                              <th>
-                                        创建时间
-                                    </th>
-                                                              <th>
-                                        更新时间
-                                    </th>
-                                    <th>
-                                
-                                     <th>
-              是否有效           
-                                    </th>
-                                    <th>
-              操作                      
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                             <c:forEach items="${page.list}" var="cookbook" varStatus="loop">
-                                      <tr>
-                                        <td>
-                                                ${page.pageSize*(page.pageNum-1)+loop.index+1}
-                                        </td>
-                                        <td>
-                                                ${cookbook.title}
-                                        </td>
-                                        <td>
-                                                ${cookbook.classificationCode}
-                                        </td>
-                                    
-                                         <td>
-                                                 ${cookbook.clickNum}                                        </td>
-                                         <td>
-                                                ${cookbook.favourNum}
-                                        </td>
-                                            <td>
-                                                ${cookbook.createDate}
-                                        </td>
-                                        <td>
-                                                ${cookbook.updateDate}
-                                        </td>
-                                               </td> <td>
-                                        <td>
+                                    <td>
+                                            ${page.pageSize*(page.pageNum-1)+loop.index+1}
+                                    </td>
+                                    <td>
+                                            ${cookbook.title}
+                                    </td>
+                                    <td>
+                                            ${cookbook.classificationCode}
+                                    </td>
+
+                                    <td>
+                                            ${cookbook.clickNum} </td>
+                                    <td>
+                                            ${cookbook.favourNum}
+                                    </td>
+                                    <td>
+                                            ${cookbook.createDate}
+                                    </td>
+                                    <td>
+                                            ${cookbook.updateDate}
+                                    </td>
+                                    </td>
+                                    <td>
+                                    <td>
                                         <c:if test="${cookbook.deleted eq 1}">
                                             已锁定
                                         </c:if>
                                         <c:if test="${cookbook.deleted eq 0}">
                                             未锁定
                                         </c:if>
-                                        </td>
-                                        <td>
-                                           <a href="${pageContext.request.contextPath}/admin/cookbook/disable?cookbookId=${cookbook.id}" method="post" 
+                                    </td>
+                                    <td>
+                                        <a href="${pageContext.request.contextPath}/admin/cookbook/disable?cookbookId=${cookbook.id}"
+                                           method="post"
                                            class="btn btn-info btn-xs edit"> 锁定</a>
-                                           <a href="${pageContext.request.contextPath}/admin/cookbook/enable?cookbookId=${cookbook.id}" method="post" 
+                                        <a href="${pageContext.request.contextPath}/admin/cookbook/enable?cookbookId=${cookbook.id}"
+                                           method="post"
                                            class="btn btn-info btn-xs edit"> 解锁</a>
-                                            <a href="${pageContext.request.contextPath}/admin/cookbook/detail?cookbookId=${cookbook.id}" class="btn btn-danger btn-xs delete">详细信息</a>
-                                        </td>
-                                    </tr>
-                                </c:forEach> 
-                                </tbody>
-                            </table>
-                            <br/>
-                            <nav>
-                                <ul class="pagination">
-                                    <c:if test="${page.pageNum-1 gt 1}">
-                                        <li>
-                                            <a href="${pageContext.request.contextPath}/cookbook/list?pageNum=${page.pageNum-1}" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
-                                            </a>
-                                        </li>
-                                    </c:if>
-                                    <c:forEach begin="${page.startIndex}" end="${page.startIndex}" step="1" var="index">
-                                        <li><a href="${pageContext.request.contextPath}/cookbook/list?pageNum=${index+1}" <c:if test="${index+1 eq page.pageNum}">class="active"</c:if>>${index+1}</a></li>
-                                    </c:forEach>
-                                    <c:if test="${page.pageNum+1 lt page.totalRecord}">
-                                        <li>
-                                            <a href="${pageContext.request.contextPath}/cookbook/list?pageNum=${page.pageNum+1}" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
-                                            </a>
-                                        </li>
-                                    </c:if>
-                                </ul>
-                            </nav>
-                        </div>
+                                        <a href="${pageContext.request.contextPath}/admin/cookbook/detail?cookbookId=${cookbook.id}"
+                                           class="btn btn-danger btn-xs delete">详细信息</a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                        <br/>
+                        <nav>
+                            <ul class="pagination">
+                                <c:if test="${page.pageNum-1 gt 1}">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/admin/cookbook/list?pageNum=${page.pageNum-1}"
+                                           aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                </c:if>
+                                <c:forEach begin="${page.startIndex}" end="${page.startIndex}" step="1" var="index">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/admin/cookbook/list?pageNum=${index+1}"
+                                           <c:if test="${index+1 eq page.pageNum}">class="active"</c:if>>${index+1}</a>
+                                    </li>
+                                </c:forEach>
+                                <c:if test="${page.pageNum+1 lt page.totalPage}">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/admin/cookbook/list?pageNum=${page.pageNum+1}"
+                                           aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </c:if>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
-            <!-- /Page Container -->
         </div>
-        <!-- Main Container -->
-
+        <!-- /Page Container -->
     </div>
+    <!-- Main Container -->
+
+</div>
 </div>
 
 <!-- Modal -->

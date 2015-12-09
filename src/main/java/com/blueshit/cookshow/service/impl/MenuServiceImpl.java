@@ -105,6 +105,18 @@ public class MenuServiceImpl extends DaoSupportImpl<Menu> implements MenuService
 	}
 
 
+    /**
+     * 分类列出所有菜单
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    public Page listAllMenu(int pageNum,int pageSize){
+        QueryHelper queryHelper = new QueryHelper(Menu.class,"m");
+        queryHelper.addWhereCondition("deleted=0")
+                .addOrderByProperty("createDate",false);
+        return getPage(pageNum,pageSize,queryHelper);
+    }
   
 		
 	

@@ -1,5 +1,6 @@
 package com.blueshit.cookshow.web.controller;
 
+import com.blueshit.cookshow.common.helper.Page;
 import com.blueshit.cookshow.model.entity.Cookbook;
 import com.blueshit.cookshow.model.entity.Production;
 import com.blueshit.cookshow.model.entity.User;
@@ -24,8 +25,13 @@ import java.util.Date;
 public class ProductionController extends BaseController {
 
     @RequestMapping("/productionIndex")
-    public String productionIndex(){
+    public String productionIndex(Integer pageNum,Model model){
+        int pageSize = 10;
+        pageNum = pageNum==null||pageNum<=0?1:pageNum;
 
+        //查处最所有的作品动态
+        Page page = productionService.getAllProduction(pageNum,pageSize);
+        model.addAttribute("page",page);
         return "customer/product/workdynamic";
     }
 

@@ -29,4 +29,18 @@ public class ProductionServiceImpl extends DaoSupportImpl<Production> implements
                 .addOrderByProperty("createDate",false);
         return getPage(pageNum,pageSize,queryHelper);
     }
+
+
+    /**
+     * 所有作品动态
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    public Page getAllProduction(int pageNum,int pageSize){
+        QueryHelper queryHelper = new QueryHelper(Production.class,"p")
+                .addWhereCondition("deleted = 0")
+                .addOrderByProperty("createDate",false);
+        return getPage(pageNum,pageSize,queryHelper);
+    }
 }

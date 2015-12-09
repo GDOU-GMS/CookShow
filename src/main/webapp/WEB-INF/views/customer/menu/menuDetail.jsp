@@ -66,7 +66,6 @@
 									<li><a href="${pageContext.request.contextPath}/relation/getAllrelation/${user.id==null ? 0 : user.id}">关注的好友</a></li>
 									<li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
 								</ul></li>
-
 						</ul>
 						</c:if>
                 </div>
@@ -75,8 +74,6 @@
     </div>
     <div id="navfont">
         <div id="navcontent">
-
-<<<<<<< HEAD
             <ul class="nav nav-pills">
                 <li role="presentation" class="cbook"><span></span></li>
                 <li role="presentation" class="active"><a href="${pageContext.request.contextPath}/">首页</a></li>
@@ -84,7 +81,6 @@
                 <li role="presentation"><a href="#">健康饮食</a></li>
                 <li role="presentation"><a href="#">作品动态</a></li>
             </ul>
-
         </div>
     </div>
     <div id="content">
@@ -106,11 +102,8 @@
                         <div class="mobshare">
                             <span style="">分享到</span><a href=""><img src="${pageContext.request.contextPath}/resources/customer/images/weibo.png" style="width:36px;height:29px;"></a>                    </div>
                     </div>
-
                 </div>
-
                 <div class="mobbottom mobmedia">
-
                     <c:forEach items="${cookbookPage.list}" var="cookbook">
                         <div class="media" >
                             <div class="media-left mobmedial">
@@ -128,7 +121,6 @@
                             </div>
                         </div>
                     </c:forEach>
-
                 </div>
                 <nav>
                     <ul class="pagination">
@@ -151,7 +143,6 @@
                         </c:if>
                     </ul>
                 </nav>
-
             </div>
             <div class="cbookside">
                 <div class="cbooksidecss">
@@ -180,115 +171,11 @@
 </div>
 <script type="text/javascript">
     jQuery("#csnav").slide({  type:"menu", titCell:".mainCate", targetCell:".subCate", delayTime:0, triggerTime:0, defaultPlay:false, returnDefault:true });
-           <ul class="nav nav-pills">
-                <li role="presentation" class="cbook"><a title="点击查看所有分类" href="${pageContext.request.contextPath}/classification/allClassification">全部分类</a></li>
-                <li role="presentation" ><a href="${pageContext.request.contextPath}/">首页</a></li>
-                <li role="presentation"><a href="${pageContext.request.contextPath}/menu/cookmenu">菜单</a></li>
-                <li role="presentation"><a href="${pageContext.request.contextPath}/production/productionIndex">作品动态</a></li>
-                <li role="presentation"><a href="#">健康饮食</a></li>
-            </ul>
-
-        </div>
-    </div>
-    <div id="content">
-        <div class="cscontent">
-            <div class="menuleft">
-                <div class="mobtop" style="background:#F0F0F0 ">
-                    <h2>${menu.name}</h2>
-                    <div class="mobtopl" >
-                        <div class="mobcdjj">
-                        		<span>${menu.title}</span>
-                        </div>
-                        <div class="mobdate">
-                            <span>创建时间:<fmt:formatDate value="${menu.createDate}" pattern="yyyy-MM-dd"/> </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <span>最后修改:<fmt:formatDate value="${menu.updateDate}" pattern="yyyy-MM-dd"/></span>
-                        </div>
-                    </div>
-                    <div class="mobtopr">
-                        <a class="btn btn-default acss" style="margin-top:125px;" href="javascript:void(0)" role="button" id="collection" onclick="doCollection()"></a>
-                        <div class="mobshare">
-                            <span style="">分享到</span><a href=""><img src="${pageContext.request.contextPath}/resources/customer/images/weibo.png" style="width:36px;height:29px;"></a>                    </div>
-                    </div>
-
-                </div>
-
-                <div class="mobbottom mobmedia">
-
-                    <c:forEach items="${cookbookPage.list}" var="cookbook">
-                        <div class="media" >
-                            <div class="media-left mobmedial">
-                                <a href="#">
-                                    <img class="media-object" src="${cookbook.titleImage}" alt="...">
-                                </a>
-                            </div>
-                            <div class="media-body mobmediar">
-                                <h3 class="media-heading">${cookbook.title}</h3>
-                                <div class="mobjj">
-                                    <span>${cookbook.intro}</span>
-                                </div>
-                                <span>${cookbook.user.username}</span><br/>
-                                <span>发表时间：<fmt:formatDate value="${cookbook.createDate}" pattern="yyyy-MM-dd"/> </span><br/>
-                            </div>
-                        </div>
-                    </c:forEach>
-
-                </div>
-                <nav>
-                    <ul class="pagination">
-                        <c:if test="${cookbookPage.pageNum-1 gt 1}">
-                            <li>
-                                <a href="${pageContext.request.contextPath}/menu/menuDetail/${menu.id}?pageNum=${cookbookPage.pageNum-1}" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                        </c:if>
-                        <c:forEach begin="${cookbookPage.startIndex}" end="${cookbookPage.startIndex}" step="1" var="index">
-                            <li><a href="${pageContext.request.contextPath}/menu/menuDetail/${menu.id}?pageNum=${index+1}" <c:if test="${index+1 eq cookbookPage.pageNum}">class="active"</c:if>>${index+1}</a></li>
-                        </c:forEach>
-                        <c:if test="${cookbookPage.pageNum+1 lt cookbookPage.totalRecord}">
-                            <li>
-                                <a href="${pageContext.request.contextPath}/menu/menuDetail/${menu.id}?pageNum=${cookbookPage.pageNum+1}" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </c:if>
-                    </ul>
-                </nav>
-
-            </div>
-            <div class="cbookside">
-                <div class="cbooksidecss">
-                    <p>相关菜单</p>
-                    <ul>
-                        <li><a href="">美食疯狂来袭美食疯狂来袭哈哈哈哈哈哈哈哈哈</a></li>
-                        <li><a href="">美食疯狂来袭美食疯狂来袭哈哈哈哈哈哈哈哈哈</a></li>
-                        <li><a href="">美食疯狂来袭美食疯狂来袭哈哈哈哈哈哈哈哈哈</a></li>
-                        <li><a href="">美食疯狂来袭美食疯狂来袭哈哈哈哈哈哈哈哈哈</a></li>
-                        <li><a href="">美食疯狂来袭美食疯狂来袭哈哈哈哈哈哈哈哈哈</a></li>
-                        <li><a href="">美食疯狂来袭美食疯狂来袭哈哈哈哈哈哈哈哈哈</a></li>
-                        <li><a href="">美食疯狂来袭美食疯狂来袭哈哈哈哈哈哈哈哈哈</a></li>
-
-                    </ul>
-                </div>
-            </div>
-
-        </div><!--end cscontent -->
-    </div><!--end  content-->
-    <div id="pagebottom">
-        <div class="cspagebottom">
-            <p>广东海洋大学秀厨网&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright©2015秀厨网第四组</p>
-        </div>
-    </div><!--pagebottom-->
-
-</div>
-<script type="text/javascript">
 
     $(document).ready(function(){
         checkCollection();
     });
 
-
-    jQuery("#csnav").slide({  type:"menu", titCell:".mainCate", targetCell:".subCate", delayTime:0, triggerTime:0, defaultPlay:false, returnDefault:true });
 
 
     var result;
@@ -367,7 +254,6 @@
             })
         }
     }
->>>>>>> refs/heads/develop
 </script>
 </body>
 </html>

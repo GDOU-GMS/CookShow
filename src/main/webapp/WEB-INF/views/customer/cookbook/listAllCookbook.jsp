@@ -43,21 +43,21 @@
                         <a class="btn btn1" href="#" role="button">注册</a>
                     </div>
 
-                 	<c:if test="${!empty user }">
-						<ul id="personcenter" style="float: left;">
-							<li style="width: 110px;"><a class="btn btn1"
-								href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}"
-								role="button">个人中心</a>
-								<ul>
-									<li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>
-									<li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}">我的厨房</a></li>
-									<li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}?target=mymenu">我的菜单</a></li>
-									<li><a href="${pageContext.request.contextPath}/relation/getAllrelation/${user.id==null ? 0 : user.id}">关注的好友</a></li>
-									<li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
-								</ul></li>
+                    <c:if test="${!empty user }">
+                        <ul id="personcenter" style="float: left;">
+                            <li style="width: 110px;"><a class="btn btn1"
+                                                         href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}"
+                                                         role="button">个人中心</a>
+                                <ul>
+                                    <li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}">我的厨房</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}?target=mymenu">我的菜单</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/relation/getAllrelation/${user.id==null ? 0 : user.id}">关注的好友</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
+                                </ul></li>
 
-						</ul>
-					</c:if>
+                        </ul>
+                    </c:if>
                 </div>
             </div>
         </div>
@@ -65,7 +65,7 @@
     <div id="navfont">
         <div id="navcontent">
 
-           <ul class="nav nav-pills">
+            <ul class="nav nav-pills">
                 <li role="presentation" class="cbook"><a title="点击查看所有分类" href="${pageContext.request.contextPath}/classification/allClassification">全部分类</a></li>
                 <li role="presentation"><a href="${pageContext.request.contextPath}/">首页</a></li>
                 <li role="presentation"class="active" ><a href="${pageContext.request.contextPath}/menu/cookmenu">菜单</a></li>
@@ -76,76 +76,77 @@
 
         </div>
     </div>
- 			<div id="content">
-				<div class="cscontent">
-					<div class="csleft">
-						<div class="banner">
-                            <ul id="csnav">
+    <div id="content">
+        <div class="cscontent">
+            <div class="csleft">
+                <div class="banner">
+                    <ul id="csnav">
+                        <li id="mainCate-1" class="mainCate">
+                            <h3>
+                                <span>&gt;</span><a href="javascript:void(0);">热门分类</a>
+                            </h3>
+                            <div class="subCate" style="display: none;">
+                                <ul id="sub-ul-1">
+                                    <a href="${pageContext.request.contextPath}/menu/cookmenu"><span>最新菜谱</span></a>
+                                    <a href="${pageContext.request.contextPath}/classification/allClassification"><span>所有分类</span></a>
+                                    <a href="javascript:void(0)"><span>往期头条</span></a>
+                                </ul>
+                            </div>
+                        </li>
+                        <c:forEach items="${topClassificationVoList}" var="topClassification" varStatus="loop">
+                            <c:if test="${loop.index lt 10}">
                                 <li id="mainCate-1" class="mainCate">
                                     <h3>
-                                        <span>&gt;</span><a href="javascript:void(0);">热门分类</a>
+                                        <span>&gt;</span><a href="http://sc.admin5.com/">${topClassification.name }</a>
                                     </h3>
                                     <div class="subCate" style="display: none;">
-                                        <ul id="sub-ul-1">
-                                            <a href="${pageContext.request.contextPath}/menu/cookmenu"><span>最新菜谱</span></a>
-                                            <a href="${pageContext.request.contextPath}/classification/allClassification"><span>所有分类</span></a>
-                                            <a href="javascript:void(0)"><span>往期头条</span></a>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <c:forEach items="${topClassificationVoList}" var="topClassification" varStatus="loop">
-                                    <c:if test="${loop.index lt 10}">
-                                        <li id="mainCate-1" class="mainCate">
-                                            <h3>
-                                                <span>&gt;</span><a href="http://sc.admin5.com/">${topClassification.name }</a>
-                                            </h3>
-                                            <div class="subCate" style="display: none;">
-                                                <c:forEach items="${topClassification.list }" var="secondClassification">
-                                                    <ul id="sub-ul-1">
-                                                        <h4>${secondClassification.name }</h4>
-                                                        <li>
+                                        <c:forEach items="${topClassification.list }" var="secondClassification">
+                                            <ul id="sub-ul-1">
+                                                <h4>${secondClassification.name }</h4>
+                                                <li>
 														<span>
 															<c:forEach items="${secondClassification.list }" var="thirdClassification">
                                                                 <a href="${pageContext.request.contextPath}/cookbook/findByClassificationCode/${thirdClassification.code}">${thirdClassification.name }</a>
                                                             </c:forEach>
 														</span>
-                                                        </li>
-                                                    </ul>
-                                                </c:forEach>
-                                            </div>
-                                        </li>
-                                    </c:if>
-                                </c:forEach>
-                                <li id="mainCate-1" class="mainCate">
-                                    <h3>
-                                        <span>&gt;</span><a href="${pageContext.request.contextPath}/classification/allClassification">更多</a>
-                                    </h3>
+                                                </li>
+                                            </ul>
+                                        </c:forEach>
+                                    </div>
                                 </li>
-                            </ul>
-				    </div>
-				</div>
+                            </c:if>
+                        </c:forEach>
+                        <li id="mainCate-1" class="mainCate">
+                            <h3>
+                                <span>&gt;</span><a href="${pageContext.request.contextPath}/classification/allClassification">更多</a>
+                            </h3>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             <!--csleft-->
             <div class="cbookright">
                 <div class="cbooktop">
-                	<c:forEach items="${page.list}" var="menu" varStatus="loop">
-                    <div class="feat_prod_box cbookcontent" style="margin-bottom:5px;border_bottom:none;background-color: #F4F3F1">
-                        <div class="">
-                            <div class="box_center" >
-                                <div class="prod_title" style="text-align: center">
-                                    <h3><a href="${pageContext.request.contextPath}/menu/menuDetail/${menu.id}">${menu.name}</a></h3>
-                                </div>
-                                <p style="margin:0px 5px;padding:0px;height:60px;overflow:hidden;text-overflow:ellipsis;font-family:宋体;">&nbsp;&nbsp;${menu.title}</p>
-								<div style="margin-left: 15px;">
-                                    <a href="${pageContext.request.contextPath}/user/personWork/${menu.user.id}" class="cbuser"><p style="margin:0px 5px;padding:0px;color:#EB8C24;font-family:宋体;">${menu.user.username}</p></a>
-                                    <p style="margin:0px 5px;padding:0px;color:#EB8C24;"><ftm:formatDate value="${menu.createDate}" pattern="yyyy-MM-dd"/> </p>
-                                </div>
-                                <div class="clear"></div>
+                    <c:forEach items="${page.list}" var="cookbook" varStatus="loop">
+                        <div class="feat_prod_box cbookcontent" style="border_bottom:none;">
+                            <div class="prod_img">
+                                <a href="${pageContext.request.contextPath}/cookbook/cookbook/${cookbook.id}">
+                                    <img style="width:150px;height:150px;" src="${cookbook.titleImage}" alt="" title="" border="0"/>
+                                </a>
                             </div>
-                            <div class="box_bottom"></div>
+                            <div class="prod_det_box">
+                                <div class="box_center">
+                                    <div class="prod_title"><h3><a href="${pageContext.request.contextPath}/cookbook/cookbook/${cookbook.id}">${cookbook.title}</a></h3></div>
+                                    <p style="margin:0px 5px;padding:0px;height:60px;overflow:hidden;text-overflow:ellipsis;font-family:宋体;">${cookbook.intro}</p>
+                                    <a href="${pageContext.request.contextPath}/user/personWork/${cookbook.user.id}" class="cbuser"><p style="margin:0px 5px;padding:0px;font-family:宋体;">${cookbook.user.username}</p></a>
+                                    <p style="margin:0px 5px;padding:0px;color:#ccc;"><ftm:formatDate value="${cookbook.createDate}" pattern="yyyy-MM-dd"/> </p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="box_bottom"></div>
+                            </div>
+                            <div class="clear"></div>
                         </div>
-                        <div class="clear"></div>
-                    </div>
-                	</c:forEach>
+                    </c:forEach>
                 </div>
                 <div class="cbookbottom">
                     <nav>
@@ -159,7 +160,7 @@
                             </c:if>
                             <c:if test="${page.totalPage gt 1}">
                                 <c:forEach begin="${page.startPage-1}" end="${page.endPage-1}" step="1" var="index" >
-                                     <li><a href="${pageContext.request.contextPath}/menu/cookmenu?pageNum=${index+1}" <c:if test="${index+1 eq page.pageNum}">class="active"</c:if>>${index+1}</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/menu/cookmenu?pageNum=${index+1}" <c:if test="${index+1 eq page.pageNum}">class="active"</c:if>>${index+1}</a></li>
                                 </c:forEach>
                             </c:if>
                             <c:if test="${page.pageNum lt page.totalPage}">
@@ -181,9 +182,9 @@
                 <div class="cbooksidecss">
                     <p>相关菜单</p>
                     <ul>
-                    <c:forEach items="${menuList}" var="menu">
-						<li><a href="${pageContext.request.contextPath}/menu/menuDetail/${menu.id}">${menu.title}</a></li>
-					</c:forEach>
+                        <c:forEach items="${menuList}" var="menu">
+                            <li><a href="${pageContext.request.contextPath}/menu/menuDetail/${menu.id}">${menu.title}</a></li>
+                        </c:forEach>
 
                     </ul>
                 </div>

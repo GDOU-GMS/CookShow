@@ -109,25 +109,25 @@
                 </div>
                 <div class="media-body">
                     <c:if test="${(!empty user)&&(empty relation)&&(!empty tag)}">
-                       <span style="display:none;" id="focusid">${userInfo.id}</span>
-                       <span style="display:none;" id="currentid">${user.id}</span>
-                        
-                       <a id="focushref" class="btn btn-default createcss" href="javascript:void(0)" >关注</a>
-                   		 
-                   		<!-- 
-                   		<form method="post" action="${pageContext.request.contextPath}/relation/addFocusOnFriend/${userInfo.id}/${user.id}" id="focushref">
-                   			
-                   			 <button type="submit" class="btn btn-default" >关注</button>
-                   		</form>
-                   		 -->
+                        <span style="display:none;" id="focusid">${userInfo.id}</span>
+                        <span style="display:none;" id="currentid">${user.id}</span>
+
+                        <a id="focushref" class="btn btn-default createcss" href="javascript:void(0)" >关注</a>
+
+                        <!--
+                        <form method="post" action="${pageContext.request.contextPath}/relation/addFocusOnFriend/${userInfo.id}/${user.id}" id="focushref">
+
+                        <button type="submit" class="btn btn-default" >关注</button>
+                        </form>
+                        -->
                     </c:if>
                     <c:if  test="${(!empty user)&&(!empty relation)&&(!empty tag)}">
-                       <span style="display:none;" id="focusid">${userInfo.id}</span>
-                       <span style="display:none;" id="currentid">${user.id}</span>
-                        
-                       <a id="focushref" class="btn btn-default createcss createcss1"  href="javascript:void(0)">已关注</a>
-                   		 
-                    	
+                        <span style="display:none;" id="focusid">${userInfo.id}</span>
+                        <span style="display:none;" id="currentid">${user.id}</span>
+
+                        <a id="focushref" class="btn btn-default createcss createcss1"  href="javascript:void(0)">已关注</a>
+
+
                     </c:if>
                    <div class="media-body mediainforight">
                        <a  href="${pageContext.request.contextPath}/relation/getAllrelation/${userInfo.id}" class="mediainforight">关注的人</a>
@@ -213,27 +213,29 @@
                             <a class="btn btn-default createcss" href="${pageContext.request.contextPath}/cookbook/createCookbook" role="button">创建新菜谱</a>
                         </div>
 
-                        <div class="row">
+
                             <c:forEach items="${cookbookPage.list}" var="cookbook">
-                                <div class="col-sm-6 col-md-4">
-                                    <div class="thumbnail">
-                                        <div>
-                                            <a href="${pageContext.request.contextPath}/cookbook/cookbook/${cookbook.id}"><img src="${cookbook.titleImage}" alt="..."></a>
-                                            <div class="caption">
-                                                <h3>${cookbook.title}</h3>
-                                                <p>${cookbook.intro}</p>
-                                                <c:if test="${!empty user}">
-                                                    <p class="col-md-offset-3">
-                                                        <a href="${pageContext.request.contextPath}/cookbook/forwardModifyCookbook?id=${cookbook.id}" class="btn btn-default" role="button">编辑</a>
-                                                        <a href="${pageContext.request.contextPath}/cookbook/deleteCookbook?id=${cookbook.id}" class="btn btn-default" role="button" onclick="return confirm('确认删除？')">删除</a>
-                                                    </p>
-                                                </c:if>
+                                <div class="row" style="width:332px;heihgt:320px;">
+                                    <div class="col-sm-6 col-md-4"style="width:332px; padding: 0px;">
+                                        <div class="thumbnail" style="width:332px;height:320px;">
+                                            <div>
+                                                <a href="${pageContext.request.contextPath}/cookbook/cookbook/${cookbook.id}"><img style="width:256px;height:230px;margin:10px 30px;" src="${cookbook.titleImage}" alt="..."></a>
+                                                <div class="caption">
+                                                    <h3>${cookbook.title}</h3>
+                                                    <p>${cookbook.intro}</p>
+                                                    <c:if test="${!empty user}">
+                                                        <p class="col-md-offset-3">
+                                                            <a href="${pageContext.request.contextPath}/cookbook/forwardModifyCookbook?id=${cookbook.id}" class="btn btn-default" role="button">编辑</a>
+                                                            <a href="${pageContext.request.contextPath}/cookbook/deleteCookbook?id=${cookbook.id}" class="btn btn-default" role="button" onclick="return confirm('确认删除？')">删除</a>
+                                                        </p>
+                                                    </c:if>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </c:forEach>
-                        </div>
+
                         <nav>
                             <ul class="pagination">
                                 <c:if test="${cookbookPage.pageNum-1 gt 1}">
@@ -398,133 +400,87 @@
     $(function(){
         var target ='${target}';
         var $navul = $("#navul");
-       if(target!=null&&target!=''){
-           $navul.find("li").each(function(){
-               $(this).removeClass("active");
-           });
-           $("#target_"+target).attr("class","active");
-           $(".tab-pane").each(function(){
-               $(this).removeClass("active");
-           });
-           $("#"+target).addClass("active")
-       }
-       if($('#focushref').text()=="已关注"){
-    	   $('#focushref').mouseover(function(){
-	        	$('#focushref').text("取消关注");
-	        });
-	        $('#focushref').mouseout(function(){
-	        	$('#focushref').text("已关注");
-	        });
-	        $('#focushref').removeClass("changea");
-	        $('#focushref').addClass("createcss");
-       }
-       
+        if(target!=null&&target!=''){
+            $navul.find("li").each(function(){
+                $(this).removeClass("active");
+            });
+            $("#target_"+target).attr("class","active");
+            $(".tab-pane").each(function(){
+                $(this).removeClass("active");
+            });
+            $("#"+target).addClass("active")
+        }
+        if($('#focushref').text()=="已关注"){
+            $('#focushref').mouseover(function(){
+                $('#focushref').text("取消关注");
+            });
+            $('#focushref').mouseout(function(){
+                $('#focushref').text("已关注");
+            });
+            $('#focushref').removeClass("changea");
+            $('#focushref').addClass("createcss");
+        }
+
+
     })
     $(document).ready(function() {
-    	$('#focushref').click(function(){
-    		aa();
-    	})
+
+        $('#focushref').click(function(){
+            aa();
+        })
     })
     function aa(){
-    	    if($('#focushref').text()=="关注"){
-	    	    var url = 'http://localhost:8080/relation/addFocusOnFriend/';
-	    	    var focusid=$('#focusid').text();
-	    	    var currentid=$('#currentid').text();
-	    	    var param=currentid+'/'+focusid;
-	    	    url += param;
-	    	    //alert(url);
-	    	    $.get(url, function(data) {
-	    	        $('#focushref').text(data.msg);
-	    	        $('#focushref').removeClass("createcss");
-	    	        $('#focushref').addClass("changea");
-	    	        //$('#myModal').modal('show');
-	    	        $('#focushref').mouseover(function(){
-	    	        	$('#focushref').text("取消关注");
-	    	        });
-     $(document).ready(function() { 
-       
-    	$('#focushref').click(function(){
-    		aa();
-    	})
-    })
-    
-     function aa(){
-    	    if($('#focushref').text()=="关注"){
-	    	    var url = 'http://localhost:8080/relation/addFocusOnFriend/'; 
-	    	    var focusid=$('#focusid').text();
-	    	    var currentid=$('#currentid').text();
-	    	    var param=currentid+'/'+focusid;
-	    	    url += param;  
-	    	    //alert(url);  
-	    	    $.get(url, function(data) { 
-	    	        $('#focushref').text(data.msg);
-	    	        $('#focushref').removeClass("createcss");
-	    	        $('#focushref').addClass("changea");
-	    	        //$('#myModal').modal('show');
-	    	        $('#focushref').mouseover(function(){
-	    	        	$('#focushref').text("取消关注");
-	    	        });
-	    	        $('#focushref').mouseout(function(){
-	    	        	$('#focushref').text(data.msg);
-	    	        });
-	    	        
-	    	    });  
-    	    }else if($('#focushref').text()=="取消关注"){
-    	    	
-    	    	var url = 'http://localhost:8080/relation/deleteFocusOnFriend/'; 
-	    	    var focusid=$('#focusid').text();
-	    	    var currentid=$('#currentid').text();
-	    	   //alert(focusid);
-	    	    var param=currentid+'/'+focusid;
-	    	    url += param;  
-	    	    //alert(url);  
-	    	    $.get(url, function(data) { 
-	    	        $('#focushref').text(data.msg);
-	    	        $('#focushref').removeClass("changea");
-	    	        $('#focushref').addClass("createcss");
-	    	        //$('#myModal').modal('show');
-	    	       /*  $('#focushref').mouseover(function(){
-	    	        	$('#focushref').text("取消关注");
-	    	        }); */
-	    	        $('#focushref').mouseover(function(){
-	    	        	$('#focushref').text("关注");
-	    	        });
-	    	        $('#focushref').mouseout(function(){
-	    	        	$('#focushref').text("关注");
-	    	        });
-	    	        
-	    	    });  
-    	    	
-    	    }
-    	   
-    	    
-    }
+        if($('#focushref').text()=="关注"){
+            var url = 'http://localhost:8080/relation/addFocusOnFriend/';
+            var focusid=$('#focusid').text();
+            var currentid=$('#currentid').text();
+            var param=currentid+'/'+focusid;
+            url += param;
+            //alert(url);
+            $.get(url, function(data) {
+                $('#focushref').text(data.msg);
+                $('#focushref').removeClass("createcss");
+                $('#focushref').addClass("changea");
+                //$('#myModal').modal('show');
+                $('#focushref').mouseover(function(){
+                    $('#focushref').text("取消关注");
+                });
+                $('#focushref').mouseout(function(){
+                    $('#focushref').text(data.msg);
+                });
 
-	    	    });
-    	    }else if($('#focushref').text()=="取消关注"){
+            });
+        }else if($('#focushref').text()=="取消关注"){
 
-    	    	var url = 'http://localhost:8080/relation/deleteFocusOnFriend/';
-	    	    var focusid=$('#focusid').text();
-	    	    var currentid=$('#currentid').text();
-	    	   //alert(focusid);
-	    	    var param=currentid+'/'+focusid;
-	    	    url += param;
-	    	    //alert(url);
-	    	    $.get(url, function(data) {
-	    	        $('#focushref').text(data.msg);
-	    	        $('#focushref').removeClass("changea");
-	    	        $('#focushref').addClass("createcss");
-	    	        //$('#myModal').modal('show');
-	    	       /*  $('#focushref').mouseover(function(){
-	    	        	$('#focushref').text("取消关注");
-	    	        }); */
+            var url = 'http://localhost:8080/relation/deleteFocusOnFriend/';
+            var focusid=$('#focusid').text();
+            var currentid=$('#currentid').text();
+            //alert(focusid);
+            var param=currentid+'/'+focusid;
+            url += param;
+            //alert(url);
+            $.get(url, function(data) {
+                $('#focushref').text(data.msg);
+                $('#focushref').removeClass("changea");
+                $('#focushref').addClass("createcss");
+                //$('#myModal').modal('show');
+                /*  $('#focushref').mouseover(function(){
+                 $('#focushref').text("取消关注");
+                 }); */
+                $('#focushref').mouseover(function(){
+                    $('#focushref').text("关注");
+                });
+                $('#focushref').mouseout(function(){
+                    $('#focushref').text("关注");
+                });
 
-	    	    });
+            });
 
-    	    }
+        }
 
 
     }
+
 
 
 

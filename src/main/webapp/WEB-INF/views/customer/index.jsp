@@ -67,7 +67,6 @@
         });
     </script>
 
-
 </head>
 
 <body>
@@ -120,13 +119,11 @@
 			<div id="navfont">
 				<div id="navcontent">
 					<ul class="nav nav-pills">
-
 						<li role="presentation" class="cbook"><a title="点击查看所有分类" href="${pageContext.request.contextPath}/classification/allClassification">全部分类</a></li>
-
 						<li role="presentation" class="active"><a href="${pageContext.request.contextPath}/">首页</a></li>
 						<li role="presentation"><a href="${pageContext.request.contextPath}/menu/cookmenu">菜单</a></li>
-						<li role="presentation"><a href="#">健康饮食</a></li>
-						<li role="presentation"><a href="#">作品动态</a></li>
+						<li role="presentation"><a href="${pageContext.request.contextPath}/cookbook/listAllCookbook">菜谱</a></li>
+						<li role="presentation"><a href="${pageContext.request.contextPath}/production/productionIndex">作品动态</a></li>
 					</ul>
 				</div>
 			</div>
@@ -193,14 +190,14 @@
 			</div>
 			<!--中间内容结束-->
 			<div class="contentbottom">
-				<div class="csbottom">
-				<h4 class="cstitle" >新秀菜谱</h4>
+                <div class="csbottom">
+                    <h4 class="cstitle" >新秀菜谱</h4>
                     <c:forEach items="${newCreateCookbook}" var="cookbook">
-                        <div class="row showimg">
-                            <div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
-                                <div class="thumbnail">
-                                    <img src="${cookbook.titleImage}"  alt="..." style="margin: 0px 30px; margin-top: 25px;">
-                                    <div class="caption">
+                        <div class="row showimg" style="width:332px;heihgt:320px;">
+                            <div class="col-sm-6 col-md-4" style="width:332px; padding: 0px;">
+                                <div class="thumbnail" style="width:332px;height:320px;">
+                                    <img src="${cookbook.titleImage}"  alt="..." style="width:256px;height:230px;margin:10px 30px;">
+                                    <div class="caption"width:="width:320px;height:70px;margin-top:20px;">
                                         <h4 ><a class="captionhref" href="#">${cookbook.title}</a></h4>
                                     </div>
                                 </div>
@@ -208,14 +205,14 @@
                         </div>
                         <!--  end row-->
                     </c:forEach>
-					
-					<h4 class="cstitle" >本周最受欢迎</h4>
+
+                    <h4 class="cstitle" >本周最受欢迎</h4>
                     <c:forEach items="${popularCookbooks}" var="cookbook">
-                        <div class="row showimg ">
-                            <div class="col-sm-6 col-md-4" style="width: 100%; padding: 0px;">
-                                <div class="thumbnail">
-                                    <img src="${cookbook.titleImage}" alt="..." style="margin: 0px 30px; margin-top: 25px;">
-                                    <div class="caption">
+                        <div class="row showimg "style="width:332px;heihgt:320px;">
+                            <div class="col-sm-6 col-md-4" style="width:332px; padding: 0px;">
+                                <div class="thumbnail"  style="width:332px;height:320px;">
+                                    <img src="${cookbook.titleImage}" alt="..."style="width:256px;height:230px;margin:10px 30px;">
+                                    <div class="caption"width:="width:320px;height:70px;margin-top:20px;">
                                         <h4>${cookbook.title}</h4>
                                     </div>
                                 </div>
@@ -223,8 +220,8 @@
                         </div>
                         <!--  end row-->
                     </c:forEach>
-				</div>
-				<!--csbottom-->
+                </div>
+                <!--csbottom-->
 
 			</div>
 			<!-- end contentbottom-->

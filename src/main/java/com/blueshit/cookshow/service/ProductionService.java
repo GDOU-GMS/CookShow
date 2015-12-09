@@ -11,4 +11,6 @@ public interface ProductionService extends DaoSupport<Production> {
 
     Page getProductionByUserId(Long userId,int pageNum,int pageSize);
 
+    Page getAllProduction(int pageNum,int pageSize);
+
 }

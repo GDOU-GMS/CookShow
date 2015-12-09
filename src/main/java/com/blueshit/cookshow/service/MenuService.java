@@ -23,4 +23,6 @@ public interface MenuService extends DaoSupport<Menu> {
 
 //	public List<Menu> query(String name);
     public List<Menu> getDetail(Long menuId);
+
+    public Page listAllMenu(int pageNum,int pageSize);
 }

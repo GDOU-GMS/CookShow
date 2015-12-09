@@ -1,6 +1,7 @@
 package com.blueshit.cookshow.web.controller;
 
 import com.blueshit.cookshow.common.helper.Page;
+import com.blueshit.cookshow.common.helper.QueryHelper;
 import com.blueshit.cookshow.common.helper.entity.Material;
 import com.blueshit.cookshow.common.helper.entity.Step;
 import com.blueshit.cookshow.common.utils.MyDataUtils;
@@ -264,5 +265,20 @@ public class CookbookController extends BaseController {
         return "customer/menu/cookmenu";
     }
 
+
+
+    @RequestMapping("/listAllCookbook")
+    public String listAllCookbook(Integer pageNum,Model model){
+        //查询所有分类信息
+        model.addAttribute("topClassificationVoList",DataCacheListener.classificationList);
+        //查询所有菜谱
+        pageNum = pageNum==null||pageNum==0?1:pageNum;
+        QueryHelper queryHelper = new QueryHelper(Cookbook.class,"cb");
+        Page page = cookbookService.getPage(pageNum, queryHelper);
+        model.addAttribute("page",page);
+        List<Menu> menuList=menuService.getRecentPopular();
+        model.addAttribute("menuList", menuList);
+        return "customer/cookbook/listAllCookbook";
+    }
 }
 	
