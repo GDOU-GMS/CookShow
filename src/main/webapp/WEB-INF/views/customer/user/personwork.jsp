@@ -35,57 +35,55 @@
 <body>
 <div class="csw">
     <div id="top">
-        <div id="navigation">
-            <div  class="navcenter">
-                <div class="seach" >
-                    <input type="text" class="form-control" id="exampleInputName2" placeholder="搜索商品或菜单" >
-                    <button class="btn btn-default" >搜索</button>
+        <div class="navcenter">
+            <form action="${pageContext.request.contextPath}/cookbook/findByTitle" method="post">
+                <div class="seach">
+                    <input type="text" name="title" class="form-control" id="exampleInputName2"
+                           placeholder="搜索菜单或菜谱">
+                    <button class="btn btn-default">搜索</button>
                 </div>
-                <div class="landr">
-                    <div style="float: left;">
-                        <div style="float:left;">
-                            <c:if test="${user!=null}">
-                                <a class="btn btn1" href="${pageContext.request.contextPath}/user/personCenter">
-                                    欢迎，${user.username}
-                                </a>
-                            </c:if>
-                            <c:if test="${user==null}">
-                                <a class="btn btn1"
-                                   href="${pageContext.request.contextPath}/user/forwardToLogin"
-                                   role="button">登录/注册</a>
-                            </c:if>
-                        </div>
+            </form>
+            <div class="landr" style="">
+                <div style="float: left;">
+                    <div style="float:left;">
+                        <c:if test="${user!=null}">
+                            <a class="btn btn1" href="${pageContext.request.contextPath}/user/personCenter">
+                                欢迎，${user.username}
+                            </a>
+                        </c:if>
+                        <c:if test="${user==null}">
+                            <a class="btn btn1"
+                               href="${pageContext.request.contextPath}/user/forwardToLogin"
+                               role="button">登录/注册</a>
+                        </c:if>
                     </div>
+                </div>
+                <c:if test="${!empty user }">
+                    <ul id="personcenter" style="float: left;">
+                        <li style="width: 110px;"><a class="btn btn1"
+                                                     href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}"
+                                                     role="button">个人中心</a>
+                            <ul>
+                                <li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>
+                                <li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}">我的厨房</a></li>
+                                <li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}?target=mymenu">我的菜单</a></li>
+                                <li><a href="${pageContext.request.contextPath}/relation/getAllrelation/${user.id==null ? 0 : user.id}">关注的好友</a></li>
+                                <li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
+                            </ul></li>
 
-                    <c:if test="${!empty user }">
-						<ul id="personcenter" style="float: left;">
-							<li style="width: 110px;"><a class="btn btn1"
-								href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}"
-								role="button">个人中心</a>
-								<ul>
-									<li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>
-									<li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}">我的厨房</a></li>
-									<li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}?target=mymenu">我的菜单</a></li>
-									<li><a href="${pageContext.request.contextPath}/relation/getAllrelation/${user.id==null ? 0 : user.id}">关注的好友</a></li>
-									<li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
-								</ul></li>
-
-						</ul>
-					</c:if>
-                </div><!--landr-->
-
+                    </ul>
+                </c:if>
             </div>
         </div>
     </div>
     <div id="navfont">
         <div id="navcontent">
-
             <ul class="nav nav-pills">
-                <li role="presentation" class="cbook"></li>
-                <li role="presentation" class=""><a href="${pageContext.request.contextPath}/">首页</a></li>
+                <li role="presentation" class="cbook"><a></a></li>
+                <li role="presentation" class="active"><a href="${pageContext.request.contextPath}/">首页</a></li>
                 <li role="presentation"><a href="${pageContext.request.contextPath}/menu/cookmenu">菜单</a></li>
+                <li role="presentation"><a href="${pageContext.request.contextPath}/cookbook/listAllCookbook">菜谱</a></li>
                 <li role="presentation"><a href="${pageContext.request.contextPath}/production/productionIndex">作品动态</a></li>
-                <li role="presentation"><a href="#">健康饮食</a></li>
             </ul>
 
         </div>
@@ -154,11 +152,11 @@
                     <div role="tabpanel" class="tab-pane active" id="gaikuang">
                         <div class="creatediv">
                             <c:forEach items="${recentlyCookbooks}" var="cookbook">
-                                <div class="row showimg">
-                                    <div class="col-sm-6 col-md-4"style="width:100%;padding:0px;">
-                                        <div class="thumbnail">
-                                            <img src="${cookbook.titleImage}" alt="..." style="margin:0px 30px;margin-top:25px;">
-                                            <div class="caption">
+                                <div class="row showimg" style="width:332px;height:380px;">
+                                    <div class="col-sm-6 col-md-4"style="width:332px;height:380px;">
+                                        <div class="thumbnail" style="width:332px;height:380px;">
+                                            <img src="${cookbook.titleImage}" alt="..." style="margin:10px 30px;width: 256px;height: 230px;" >
+                                            <div class="caption" style="width:256px;height: 130px;">
                                                 <h4>${cookbook.title}</h4>
                                                 <p>${cookbook.intro}</p>
                                                 <span style="color:#ccc;font-size:12px;"><fmt:formatDate value="${cookbook.createDate}" pattern="yyyy-MM-dd"/></span>
@@ -215,12 +213,12 @@
 
 
                             <c:forEach items="${cookbookPage.list}" var="cookbook">
-                                <div class="row" style="width:332px;heihgt:320px;">
-                                    <div class="col-sm-6 col-md-4"style="width:332px; padding: 0px;">
-                                        <div class="thumbnail" style="width:332px;height:320px;">
-                                            <div>
+                                <div class="row" style="width:332px;height:400px;">
+                                    <div class="col-sm-6 col-md-4"style="width:332px;height:400px; padding: 0px;">
+                                        <div class="thumbnail" style="width:332px;height:400px;">
+
                                                 <a href="${pageContext.request.contextPath}/cookbook/cookbook/${cookbook.id}"><img style="width:256px;height:230px;margin:10px 30px;" src="${cookbook.titleImage}" alt="..."></a>
-                                                <div class="caption">
+                                                <div class="caption" style="width:332px;height:150px;margin-top: 20px;">
                                                     <h3>${cookbook.title}</h3>
                                                     <p>${cookbook.intro}</p>
                                                     <c:if test="${!empty user}">
@@ -230,7 +228,7 @@
                                                         </p>
                                                     </c:if>
                                                 </div>
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>

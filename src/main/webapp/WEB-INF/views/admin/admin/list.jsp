@@ -321,7 +321,7 @@ Purchase: http://wrapbootstrap.com
                                     </li>
                                 </c:if>
                                <c:if test="${page.totalPage gt 1}">
-                                   <c:forEach begin="${page.startIndex}" end="${page.startIndex}" step="1" var="index">
+                                   <c:forEach begin="${page.startPage}" end="${page.endPage}" step="1" var="index">
                                        <li><a href="${pageContext.request.contextPath}/admin/list?pageNum=${index+1}"
                                               <c:if test="${index+1 eq page.pageNum}">class="active"</c:if>>${index+1}</a>
                                        </li>

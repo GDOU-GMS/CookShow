@@ -31,34 +31,44 @@
 <div class="csw">
     <div id="top">
         <div id="navigation">
-            <div class="navcenter">
+        <div class="navcenter">
+            <form action="${pageContext.request.contextPath}/cookbook/findByTitle" method="post">
                 <div class="seach">
-                    <input type="text" class="form-control" id="exampleInputName2" placeholder="搜索商品或菜单">
+                    <input type="text" name="title" class="form-control" id="exampleInputName2"
+                           placeholder="搜索菜单或菜谱">
                     <button class="btn btn-default">搜索</button>
                 </div>
-                <div class="landr">
-
+            </form>
+            <div class="landr" style="">
+                <div style="float: left;">
                     <div style="float:left;">
-                        <a class="btn btn1" href="#" role="button">登录</a>
-                        <a class="btn btn1" href="#" role="button">注册</a>
+                        <c:if test="${user!=null}">
+                            <a class="btn btn1" href="${pageContext.request.contextPath}/user/personCenter">
+                                欢迎，${user.username}
+                            </a>
+                        </c:if>
+                        <c:if test="${user==null}">
+                            <a class="btn btn1"
+                               href="${pageContext.request.contextPath}/user/forwardToLogin"
+                               role="button">登录/注册</a>
+                        </c:if>
                     </div>
-
-                    <c:if test="${!empty user }">
-                        <ul id="personcenter" style="float: left;">
-                            <li style="width: 110px;"><a class="btn btn1"
-                                                         href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}"
-                                                         role="button">个人中心</a>
-                                <ul>
-                                    <li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}">我的厨房</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}?target=mymenu">我的菜单</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/relation/getAllrelation/${user.id==null ? 0 : user.id}">关注的好友</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
-                                </ul></li>
-
-                        </ul>
-                    </c:if>
                 </div>
+                <c:if test="${!empty user }">
+                    <ul id="personcenter" style="float: left;">
+                        <li style="width: 110px;"><a class="btn btn1"
+                                                     href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}"
+                                                     role="button">个人中心</a>
+                            <ul>
+                                <li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>
+                                <li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}">我的厨房</a></li>
+                                <li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}?target=mymenu">我的菜单</a></li>
+                                <li><a href="${pageContext.request.contextPath}/relation/getAllrelation/${user.id==null ? 0 : user.id}">关注的好友</a></li>
+                                <li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
+                            </ul></li>
+
+                    </ul>
+                </c:if>
             </div>
         </div>
     </div>
@@ -67,10 +77,10 @@
 
             <ul class="nav nav-pills">
                 <li role="presentation" class="cbook"><a title="点击查看所有分类" href="${pageContext.request.contextPath}/classification/allClassification">全部分类</a></li>
-                <li role="presentation"><a href="${pageContext.request.contextPath}/">首页</a></li>
-                <li role="presentation"class="active" ><a href="${pageContext.request.contextPath}/menu/cookmenu">菜单</a></li>
+                <li role="presentation" ><a href="${pageContext.request.contextPath}/">首页</a></li>
+                <li role="presentation"><a href="${pageContext.request.contextPath}/menu/cookmenu">菜单</a></li>
+                <li role="presentation" class="active"><a href="${pageContext.request.contextPath}/cookbook/listAllCookbook">菜谱</a></li>
                 <li role="presentation"><a href="${pageContext.request.contextPath}/production/productionIndex">作品动态</a></li>
-                <li role="presentation"><a href="#">健康饮食</a></li>
             </ul>
 
 
@@ -153,19 +163,19 @@
                         <ul class="pagination">
                             <c:if test="${page.pageNum gt 1}">
                                 <li>
-                                    <a href="${pageContext.request.contextPath}/menu/cookmenu?pageNum=${page.pageNum-1}" aria-label="Previous">
+                                    <a href="${pageContext.request.contextPath}/cookbook/listAllCookbook?pageNum=${page.pageNum-1}" aria-label="Previous">
                                         <span aria-hidden="true">上一页</span>
                                     </a>
                                 </li>
                             </c:if>
                             <c:if test="${page.totalPage gt 1}">
                                 <c:forEach begin="${page.startPage-1}" end="${page.endPage-1}" step="1" var="index" >
-                                    <li><a href="${pageContext.request.contextPath}/menu/cookmenu?pageNum=${index+1}" <c:if test="${index+1 eq page.pageNum}">class="active"</c:if>>${index+1}</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/cookbook/listAllCookbook?pageNum=${index+1}" <c:if test="${index+1 eq page.pageNum}">class="active"</c:if>>${index+1}</a></li>
                                 </c:forEach>
                             </c:if>
                             <c:if test="${page.pageNum lt page.totalPage}">
                                 <li>
-                                    <a href="${pageContext.request.contextPath}/menu/cookmenu?pageNum=${page.pageNum+1}" aria-label="Next">
+                                    <a href="${pageContext.request.contextPath}/cookbook/listAllCookbook?pageNum=${page.pageNum+1}" aria-label="Next">
                                         <span aria-hidden="true">下一页</span>
                                     </a>
                                 </li>

@@ -340,7 +340,7 @@ Purchase: http://wrapbootstrap.com
                             <br/>
                             <nav>
                                 <ul class="pagination">
-                                    <c:if test="${page.pageNum-1 gt 1}">
+                                    <c:if test="${page.pageNum-1 gt 0}">
                                         <li>
                                             <a href="${pageContext.request.contextPath}/admin/user/list?pageNum=${page.pageNum-1}"
                                                aria-label="Previous">
@@ -349,14 +349,14 @@ Purchase: http://wrapbootstrap.com
                                         </li>
                                     </c:if>
                                     <c:if test="${page.totalPage gt 1}">
-                                        <c:forEach begin="${page.startIndex}" end="${page.startIndex}" step="1" var="index">
+                                        <c:forEach begin="${page.startPage}" end="${page.endPage}" step="1" var="index">
                                             <li>
-                                                <a href="${pageContext.request.contextPath}/admin/user/list?pageNum=${index+1}"
-                                                   <c:if test="${index+1 eq page.pageNum}">class="active"</c:if>>${index+1}</a>
+                                                <a href="${pageContext.request.contextPath}/admin/user/list?pageNum=${index}"
+                                                   <c:if test="${index eq page.pageNum}">class="active"</c:if>>${index}</a>
                                             </li>
                                         </c:forEach>
                                     </c:if>
-                                    <c:if test="${page.pageNum+1 lt page.totalPage}">
+                                    <c:if test="${page.pageNum lt page.totalPage}">
                                         <li>
                                             <a href="${pageContext.request.contextPath}/admin/user/list?pageNum=${page.pageNum+1}" aria-label="Next">
                                                 <span aria-hidden="true">&raquo;</span>

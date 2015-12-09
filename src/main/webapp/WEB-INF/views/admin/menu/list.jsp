@@ -319,22 +319,22 @@ Purchase: http://wrapbootstrap.com
                         <br/>
                         <nav>
                             <ul class="pagination">
-                                <c:if test="${page.pageNum-1 gt 1}">
+                                <c:if test="${page.pageNum-1 gt 0}">
                                     <li>
-                                        <a href="${pageContext.request.contextPath}/cookbook/list?pageNum=${page.pageNum-1}"
+                                        <a href="${pageContext.request.contextPath}/admin/menu/list?pageNum=${page.pageNum-1}"
                                            aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
                                         </a>
                                     </li>
                                 </c:if>
-                                <c:forEach begin="${page.startIndex}" end="${page.startIndex}" step="1" var="index">
-                                    <li><a href="${pageContext.request.contextPath}/cookbook/list?pageNum=${index+1}"
-                                           <c:if test="${index+1 eq page.pageNum}">class="active"</c:if>>${index+1}</a>
+                                <c:forEach begin="${page.startPage}" end="${page.endPage}" step="1" var="index">
+                                    <li><a href="${pageContext.request.contextPath}/admin/menu/list?pageNum=${index}"
+                                           <c:if test="${index eq page.pageNum}">class="active"</c:if>>${index}</a>
                                     </li>
                                 </c:forEach>
-                                <c:if test="${page.pageNum+1 lt page.totalPage}">
+                                <c:if test="${page.pageNum lt page.totalPage}">
                                     <li>
-                                        <a href="${pageContext.request.contextPath}/cookbook/list?pageNum=${page.pageNum+1}"
+                                        <a href="${pageContext.request.contextPath}/admin/menu/list?pageNum=${page.pageNum+1}"
                                            aria-label="Next">
                                             <span aria-hidden="true">&raquo;</span>
                                         </a>

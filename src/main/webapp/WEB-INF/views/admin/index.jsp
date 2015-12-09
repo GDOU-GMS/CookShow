@@ -77,17 +77,12 @@ Purchase: http://wrapbootstrap.com
                 </a>
             </div>
             <!-- /Navbar Barnd -->
-
             <!-- Sidebar Collapse -->
             <div class="sidebar-collapse" id="sidebar-collapse">
                 <i class="collapse-icon fa fa-bars"></i>
             </div>
 
             </li>
-            <!--
-                                        </div>
-                            </div>
-                            <!-- /Account Area and Settings -->
         </div>
     </div>
 </div>

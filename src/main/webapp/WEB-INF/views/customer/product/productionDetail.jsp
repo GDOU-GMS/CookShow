@@ -35,11 +35,14 @@
     <div id="top">
         <div id="navigation">
             <div class="navcenter">
-                <div class="seach">
-                    <input type="text" class="form-control" id="exampleInputName2" placeholder="搜索商品或菜单">
-                    <button class="btn btn-default">搜索</button>
-                </div>
-                <div class="landr">
+                <form action="${pageContext.request.contextPath}/cookbook/findByTitle" method="post">
+                    <div class="seach">
+                        <input type="text" name="title" class="form-control" id="exampleInputName2"
+                               placeholder="搜索菜单或菜谱">
+                        <button class="btn btn-default">搜索</button>
+                    </div>
+                </form>
+                <div class="landr" style="">
                     <div style="float: left;">
                         <div style="float:left;">
                             <c:if test="${user!=null}">
@@ -54,22 +57,21 @@
                             </c:if>
                         </div>
                     </div>
-
                     <c:if test="${!empty user }">
-						<ul id="personcenter" style="float: left;">
-							<li style="width: 110px;"><a class="btn btn1"
-								href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}"
-								role="button">个人中心</a>
-								<ul>
-									<li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>
-									<li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}">我的厨房</a></li>
-									<li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}?target=mymenu">我的菜单</a></li>
-									<li><a href="${pageContext.request.contextPath}/relation/getAllrelation/${user.id==null ? 0 : user.id}">关注的好友</a></li>
-									<li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
-								</ul></li>
+                        <ul id="personcenter" style="float: left;">
+                            <li style="width: 110px;"><a class="btn btn1"
+                                                         href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}"
+                                                         role="button">个人中心</a>
+                                <ul>
+                                    <li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}">我的厨房</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}?target=mymenu">我的菜单</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/relation/getAllrelation/${user.id==null ? 0 : user.id}">关注的好友</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
+                                </ul></li>
 
-						</ul>
-						</c:if>
+                        </ul>
+                    </c:if>
                 </div>
             </div>
         </div>
@@ -78,10 +80,10 @@
         <div id="navcontent">
            <ul class="nav nav-pills">
                 <li role="presentation" class="cbook"><a title="点击查看所有分类" href="${pageContext.request.contextPath}/classification/allClassification">全部分类</a></li>
-                <li role="presentation" class=""><a href="${pageContext.request.contextPath}/">首页</a></li>
-                <li role="presentation"><a href="${pageContext.request.contextPath}/menu/cookmenu">菜单</a></li>
-                <li role="presentation"><a href="${pageContext.request.contextPath}/production/productionIndex">作品动态</a></li>
-                <li role="presentation"><a href="#">健康饮食</a></li>
+               <li role="presentation" class="active"><a href="${pageContext.request.contextPath}/">首页</a></li>
+               <li role="presentation"><a href="${pageContext.request.contextPath}/menu/cookmenu">菜单</a></li>
+               <li role="presentation"><a href="${pageContext.request.contextPath}/cookbook/listAllCookbook">菜谱</a></li>
+               <li role="presentation"><a href="${pageContext.request.contextPath}/production/productionIndex">作品动态</a></li>
             </ul>
         </div>
     </div>

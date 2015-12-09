@@ -105,7 +105,7 @@ public class CookbookController extends BaseController {
             e.printStackTrace();
         }
         //重定向到个人中心
-		return "redirect:/user/personWork/"+ user.getId();
+		return "redirect:/user/personWork/"+ user.getId()+"?target=pwd";
     }
 
     @RequestMapping("/cookbook/{cookbookId}")
