@@ -73,7 +73,7 @@ Purchase: http://wrapbootstrap.com
             <div class="navbar-header pull-left">
                 <a href="#" class="navbar-brand">
                     <small>
-                        <img src="/resources/assets/img/cs.png" alt=""/>
+                        <img src="${pageContext.request.contextPath}/resources/customer/images/newlogo.png" alt=""/>
                     </small>
                 </a>
             </div>
@@ -261,7 +261,7 @@ Purchase: http://wrapbootstrap.com
                                     菜谱标题
                                 </th>
                                 <th>
-                                    菜谱类型
+                                    用户
                                 </th>
 
                                 <th>
@@ -296,7 +296,7 @@ Purchase: http://wrapbootstrap.com
                                             ${cookbook.title}
                                     </td>
                                     <td>
-                                            ${cookbook.classificationCode}
+                                            ${cookbook.user.username}
                                     </td>
 
                                     <td>
@@ -321,14 +321,21 @@ Purchase: http://wrapbootstrap.com
                                         </c:if>
                                     </td>
                                     <td>
-                                        <a href="${pageContext.request.contextPath}/admin/cookbook/disable?cookbookId=${cookbook.id}"
-                                           method="post"
-                                           class="btn btn-info btn-xs edit"> 锁定</a>
-                                        <a href="${pageContext.request.contextPath}/admin/cookbook/enable?cookbookId=${cookbook.id}"
-                                           method="post"
-                                           class="btn btn-info btn-xs edit"> 解锁</a>
-                                        <a href="${pageContext.request.contextPath}/admin/cookbook/detail?cookbookId=${cookbook.id}"
-                                           class="btn btn-danger btn-xs delete">详细信息</a>
+                                        <c:if test="${cookbook.deleted eq 1}">
+                                            <a href="${pageContext.request.contextPath}/admin/cookbook/enable?cookbookId=${cookbook.id}" method="post" class="btn btn-default btn-xs edit"> 解锁</a>
+                                        </c:if>
+                                        <c:if test="${cookbook.deleted eq 0}">
+                                            <a href="${pageContext.request.contextPath}/admin/cookbook/disable?cookbookId=${cookbook.id}" method="post"class="btn btn-info btn-xs edit"> 锁定</a>
+                                        </c:if>
+
+                                        <c:if test="${!cookbook.isHeadline}">
+                                            <a href="${pageContext.request.contextPath}/admin/cookbook/setIsHeadLine?cookbookId=${cookbook.id}" method="post" class="btn btn-success btn-xs edit">设为头条</a>
+                                        </c:if>
+                                        <c:if test="${cookbook.isHeadline}">
+                                            <a href="${pageContext.request.contextPath}/admin/cookbook/cancelHeadLine?cookbookId=${cookbook.id}" method="post"class="btn btn-default btn-xs edit">取消头条</a>
+                                        </c:if>
+
+                                        <a href="${pageContext.request.contextPath}/admin/cookbook/detail?cookbookId=${cookbook.id}" class="btn btn-danger btn-xs delete">详细信息</a>
                                     </td>
                                 </tr>
                             </c:forEach>

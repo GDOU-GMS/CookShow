@@ -76,7 +76,8 @@ public class RelationController extends BaseController {
 	
 	@RequestMapping("/getBeRelation/{id}")
 	public String getBeRelation(@PathVariable String id,Model model)  throws Exception{
-    	 List<Relation> relation=(List<Relation>) relationService.getBeRelation(Long.parseLong(id));
+
+    	 List<Relation> relation= relationService.getBeRelation(Long.parseLong(id));
     	 if(relation!=null){
     		 model.addAttribute("relationList", relation);
     	 }

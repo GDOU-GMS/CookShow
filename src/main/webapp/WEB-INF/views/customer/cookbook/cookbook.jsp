@@ -34,6 +34,9 @@
 <div class="csw">
     <div id="top">
         <div id="navigation">
+            <div style="float:left;margin-left:190px;width:320px;height:112px;padding-top:40px;">
+                <img style="width:200px;height:75px;"src="${pageContext.request.contextPath}/resources/customer/images/newlogo.png">
+            </div>
             <div class="navcenter">
                 <form action="${pageContext.request.contextPath}/cookbook/findByTitle" method="post">
                     <div class="seach">
@@ -79,7 +82,7 @@
     <div id="navfont">
         <div id="navcontent">
             <ul class="nav nav-pills">
-                <li role="presentation" class="cbook"><a title="点击查看所有分类" href="${pageContext.request.contextPath}/classification/allClassification">全部分类</a></li>
+                <li role="presentation" class="cbook"></li>
                 <li role="presentation"><a href="${pageContext.request.contextPath}/">首页</a></li>
                 <li role="presentation"><a href="${pageContext.request.contextPath}/menu/cookmenu">菜单</a></li>
                 <li role="presentation"  class="active"><a href="${pageContext.request.contextPath}/cookbook/listAllCookbook">菜谱</a></li>

@@ -72,7 +72,7 @@ Purchase: http://wrapbootstrap.com
             <div class="navbar-header pull-left">
                 <a href="#" class="navbar-brand">
                     <small>
-                        <img src="/resources/assets/img/cs.png" alt=""/>
+                        <img src="${pageContext.request.contextPath}/resources/customer/images/newlogo.png" alt=""/>
                     </small>
                 </a>
             </div>

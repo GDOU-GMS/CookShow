@@ -229,115 +229,35 @@ Purchase: http://wrapbootstrap.com
             <!-- Page Body -->
             <div>
                 <div class="row">
-                    <div class="col-xs-12 col-md-12">
-                        <div class="well with-header  with-footer" style="margin-bottom:0px;padding-bottom:10px">
-                            <div class="header bg-blue">
-                                管理员列表
+                    <div class="col-lg-6 col-sm-6 col-xs-12">
+                        <div class="widget">
+                            <div class="widget-header bordered-bottom bordered-blue">
+                                <span class="widget-caption">Basic Form</span>
                             </div>
-                            <div>
-                                <div class="row">
-                                    <form action="${pageContext.request.contextPath}/admin/query" method="post">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <input name="username" class="form-control" style="width: 50%"
-                                                       placeholder="用户名" type="text">
+                            <div class="widget-body">
+                                <div>
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Email address</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Password</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox">
+                                                    <span class="text">Remember me next time.</span>
+                                                </label>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
-                                            <button class="btn btn-azure" type="submit">查询</button>
-                                        </div>
+                                        <button type="submit" class="btn btn-blue">Submit</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-info"></a>
-                        <table class="table table-hover">
-                            <thead class="bordered-darkorange">
-                            <tr>
-                                <th>
-                                    #
-                                </th>
-                                <th>
-                                    用户名
-                                </th>
-                                <th>
-                                    创建时间
-                                </th>
-                                <th>
-                                    更新时间
-                                </th>
-                                <th>
-                                    是否有效
-                                </th>
-                                <th>
-                                    操作
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach items="${page.list}" var="admin" varStatus="loop">
-                                <tr>
-                                    <td>
-                                            ${page.pageSize*(page.pageNum-1)+loop.index+1}
-                                    </td>
-                                    <td>
-                                            ${admin.username}
-                                    </td>
-                                    <td>
-                                            ${admin.createDate}
-                                    </td>
-                                    <td>
-                                            ${admin.updateDate}
-                                    </td>
-                                    <td>
-                                        <c:if test="${admin.deleted eq 1}">
-                                            已删除
-                                        </c:if>
-                                        <c:if test="${admin.deleted eq 0}">
-                                            未删除
-                                        </c:if>
-                                    </td>
-                                    <td>
-                                        <c:if test="${! admin.username eq 'admin'}">
-                                            <a>删除</a>
-                                            <a>修改</a>
-                                        </c:if>
-                                        <c:if test="${admin.username eq 'admin'}">
-                                            超级管理员
-                                        </c:if>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
-                        <br/>
-                        <nav>
-                            <ul class="pagination">
-                                <c:if test="${page.pageNum-1 gt 1}">
-                                    <li>
-                                        <a href="${pageContext.request.contextPath}/admin/list?pageNum=${page.pageNum-1}"
-                                           aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                </c:if>
-                               <c:if test="${page.totalPage gt 1}">
-                                   <c:forEach begin="${page.startPage}" end="${page.endPage}" step="1" var="index">
-                                       <li><a href="${pageContext.request.contextPath}/admin/list?pageNum=${index+1}"
-                                              <c:if test="${index+1 eq page.pageNum}">class="active"</c:if>>${index+1}</a>
-                                       </li>
-                                   </c:forEach>
-                               </c:if>
-                                <c:if test="${page.pageNum+1 lt page.totalRecord}">
-                                    <li>
-                                        <a href="${pageContext.request.contextPath}/admin/list?pageNum=${page.pageNum+1}"
-                                           aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                </c:if>
-                            </ul>
-                        </nav>
                     </div>
                 </div>
             </div>

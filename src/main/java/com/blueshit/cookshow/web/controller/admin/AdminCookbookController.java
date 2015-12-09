@@ -112,16 +112,28 @@ public class AdminCookbookController extends BaseController {
 	  @ResponseBody  //自动返回json格式数据到前台
 	  public String cookbookReport(Model model,HttpServletResponse response){
 		  List list=cookbookService.getReport();
-	     // Map<String, Object> map = new HashMap<String, Object>();
-		//  map.put("report", report);
-		 // List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();  
-		//  list.add(map);  
 	      Gson gson = new GsonBuilder().create();
 	      String result = gson.toJson(list);
-	    //  System.out.println("带泛型的list转化为json==" + result);  
-	     // response.
-	     
 		  return "admin/cookbook/cookbookreport";
 	  }
+
+    @RequestMapping("/setIsHeadLine")
+    public String setIsHeadLine(String cookbookId,Integer pageNum){
+        //找出该菜谱
+        Cookbook cookbook = cookbookService.findById(Long.parseLong(cookbookId));
+        //更新属性
+        cookbook.setIsHeadline(true);
+        cookbookService.update(cookbook);
+        return "redirect:/admin/cookbook/list?pageNum = "+pageNum;
+    }
+    @RequestMapping("/cancelHeadLine")
+    public String cancelHeadLine(String cookbookId,Integer pageNum){
+        //找出该菜谱
+        Cookbook cookbook = cookbookService.findById(Long.parseLong(cookbookId));
+        //更新属性
+        cookbook.setIsHeadline(false);
+        cookbookService.update(cookbook);
+        return "redirect:/admin/cookbook/list?pageNum = "+pageNum;
+    }
 
 }

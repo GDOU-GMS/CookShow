@@ -73,7 +73,7 @@ Purchase: http://wrapbootstrap.com
             <div class="navbar-header pull-left">
                 <a href="#" class="navbar-brand">
                     <small>
-                        <img src="/resources/assets/img/cs.png" alt=""/>
+                        <img src="${pageContext.request.contextPath}/resources/customer/images/newlogo.png" alt=""/>
                     </small>
                 </a>
             </div>
@@ -303,12 +303,16 @@ Purchase: http://wrapbootstrap.com
                                         </c:if>
                                     </td>
                                     <td>
+                                        <c:if test="${menu.deleted eq 1}">
+                                        <a href="${pageContext.request.contextPath}/admin/menu/enable?menuId=${menu.id}"
+                                           method="post"
+                                           class="btn btn-default btn-xs edit"> 解锁</a>
+                                        </c:if>
+                                        <c:if test="${menu.deleted eq 0}">
                                         <a href="${pageContext.request.contextPath}/admin/menu/disable?menuId=${menu.id}"
                                            method="post"
                                            class="btn btn-info btn-xs edit"> 锁定</a>
-                                        <a href="${pageContext.request.contextPath}/admin/menu/enable?menuId=${menu.id}"
-                                           method="post"
-                                           class="btn btn-info btn-xs edit"> 解锁</a>
+                                        </c:if>
                                         <a href="${pageContext.request.contextPath}/admin/menu/detail?menuId=${menu.id}"
                                            class="btn btn-danger btn-xs delete">详细信息</a>
                                     </td>

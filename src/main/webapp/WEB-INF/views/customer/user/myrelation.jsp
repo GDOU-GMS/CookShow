@@ -26,52 +26,56 @@
 <body>
 	<div class="csw">
     	<div id="top">
-            <div class="navcenter">
-                <form action="${pageContext.request.contextPath}/cookbook/findByTitle" method="post">
-                    <div class="seach">
-                        <input type="text" name="title" class="form-control" id="exampleInputName2"
-                               placeholder="搜索菜单或菜谱">
-                        <button class="btn btn-default">搜索</button>
-                    </div>
-                </form>
-                <div class="landr" style="">
-                    <div style="float: left;">
-                        <div style="float:left;">
-                            <c:if test="${user!=null}">
-                                <a class="btn btn1" href="${pageContext.request.contextPath}/user/personCenter">
-                                    欢迎，${user.username}
-                                </a>
-                            </c:if>
-                            <c:if test="${user==null}">
-                                <a class="btn btn1"
-                                   href="${pageContext.request.contextPath}/user/forwardToLogin"
-                                   role="button">登录/注册</a>
-                            </c:if>
-                        </div>
-                    </div>
-                    <c:if test="${!empty user }">
-                        <ul id="personcenter" style="float: left;">
-                            <li style="width: 110px;"><a class="btn btn1"
-                                                         href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}"
-                                                         role="button">个人中心</a>
-                                <ul>
-                                    <li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}">我的厨房</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}?target=mymenu">我的菜单</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/relation/getAllrelation/${user.id==null ? 0 : user.id}">关注的好友</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
-                                </ul></li>
-
-                        </ul>
-                    </c:if>
+            <div id="navigation">
+                <div style="float:left;margin-left:190px;width:320px;height:112px;padding-top:40px;">
+                    <img style="width:200px;height:75px;"src="${pageContext.request.contextPath}/resources/customer/images/newlogo.png">
                 </div>
-            </div>
+                <div class="navcenter">
+                    <form action="${pageContext.request.contextPath}/cookbook/findByTitle" method="post">
+                        <div class="seach">
+                            <input type="text" name="title" class="form-control" id="exampleInputName2"
+                                   placeholder="搜索菜单或菜谱">
+                            <button class="btn btn-default">搜索</button>
+                        </div>
+                    </form>
+                    <div class="landr" style="">
+                        <div style="float: left;">
+                            <div style="float:left;">
+                                <c:if test="${user!=null}">
+                                    <a class="btn btn1" href="${pageContext.request.contextPath}/user/personCenter">
+                                        欢迎，${user.username}
+                                    </a>
+                                </c:if>
+                                <c:if test="${user==null}">
+                                    <a class="btn btn1"
+                                       href="${pageContext.request.contextPath}/user/forwardToLogin"
+                                       role="button">登录/注册</a>
+                                </c:if>
+                            </div>
+                        </div>
+                        <c:if test="${!empty user }">
+                            <ul id="personcenter" style="float: left;">
+                                <li style="width: 110px;"><a class="btn btn1"
+                                                             href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}"
+                                                             role="button">个人中心</a>
+                                    <ul>
+                                        <li><a href="${pageContext.request.contextPath}/user/personCenter">账号设置</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}">我的厨房</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}?target=mymenu">我的菜单</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/relation/getAllrelation/${user.id==null ? 0 : user.id}">关注的好友</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
+                                    </ul></li>
+
+                            </ul>
+                        </c:if>
+                    </div>
+                </div>
         </div>
         <div id="navfont">
             <div id="navcontent">
                   
           <ul class="nav nav-pills">
-                <li role="presentation" class="cbook"><a title="点击查看所有分类" href="${pageContext.request.contextPath}/classification/allClassification">全部分类</a></li>
+                <li role="presentation" class="cbook"></li>
               <li role="presentation" class="active"><a href="${pageContext.request.contextPath}/">首页</a></li>
               <li role="presentation"><a href="${pageContext.request.contextPath}/menu/cookmenu">菜单</a></li>
               <li role="presentation"><a href="${pageContext.request.contextPath}/cookbook/listAllCookbook">菜谱</a></li>
@@ -86,17 +90,14 @@
        		<div class="cscontent" style="height:auto;">
             	<div class="media mediainfo" style="margin-top:20px;">
                   <div class="media-left mediainfoleft" >
-                  
                     <a href="#">
-                      <img class="media-object" style="width:178px;height:178px;"src="${relationList[0].follower.face}" alt="...">
+                      <img class="media-object" style="width:178px;height:178px;"src="${user.face}" alt="...">
                     </a>
                   </div>
                   <div class="media-body  mediainforight">
-                    <h2 class="media-heading" ><a href="#">${relationList[0].follower.username}</a></h2>
-                    
+                    <h2 class="media-heading" ><a href="#">${user.username}</a></h2>
                   </div>
                 </div><!--end  media-->
-                 
                 <h4>${relationList[0].follower.username}${relationstr}</h4>
                 <c:if test="${!empty relationList}">
 	                <c:forEach var="relation" items="${relationList}">
@@ -109,10 +110,8 @@
 	                  </div>
 	                  <div class="media-body  mediafriendr">
 	                   <h4 class="media-heading"><a href="#">${relation.byFollower.username}</a></h4>
-	                   <%-- <span>${relation.toCreateDate}</span><br/> --%>
-	                    <span>${relation.createDate}</span><br/> 
+	                    <span>${relation.createDate}</span><br/>
 	                   <a href="#"><span></span></a>
-	                     
 	                  </div>
 	                </div>
 	                </c:forEach>
@@ -120,49 +119,6 @@
                 <c:if test="${empty relationList}">
                   		  <h4 style="color:#ccc" class="media-heading">目前还没有关注的好友，请赶块添加吧！</h4>
                 </c:if>
-                <!--  
-                <div class="media mediafriend">
-                  
-                  <div class="media-left mediafriendl">
-                    <a href="#">
-                      <img class="media-object" src="images/pytx.png" alt="">
-                    </a>
-                  </div>
-                  <div class="media-body  mediafriendr">
-                   <h4 class="media-heading"><a href="#">鬼鬼</a></h4>
-                   <span>2015/01/01</span>
-                   <a href="#"><span>最近上传的菜单</span></a>
-                     
-                  </div>
-               </div>
-               <div class="media mediafriend">
-                  
-                  <div class="media-left mediafriendl ">
-                    <a href="#">
-                      <img class="media-object" src="images/pytx.png" alt="">
-                    </a>
-                  </div>
-                  <div class="media-body  mediafriendr">
-                   <h4 class="media-heading"><a href="#">鬼鬼</a></h4>
-                    <span>2015/01/01</span>
-                     <a href="#"><span>最近上传的菜单</span></a>
-                     
-                  </div>
-               </div>
-               <div class="media mediafriend">
-                  
-                  <div class="media-left mediafriendl ">
-                    <a href="#">
-                      <img class="media-object" src="${pageContext.request.contextPath}/resources/customer/images/pytx.png" alt="">
-                    </a>
-                  </div>
-                  <div class="media-body  mediafriendr">
-                    <h4 class="media-heading"><a href="#">鬼鬼</a></h4>
-                      <span>2015/01/01</span>
-                      <a href="#"><span>最近上传的菜单名字</span></a>
-                  </div>
-               </div>
-             -->
               
               
             </div><!--end cscontent -->

@@ -31,6 +31,9 @@
 <div class="csw">
     <div id="top">
         <div id="navigation">
+            <div style="float:left;margin-left:190px;width:320px;height:112px;padding-top:40px;">
+                <img style="width:200px;height:75px;"src="${pageContext.request.contextPath}/resources/customer/images/newlogo.png">
+            </div>
         <div class="navcenter">
             <form action="${pageContext.request.contextPath}/cookbook/findByTitle" method="post">
                 <div class="seach">

@@ -65,7 +65,9 @@ a:hover{
 }
 .navcenter{
 	padding-top:65px;
-	padding-left:450px;
+	/*padding-left:450px;*/
+    width: 800px;
+    float:left;
 	
 	
 }
