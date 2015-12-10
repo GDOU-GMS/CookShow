@@ -9,7 +9,10 @@ import java.util.List;
 
 import javassist.expr.NewArray;
 
+import com.blueshit.cookshow.common.helper.Page;
+import com.blueshit.cookshow.common.helper.QueryHelper;
 import com.blueshit.cookshow.dao.impl.DaoSupportImpl;
+import com.blueshit.cookshow.model.entity.Production;
 import com.blueshit.cookshow.model.entity.Relation;
 import com.blueshit.cookshow.model.vo.RelationVo;
 import com.blueshit.cookshow.service.RelationService;
@@ -51,6 +54,22 @@ public class RelationServiceImpl extends DaoSupportImpl<Relation> implements Rel
 				.setParameter(0, userid)
 				.list();
 		return relation;
+	}
+
+	public Page getRelationDynamic(Long[] ids,int pageSize,int pageNum) {
+		
+//		  QueryHelper queryHelper = new QueryHelper(Production.class,"p")
+//          .addWhereCondition("p.User.id in ? ",ids)
+//          .addOrderByProperty("p.publicDate",false);
+//		 return getPage(pageNum,pageSize,queryHelper);
+		List<Production> production=getSession().createQuery("from Production p where p.User.id in (:ids) order by p.publicDate asc")
+		.setParameterList("ids",ids)
+		.list();
+		int totalRecord=production.size();
+		Page page=new Page(pageSize, pageNum, totalRecord);
+		page.setList(production);
+		return  page;
+        
 	}
 	
 }

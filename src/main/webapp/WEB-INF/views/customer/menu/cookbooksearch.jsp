@@ -66,6 +66,7 @@
                                     <li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}">我的厨房</a></li>
                                     <li><a href="${pageContext.request.contextPath}/user/personWork/${user.id==null ? 0 : user.id}?target=mymenu">我的菜单</a></li>
                                     <li><a href="${pageContext.request.contextPath}/relation/getAllrelation/${user.id==null ? 0 : user.id}">关注的好友</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/relation/getRelationDynamic">好友动态</a></li>
                                     <li><a href="${pageContext.request.contextPath}/user/logout">退出</a></li>
                                 </ul></li>
 

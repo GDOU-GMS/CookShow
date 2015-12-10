@@ -101,7 +101,7 @@
                 <!-- Tab panes -->
                 <div class="tab-content tagstyle">
                     <div role="tabpanel" class="tab-pane active" id="info">
-
+                        <c:if test="${!empty page}">
                         <c:forEach items="${page.list}" var="production">
                             <div  class="mediadynamic">
                                 <div class="dynamictop">
@@ -143,7 +143,10 @@
                                 </div><!--end dynamicbottom-->
                             </div><!--end mediadynamic-->
                         </c:forEach>
-
+						</c:if>
+						<c:if test="${empty page}">
+							<p>暂时没有好友动态</p>
+						</c:if>
                         <%--<div  class="mediadynamic">
                             <div class="dynamictop">
                                 <div class="media">

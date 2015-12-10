@@ -3,7 +3,9 @@ package com.blueshit.cookshow.service;
 import java.util.List;
 
 import com.alibaba.druid.support.logging.Log;
+import com.blueshit.cookshow.common.helper.Page;
 import com.blueshit.cookshow.dao.DaoSupport;
+import com.blueshit.cookshow.model.entity.Production;
 import com.blueshit.cookshow.model.entity.Relation;
 
 /**
@@ -17,4 +19,6 @@ public interface RelationService extends DaoSupport<Relation> {
 	public Relation getFocusOnFriend(Long followerId,Long byFollowerId);
 	//获得被关注的人
 	public List<Relation> getBeRelation(Long userid);
-}
+	
+	public Page getRelationDynamic(Long ids[],int pageSize,int pageNum);
+}  

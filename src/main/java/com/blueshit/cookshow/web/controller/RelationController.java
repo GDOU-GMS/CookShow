@@ -7,9 +7,12 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.swing.border.EmptyBorder;
 
+import com.blueshit.cookshow.common.helper.Page;
 import com.blueshit.cookshow.model.entity.Menu;
+import com.blueshit.cookshow.model.entity.Production;
 import com.blueshit.cookshow.model.entity.Relation;
 import com.blueshit.cookshow.model.entity.User;
 import com.blueshit.cookshow.model.vo.RelationVo;
@@ -85,4 +88,28 @@ public class RelationController extends BaseController {
     	 return "customer/user/myrelation";
      }
    
+	
+	
+	@RequestMapping("/getRelationDynamic")
+	public String getRelationDynamic(Integer pageNum,Model model,HttpSession session){
+		 int pageSize = 10;
+	     pageNum = pageNum==null||pageNum<=0?1:pageNum;
+	     List<Long> ids=new ArrayList<Long>();
+		 int temp=0;
+		 User user=(User) session.getAttribute("user");
+		 Long userid=user.getId();
+		 List<Relation> relation=(List<Relation>) relationService.getPersonRelations(userid);
+		 if(relation!=null){
+			 Iterator<Relation> iterator=relation.iterator();
+			 while(iterator.hasNext()){
+				 Relation relation2=iterator.next();
+				 ids.add(relation2.getByFollower().getId());
+				 temp++;
+			 }
+			 Long[] idsLong=(Long[])ids.toArray(new Long[ids.size()]);
+		     Page page=relationService.getRelationDynamic(idsLong, pageSize, pageNum);
+		     model.addAttribute("page", page);
+		 }
+		 return "customer/user/friendsdynamic";
+	}
 }
