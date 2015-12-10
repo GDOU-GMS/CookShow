@@ -28,6 +28,7 @@
 }
 .dynamictop a:hover{
 	text-decoration:underline;
+	color:#ce7008;
 }
 .dynamictop img{
 	width:55px;
@@ -51,9 +52,8 @@
 	float:left;
 	width:80%;
 	background:#f5f4f2;
-	margin-top:20px;
 	margin-bottom:20px;
-	height:378px;
+	height:320px;
 	border: 1px solid #f8f5f5;
 	
 }
@@ -72,18 +72,21 @@
 	padding:5% 5%;
 	height:320px;
 }
-.dynamicbottomr h4{
-	
+.dynamicbottomr a:hover span{
+	color:#ce7008;
 	
 }
 .dynamicbottomr span{
 	display:block;
 	font-size:20px;
-	margin-top:10px;
+	margin-top:0px;
 	color:#ec8d24;
-	font-weight:bold;
+	font-weight:none;
 }
-.zanzan{
+.dynamicbottomr a:hover{
+	background:none;
+}
+.zanzan{  
 	float:right;
 	display:block;
 	margin-top:155px;
