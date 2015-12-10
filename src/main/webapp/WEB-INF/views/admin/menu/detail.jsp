@@ -194,7 +194,25 @@ Purchase: http://wrapbootstrap.com
 
                     </ul>
                 </li>
-
+                <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-pencil-square-o"></i>
+                        <span class="menu-text"> 评论管理 </span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/admin/commentCookbook/list">
+                                <span class="menu-text">菜谱评论</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="${pageContext.request.contextPath}/admin/commentProduction/list">
+                                <span class="menu-text">作品评论</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="active open">
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-desktop"></i>

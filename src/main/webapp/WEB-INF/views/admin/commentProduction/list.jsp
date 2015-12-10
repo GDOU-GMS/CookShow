@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!--
 BeyondAdmin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.2.0
@@ -16,29 +16,28 @@ Purchase: http://wrapbootstrap.com
     <meta name="description" content="Dashboard"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/assets/img/favicon.png"
-          type="image/x-icon">
+    <link rel="shortcut icon" href="/resources/assets/img/favicon.png" type="image/x-icon">
 
 
     <!--Basic Styles-->
-    <link href="${pageContext.request.contextPath}/resources/assets/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/resources/assets/css/font-awesome.min.css" rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/resources/assets/css/weather-icons.min.css" rel="stylesheet"/>
+    <link href="/resources/assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link id="bootstrap-rtl-link" href="" rel="stylesheet"/>
+    <link href="/resources/assets/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="/resources/assets/css/weather-icons.min.css" rel="stylesheet"/>
 
     <!--Fonts-->
     <link href="${pageContext.request.contextPath}/resources/assets/css/fonts_useso_com.css" rel="stylesheet"
           type="text/css">
 
     <!--Beyond styles-->
-    <link href="${pageContext.request.contextPath}/resources/assets/css/beyond.min.css" rel="stylesheet"
-          type="text/css"/>
-    <link href="${pageContext.request.contextPath}/resources/assets/css/demo.min.css" rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/resources/assets/css/typicons.min.css" rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/resources/assets/css/animate.min.css" rel="stylesheet"/>
+    <link href="/resources/assets/css/beyond.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/resources/assets/css/demo.min.css" rel="stylesheet"/>
+    <link href="/resources/assets/css/typicons.min.css" rel="stylesheet"/>
+    <link href="/resources/assets/css/animate.min.css" rel="stylesheet"/>
     <link id="skin-link" href="" rel="stylesheet" type="text/css"/>
 
     <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
-    <script src="${pageContext.request.contextPath}/resources/assets/js/skins.min.js"></script>
+    <script src="/resources/assets/js/skins.min.js"></script>
 </head>
 <!-- /Head -->
 <!-- Body -->
@@ -79,7 +78,6 @@ Purchase: http://wrapbootstrap.com
                 </a>
             </div>
             <!-- /Navbar Barnd -->
-
             <!-- Sidebar Collapse -->
             <div class="sidebar-collapse" id="sidebar-collapse">
                 <i class="collapse-icon fa fa-bars"></i>
@@ -108,13 +106,12 @@ Purchase: http://wrapbootstrap.com
             <ul class="nav sidebar-menu">
                 <!--Dashboard-->
                 <li>
-                    <a href="${pageContext.request.contextPath}/admin/index">
+                    <a href="/admin/index">
                         <i class="menu-icon glyphicon glyphicon-home"></i>
                         <span class="menu-text"> 首页 </span>
                     </a>
                 </li>
                 <!--Databoxes-->
-
                 <!--UI Elements-->
                 <li>
                     <a href="#" class="menu-dropdown">
@@ -129,6 +126,7 @@ Purchase: http://wrapbootstrap.com
                                 <span class="menu-text">用户列表</span>
                             </a>
                         </li>
+
                     </ul>
                 </li>
                 <li>
@@ -145,15 +143,12 @@ Purchase: http://wrapbootstrap.com
                         </li>
                     </ul>
                 </li>
-                <!--Tables-->
-                <li>
+                <li >
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-table"></i>
-                        <span class="menu-text"> 菜谱模块 </span>
-
+                        <span class="menu-text">菜谱模块</span>
                         <i class="menu-expand"></i>
                     </a>
-
                     <ul class="submenu">
                         <li>
                             <a href="${pageContext.request.contextPath}/admin/cookbook/list">
@@ -162,7 +157,6 @@ Purchase: http://wrapbootstrap.com
                         </li>
                     </ul>
                 </li>
-                <!--Forms-->
                 <li>
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-pencil-square-o"></i>
@@ -173,7 +167,7 @@ Purchase: http://wrapbootstrap.com
 
                     <ul class="submenu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/admin/cookbook/list">
+                            <a href="${pageContext.request.contextPath}/admin/menu/list">
                                 <span class="menu-text">菜单列表</span>
                             </a>
                         </li>
@@ -195,7 +189,7 @@ Purchase: http://wrapbootstrap.com
 
                     </ul>
                 </li>
-                <li>
+                <li class="active open">
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-pencil-square-o"></i>
                         <span class="menu-text"> 评论管理 </span>
@@ -207,14 +201,14 @@ Purchase: http://wrapbootstrap.com
                                 <span class="menu-text">菜谱评论</span>
                             </a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="${pageContext.request.contextPath}/admin/commentProduction/list">
                                 <span class="menu-text">作品评论</span>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="active open">
+                <li>
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-desktop"></i>
                         <span class="menu-text"> 管理员管理 </span>
@@ -222,7 +216,7 @@ Purchase: http://wrapbootstrap.com
                     </a>
 
                     <ul class="submenu">
-                        <li class="active">
+                        <li>
                             <a href="/admin/list">
                                 <span class="menu-text">管理员列表</span>
                             </a>
@@ -247,8 +241,6 @@ Purchase: http://wrapbootstrap.com
                     <li class="active">秀厨网</li>
                 </ul>
             </div>
-            <!-- /Page Breadcrumb -->
-            <!-- Page Header -->
             <div class="page-header position-relative">
                 <div class="header-title">
                     <h1>
@@ -257,77 +249,153 @@ Purchase: http://wrapbootstrap.com
                 </div>
 
             </div>
-            <!-- /Page Header -->
-            <!-- Page Body -->
             <div>
                 <div class="row">
-                    <div class="col-lg-10 col-sm-10 col-lg-offset-1 col-xs-12">
-                        <div class="widget">
-                            <div class="widget-header bordered-bottom bordered-blue">
-                                <span class="widget-caption">添加管理员</span>
+                    <div class="col-xs-12 col-md-12">
+                        <div class="well with-header  with-footer" style="margin-bottom:0px;padding-bottom:10px">
+                            <div class="header bg-blue">
+                                作品评论列表
                             </div>
-                            <div class="widget-body">
-                                <div>
-                                    <form role="form" method="post" action="${pageContext.request.contextPath}/admin/createAdmin" onsubmit="return validateUsername()">
-                                        <div class="form-group">
-                                            <label for="username">账号</label>
-                                            <input type="text" class="form-control" id="username" name="username" placeholder="账号" required="required">
+                            <%--<div>
+                                <div class="row">
+                                    <form action="${pageContext.request.contextPath}/admin/query" method="post">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input name="username" class="form-control" style="width: 50%"
+                                                       placeholder="用户名" type="text">
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword1">密码</label>
-                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="默认密码为123456" value="默认密码为123456" readonly>
+                                        <div class="col-sm-6">
+                                            <button class="btn btn-azure" type="submit">查询</button>
                                         </div>
-                                        <button type="submit" class="btn btn-blue">提交</button>
                                     </form>
                                 </div>
-                            </div>
+                            </div>--%>
                         </div>
+                        <table class="table table-hover">
+                            <thead class="bordered-darkorange">
+                            <tr>
+                                <th>
+                                    #
+                                </th>
+                                <th>
+                                    来自用户
+                                </th>
+                                <th>
+                                    来自作品
+                                </th>
+                                <th>
+                                    评论内容
+                                </th>
+                                <th>
+                                    创建时间
+                                </th>
+                                <th>
+                                    更新时间
+                                </th>
+                                <th>
+                                    是否锁定
+                                </th>
+                                <th>
+                                    操作
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach items="${page.list}" var="commentProduction" varStatus="loop">
+                                <tr>
+                                    <td>
+                                            ${page.pageSize*(page.pageNum-1)+loop.index+1}
+                                    </td>
+                                    <td>
+                                            ${commentProduction.user.username}
+                                    </td>
+                                    <td>
+                                            ${commentProduction.production.title}
+                                    </td>
+                                    <td>
+                                            ${commentProduction.content}
+                                    </td>
+                                    <td>
+                                            ${commentProduction.createDate}
+                                    </td>
+                                    <td>
+                                            ${commentProduction.updateDate}
+                                    </td>
+                                    <td>
+                                        <c:if test="${commentProduction.deleted eq 1}">
+                                            已锁定
+                                        </c:if>
+                                        <c:if test="${commentProduction.deleted eq 0}">
+                                            未锁定
+                                        </c:if>
+                                    </td>
+                                    <td>
+                                        <c:if test="${commentProduction.deleted eq 1}">
+                                            <a href="${pageContext.request.contextPath}/admin/commentProduction/lock?id=${commentProduction.id}&state=0&pageNum=${page.pageNum}"
+                                               class="btn btn-default btn-xs edit">解锁</a>
+                                        </c:if>
+                                        <c:if test="${commentProduction.deleted eq 0}">
+                                            <a href="${pageContext.request.contextPath}/admin/commentProduction/lock?id=${commentProduction.id}&state=1&pageNum=${page.pageNum}"
+                                               class="btn btn-info btn-xs edit">锁定</a>
+                                        </c:if>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                        <br/>
+                        <nav>
+                            <ul class="pagination">
+                                <c:if test="${page.pageNum gt 1}">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/admin/commentCookbook/list?pageNum=${page.pageNum-1}"
+                                           aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                </c:if>
+                                <c:if test="${page.totalPage gt 1}">
+                                    <c:forEach begin="${page.startPage}" end="${page.endPage}" step="1" var="index">
+                                        <li><a href="${pageContext.request.contextPath}/admin/commentCookbook/list?pageNum=${index}"
+                                               <c:if test="${index eq page.pageNum}">class="active"</c:if>>${index}</a>
+                                        </li>
+                                    </c:forEach>
+                                </c:if>
+                                <c:if test="${page.pageNum lt page.totalPage}">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/admin/commentCookbook/list?pageNum=${page.pageNum+1}"
+                                           aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </c:if>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
+
+
         </div>
         <!-- /Page Container -->
+        <!-- Main Container -->
+
     </div>
-    <!-- Main Container -->
-</div>
 </div>
 <!--Basic Scripts-->
-<script src="${pageContext.request.contextPath}/resources/assets/js/jquery-2.0.3.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/assets/js/bootstrap.min.js"></script>
+<script src="/resources/assets/js/jquery-2.0.3.min.js"></script>
+<script src="/resources/assets/js/bootstrap.min.js"></script>
 
 <!--Beyond Scripts-->
-<script src="${pageContext.request.contextPath}/resources/assets/js/beyond.min.js"></script>
+<script src="/resources/assets/js/beyond.min.js"></script>
 
 
 <!--Page Related Scripts-->
 <!--Sparkline Charts Needed Scripts-->
-<script src="${pageContext.request.contextPath}/resources/assets/js/charts/sparkline/jquery.sparkline.js"></script>
-<script src="${pageContext.request.contextPath}/resources/assets/js/charts/sparkline/sparkline-init.js"></script>
+<script src="/resources/assets/js/charts/sparkline/jquery.sparkline.js"></script>
+<script src="/resources/assets/js/charts/sparkline/sparkline-init.js"></script>
 
-<script>
-    function validateUsername(){
-        var username = $("#username").val();
-        var result = false;
-        $.ajax({
-            type: "POST",
-            url: "/admin/checkExist",
-            data: {username:username,date:new Date()},
-            dataType: "json",
-            async: false,
-            success: function(data){
-                if(data.result==1){
-                    result = true;
-                }else{
-                    result = false;
-                    alert("用户名已经存在");
-                }
-            }
-        })
-        return result;
-
-
-    }
-</script>
 
 </body>
 <!--  /Body -->

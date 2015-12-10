@@ -1,28 +1,19 @@
 package com.blueshit.cookshow.web.controller.admin;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
 import com.blueshit.cookshow.common.helper.Page;
 import com.blueshit.cookshow.common.helper.QueryHelper;
-import com.blueshit.cookshow.model.entity.Classification;
 import com.blueshit.cookshow.model.entity.Cookbook;
-import com.blueshit.cookshow.model.entity.Menu;
-import com.blueshit.cookshow.model.entity.User;
-import com.blueshit.cookshow.service.CookbookService;
 import com.blueshit.cookshow.web.basic.BaseController;
+import com.blueshit.cookshow.web.controller.common.ResultEntity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.mysql.fabric.Response;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -135,5 +126,8 @@ public class AdminCookbookController extends BaseController {
         cookbookService.update(cookbook);
         return "redirect:/admin/cookbook/list?pageNum = "+pageNum;
     }
+
+
+
 
 }
