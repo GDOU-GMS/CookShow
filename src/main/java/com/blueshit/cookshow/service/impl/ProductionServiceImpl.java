@@ -43,4 +43,15 @@ public class ProductionServiceImpl extends DaoSupportImpl<Production> implements
                 .addOrderByProperty("createDate",false);
         return getPage(pageNum,pageSize,queryHelper);
     }
+
+
+    public Page getQueryProduction(String keyword){
+        long count = (Long)getSession().createQuery("select count(*) from Production p where p.title like ?")
+                .setParameter(0,"%"+keyword+"%")
+                .uniqueResult();
+
+        QueryHelper queryHelper = new QueryHelper(Production.class,"p")
+                    .addWhereCondition("p.title like ?","%"+keyword+"%");
+        return getPage(1,(int)count,queryHelper);
+    }
 }

@@ -60,6 +60,9 @@ public class MenuController extends BaseController {
             Page cookbookPage = cookbookService.findByMenuId(menu.getId(),pageNum,pageSize);
             model.addAttribute("cookbookPage",cookbookPage);
         }
+        //流行菜单
+        List<Menu> menuList=menuService.getRecentPopular();
+        model.addAttribute("menuList", menuList);
 
         return "customer/menu/menuDetail";
     }

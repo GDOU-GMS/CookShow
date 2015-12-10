@@ -190,7 +190,21 @@ Purchase: http://wrapbootstrap.com
 
                     </ul>
                 </li>
-                <!--Charts-->
+                <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-pencil-square-o"></i>
+                        <span class="menu-text"> 作品管理 </span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/admin/production/list">
+                                <span class="menu-text">作品列表</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
 
                 <li>
                     <a href="#" class="menu-dropdown">

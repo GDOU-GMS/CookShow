@@ -117,12 +117,6 @@
 
                         <a id="focushref" class="btn btn-default createcss" href="javascript:void(0)" >关注</a>
 
-                        <!--
-                        <form method="post" action="${pageContext.request.contextPath}/relation/addFocusOnFriend/${userInfo.id}/${user.id}" id="focushref">
-
-                        <button type="submit" class="btn btn-default" >关注</button>
-                        </form>
-                        -->
                     </c:if>
                     <c:if  test="${(!empty user)&&(!empty relation)&&(!empty tag)}">
                         <span style="display:none;" id="focusid">${userInfo.id}</span>
@@ -250,10 +244,10 @@
                                 </c:if>
                                 <c:if test="${cookbookPage.totalPage gt 1}">
                                     <c:forEach begin="${cookbookPage.startIndex}" end="${cookbookPage.startIndex}" step="1" var="index">
-                                        <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=pwd&cookbookpageNum=${index+1}" <c:if test="${index+1 eq cookbookPage.pageNum}">class="active"</c:if>>${index+1}</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=pwd&cookbookpageNum=${index}" <c:if test="${index eq cookbookPage.pageNum}">class="active"</c:if>>${index}</a></li>
                                     </c:forEach>
                                 </c:if>
-                                <c:if test="${cookbookPage.pageNum+1 lt cookbookPage.totalRecord}">
+                                <c:if test="${cookbookPage.pageNum lt cookbookPage.totalPage}">
                                     <li>
                                         <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=pwd&cookbookpageNum=${cookbookPage.pageNum+1}" aria-label="Next">
                                             <span aria-hidden="true">&raquo;</span>

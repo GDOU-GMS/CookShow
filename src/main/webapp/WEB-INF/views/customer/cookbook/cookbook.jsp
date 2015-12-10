@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html>
 <head>
@@ -156,80 +157,91 @@
                 <div class="menucomment">
                     <div class="eachcomment">
                         <div class="personhead">
-                            <img src="${pageContext.request.contextPath}/resources/customer/images/22.png">
+                            <c:if test="${!empty user.face}">
+                                <img src="${user.face}" width="50" height="50">
+                            </c:if>
+                            <c:if test="${empty user.face}">
+                                <img src="${pageContext.request.contextPath}/resources/customer/images/22.png">
+                            </c:if>
                         </div>
                         <div class="persontalk">
-                                <textarea class="form-control">
-                                     [随意吐槽]:
-                                </textarea>
-
+                            <textarea class="form-control" id="commentContent" style="font-size: larger"></textarea>
                         </div>
                         <div class="personsubmt">
-                            <a class="btn btn-default" href="#" role="button">评论</a>
+                            <a class="btn btn-default" href="javascript:void(0);" role="button" onclick="publishComment()">评论</a>
                         </div>
                     </div>
 
-                    <div style="float:left;width:718px;">
-
+                    <div style="float:left;width:718px;" id="comment_index">
                         <span style="color:#999;font-size:16px;">评论</span>
-
-
                     </div>
-
-                    <div class="eachcomment">
-                        <hr style="color:#ccc;width:718px;">
-                        <div class="personhead">
-                            <img src="${pageContext.request.contextPath}/resources/customer/images/22.png">
+                    <div style="display: none">
+                        <div class="eachcomment" id="commentDiv">
+                            <hr style="color:#ccc;width:718px;">
+                            <div class="personhead">
+                                <c:if test="${!empty user.face}">
+                                    <img src="${user.face}" width="50" height="50">
+                                </c:if>
+                                <c:if test="${empty user.face}">
+                                    <img src="${pageContext.request.contextPath}/resources/customer/images/22.png">
+                                </c:if>
+                            </div>
+                            <div class="persontalk1">
+                                <span>${user.username}:</span>
+                                <p></p>
+                                <span class="fromcss">刚刚</span>
+                                <%-- <a href=""><span class="dianzan" style="width: auto" aria-hidden="true">回复</span></a>--%>
+                            </div>
                         </div>
-                        <div class="persontalk1">
-
-                            <span>[随意吐槽：]</span>
-
-                            <p>都是我爱吃的哦</p>
-                            <span class="fromcss">来自秀厨网</span>
-                            <a href=""><span class="glyphicon glyphicon-thumbs-up dianzan"
-                                             aria-hidden="true"></span></a>
-
-                        </div>
-
                     </div>
-
-
-                    <div class="eachcomment">
-                        <hr style="color:#ccc;width:718px;">
-                        <div class="personhead">
-                            <img src="${pageContext.request.contextPath}/resources/customer/images/22.png">
-                        </div>
-                        <div class="persontalk1">
-
-                            <span>[随意吐槽：]</span>
-
-                            <p>都是我爱吃的哦</p>
-                            <span class="fromcss">来自秀厨网</span>
-                            <a href=""><span class="glyphicon glyphicon-thumbs-up dianzan"
-                                             aria-hidden="true"></span></a>
-
-                        </div>
-
+                    <div id="commentArea">
+                        <c:if test="${empty page.list}">
+                            赶快来抢沙发吧！
+                        </c:if>
+                        <c:forEach items="${page.list}" var="commentCookbook">
+                            <div class="eachcomment">
+                                <hr style="color:#ccc;width:718px;">
+                                <div class="personhead">
+                                    <c:if test="${!empty commentCookbook.user.face}">
+                                        <img src="${commentCookbook.user.face}" width="50" height="50">
+                                    </c:if>
+                                    <c:if test="${empty commentCookbook.user.face}">
+                                        <img src="${pageContext.request.contextPath}/resources/customer/images/22.png">
+                                    </c:if>
+                                </div>
+                                <div class="persontalk1">
+                                    <span>${commentCookbook.user.username}</span>
+                                    <p>${commentCookbook.content}</p>
+                                    <span class="fromcss" style="width: auto"><fmt:formatDate value="${commentCookbook.createDate}" pattern="yyyy-MM-dd HH:mm:SS"/></span>
+                                        <%-- <a href=""><span class="dianzan" style="width: auto" aria-hidden="true">回复</span></a>--%>
+                                </div>
+                            </div>
+                        </c:forEach>
+                        <%--分页--%>
+                        <nav>
+                            <ul class="pagination">
+                                <c:if test="${page.pageNum gt 1}">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/cookbook/cookbook/${cookbook.id}?pageNum=${page.pageNum-1}#comment_index" aria-label="Previous">
+                                            <span aria-hidden="true">上一页</span>
+                                        </a>
+                                    </li>
+                                </c:if>
+                                <c:if test="${page.totalPage gt 1}">
+                                    <c:forEach begin="${page.startPage-1}" end="${page.endPage-1}" step="1" var="index" >
+                                        <li><a href="${pageContext.request.contextPath}/cookbook/cookbook/${cookbook.id}?pageNum=${index+1}#comment_index" <c:if test="${index+1 eq page.pageNum}">class="active"</c:if>>${index+1}</a></li>
+                                    </c:forEach>
+                                </c:if>
+                                <c:if test="${page.pageNum lt page.totalPage}">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/cookbook/cookbook/${cookbook.id}?pageNum=${page.pageNum+1}#comment_index" aria-label="Next">
+                                            <span aria-hidden="true">下一页</span>
+                                        </a>
+                                    </li>
+                                </c:if>
+                            </ul>
+                        </nav>
                     </div>
-                    <div class="eachcomment">
-                        <hr style="color:#ccc;width:718px;">
-                        <div class="personhead">
-                            <img src="${pageContext.request.contextPath}/resources/customer/images/22.png">
-                        </div>
-                        <div class="persontalk1">
-
-                            <span>[随意吐槽：]</span>
-
-                            <p>都是我爱吃的哦</p>
-                            <span class="fromcss">来自秀厨网</span>
-                            <a href=""><span class="glyphicon glyphicon-thumbs-up dianzan"
-                                             aria-hidden="true"></span></a>
-
-                        </div>
-
-                    </div>
-
                 </div>
                 <!--menucomment-->
 
@@ -343,7 +355,7 @@
             async:      false,
             data    : data,
             success: function(data){
-                if(data.result = 1){
+                if(data.result == 1){
                     test =  true;
                 }else{
                     test =  false;
@@ -376,6 +388,44 @@
                }
            })
        }
+    }
+
+    function publishComment(){
+
+        var commentContent = $("#commentContent").val();
+
+        if(checkLogin()){
+            if(commentContent==null||commentContent==""){
+                alert("评论不能为空！");
+            }else{
+                var data = {
+                    cookbookId : ${cookbook.id},
+                    comment    : commentContent
+                }
+                $.ajax({
+                    type:       "POST",
+                    url:        "/commentCookbook/publicComment",
+                    dataType:   "json",
+                    data    : data,
+                    success: function(data){
+                        if(data.result==1){
+                            //添加评论
+                            var $commentDiv = $("#commentDiv").clone().attr("id","");
+                            var $commentArea = $("#commentArea");
+                            var pNode = $commentDiv.find("p");
+                            $(pNode).text(commentContent);
+                            $commentArea.prepend($commentDiv);
+                            $("#commentContent").val("");//清空
+                        }else{
+                            alert(data.msg)
+                        }
+                    }
+                })
+            }
+        }else{
+            alert("请先登录！");
+        }
+
     }
 
 

@@ -109,7 +109,9 @@ public class CookbookController extends BaseController {
     }
 
     @RequestMapping("/cookbook/{cookbookId}")
-    public String cookbook(HttpSession session,@PathVariable String cookbookId,Model model){
+    public String cookbook(HttpSession session,@PathVariable String cookbookId,Model model,Integer pageNum){
+        pageNum = pageNum==null||pageNum<=0?1:pageNum;
+        int pageSize = 10;
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             if (!"".equals(cookbookId)) {
@@ -121,6 +123,9 @@ public class CookbookController extends BaseController {
                 model.addAttribute("materialList",materialList);
                 model.addAttribute("stepList",stepList);
                 model.addAttribute("cookbook", cookbook);
+                //评论
+                Page page = commentCookbookService.findByCookbookId(cookbook.getId(),pageNum,pageSize);
+                model.addAttribute("page",page);
             }
             if(getCurrentUser(session)!=null){
                 List<Menu> menuList = menuService.getAllMenuByUserId(getCurrentUser(session).getId());
@@ -262,7 +267,7 @@ public class CookbookController extends BaseController {
             List<Menu> menuList=menuService.getRecentPopular();
             model.addAttribute("menuList", menuList);
         }
-        return "customer/menu/cookmenu";
+        return "customer/cookbook/listAllCookbook";
     }
 
 

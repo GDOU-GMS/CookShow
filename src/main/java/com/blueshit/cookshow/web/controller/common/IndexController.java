@@ -53,9 +53,9 @@ public class IndexController extends BaseController{
         ResultEntity resultEntity = new ResultEntity();
         User user = getCurrentUser(request.getSession());
         if(user==null){
-            resultEntity.setResult(0);
+            resultEntity.setFailureMsg("failure");
         }else{
-            resultEntity.setResult(1);
+            resultEntity.setSuccessMsg("success");
         }
         return resultEntity;
     }

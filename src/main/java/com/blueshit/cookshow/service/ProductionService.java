@@ -13,4 +13,6 @@ public interface ProductionService extends DaoSupport<Production> {
 
     Page getAllProduction(int pageNum,int pageSize);
 
+    Page getQueryProduction(String keyword);
+
 }

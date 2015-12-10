@@ -33,6 +33,8 @@ public class BaseController {
     protected UserService userService;
     @Resource
     protected ProductionService productionService;
+    @Resource
+    protected FavourService favourService;
 
 
     public User getCurrentUser(HttpSession session){
@@ -45,9 +47,13 @@ public class BaseController {
     }
 
 
-    public Admin getCurrentAdmin(){
-        //todo:
-        return null;
+    public Admin getCurrentAdmin(HttpSession session){
+        Admin admin = (Admin)session.getAttribute("admin");
+        if(admin==null){
+            return null;
+        }else{
+            return adminService.findByUsername(admin.getUsername());
+        }
     }
 
     public String getDomainName(HttpServletRequest request){

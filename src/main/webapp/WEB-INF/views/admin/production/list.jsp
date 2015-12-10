@@ -180,14 +180,14 @@ Purchase: http://wrapbootstrap.com
 
                     </ul>
                 </li>
-                <li>
+                <li class="active open">
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-pencil-square-o"></i>
                         <span class="menu-text"> 作品管理 </span>
                         <i class="menu-expand"></i>
                     </a>
                     <ul class="submenu">
-                        <li>
+                        <li class="active">
                             <a href="${pageContext.request.contextPath}/admin/production/list">
                                 <span class="menu-text">作品列表</span>
                             </a>
@@ -196,7 +196,7 @@ Purchase: http://wrapbootstrap.com
                     </ul>
                 </li>
 
-                <li class="active open">
+                <li>
                     <a href="#" class="menu-dropdown">
                         <i class="menu-icon fa fa-desktop"></i>
                         <span class="menu-text"> 管理员管理 </span>
@@ -204,7 +204,7 @@ Purchase: http://wrapbootstrap.com
                     </a>
 
                     <ul class="submenu">
-                        <li class="active">
+                        <li>
                             <a href="/admin/list">
                                 <span class="menu-text">管理员列表</span>
                             </a>
@@ -246,15 +246,15 @@ Purchase: http://wrapbootstrap.com
                     <div class="col-xs-12 col-md-12">
                         <div class="well with-header  with-footer" style="margin-bottom:0px;padding-bottom:10px">
                             <div class="header bg-blue">
-                                管理员列表
+                                作品列表
                             </div>
                             <div>
                                 <div class="row">
-                                    <form action="${pageContext.request.contextPath}/admin/query" method="post">
+                                    <form action="${pageContext.request.contextPath}/admin/production/query" method="post">
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <input name="username" class="form-control" style="width: 50%"
-                                                       placeholder="用户名" type="text">
+                                                <input name="keyword" class="form-control" style="width: 50%"
+                                                       placeholder="作品名" type="text" required="required">
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
@@ -265,13 +265,6 @@ Purchase: http://wrapbootstrap.com
                             </div>
                         </div>
 
-                        <c:if test="${admin.username eq 'admin'}">
-                            <div class="fa-hover col-md-3 col-sm-4">
-                                <i class="fa fa-plus-square"></i>
-                                <a href="${pageContext.request.contextPath}/admin/forwordToAddAdmin">添加管理员</a>
-                            </div>
-                        </c:if>
-
                         <table class="table table-hover">
                             <thead class="bordered-darkorange">
                             <tr>
@@ -279,7 +272,13 @@ Purchase: http://wrapbootstrap.com
                                     #
                                 </th>
                                 <th>
-                                    用户名
+                                    作品名
+                                </th>
+                                <th>
+                                    来自菜谱
+                                </th>
+                                <th>
+                                    来自用户
                                 </th>
                                 <th>
                                     创建时间
@@ -296,44 +295,42 @@ Purchase: http://wrapbootstrap.com
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${page.list}" var="adminInfo" varStatus="loop">
+                            <c:forEach items="${page.list}" var="prduction" varStatus="loop">
                                 <tr>
                                     <td>
                                             ${page.pageSize*(page.pageNum-1)+loop.index+1}
                                     </td>
                                     <td>
-                                            ${adminInfo.username}
+                                            ${prduction.title}
                                     </td>
                                     <td>
-                                            ${adminInfo.createDate}
+                                            ${prduction.cookbookTitle}
                                     </td>
                                     <td>
-                                            ${adminInfo.updateDate}
+                                            ${prduction.user.username}
                                     </td>
                                     <td>
-                                        <c:if test="${adminInfo.deleted eq 1}">
+                                            ${prduction.createDate}
+                                    </td>
+                                    <td>
+                                            ${prduction.updateDate}
+                                    </td>
+                                    <td>
+                                        <c:if test="${prduction.deleted eq 1}">
                                             已锁定
                                         </c:if>
-                                        <c:if test="${adminInfo.deleted eq 0}">
+                                        <c:if test="${prduction.deleted eq 0}">
                                             未锁定
                                         </c:if>
                                     </td>
                                     <td>
-                                        <c:if test="${adminInfo.username != 'admin'}">
-                                            <c:if test="${adminInfo.deleted eq 1}">
-                                                <a href="${pageContext.request.contextPath}/admin/lock?id=${adminInfo.id}&state=0&pageNum=${page.pageNum}"
-                                                   class="btn btn-default btn-xs edit">解锁</a>
-                                            </c:if>
-                                            <c:if test="${adminInfo.deleted eq 0}">
-                                                <a href="${pageContext.request.contextPath}/admin/lock?id=${adminInfo.id}&state=1&pageNum=${page.pageNum}"
-                                                   class="btn btn-info btn-xs edit">锁定</a>
-                                            </c:if>
-                                            <a href="javascript:void(0)" onclick="resetPassword(${adminInfo.id})"
-                                               class="btn btn-default btn-xs edit">重置密码</a>
+                                        <c:if test="${prduction.deleted eq 1}">
+                                            <a href="${pageContext.request.contextPath}/admin/production/lock?id=${prduction.id}&state=0&pageNum=${page.pageNum}"
+                                               class="btn btn-default btn-xs edit">解锁</a>
                                         </c:if>
-                                        <c:if test="${adminInfo.username eq 'admin'}">
-                                            超级管理员
-                                            <a href="${pageContext.request.contextPath}/admin/forwordToUpdatePassword"  class="btn btn-default btn-xs edit">修改密码</a>
+                                        <c:if test="${prduction.deleted eq 0}">
+                                            <a href="${pageContext.request.contextPath}/admin/production/lock?id=${prduction.id}&state=1&pageNum=${page.pageNum}"
+                                               class="btn btn-info btn-xs edit">锁定</a>
                                         </c:if>
                                     </td>
                                 </tr>
@@ -351,13 +348,13 @@ Purchase: http://wrapbootstrap.com
                                         </a>
                                     </li>
                                 </c:if>
-                               <c:if test="${page.totalPage gt 1}">
-                                   <c:forEach begin="${page.startPage}" end="${page.endPage}" step="1" var="index">
-                                       <li><a href="${pageContext.request.contextPath}/admin/list?pageNum=${index}"
-                                              <c:if test="${index eq page.pageNum}">class="active"</c:if>>${index}</a>
-                                       </li>
-                                   </c:forEach>
-                               </c:if>
+                                <c:if test="${page.totalPage gt 1}">
+                                    <c:forEach begin="${page.startPage}" end="${page.endPage}" step="1" var="index">
+                                        <li><a href="${pageContext.request.contextPath}/admin/list?pageNum=${index}"
+                                               <c:if test="${index eq page.pageNum}">class="active"</c:if>>${index}</a>
+                                        </li>
+                                    </c:forEach>
+                                </c:if>
                                 <c:if test="${page.pageNum lt page.totalPage}">
                                     <li>
                                         <a href="${pageContext.request.contextPath}/admin/list?pageNum=${page.pageNum+1}"
@@ -390,29 +387,6 @@ Purchase: http://wrapbootstrap.com
 <!--Sparkline Charts Needed Scripts-->
 <script src="${pageContext.request.contextPath}/resources/assets/js/charts/sparkline/jquery.sparkline.js"></script>
 <script src="${pageContext.request.contextPath}/resources/assets/js/charts/sparkline/sparkline-init.js"></script>
-
-<script>
-    function resetPassword(id){
-        var id = id;
-        if(confirm("确定把密码重置为123456？")){
-            $.ajax({
-                type: "POST",
-                url: "/admin/resetPassword",
-                data: {adminId:id,date:new Date()},
-                dataType: "json",
-                success: function(data){
-                    if(data.result==1){
-                        alert("密码已经重置为123456")
-                    }else{
-                        alert(data.msg);
-                    }
-                }
-            })
-        }
-
-    }
-
-</script>
 
 </body>
 <!--  /Body -->

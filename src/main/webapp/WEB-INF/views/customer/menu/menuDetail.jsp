@@ -154,14 +154,9 @@
                 <div class="cbooksidecss">
                     <p>相关菜单</p>
                     <ul>
-                        <li><a href="">美食疯狂来袭美食疯狂来袭哈哈哈哈哈哈哈哈哈</a></li>
-                        <li><a href="">美食疯狂来袭美食疯狂来袭哈哈哈哈哈哈哈哈哈</a></li>
-                        <li><a href="">美食疯狂来袭美食疯狂来袭哈哈哈哈哈哈哈哈哈</a></li>
-                        <li><a href="">美食疯狂来袭美食疯狂来袭哈哈哈哈哈哈哈哈哈</a></li>
-                        <li><a href="">美食疯狂来袭美食疯狂来袭哈哈哈哈哈哈哈哈哈</a></li>
-                        <li><a href="">美食疯狂来袭美食疯狂来袭哈哈哈哈哈哈哈哈哈</a></li>
-                        <li><a href="">美食疯狂来袭美食疯狂来袭哈哈哈哈哈哈哈哈哈</a></li>
-
+                        <c:forEach items="${menuList}" var="menu">
+                            <li><a href="${pageContext.request.contextPath}/menu/menuDetail/${menu.id}">${menu.title}</a></li>
+                        </c:forEach>
                     </ul>
                 </div>
             </div>

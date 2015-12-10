@@ -243,131 +243,31 @@ Purchase: http://wrapbootstrap.com
             <!-- Page Body -->
             <div>
                 <div class="row">
-                    <div class="col-xs-12 col-md-12">
-                        <div class="well with-header  with-footer" style="margin-bottom:0px;padding-bottom:10px">
-                            <div class="header bg-blue">
-                                管理员列表
+                    <div class="col-lg-10 col-sm-10 col-lg-offset-1 col-xs-12">
+                        <div class="widget">
+                            <div class="widget-header bordered-bottom bordered-blue">
+                                <span class="widget-caption">修改密码：</span>
                             </div>
-                            <div>
-                                <div class="row">
-                                    <form action="${pageContext.request.contextPath}/admin/query" method="post">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <input name="username" class="form-control" style="width: 50%"
-                                                       placeholder="用户名" type="text">
-                                            </div>
+                            <div class="widget-body">
+                                <div>
+                                    <form role="form" method="post" action="${pageContext.request.contextPath}/admin/updatePassword" onsubmit="return validatePassword()">
+                                        <div class="form-group">
+                                            <label for="oldPassword">输入原密码：</label>
+                                            <input type="password" class="form-control" id="oldPassword" name="oldPassword" placeholder="账号" required="required">
                                         </div>
-                                        <div class="col-sm-6">
-                                            <button class="btn btn-azure" type="submit">查询</button>
+                                        <div class="form-group">
+                                            <label for="newPassword">输入新密码</label>
+                                            <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="输入新密码" required="required">
                                         </div>
+                                        <div class="form-group">
+                                            <label for="renewPassword">重复输入新密码</label>
+                                            <input type="password" class="form-control" id="renewPassword" name="renewPassword" placeholder="重复输入新密码" required="required">
+                                        </div>
+                                        <button type="submit" class="btn btn-blue">提交</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
-
-                        <c:if test="${admin.username eq 'admin'}">
-                            <div class="fa-hover col-md-3 col-sm-4">
-                                <i class="fa fa-plus-square"></i>
-                                <a href="${pageContext.request.contextPath}/admin/forwordToAddAdmin">添加管理员</a>
-                            </div>
-                        </c:if>
-
-                        <table class="table table-hover">
-                            <thead class="bordered-darkorange">
-                            <tr>
-                                <th>
-                                    #
-                                </th>
-                                <th>
-                                    用户名
-                                </th>
-                                <th>
-                                    创建时间
-                                </th>
-                                <th>
-                                    更新时间
-                                </th>
-                                <th>
-                                    是否锁定
-                                </th>
-                                <th>
-                                    操作
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach items="${page.list}" var="adminInfo" varStatus="loop">
-                                <tr>
-                                    <td>
-                                            ${page.pageSize*(page.pageNum-1)+loop.index+1}
-                                    </td>
-                                    <td>
-                                            ${adminInfo.username}
-                                    </td>
-                                    <td>
-                                            ${adminInfo.createDate}
-                                    </td>
-                                    <td>
-                                            ${adminInfo.updateDate}
-                                    </td>
-                                    <td>
-                                        <c:if test="${adminInfo.deleted eq 1}">
-                                            已锁定
-                                        </c:if>
-                                        <c:if test="${adminInfo.deleted eq 0}">
-                                            未锁定
-                                        </c:if>
-                                    </td>
-                                    <td>
-                                        <c:if test="${adminInfo.username != 'admin'}">
-                                            <c:if test="${adminInfo.deleted eq 1}">
-                                                <a href="${pageContext.request.contextPath}/admin/lock?id=${adminInfo.id}&state=0&pageNum=${page.pageNum}"
-                                                   class="btn btn-default btn-xs edit">解锁</a>
-                                            </c:if>
-                                            <c:if test="${adminInfo.deleted eq 0}">
-                                                <a href="${pageContext.request.contextPath}/admin/lock?id=${adminInfo.id}&state=1&pageNum=${page.pageNum}"
-                                                   class="btn btn-info btn-xs edit">锁定</a>
-                                            </c:if>
-                                            <a href="javascript:void(0)" onclick="resetPassword(${adminInfo.id})"
-                                               class="btn btn-default btn-xs edit">重置密码</a>
-                                        </c:if>
-                                        <c:if test="${adminInfo.username eq 'admin'}">
-                                            超级管理员
-                                            <a href="${pageContext.request.contextPath}/admin/forwordToUpdatePassword"  class="btn btn-default btn-xs edit">修改密码</a>
-                                        </c:if>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
-                        <br/>
-                        <nav>
-                            <ul class="pagination">
-                                <c:if test="${page.pageNum gt 1}">
-                                    <li>
-                                        <a href="${pageContext.request.contextPath}/admin/list?pageNum=${page.pageNum-1}"
-                                           aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                </c:if>
-                               <c:if test="${page.totalPage gt 1}">
-                                   <c:forEach begin="${page.startPage}" end="${page.endPage}" step="1" var="index">
-                                       <li><a href="${pageContext.request.contextPath}/admin/list?pageNum=${index}"
-                                              <c:if test="${index eq page.pageNum}">class="active"</c:if>>${index}</a>
-                                       </li>
-                                   </c:forEach>
-                               </c:if>
-                                <c:if test="${page.pageNum lt page.totalPage}">
-                                    <li>
-                                        <a href="${pageContext.request.contextPath}/admin/list?pageNum=${page.pageNum+1}"
-                                           aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                </c:if>
-                            </ul>
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -375,7 +275,6 @@ Purchase: http://wrapbootstrap.com
         <!-- /Page Container -->
     </div>
     <!-- Main Container -->
-
 </div>
 </div>
 <!--Basic Scripts-->
@@ -392,29 +291,35 @@ Purchase: http://wrapbootstrap.com
 <script src="${pageContext.request.contextPath}/resources/assets/js/charts/sparkline/sparkline-init.js"></script>
 
 <script>
-    function resetPassword(id){
-        var id = id;
-        if(confirm("确定把密码重置为123456？")){
-            $.ajax({
-                type: "POST",
-                url: "/admin/resetPassword",
-                data: {adminId:id,date:new Date()},
-                dataType: "json",
-                success: function(data){
-                    if(data.result==1){
-                        alert("密码已经重置为123456")
-                    }else{
-                        alert(data.msg);
-                    }
-                }
-            })
+    function validatePassword(){
+        var oldPassword = $("#oldPassword").val();
+        var newPassword = $("#newPassword").val();
+        var renewPassword = $("#renewPassword").val();
+        if(newPassword!=renewPassword){
+            alert("两次密码输入不一致！")
+            return false;
         }
-
+        var result = false;
+        $.ajax({
+            type: "POST",
+            url: "/admin/validatePassword",
+            data: {oldPassword:oldPassword,date:new Date()},
+            dataType: "json",
+            async: false,
+            success: function(data){
+                if(data.result==1){
+                    result = true;
+                    alert("修改成功！")
+                }else{
+                    result = false;
+                    alert("原密码错误！")
+                }
+            }
+        })
+        return result;
     }
-
 </script>
 
 </body>
 <!--  /Body -->
-
 </html>

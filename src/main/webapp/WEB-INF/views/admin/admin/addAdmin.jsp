@@ -180,7 +180,21 @@ Purchase: http://wrapbootstrap.com
 
                     </ul>
                 </li>
-                <!--Charts-->
+                <li>
+                    <a href="#" class="menu-dropdown">
+                        <i class="menu-icon fa fa-pencil-square-o"></i>
+                        <span class="menu-text"> 作品管理 </span>
+                        <i class="menu-expand"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/admin/production/list">
+                                <span class="menu-text">作品列表</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
 
                 <li class="active open">
                     <a href="#" class="menu-dropdown">
@@ -229,31 +243,23 @@ Purchase: http://wrapbootstrap.com
             <!-- Page Body -->
             <div>
                 <div class="row">
-                    <div class="col-lg-6 col-sm-6 col-xs-12">
+                    <div class="col-lg-10 col-sm-10 col-lg-offset-1 col-xs-12">
                         <div class="widget">
                             <div class="widget-header bordered-bottom bordered-blue">
-                                <span class="widget-caption">Basic Form</span>
+                                <span class="widget-caption">添加管理员</span>
                             </div>
                             <div class="widget-body">
                                 <div>
-                                    <form role="form">
+                                    <form role="form" method="post" action="${pageContext.request.contextPath}/admin/createAdmin" onsubmit="return validateUsername()">
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Email address</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                            <label for="username">账号</label>
+                                            <input type="text" class="form-control" id="username" name="username" placeholder="账号" required="required">
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputPassword1">Password</label>
-                                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                            <label for="exampleInputPassword1">密码</label>
+                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="默认密码为123456" value="默认密码为123456" readonly>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox">
-                                                    <span class="text">Remember me next time.</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-blue">Submit</button>
+                                        <button type="submit" class="btn btn-blue">提交</button>
                                     </form>
                                 </div>
                             </div>
@@ -265,7 +271,6 @@ Purchase: http://wrapbootstrap.com
         <!-- /Page Container -->
     </div>
     <!-- Main Container -->
-
 </div>
 </div>
 <!--Basic Scripts-->
@@ -281,6 +286,30 @@ Purchase: http://wrapbootstrap.com
 <script src="${pageContext.request.contextPath}/resources/assets/js/charts/sparkline/jquery.sparkline.js"></script>
 <script src="${pageContext.request.contextPath}/resources/assets/js/charts/sparkline/sparkline-init.js"></script>
 
+<script>
+    function validateUsername(){
+        var username = $("#username").val();
+        var result = false;
+        $.ajax({
+            type: "POST",
+            url: "/admin/checkExist",
+            data: {username:username,date:new Date()},
+            dataType: "json",
+            async: false,
+            success: function(data){
+                if(data.result==1){
+                    result = true;
+                }else{
+                    result = false;
+                    alert("用户名已经存在");
+                }
+            }
+        })
+        return result;
+
+
+    }
+</script>
 
 </body>
 <!--  /Body -->
