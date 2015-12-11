@@ -105,7 +105,7 @@
 	                <div class="media mediafriend">
 	                  
 	                  <div class="media-left mediafriendl">
-	                    <a href="#">
+	                    <a href="${pageContext.request.contextPath}/user/personWork/${relation.byFollower.id}">
 	                      <img class="media-object" style="width:67px;height:67px;" src="${relation.byFollower.face}" alt="">
 	                    </a>
 	                  </div>

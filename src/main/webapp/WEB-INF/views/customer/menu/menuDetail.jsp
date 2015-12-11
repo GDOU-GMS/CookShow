@@ -105,7 +105,7 @@
                         </div>
                     </div>
                     <div class="mobtopr">
-                        <a class="btn btn-default acss" style="margin-top:125px;" href="#" role="button">收藏</a>
+                        <a class="btn btn-default acss" href="javascript:void(0)" role="button" id="collection" onclick="doCollection()">收藏</a>
                        <%-- <div class="mobshare">
                             <span style="">分享到</span><a href=""><img src="${pageContext.request.contextPath}/resources/customer/images/weibo.png" style="width:36px;height:29px;"></a>
                         </div>--%>
