@@ -62,7 +62,7 @@ public class RelationServiceImpl extends DaoSupportImpl<Relation> implements Rel
 //          .addWhereCondition("p.User.id in ? ",ids)
 //          .addOrderByProperty("p.publicDate",false);
 //		 return getPage(pageNum,pageSize,queryHelper);
-		List<Production> production=getSession().createQuery("from Production p where p.User.id in (:ids) order by p.publicDate asc")
+		List<Production> production=getSession().createQuery("from Production p where p.User.id in (:ids) order by p.publicDate desc ")
 		.setParameterList("ids",ids)
 		.list();
 		int totalRecord=production.size();

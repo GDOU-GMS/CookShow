@@ -183,7 +183,7 @@
                         </div>
                         <nav>
                             <ul class="pagination">
-                                <c:if test="${menuPage.pageNum-1 gt 1}">
+                                <c:if test="${menuPage.pageNum gt 1}">
                                     <li>
                                         <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=mymenu&menupageNum=${menuPage.pageNum-1}" aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
@@ -191,11 +191,11 @@
                                     </li>
                                 </c:if>
                                 <c:if test="${menuPage.totalPage gt 1}">
-                                    <c:forEach begin="${menuPage.startIndex}" end="${menuPage.startIndex}" step="1" var="index">
-                                        <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=mymenu&menupageNum=${index+1}" <c:if test="${index+1 eq menuPage.pageNum}">class="active"</c:if>>${index+1}</a></li>
+                                    <c:forEach begin="${menuPage.startPage}" end="${menuPage.endPage}" step="1" var="index">
+                                        <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=mymenu&menupageNum=${index}" <c:if test="${index eq menuPage.pageNum}">class="active"</c:if>>${index}</a></li>
                                     </c:forEach>
                                 </c:if>
-                                <c:if test="${menuPage.pageNum+1 lt menuPage.totalRecord}">
+                                <c:if test="${menuPage.pageNum lt menuPage.totalPage}">
                                     <li>
                                         <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=mymenu&menupageNum=${menuPage.pageNum+1}" aria-label="Next">
                                             <span aria-hidden="true">&raquo;</span>
@@ -236,7 +236,7 @@
 
                         <nav style="float:left;display:block;width:1000px;">
                             <ul class="pagination">
-                                <c:if test="${cookbookPage.pageNum-1 gt 1}">
+                                <c:if test="${cookbookPage.pageNum gt 1}">
                                     <li>
                                         <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=pwd&cookbookpageNum=${cookbookPage.pageNum-1}" aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
@@ -244,7 +244,7 @@
                                     </li>
                                 </c:if>
                                 <c:if test="${cookbookPage.totalPage gt 1}">
-                                    <c:forEach begin="${cookbookPage.startIndex}" end="${cookbookPage.startIndex}" step="1" var="index">
+                                    <c:forEach begin="${cookbookPage.startPage}" end="${cookbookPage.endPage}" step="1" var="index">
                                         <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=pwd&cookbookpageNum=${index}" <c:if test="${index eq cookbookPage.pageNum}">class="active"</c:if>>${index}</a></li>
                                     </c:forEach>
                                 </c:if>
@@ -284,7 +284,7 @@
                         <div class="page row col-md-12">
                             <nav>
                                 <ul class="pagination">
-                                    <c:if test="${productionPage.pageNum-1 gt 1}">
+                                    <c:if test="${productionPage.pageNum gt 1}">
                                         <li>
                                             <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=production&productionpageNum=${productionPage.pageNum-1}" aria-label="Previous">
                                                 <span aria-hidden="true">&laquo;</span>
@@ -292,11 +292,11 @@
                                         </li>
                                     </c:if>
                                     <c:if test="${productionPage.totalPage gt 1}">
-                                        <c:forEach begin="${productionPage.startIndex}" end="${productionPage.startIndex}" step="1" var="index">
-                                            <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=production&productionpageNum=${index+1}" <c:if test="${index+1 eq productionPage.pageNum}">class="active"</c:if>>${index+1}</a></li>
+                                        <c:forEach begin="${productionPage.startPage}" end="${productionPage.endPage}" step="1" var="index">
+                                            <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=production&productionpageNum=${index}" <c:if test="${index eq productionPage.pageNum}">class="active"</c:if>>${index}</a></li>
                                         </c:forEach>
                                     </c:if>
-                                    <c:if test="${productionPage.pageNum+1 lt productionPage.totalRecord}">
+                                    <c:if test="${productionPage.pageNum lt productionPage.totalPage}">
                                         <li>
                                             <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=production&productionpageNum=${productionPage.pageNum+1}" aria-label="Next">
                                                 <span aria-hidden="true">&raquo;</span>
@@ -325,7 +325,7 @@
                         </div>
                         <nav>
                             <ul class="pagination">
-                                <c:if test="${collectionCookbookPage.pageNum-1 gt 1}">
+                                <c:if test="${collectionCookbookPage.pageNum gt 1}">
                                     <li>
                                         <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=pwd&collectionCookbookpageNum=${collectionCookbookPage.pageNum-1}" aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
@@ -334,10 +334,10 @@
                                 </c:if>
                                 <c:if test="${collectionCookbookPage.totalPage gt 1}">
                                     <c:forEach begin="${collectionCookbookPage.startIndex}" end="${collectionCookbookPage.startIndex}" step="1" var="index">
-                                        <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=pwd&collectionCookbookpageNum=${index+1}" <c:if test="${index+1 eq collectionCookbookPage.pageNum}">class="active"</c:if>>${index+1}</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=pwd&collectionCookbookpageNum=${index}" <c:if test="${index eq collectionCookbookPage.pageNum}">class="active"</c:if>>${index}</a></li>
                                     </c:forEach>
                                 </c:if>
-                                <c:if test="${cookbookPage.pageNum+1 lt cookbookPage.totalRecord}">
+                                <c:if test="${collectionCookbookPage.pageNum lt collectionCookbookPage.totalPage}">
                                     <li>
                                         <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=pwd&collectionCookbookpageNum=${collectionCookbookPage.pageNum+1}" aria-label="Next">
                                             <span aria-hidden="true">&raquo;</span>
@@ -356,7 +356,7 @@
                         </div>
                         <nav>
                             <ul class="pagination">
-                                <c:if test="${collectionMenuPage.pageNum-1 gt 1}">
+                                <c:if test="${collectionMenuPage.pageNum gt 1}">
                                     <li>
                                         <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=mymenu&menupageNum=${collectionMenuPage.pageNum-1}" aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
@@ -365,10 +365,10 @@
                                 </c:if>
                                 <c:if test="${collectionMenuPage.totalPage gt 1}">
                                     <c:forEach begin="${collectionMenuPage.startIndex}" end="${collectionMenuPage.startIndex}" step="1" var="index">
-                                        <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=mymenu&menupageNum=${index+1}" <c:if test="${index+1 eq collectionMenuPage.pageNum}">class="active"</c:if>>${index+1}</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=mymenu&menupageNum=${index}" <c:if test="${index eq collectionMenuPage.pageNum}">class="active"</c:if>>${index}</a></li>
                                     </c:forEach>
                                 </c:if>
-                                <c:if test="${collectionMenuPage.pageNum+1 lt collectionMenuPage.totalRecord}">
+                                <c:if test="${collectionMenuPage.pageNum lt collectionMenuPage.totalPage}">
                                     <li>
                                         <a href="${pageContext.request.contextPath}/user/personWork/${userInfo.id}?target=mymenu&menupageNum=${collectionMenuPage.pageNum+1}" aria-label="Next">
                                             <span aria-hidden="true">&raquo;</span>

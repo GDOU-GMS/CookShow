@@ -132,7 +132,7 @@
                 </div>
                 <nav>
                     <ul class="pagination">
-                        <c:if test="${cookbookPage.pageNum-1 gt 1}">
+                        <c:if test="${cookbookPage.pageNum gt 1}">
                             <li>
                                 <a href="${pageContext.request.contextPath}/menu/menuDetail/${menu.id}?pageNum=${cookbookPage.pageNum-1}" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
@@ -140,11 +140,11 @@
                             </li>
                         </c:if>
                         <c:if test="${cookbookPage.totalPage gt 1}">
-                            <c:forEach begin="${cookbookPage.startIndex}" end="${cookbookPage.startIndex}" step="1" var="index">
-                                <li><a href="${pageContext.request.contextPath}/menu/menuDetail/${menu.id}?pageNum=${index+1}" <c:if test="${index+1 eq cookbookPage.pageNum}">class="active"</c:if>>${index+1}</a></li>
+                            <c:forEach begin="${cookbookPage.startPage}" end="${cookbookPage.endPage}" step="1" var="index">
+                                <li><a href="${pageContext.request.contextPath}/menu/menuDetail/${menu.id}?pageNum=${index}" <c:if test="${index eq cookbookPage.pageNum}">class="active"</c:if>>${index}</a></li>
                             </c:forEach>
                         </c:if>
-                        <c:if test="${cookbookPage.pageNum+1 lt cookbookPage.totalRecord}">
+                        <c:if test="${cookbookPage.pageNum lt cookbookPage.totalPage}">
                             <li>
                                 <a href="${pageContext.request.contextPath}/menu/menuDetail/${menu.id}?pageNum=${cookbookPage.pageNum+1}" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>

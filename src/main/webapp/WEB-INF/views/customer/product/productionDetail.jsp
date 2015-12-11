@@ -222,13 +222,9 @@
                 <div class="cbooksidecss">
                     <p>该用户的其他作品</p>
                     <ul>
-                        <li><a href="">美食疯狂来袭美食疯狂来袭美食疯狂</a></li>
-                        <li><a href="">美食疯狂来袭美食疯狂来袭美食疯狂</a></li>
-                        <li><a href="">美食疯狂来袭美食疯狂来袭美食疯狂</a></li>
-                        <li><a href="">美食疯狂来袭美食疯狂来袭美食疯狂</a></li>
-                        <li><a href="">美食疯狂来袭美食疯狂来袭美食疯狂</a></li>
-                        <li><a href="">美食疯狂来袭美食疯狂来袭美食疯狂</a></li>
-                        <li><a href="">美食疯狂来袭美食疯狂来袭美食疯狂</a></li>
+                        <c:forEach items="${productionList}" var="production">
+                            <li><a href="${pageContext.request.contextPath}/production/detail/${production.id}">${production.title}</a></li>
+                        </c:forEach>
                     </ul>
                 </div>
             </div>
