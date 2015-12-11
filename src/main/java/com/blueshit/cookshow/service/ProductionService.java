@@ -20,4 +20,6 @@ public interface ProductionService extends DaoSupport<Production> {
 
     List<Object[]> getProductionChartData(Date[] dates);
 
+    List<Production> getProductionByUserId(Long userId);
+
 }

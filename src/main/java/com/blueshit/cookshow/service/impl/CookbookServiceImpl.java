@@ -117,7 +117,7 @@ public class CookbookServiceImpl extends DaoSupportImpl<Cookbook> implements Coo
     public Page findByClassification(String classificationCode,int pugeNum,int pageSize){
 
         QueryHelper queryHelper = new QueryHelper(Cookbook.class,"c")
-                .addWhereCondition("c.classificationCode like ? ","%,"+classificationCode+",%")
+                .addWhereCondition("c.classificationCode like ? ","%"+classificationCode+",%")
                 .addOrderByProperty("createDate",false);
         return getPage(pugeNum,pageSize,queryHelper);
     }

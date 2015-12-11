@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Seven on 2015/12/7.
@@ -82,7 +83,9 @@ public class ProductionController extends BaseController {
         //评论
         Page page = commentProductionService.findByProductionId(production.getId(), pageNum, pageSize);
         model.addAttribute("page",page);
-
+        //该用户其他作品
+        List<Production> productionList = productionService.getProductionByUserId(production.getUser().getId());
+        model.addAttribute("productionList",productionList);
 
         return "customer/product/productionDetail";
     }

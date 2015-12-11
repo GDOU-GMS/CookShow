@@ -84,4 +84,14 @@ public class ProductionServiceImpl extends DaoSupportImpl<Production> implements
 
 
     }
+
+
+
+
+    public List<Production> getProductionByUserId(Long userId){
+        return getSession().createQuery("from Production p where p.User.id = ? order by createDate desc ")
+                .setParameter(0,userId)
+                .setMaxResults(5)
+                .list();
+    }
 }
