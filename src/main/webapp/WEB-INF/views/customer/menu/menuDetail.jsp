@@ -94,7 +94,7 @@
         <div class="cscontent">
             <div class="menuleft">
                 <div class="mobtop" style="background:#F0F0F0 ">
-                    <h2>${menu.name}</h2>
+                    <h2>${menu.name}<small><a style="font-size: 12px; color: #080808" href="${pageContext.request.contextPath}/user/personWork/${menu.user.id}">来自：${menu.user.username}</a></small></h2>
                     <div class="mobtopl" >
                         <div class="mobcdjj">
                         		<span>${menu.title}</span>
@@ -106,8 +106,9 @@
                     </div>
                     <div class="mobtopr">
                         <a class="btn btn-default acss" style="margin-top:125px;" href="#" role="button">收藏</a>
-                        <div class="mobshare">
-                            <span style="">分享到</span><a href=""><img src="${pageContext.request.contextPath}/resources/customer/images/weibo.png" style="width:36px;height:29px;"></a>                    </div>
+                       <%-- <div class="mobshare">
+                            <span style="">分享到</span><a href=""><img src="${pageContext.request.contextPath}/resources/customer/images/weibo.png" style="width:36px;height:29px;"></a>
+                        </div>--%>
                     </div>
                 </div>
                 <div class="mobbottom mobmedia">
@@ -123,7 +124,7 @@
                                 <div class="mobjj">
                                     <span>${cookbook.intro}</span>
                                 </div>
-                                <span>${cookbook.user.username}</span><br/>
+                                <span><a href="/user/personWork/${cookbook.user.id}">${cookbook.user.username}</a></span><br/>
                                 <span>发表时间：<fmt:formatDate value="${cookbook.createDate}" pattern="yyyy-MM-dd"/> </span><br/>
                             </div>
                         </div>

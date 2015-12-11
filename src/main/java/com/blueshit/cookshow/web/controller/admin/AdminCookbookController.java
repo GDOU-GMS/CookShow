@@ -1,11 +1,13 @@
 package com.blueshit.cookshow.web.controller.admin;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
 import com.blueshit.cookshow.common.helper.Page;
 import com.blueshit.cookshow.common.helper.QueryHelper;
+import com.blueshit.cookshow.common.utils.MyDataUtils;
 import com.blueshit.cookshow.model.entity.Cookbook;
 import com.blueshit.cookshow.web.basic.BaseController;
 import com.blueshit.cookshow.web.controller.common.ResultEntity;
@@ -127,6 +129,25 @@ public class AdminCookbookController extends BaseController {
         return "redirect:/admin/cookbook/list?pageNum = "+pageNum;
     }
 
+
+    @RequestMapping("/getCookbookChartData")
+    @ResponseBody
+    public ResultEntity getCookbookChartData(){
+        ResultEntity resultEntity = new ResultEntity();
+        List<Object[]> list = new ArrayList<Object[]>();
+        //菜谱
+        List<Object[]> cookbookList = cookbookService.getCookbookChartData(MyDataUtils.getLastYearMonth());
+        //作品
+        List<Object[]> productionList = productionService.getProductionChartData(MyDataUtils.getLastYearMonth());
+        //所有数据合并到一个
+        list.add(cookbookList.get(0));
+        list.add(cookbookList.get(1));
+        list.add(productionList.get(0));
+        list.add(productionList.get(1));
+        resultEntity.setData(list);
+        resultEntity.setSuccessMsg("success");
+        return resultEntity;
+    }
 
 
 

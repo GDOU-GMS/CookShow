@@ -1,5 +1,6 @@
 package com.blueshit.cookshow.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.blueshit.cookshow.common.helper.Page;
@@ -28,4 +29,7 @@ public interface CookbookService extends DaoSupport<Cookbook> {
     public List<Cookbook> getPopularCookbooks();
 
     List<Cookbook> getRecentlyCookbookByUserId(Long userId);
+
+    List<Object[]> getCookbookChartData(Date[] dates);
+
 }

@@ -333,7 +333,75 @@ Purchase: http://wrapbootstrap.com
 
         })
 
-        //菜谱
+        //菜谱getCookbookChartData
+        $.ajax({
+            url:  '/admin/cookbook/getCookbookChartData',
+            type: "POST",
+            dataType: 'json',
+            data: {date:new Date()},
+            success: function(data){
+                var cookbookmonths = data.data[0];
+                var cookbookcounts = data.data[1];
+                var productionmonths = data.data[2];
+                var productioncounts = data.data[3];
+                require(
+                        [
+                            'echarts',
+                            'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
+                        ],
+                        function (ec) {
+                            // 基于准备好的dom，初始化echarts图表
+                            var myChart = ec.init(document.getElementById('cookbookChart'));
+
+                            var option = {
+                                title : {
+                                    text: '过去一年每月新增',
+                                    subtext: '菜谱以及作品'
+                                },
+                                tooltip : {
+                                    trigger: 'axis'
+                                },
+                                legend: {
+                                    data:['新增菜谱数','新增作品数']
+                                },
+                                calculable : true,
+                                xAxis : [
+                                    {
+                                        type : 'category',
+                                        boundaryGap : false,
+                                        data : cookbookmonths
+                                    },
+                                    {
+                                        type : 'category',
+                                        boundaryGap : false,
+                                        data : productionmonths
+                                    }
+                                ],
+                                yAxis : [
+                                    {
+                                        type : 'value'
+                                    }
+                                ],
+                                series : [
+                                    {
+                                        name:'新增菜谱数',
+                                        type:'line',
+                                        data:cookbookcounts
+                                    },
+                                    {
+                                        name:'新增作品数',
+                                        type:'line',
+                                        data:productioncounts
+                                    }
+                                ]
+                            };
+
+                            // 为echarts对象加载数据
+                            myChart.setOption(option);
+                        }
+                );
+            }
+        })
 
 
 

@@ -1,12 +1,15 @@
 package com.blueshit.cookshow.service.impl;
 
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.mail.Session;
 
 import com.blueshit.cookshow.common.helper.Page;
 import com.blueshit.cookshow.common.helper.QueryHelper;
+import com.blueshit.cookshow.common.utils.MyDataUtils;
 import com.blueshit.cookshow.dao.impl.DaoSupportImpl;
 import com.blueshit.cookshow.model.entity.Cookbook;
 import com.blueshit.cookshow.model.entity.Menu;
@@ -168,6 +171,26 @@ public class CookbookServiceImpl extends DaoSupportImpl<Cookbook> implements Coo
                 .setParameter(0,userId)
                 .setMaxResults(3)
                 .list();
+    }
+
+    public List<Object[]> getCookbookChartData(Date[] dates){
+        List<Object[]> list = new ArrayList<Object[]>();
+
+        Long[] counts = new Long[dates.length];
+        String[] dateStrs = new String[dates.length];
+
+        for(int i=0;i<dates.length;i++){
+
+            Long l = (Long)getSession().createQuery("select  count(*) from Cookbook where createDate < ? and createDate>?")
+                    .setParameter(0,MyDataUtils.getNextMonth(dates[i]))
+                    .setParameter(1,dates[i])
+                    .uniqueResult();
+            counts[i] = l;
+            dateStrs[i] = MyDataUtils.DateToString(dates[i], "yyyy-MM");
+        }
+        list.add(dateStrs);
+        list.add(counts);
+        return list;
     }
 
 }

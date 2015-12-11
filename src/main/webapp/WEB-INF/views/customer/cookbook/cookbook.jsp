@@ -97,6 +97,7 @@
             <div class="menuleft">
                 <div class="menuimg">
                     <p>${cookbook.title}</p>
+                    <p style="font-size: 12px; color: #EC8D24"><a href="${pageContext.request.contextPath}/user/personWork/${cookbook.user.id}">来自：${cookbook.user.username}</a></p>
                     <div class="imgcontent">
                         <div class="imagetext">
                             <img src="${cookbook.titleImage}">

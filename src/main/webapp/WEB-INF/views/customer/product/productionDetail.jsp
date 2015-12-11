@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html>
 <head>
@@ -25,8 +26,6 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="${pageContext.request.contextPath}/resources/customer/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/customer/js/jquery.SuperSlide.2.1.js"></script>
-
-    <script src="${pageContext.request.contextPath}/resources/assets/plugins/jquery_form/jquery.form.min.js"></script>
 
 </head>
 
@@ -84,10 +83,10 @@
         <div id="navcontent">
            <ul class="nav nav-pills">
                 <li role="presentation" class="cbook"><a title="点击查看所有分类" href="${pageContext.request.contextPath}/classification/allClassification">全部分类</a></li>
-               <li role="presentation" class="active"><a href="${pageContext.request.contextPath}/">首页</a></li>
+               <li role="presentation" ><a href="${pageContext.request.contextPath}/">首页</a></li>
                <li role="presentation"><a href="${pageContext.request.contextPath}/menu/cookmenu">菜单</a></li>
                <li role="presentation"><a href="${pageContext.request.contextPath}/cookbook/listAllCookbook">菜谱</a></li>
-               <li role="presentation"><a href="${pageContext.request.contextPath}/production/productionIndex">作品动态</a></li>
+               <li role="presentation" class="active"><a href="${pageContext.request.contextPath}/production/productionIndex">作品动态</a></li>
             </ul>
         </div>
     </div>
@@ -96,6 +95,7 @@
             <div class="menuleft">
                 <div class="menuimg" style="height: 500px;">
                     <p>${production.title}</p>
+                    <p style="font-size: 12px; color: #EC8D24"><a href="${pageContext.request.contextPath}/user/personWork/${production.user.id}">来自：${production.user.username}</a></p>
                     <div class="imgcontent">
                         <div class="imagetext">
                             <img src="${production.titleImage}">
@@ -105,14 +105,14 @@
                                     <a href="javascript:void(0);" alt=""> <img src="${pageContext.request.contextPath}/resources/customer/images/weibo.png" style="width:36px;height:29px;"></a>
                                 </div>
                             </div>
-                            <a class="btn btn-default acss" href="javascript:void(0)" role="button">收藏</a>
+                            <a class="btn btn-default acss" href="javascript:void(0)" id="collection" role="button" onclick="doCollection()">点赞</a>
                             <a class="btn btn-default acss" href="${pageContext.request.contextPath}/cookbook/cookbook/${production.cookbookId}" role="button" style="border-right: solid #fff">做法</a></div>
                         <!--end imagetext -->
                     </div>
                     <!--imgcontent-->
                 </div>
                 <!--menuimg -->
-                <div class="menuinfo">
+                <div class="menuinfo" style="margin-top: 50px;">
                     <div class="menusubinfo">
                         <p>简介</p>
                         <span>${production.intro}</span>
@@ -124,78 +124,91 @@
                 <div class="menucomment">
                     <div class="eachcomment">
                         <div class="personhead">
-                            <img src="${pageContext.request.contextPath}/resources/customer/images/22.png">
+                            <c:if test="${!empty user.face}">
+                                <img src="${user.face}" width="50" height="50">
+                            </c:if>
+                            <c:if test="${empty user.face}">
+                                <img src="${pageContext.request.contextPath}/resources/customer/images/22.png">
+                            </c:if>
                         </div>
                         <div class="persontalk">
-                                <textarea class="form-control">
-                                     [随意吐槽]:
-                                </textarea>
-
+                            <textarea class="form-control" id="commentContent" style="font-size: larger"></textarea>
                         </div>
                         <div class="personsubmt">
-                            <a class="btn btn-default" href="#" role="button">评论</a>
+                            <a class="btn btn-default" href="javascript:void(0);" role="button" onclick="publishComment()">评论</a>
                         </div>
                     </div>
 
-                    <div style="float:left;width:718px;">
-
+                    <div style="float:left;width:718px;" id="comment_index">
                         <span style="color:#999;font-size:16px;">评论</span>
-
-
+                    </div>
+                    <div style="display: none">
+                        <div class="eachcomment" id="commentDiv">
+                            <hr style="color:#ccc;width:718px;">
+                            <div class="personhead">
+                                <c:if test="${!empty user.face}">
+                                    <img src="${user.face}" width="50" height="50">
+                                </c:if>
+                                <c:if test="${empty user.face}">
+                                    <img src="${pageContext.request.contextPath}/resources/customer/images/22.png">
+                                </c:if>
+                            </div>
+                            <div class="persontalk1">
+                                <span>${user.username}:</span>
+                                <p></p>
+                                <span class="fromcss">刚刚</span>
+                                <%-- <a href=""><span class="dianzan" style="width: auto" aria-hidden="true">回复</span></a>--%>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="eachcomment">
-                        <hr style="color:#ccc;width:718px;">
-                        <div class="personhead">
-                            <img src="${pageContext.request.contextPath}/resources/customer/images/22.png">
-                        </div>
-                        <div class="persontalk1">
-
-                            <span>[随意吐槽：]</span>
-
-                            <p>都是我爱吃的哦</p>
-                            <span class="fromcss">来自秀厨网</span>
-                            <a href=""><span class="glyphicon glyphicon-thumbs-up dianzan"
-                                             aria-hidden="true"></span></a>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="eachcomment">
-                        <hr style="color:#ccc;width:718px;">
-                        <div class="personhead">
-                            <img src="${pageContext.request.contextPath}/resources/customer/images/22.png">
-                        </div>
-                        <div class="persontalk1">
-
-                            <span>[随意吐槽：]</span>
-
-                            <p>都是我爱吃的哦</p>
-                            <span class="fromcss">来自秀厨网</span>
-                            <a href=""><span class="glyphicon glyphicon-thumbs-up dianzan"
-                                             aria-hidden="true"></span></a>
-
-                        </div>
-
-                    </div>
-                    <div class="eachcomment">
-                        <hr style="color:#ccc;width:718px;">
-                        <div class="personhead">
-                            <img src="${pageContext.request.contextPath}/resources/customer/images/22.png">
-                        </div>
-                        <div class="persontalk1">
-
-                            <span>[随意吐槽：]</span>
-
-                            <p>都是我爱吃的哦</p>
-                            <span class="fromcss">来自秀厨网</span>
-                            <a href=""><span class="glyphicon glyphicon-thumbs-up dianzan"
-                                             aria-hidden="true"></span></a>
-
-                        </div>
-
+                    <div id="commentArea">
+                        <c:if test="${empty page.list}">
+                            赶快来抢沙发吧！
+                        </c:if>
+                        <c:forEach items="${page.list}" var="commentProduction">
+                            <div class="eachcomment">
+                                <hr style="color:#ccc;width:718px;">
+                                <div class="personhead">
+                                    <c:if test="${!empty commentProduction.user.face}">
+                                        <img src="${commentProduction.user.face}" width="50" height="50">
+                                    </c:if>
+                                    <c:if test="${empty commentProduction.user.face}">
+                                        <img src="${pageContext.request.contextPath}/resources/customer/images/22.png">
+                                    </c:if>
+                                </div>
+                                <div class="persontalk1">
+                                    <span>${commentProduction.user.username}</span>
+                                    <p>${commentProduction.content}</p>
+                                    <span class="fromcss" style="width: auto"><fmt:formatDate value="${commentProduction.createDate}" pattern="yyyy-MM-dd HH:mm:SS"/></span>
+                                        <%-- <a href=""><span class="dianzan" style="width: auto" aria-hidden="true">回复</span></a>--%>
+                                </div>
+                            </div>
+                        </c:forEach>
+                        <%--分页--%>
+                        <nav>
+                            <ul class="pagination">
+                                <c:if test="${page.pageNum gt 1}">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/production/detail/${production.id}?pageNum=${page.pageNum-1}#comment_index" aria-label="Previous">
+                                            <span aria-hidden="true">上一页</span>
+                                        </a>
+                                    </li>
+                                </c:if>
+                                <c:if test="${page.totalPage gt 1}">
+                                    <c:forEach begin="${page.startPage-1}" end="${page.endPage-1}" step="1" var="index" >
+                                        <li><a href="${pageContext.request.contextPath}/production/detail/${production.id}?pageNum=${index+1}#comment_index" <c:if test="${index+1 eq page.pageNum}">class="active"</c:if>>${index+1}</a></li>
+                                    </c:forEach>
+                                </c:if>
+                                <c:if test="${page.pageNum lt page.totalPage}">
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/production/detail/${production.id}?pageNum=${page.pageNum+1}#comment_index" aria-label="Next">
+                                            <span aria-hidden="true">下一页</span>
+                                        </a>
+                                    </li>
+                                </c:if>
+                            </ul>
+                        </nav>
                     </div>
 
                 </div>
@@ -231,40 +244,9 @@
     </div>
     <!--pagebottom-->
 
-
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <form id="addToMenuForm" action="${pageContext.request.contextPath}/menu/addCookbook" method="post">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">添加到我的菜单</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="menuselect">请选择菜单：</label><br>
-                            <select id="menuselect" class="form-control" name="menuId">
-                                <c:if test="${!empty menuList}">
-                                    <c:forEach items="${menuList}" var="menu">
-                                        <option value="${menu.id}">${menu.name}</option>
-                                    </c:forEach>
-                                </c:if>
-                            </select>
-                            <input name="cookbookId" type="hidden" value="${cookbook.id}">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="submit" class="btn btn-primary">保存</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
 </div>
 <script type="text/javascript">
+
     jQuery("#csnav").slide({
         type: "menu",
         titCell: ".mainCate",
@@ -275,6 +257,124 @@
         returnDefault: true
     });
 
+    $(document).ready(function(){
+        checkCollection();
+    });
+
+    var result;
+    function checkCollection(){
+        var data = {
+            date: new Date(),
+            objectId : ${production.id},
+            type:   1
+        };
+        $.ajax({
+            type:       "POST",
+            url:        "/collection/checkCollection",
+            dataType:   "json",
+            data    : data,
+            success: function(data){
+                if(data.msg=='yes'){
+                    result = true;
+                }else if(data.msg = 'no'){
+                    result = false;
+                }else{
+                    alert(data.msg);
+                }
+                var $collection = $("#collection");
+                if(result){
+                    $collection.html("已赞")
+                }else{
+                    $collection.html("点赞")
+                }
+            }
+        })
+    }
+
+    function checkLogin(){
+        var test = false;
+        var data = {
+            date: new Date()
+        };
+        $.ajax({
+            type:       "POST",
+            url:        "/checkLogin",
+            dataType:   "json",
+            async:      false,
+            data    : data,
+            success: function(data){
+                if(data.result == 1){
+                    test =  true;
+                }else{
+                    test =  false;
+                }
+            }
+        });
+        return test;
+    }
+
+    function doCollection(){
+        //如果已经登录
+        if(checkLogin()){
+            var data = {
+                objectId : ${production.id},
+                type     : 1,
+                state    : result,
+                date     : new Date()
+            }
+            $.ajax({
+                type:       "POST",
+                url:        "/collection/doCollection",
+                dataType:   "json",
+                data    : data,
+                success: function(data){
+                    if(data.result==0){
+                        alert(data.msg)
+                    }else{
+                        checkCollection();
+                    }
+                }
+            })
+        }
+    }
+
+    function publishComment(){
+
+        var commentContent = $("#commentContent").val();
+
+        if(checkLogin()){
+            if(commentContent==null||commentContent==""){
+                alert("评论不能为空！");
+            }else{
+                var data = {
+                    productionId : ${production.id},
+                    comment    : commentContent
+                }
+                $.ajax({
+                    type:       "POST",
+                    url:        "/commentProduction/publicComment",
+                    dataType:   "json",
+                    data    : data,
+                    success: function(data){
+                        if(data.result==1){
+                            //添加评论
+                            var $commentDiv = $("#commentDiv").clone().attr("id","");
+                            var $commentArea = $("#commentArea");
+                            var pNode = $commentDiv.find("p");
+                            $(pNode).text(commentContent);
+                            $commentArea.prepend($commentDiv);
+                            $("#commentContent").val("");//清空
+                        }else{
+                            alert(data.msg)
+                        }
+                    }
+                })
+            }
+        }else{
+            alert("请先登录！");
+        }
+
+    }
 </script>
 </body>
 </html>

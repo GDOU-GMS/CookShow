@@ -90,22 +90,11 @@ public class AdminUserController extends BaseController {
     @ResponseBody
     public ResultEntity getUserChartData(){
         ResultEntity resultEntity = new ResultEntity();
-        List<Object[]> list = userService.getLastWeekUserDate(getLastWeakDate());
+        List<Object[]> list = userService.getLastWeekUserDate(MyDataUtils.getLastWeakDate());
         resultEntity.setData(list);
         resultEntity.setSuccessMsg("success");
         return resultEntity;
     }
 
-
-    private Date[] getLastWeakDate(){
-        Calendar calendar = Calendar.getInstance();
-        Date[] dates = new Date[7];
-        calendar.set(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DATE)-7);
-        for(int i=0;i<7;i++){
-            calendar.add(Calendar.DATE,1);
-            dates[i] = MyDataUtils.StringToDate(MyDataUtils.DateToString(calendar.getTime(),"yyyy-MM-dd"),"yyyy-MM-dd");
-        }
-        return dates;
-    }
 
 }

@@ -6,7 +6,6 @@ import com.blueshit.cookshow.model.entity.Production;
 import com.blueshit.cookshow.model.entity.User;
 import com.blueshit.cookshow.qiniu.QiniuUpload;
 import com.blueshit.cookshow.web.basic.BaseController;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -75,9 +74,16 @@ public class ProductionController extends BaseController {
     }
 
     @RequestMapping("/detail/{id}")
-    public String detail(@PathVariable String id,Model model){
+    public String detail(@PathVariable String id,Model model,String productionId,Integer pageNum){
+        pageNum = pageNum==null||pageNum<=0?1:pageNum;
+        int pageSize = 10;
         Production production = productionService.findById(Long.parseLong(id));
         model.addAttribute("production",production);
+        //评论
+        Page page = commentProductionService.findByProductionId(production.getId(), pageNum, pageSize);
+        model.addAttribute("page",page);
+
+
         return "customer/product/productionDetail";
     }
 
@@ -118,5 +124,8 @@ public class ProductionController extends BaseController {
 
         return "redirect:/user/personWork/"+getCurrentUser(request.getSession()).getId()+"?target=production";
     }
+
+
+
 
 }

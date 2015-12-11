@@ -199,8 +199,10 @@
                         <div class="row showimg" style="width:332px;heihgt:320px;">
                             <div class="col-sm-6 col-md-4" style="width:332px; padding: 0px;">
                                 <div class="thumbnail" style="width:332px;height:320px;">
-                                    <img src="${cookbook.titleImage}"  alt="..." style="width:256px;height:230px;margin:10px 30px;">
-                                    <div class="caption"width:="width:320px;height:70px;margin-top:20px;">
+                                    <a href="${pageContext.request.contextPath}/cookbook/cookbook/${cookbook.id}">
+                                        <img src="${cookbook.titleImage}"  alt="..." style="width:256px;height:230px;margin:10px 30px;">
+                                    </a>
+                                    <div class="caption"style="width:320px;height:70px;margin-top:20px;">
                                         <h4 ><a class="captionhref" href="#">${cookbook.title}</a></h4>
                                     </div>
                                 </div>
@@ -214,8 +216,10 @@
                         <div class="row showimg "style="width:332px;heihgt:320px;">
                             <div class="col-sm-6 col-md-4" style="width:332px; padding: 0px;">
                                 <div class="thumbnail"  style="width:332px;height:320px;">
-                                    <img src="${cookbook.titleImage}" alt="..."style="width:256px;height:230px;margin:10px 30px;">
-                                    <div class="caption"width:="width:320px;height:70px;margin-top:20px;">
+                                    <a href="${pageContext.request.contextPath}/cookbook/cookbook/${cookbook.id}">
+                                        <img src="${cookbook.titleImage}"  alt="..." style="width:256px;height:230px;margin:10px 30px;">
+                                    </a>
+                                    <div class="caption"String="width:320px;height:70px;margin-top:20px;">
                                         <h4>${cookbook.title}</h4>
                                     </div>
                                 </div>

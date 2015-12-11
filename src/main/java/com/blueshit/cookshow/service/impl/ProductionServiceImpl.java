@@ -2,11 +2,16 @@ package com.blueshit.cookshow.service.impl;
 
 import com.blueshit.cookshow.common.helper.Page;
 import com.blueshit.cookshow.common.helper.QueryHelper;
+import com.blueshit.cookshow.common.utils.MyDataUtils;
 import com.blueshit.cookshow.dao.impl.DaoSupportImpl;
 import com.blueshit.cookshow.model.entity.Production;
 import com.blueshit.cookshow.service.ProductionService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Seven on 2015/12/7.
@@ -53,5 +58,30 @@ public class ProductionServiceImpl extends DaoSupportImpl<Production> implements
         QueryHelper queryHelper = new QueryHelper(Production.class,"p")
                     .addWhereCondition("p.title like ?","%"+keyword+"%");
         return getPage(1,(int)count,queryHelper);
+    }
+
+
+
+    public List<Object[]> getProductionChartData(Date[] dates){
+        List<Object[]> list = new ArrayList<Object[]>();
+
+        Long[] counts = new Long[dates.length];
+        String[] dateStrs = new String[dates.length];
+
+        for(int i=0;i<dates.length;i++){
+
+            Long l = (Long)getSession().createQuery("select  count(*) from Production where createDate < ? and createDate>?")
+                    .setParameter(0, MyDataUtils.getNextMonth(dates[i]))
+                    .setParameter(1,dates[i])
+                    .uniqueResult();
+            counts[i] = l;
+            dateStrs[i] = MyDataUtils.DateToString(dates[i], "yyyy-MM");
+        }
+        list.add(dateStrs);
+        list.add(counts);
+        return list;
+
+
+
     }
 }

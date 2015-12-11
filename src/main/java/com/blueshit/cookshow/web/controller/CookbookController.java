@@ -116,6 +116,9 @@ public class CookbookController extends BaseController {
         try {
             if (!"".equals(cookbookId)) {
                 Cookbook cookbook = cookbookService.findById(Long.parseLong(cookbookId));
+                //增加点击量
+                cookbook.setClickNum(cookbook.getClickNum()+1);
+                cookbookService.update(cookbook);
                 //用料
                 List<Material> materialList = objectMapper.readValue(cookbook.getMaterial(), new TypeReference<List<Material>>() {});
                 //做法
